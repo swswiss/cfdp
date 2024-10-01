@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+a.link {
+  @apply font-semibold text-indigo-600;
+
+  &:hover {
+    @apply text-indigo-500;
+  }
+}
+
+
 /*
 
 @layer components {
