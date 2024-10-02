@@ -3,7 +3,6 @@ import { Controller } from '@hotwired/stimulus';
 // Connects to data-controller="notification"
 export default class extends Controller {
   connect() {
-    console.log("heesfsddsadfsfsfsfs")
     if(!this.isPreview) {
       setTimeout (() => {
         this.element.classList.remove('hidden');
