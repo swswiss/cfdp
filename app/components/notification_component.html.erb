@@ -1,0 +1,42 @@
+<div
+  class = "pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg  bg-white shadow-lg ring-1 ring-black ring-opacity-5"
+  data-controller = "notification"
+>
+  <div class="p-4">
+    <div class="flex items-start">
+      <div class="flex-shrink-0">
+        <svg class="h-6 w-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+
+      </div>
+      <div class="ml-3 w-0 flex-1 pt-0.5">
+        <p class="text-sm font-medium text-gray-900"><%= @data[:title] %></p>
+        <p class="mt-1 text-sm text-gray-500"><%= @data[:body] %></p>
+      </div>
+      <div class="ml-4 flex flex-shrink-0">
+        <button
+          type = "button"
+          class="inline-flex rounded-md bg-white text-gray-400 hover: text-gray-500 focus: outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+          data-action="click->notification#close"
+        >
+          <span class="sr-only">Close</span>
+
+            <svg
+               width="20"
+               height="20"
+               viewBox="0 0 20 20"
+               fill="none"
+               xmlns="http://www.w3.org/2000/svg"
+               >
+               <path
+                  d="M11 10L18.625 2.375C18.9062 2.09375 18.9062 1.65625 18.625 1.375C18.3438 1.09375 17.9062 1.09375 17.625 1.375L10 9L2.375 1.375C2.09375 1.09375 1.65625 1.09375 1.375 1.375C1.09375 1.65625 1.09375 2.09375 1.375 2.375L9 10L1.375 17.625C1.09375 17.9062 1.09375 18.3438 1.375 18.625C1.5 18.75 1.6875 18.8438 1.875 18.8438C2.0625 18.8438 2.25 18.7812 2.375 18.625L10 11L17.625 18.625C17.75 18.75 17.9375 18.8438 18.125 18.8438C18.3125 18.8438 18.5 18.7812 18.625 18.625C18.9062 18.3438 18.9062 17.9062 18.625 17.625L11 10Z"
+                  fill="currentColor"
+                  />
+            </svg>
+
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
