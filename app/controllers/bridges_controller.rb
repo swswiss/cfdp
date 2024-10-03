@@ -2,6 +2,7 @@ class BridgesController < ApplicationController
   before_action :authenticate_user!
 
 	def index
+		@bridges = Bridge.all
 	end
 
 	def new
@@ -16,11 +17,17 @@ class BridgesController < ApplicationController
 		@bridge = Bridge.new(bridge_params.merge(user: current_user))
 
 		if @bridge.save
-			redirect_to bridge_path(@bridge)
+			redirect_to bridge_path(@bridge), notice: 'Bridge was successfully created.'
 		else
-			#Error
 		end
 	end
+
+	def destroy
+    @bridge = Bridge.friendly.find(params[:id])
+    @bridge.destroy
+
+    redirect_to bridges_path, notice: 'Bridge was successfully deleted.'
+  end
 
 	private
 
