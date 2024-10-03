@@ -13,6 +13,10 @@ class BridgesController < ApplicationController
 		@bridge = Bridge.friendly.find(params[:id])
 	end
 
+	def your_bridges
+		@bridges = current_user.bridges
+	end
+
 	def show
 		@bridge = Bridge.friendly.find(params[:id])
 	end

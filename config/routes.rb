@@ -17,6 +17,13 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "home#index"
   resources :bridges, only: [:index, :new, :create, :show, :destroy, :edit, :update]
+  get 'your_bridges', to: 'bridges#your_bridges', as: :your_bridges
 
   get "dashboard", to: "dashboard#index" 
+
+  scope module: :bridges, path: :bridges, as: :bridge do
+    resources :publish, only: :update
+    resources :unpublish, only: :update
+  end
+
 end
