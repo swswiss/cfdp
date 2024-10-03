@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="<%= "h-full bg-gray-50" if devise_controller? || user_signed_in? %>">
+<html class="<%= " bg-gray-50" if devise_controller? || user_signed_in? %>">
   <head>
     <title><%= content_for(:title) || "Cfdp" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -15,7 +15,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="<%= "h-full" if devise_controller? || user_signed_in? %>">
+  <body data-turbo-prefetch="false" class="<%= "h-full" if devise_controller? || user_signed_in? %>">
     <div aria-live="assertive" class="pointer-events-none fixed inset-0 flex items-end px-4 py-6 sm:items-start sm:p-6 z-50">
       <div class="flex w-full flex-col items-center space-y-4 sm:items-end">
         <% flash.each do |type, data| %>
