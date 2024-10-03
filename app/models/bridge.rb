@@ -3,5 +3,5 @@ class Bridge < ApplicationRecord
   friendly_id :name, use: :slugged
   belongs_to :user
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: { case_sensitive: false, scope: :user_id }
 end

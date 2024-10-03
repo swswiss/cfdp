@@ -9,8 +9,21 @@ class BridgesController < ApplicationController
 		@bridge = current_user.bridges.build
 	end
 
+	def edit
+		@bridge = Bridge.friendly.find(params[:id])
+	end
+
 	def show
 		@bridge = Bridge.friendly.find(params[:id])
+	end
+
+	def update
+		@bridge = Bridge.friendly.find(params[:id])
+
+		if @bridge.update(bridge_params)
+			redirect_to edit_bridge_path(@bridge), notice: 'Bridge was successfully updated.'
+		else
+		end
 	end
 
 	def create
