@@ -6,7 +6,7 @@ module Bridges
       @bridge = Bridge.friendly.find(params[:id])
       @bridge.update(published: false)
       flash[:success] = "Product successfully unpublished."
-      redirect_to bridge_path(@bridge)
+      redirect_to your_bridges_path
     end
   end
 end
