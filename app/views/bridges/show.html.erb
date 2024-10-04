@@ -3,12 +3,10 @@
     <div class="sticky top-0 flex justify-between bg-gray-50">
       <div class="text-4xl tracking-wide"><%= @bridge.name %></div>
       <div>
-        <% if @bridge.published? %>
-          <%= link_to "Unpublish", bridge_unpublish_path(@bridge), class: "link", data: { "turbo-method": :put } %>
-        <% else %>
-          <%= link_to "Publish", bridge_publish_path(@bridge), class: "link", data: { "turbo-method": :put } %>
-        <% end %>
-        <%= link_to "Save changes", "", class: "link" %>
+          <%if @bridge.user == current_user%>
+          <%= link_to "Create new Instance Bridge", new_bridge_instance_bridge_path(@bridge.id), class: "link" %>
+          <%end%>
+
       </div>
     </div>
   <div>

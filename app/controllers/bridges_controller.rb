@@ -53,8 +53,6 @@ class BridgesController < ApplicationController
 	def authorize_post
     @bridge = Bridge.friendly.find(params[:id])
     if @bridge.user != current_user
-			
-      #render plain: 'Forbidden', status: :forbidden
 			redirect_to bridges_path, notice: 'You have no access here!'
     end
   end
