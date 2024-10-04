@@ -1,13 +1,11 @@
-<%= link_to "Add new Bridge", new_bridge_path, class: "link" %>
-
-
-
-
-<div class="relative flex min-w-screen flex-col justify-center overflow-hidden bg-gray- py-6 sm:py-12">
+<br>
+<br>
+<div class="relative flex min-w-screen flex-col justify-center overflow-hidden py-6 sm:py-12">
   <div class="mx-auto max-w-screen-xl px-4 w-full">
     <div class="grid w-full sm:grid-cols-2 xl:grid-cols-4 gap-6">
       <% @bridges.includes(:user).each do |bridge| %>
         <div class="relative flex flex-col shadow-md rounded-xl overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 max-w-xs"> <!-- Reduced from max-w-sm to max-w-xs -->
+				<%if bridge.user == current_user%>
           <div>
             <%= link_to bridge_path(bridge), method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"> <!-- Reduced the icon size -->
@@ -15,6 +13,7 @@
               </svg>
             <% end %>
           </div>
+					<%end%>
 
           <div class="h-auto overflow-hidden">
             <div class="h-32 overflow-hidden relative"> <!-- Reduced the image height -->
