@@ -14,6 +14,29 @@ class BridgesController < ApplicationController
 		@bridge = Bridge.friendly.find(params[:id])
 	end
 
+	def upload_bridge
+	end
+
+	def send_upload_bridge
+		require 'csv'
+    if params[:csv_file].present?
+      csv_file = params[:csv_file]
+
+      begin
+        CSV.foreach(csv_file.path, headers: true) do |row|
+          #Bridge.create!(name: row['name'], author: row['author'], status: row['status'])
+        end
+        flash[:notice] = "CSV uploaded successfully!"
+      rescue StandardError => e
+        flash[:alert] = "Error processing the CSV file: #{e.message}"
+      end
+    else
+      flash[:alert] = "No file uploaded."
+    end
+
+    redirect_to your_redirect_path
+  end
+
 	def your_bridges
 		@bridges = current_user.bridges.order(created_at: :asc)
 		# if admin display all bridges
@@ -47,7 +70,13 @@ class BridgesController < ApplicationController
     @bridge = Bridge.friendly.find(params[:id])
     @bridge.destroy
 
-    redirect_to bridges_path, notice: 'Bridge was successfully deleted.'
+    respond_to do |format|
+      format.turbo_stream do
+        flash[:success] = "Bridge successfully deleted."
+        render turbo_stream: turbo_stream.remove("bridge-row-#{@bridge.id}")
+      end
+      format.html { redirect_to bridges_path, notice: "Bridge was successfully deleted." }
+    end
   end
 
 	private

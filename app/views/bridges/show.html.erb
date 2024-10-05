@@ -25,7 +25,7 @@
     <!-- Tab 2 -->
     <li class="me-2">
       <a href="#tab2" data-tab="tab2" class="tab-link inline-flex items-center justify-center p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500 group">
-        Dashboard
+        Instances Bridge
       </a>
     </li>
     <li class="me-2">
@@ -73,7 +73,7 @@
     </thead>
     <tbody class="divide-y divide-gray-100 border-t border-gray-100">
       <% @instance_bridges.each do |instance_bridge| %>
-        <tr class="hover:bg-gray-50">
+        <tr id="instance-bridge-row-<%= instance_bridge.id %>" class="hover:bg-gray-50">
           <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
             
             <div class="text-sm">

@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resources :instance_bridges, only: [:index, :new, :create, :show, :destroy, :edit, :update]
   end
   get 'your_bridges', to: 'bridges#your_bridges', as: :your_bridges
+  get 'upload_bridge', to: 'bridges#upload_bridge', as: :upload_bridge
+  post 'send_upload_bridge', to: 'bridges#send_upload_bridge', as: :send_upload_bridge
 
   get "dashboard", to: "dashboard#index" 
 

@@ -1,5 +1,5 @@
 <!-- component -->
-<div class="overflow-hidden rounded-lg border border-gray-200 shadow-md m-5">
+<div class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 shadow-md m-5">
   <table class="w-full border-collapse bg-white text-left text-sm text-gray-500">
     <thead class="bg-gray-50">
       <tr>
@@ -11,7 +11,7 @@
     </thead>
     <tbody class="divide-y divide-gray-100 border-t border-gray-100">
       <% @bridges.each do |bridge| %>
-        <tr class="hover:bg-gray-50">
+        <tr id="bridge-row-<%= bridge.id %>" class="hover:bg-gray-50">
           <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
             
             <div class="text-sm">
@@ -21,25 +21,17 @@
           <td class="px-6 py-4">
             <%=bridge.user.username%>
           </td>
-          <td class="px-6 py-4"><%=bridge.published? ? "Published" : "Unpublished"%></td>
+          <td class="px-6 py-4">
+            <%= turbo_frame_tag "status-#{bridge.id}" do %>
+              <%= bridge.published? ? "Published" : "Unpublished" %>
+            <% end %>
+          </td>
           
           <td class="px-6 py-4">
             <div class="flex justify-end gap-4">
-            <% if bridge.published? %>
-              <%= link_to bridge_unpublish_path(bridge),method: :get, data: { "turbo-method": :put } do%>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                </svg>
-              <%end%>
-
-            <% else %>
-              <%= link_to bridge_publish_path(bridge),method: :get, data: { "turbo-method": :put } do%>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                </svg>
-              <%end%>
-
-            <% end %>
+            <%= turbo_frame_tag "publish-button-#{bridge.id}" do %>
+            <%= render "bridges/publish_button", bridge: bridge%>
+            <%end%>
              
 
               <%= link_to bridge_path(bridge), method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
