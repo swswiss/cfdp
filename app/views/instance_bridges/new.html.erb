@@ -88,13 +88,7 @@
         <%= form_with model: [@bridge, @instance_bridge] do |f| %>
 				<div class="py-10">	
 					<div x-show.transition.in="step === 1">
-            <div class="mb-5">
-              <%= f.label :name, class: "font-bold mb-1 text-gray-700 block text-sm" %>
-              <%= f.select :name, 
-                options_for_select([['United States', 'United States'], ['Canada', 'Canada'], ['Mexico', 'Mexico']]), 
-                { prompt: ''}, 
-                class: "w-full px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs" %>
-            </div>
+            
             <div class="mb-5">
               <%= f.label :date, "Select a Date", class: "font-bold mb-1 text-gray-700 block text-sm" %>
               <%= f.date_field :date, class: "w-full px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-sm" %>
