@@ -38,7 +38,13 @@ class InstanceBridgesController < ApplicationController
 
   def destroy
     @instance_bridge.destroy
-    redirect_to bridge_path(@bridge), notice: 'Instance Bridge was successfully destroyed.'
+    respond_to do |format|
+      format.turbo_stream do
+        flash[:success] = "Instance Bridge successfully deleted."
+        render turbo_stream: turbo_stream.remove("instance-bridge-row-#{@instance_bridge.id}")
+      end
+      format.html { redirect_to bridges_path, notice: "Instance Bridge was successfully deleted." }
+    end
   end
 
   private
