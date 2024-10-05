@@ -1,6 +1,6 @@
 class BridgesController < ApplicationController
   before_action :authenticate_user!
-	before_action :authorize_post, only: [:update, :destroy]
+	before_action :authorize_bridge, only: [:update, :destroy]
 
 	def index
 		@bridges = Bridge.all.where(published: true)
@@ -21,6 +21,7 @@ class BridgesController < ApplicationController
 
 	def show
 		@bridge = Bridge.friendly.find(params[:id])
+    @instance_bridges = @bridge.instance_bridges
 	end
 
 	def update
@@ -50,7 +51,7 @@ class BridgesController < ApplicationController
 
 	private
 
-	def authorize_post
+	def authorize_bridge
     @bridge = Bridge.friendly.find(params[:id])
     if @bridge.user != current_user
 			redirect_to bridges_path, notice: 'You have no access here!'

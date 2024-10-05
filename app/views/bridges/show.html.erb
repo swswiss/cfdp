@@ -12,3 +12,174 @@
   <div>
 <div>
 
+
+<div class="border-b border-gray-200 dark:border-gray-700">
+  <ul class="flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 dark:text-gray-400">
+    <!-- Tab 1 -->
+    <li class="me-2">
+      <a href="#tab1" data-tab="tab1" class="tab-link inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group" aria-current="page">
+        Profile
+      </a>
+    </li>
+    
+    <!-- Tab 2 -->
+    <li class="me-2">
+      <a href="#tab2" data-tab="tab2" class="tab-link inline-flex items-center justify-center p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500 group">
+        Dashboard
+      </a>
+    </li>
+    <li class="me-2">
+      <a href="#tab3" data-tab="tab3" class="tab-link inline-flex items-center justify-center p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500 group">
+        Statistics
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+
+
+
+<!-- Tab Content Sections -->
+<div class="tab-content">
+  <div id="tab1-content" class="tab-pane">
+
+  </div>
+  <div id="tab3-content" class="tab-pane">
+
+  </div>
+
+  <div id="tab2-content" class="tab-pane hidden">
+
+
+<div class="overflow-hidden rounded-lg border border-gray-200 shadow-md m-5">
+  <table class="w-full border-collapse bg-white text-left text-sm text-gray-500">
+    <thead class="bg-gray-50">
+      <tr>
+        <th scope="col" class="px-6 py-4 font-medium text-gray-900">Name</th>
+        <th scope="col" class="px-6 py-4 font-medium text-gray-900">Author</th>
+        <th scope="col" class="px-6 py-4 font-medium text-gray-900"></th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-100 border-t border-gray-100">
+      <% @instance_bridges.each do |instance_bridge| %>
+        <tr class="hover:bg-gray-50">
+          <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
+            
+            <div class="text-sm">
+              <%=instance_bridge.name%>
+            </div>
+          </th>
+          <td class="px-6 py-4">
+            <%=instance_bridge.bridge.user.username%>
+          </td>
+          
+          <td class="px-6 py-4">
+            <div class="flex justify-end gap-4">
+
+              <%= link_to bridge_instance_bridge_path(@bridge, instance_bridge), method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="h-6 w-6"
+                  x-tooltip="tooltip"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                  />
+                </svg>
+              <%end%>
+              <%= link_to edit_bridge_instance_bridge_path(@bridge, instance_bridge), method: :get do %>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="h-6 w-6"
+                  x-tooltip="tooltip"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"
+                  />
+                </svg>
+              <%end%>
+            </div>
+          </td>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
+</div>
+
+
+  </div>
+</div>
+
+<style>
+
+</style>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  function showTab(tabId) {
+    // Hide all tab content
+    const allTabContents = document.querySelectorAll(".tab-pane");
+    allTabContents.forEach((tabContent) => {
+      tabContent.classList.remove("active");
+      tabContent.classList.add("hidden");
+    });
+
+    // Show the selected tab content
+    const selectedTabContent = document.querySelector(`#${tabId}-content`);
+    if (selectedTabContent) {
+      selectedTabContent.classList.remove("hidden");
+      selectedTabContent.classList.add("active");
+    }
+
+    // Reset all tabs
+    const allTabs = document.querySelectorAll(".tab-link");
+    allTabs.forEach((tab) => {
+      tab.classList.remove("text-blue-600", "border-blue-600", "dark:text-blue-500", "dark:border-blue-500");
+      tab.classList.add("hover:text-gray-600", "border-transparent");
+    });
+
+    // Set the clicked tab as active
+    const activeTab = document.querySelector(`a[href="#${tabId}"]`);
+    if (activeTab) {
+      activeTab.classList.add("text-blue-600", "border-blue-600", "dark:text-blue-500", "dark:border-blue-500");
+      activeTab.classList.remove("hover:text-gray-600", "border-transparent");
+    }
+  }
+
+  // Check the URL hash on page load and display the correct tab
+  const currentHash = window.location.hash.substring(1); // Remove the '#' symbol
+  if (currentHash) {
+    showTab(currentHash);
+  } else {
+    showTab('tab1'); // Default tab
+  }
+
+  // Add click event listeners to tab links
+  const tabLinks = document.querySelectorAll(".tab-link");
+  tabLinks.forEach((link) => {
+    link.addEventListener("click", function (event) {
+      event.preventDefault(); // Prevent default link behavior
+      const tabId = this.getAttribute("href").substring(1); // Get the tab ID from the href
+      showTab(tabId);
+      window.history.pushState(null, null, `#${tabId}`); // Update the URL without reloading
+    });
+  });
+});
+
+
+</script>
+
