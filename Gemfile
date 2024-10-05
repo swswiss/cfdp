@@ -23,6 +23,7 @@ gem "tailwindcss-rails"
 gem "sassc-rails"
 gem "view_component"
 gem 'friendly_id', '~> 5.5.0'
+gem "rails_charts"
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 

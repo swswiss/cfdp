@@ -22,6 +22,7 @@ class BridgesController < ApplicationController
 	def show
 		@bridge = Bridge.friendly.find(params[:id])
     @instance_bridges = @bridge.instance_bridges
+		@hash_data = @instance_bridges.group("DATE(created_at)").count
 	end
 
 	def update

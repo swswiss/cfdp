@@ -45,7 +45,17 @@
   <div id="tab1-content" class="tab-pane">
 
   </div>
-  <div id="tab3-content" class="tab-pane">
+  <div id="tab3-content" class="tab-pane"><br><br>
+  <%= line_chart @hash_data, 
+  height: "400px", 
+  width: "100%", 
+  options: {
+    title: {
+      text: "Number of Bridges per created time",
+      left: 'center'
+    },
+  }
+%>
 
   </div>
 
@@ -182,4 +192,3 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 </script>
-
