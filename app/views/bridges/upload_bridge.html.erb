@@ -1,8 +1,12 @@
+
 <%= form_with(url: send_upload_bridge_path, method: :post, html: { multipart: true }) do |form| %>
   <br>
   <br><br>
   <div class="col-span-full">
-    <label for="cover-photo" class="block text-sm font-medium leading-6 text-gray-900">Upload Bridge from CSV</label>
+  <div class="border-gray-900/10 pb-12">
+  <h2 class="text-base font-semibold leading-7 text-gray-900">Build a bridge from CSV file</h2>
+  <p class="mt-1 text-sm leading-6 text-gray-600">Just drag and drop the CSV file and we do the rest!</p>
+</div>
     <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
       <div class="text-center">
         <svg class="mx-auto h-12 w-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" data-slot="icon">

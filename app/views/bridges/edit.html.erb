@@ -866,7 +866,7 @@
 						</div>
 					</div>
 				</div>
-        <%if @bridge.user == current_user%>
+        <%if @bridge.user == current_user || current_user.admin?%>
         <button type="submit"
         class="w-24 focus:outline-none border border-transparent py-1.5 px-3 rounded-md shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-sm font-medium"
       >Complete</button>

@@ -3,7 +3,7 @@
     <div class="sticky top-0 flex justify-between bg-gray-50">
       <div class="text-4xl tracking-wide"><%= @bridge.name %></div>
       <div>
-          <%if @bridge.user == current_user%>
+          <%if @bridge.user == current_user || current_user.admin?%>
           <%= link_to "Create new Instance Bridge", new_bridge_instance_bridge_path(@bridge.id), class: "link" %>
           <%end%>
 
