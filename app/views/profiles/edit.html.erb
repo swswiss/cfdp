@@ -1,0 +1,69 @@
+<br>
+<br>
+<%= form_with(model: @user, url: profile_path, method: :put, local: true) do |f| %>
+  <div class="space-y-12">
+    <div class="border-b border-gray-900/10 pb-12">
+      <h2 class="text-base font-semibold leading-7 text-gray-900">Profile</h2>
+      <p class="mt-1 text-sm leading-6 text-gray-600">This information will be displayed publicly so be careful what you share.</p>
+    </div>
+
+    <div class="border-b border-gray-900/10 pb-12">
+      <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+        
+        <!-- First name -->
+        <div class="sm:col-span-3">
+          <%= f.label :firstname, "First name", class: "block text-sm font-medium leading-6 text-gray-900" %>
+          <div class="mt-2">
+            <%= f.text_field :firstname, class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
+          </div>
+        </div>
+
+        <!-- Last name -->
+        <div class="sm:col-span-3">
+          <%= f.label :lastname, "Last name", class: "block text-sm font-medium leading-6 text-gray-900" %>
+          <div class="mt-2">
+            <%= f.text_field :lastname, class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
+          </div>
+        </div>
+
+        <!-- Username -->
+        <div class="sm:col-span-3">
+          <%= f.label :username, "Username", class: "block text-sm font-medium leading-6 text-gray-900" %>
+          <div class="mt-2">
+            <%= f.text_field :username, class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
+          </div>
+        </div>
+
+        <div class="sm:col-span-4">
+  <%= f.label :password, "New Password", class: "block text-sm font-medium leading-6 text-gray-900" %>
+  <div class="mt-2">
+    <%= f.password_field :password, autocomplete: "new-password", class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
+  </div>
+  <small class="text-sm text-gray-600">Leave blank if you don't want to change it.</small>
+</div>
+
+<!-- Password Confirmation -->
+<div class="sm:col-span-4">
+  <%= f.label :password_confirmation, "Confirm New Password", class: "block text-sm font-medium leading-6 text-gray-900" %>
+  <div class="mt-2">
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
+  </div>
+</div>
+
+        <!-- Email -->
+        <div class="sm:col-span-4">
+          <%= f.label :email, "Email address", class: "block text-sm font-medium leading-6 text-gray-900" %>
+          <div class="mt-2">
+            <%= f.email_field :email, class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="mt-6 flex items-center justify-end gap-x-6">
+      <%= link_to "Cancel", root_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
+      <%= f.submit "Save", class: "rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+    </div>
+  </div>
+<% end %>

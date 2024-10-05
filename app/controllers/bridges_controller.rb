@@ -1,5 +1,6 @@
 class BridgesController < ApplicationController
   before_action :authenticate_user!
+	before_action :authorize_admin!, only: [:upload_bridge, :send_upload_bridge]
 	before_action :authorize_bridge, only: [:update, :destroy]
 
 	def index
@@ -34,11 +35,15 @@ class BridgesController < ApplicationController
       flash[:alert] = "No file uploaded."
     end
 
-    redirect_to your_redirect_path
+    redirect_to bridges_path
   end
 
 	def your_bridges
-		@bridges = current_user.bridges.order(created_at: :asc)
+		if current_user.admin?
+			@bridges = Bridge.all.order(created_at: :asc)
+		else
+			@bridges = current_user.bridges.order(created_at: :asc)
+		end
 		# if admin display all bridges
 	end
 
@@ -73,7 +78,9 @@ class BridgesController < ApplicationController
     respond_to do |format|
       format.turbo_stream do
         flash[:success] = "Bridge successfully deleted."
-        render turbo_stream: turbo_stream.remove("bridge-row-#{@bridge.id}")
+        render turbo_stream: [turbo_stream.remove("bridge-row-#{@bridge.id}"),
+				turbo_stream.update( "flash", partial: "layouts/flash")]
+			
       end
       format.html { redirect_to bridges_path, notice: "Bridge was successfully deleted." }
     end
@@ -84,8 +91,18 @@ class BridgesController < ApplicationController
 	def authorize_bridge
     @bridge = Bridge.friendly.find(params[:id])
     if @bridge.user != current_user
-			redirect_to bridges_path, notice: 'You have no access here!'
+			if current_user.admin?
+				true
+			else
+				redirect_to bridges_path, notice: 'You have no access here!'
+			end
+		else
+			true
     end
+  end
+
+	def authorize_admin!
+    redirect_to root_path, alert: 'You are not authorized to access this page.' unless current_user&.admin?
   end
 
 	def bridge_params

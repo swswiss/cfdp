@@ -1,6 +1,7 @@
 module Bridges
   class PublishController < ApplicationController
     before_action :authenticate_user!
+    before_action :authorize_bridge, only: [:update]
 
     def update
       @bridge = Bridge.friendly.find(params[:id])
@@ -14,6 +15,21 @@ module Bridges
             turbo_stream.update( "flash", partial: "layouts/flash")
           ]
         end
+      end
+    end
+
+    private
+
+    def authorize_bridge
+      @bridge = Bridge.friendly.find(params[:id])
+      if @bridge.user != current_user
+        if current_user.admin?
+          true
+        else
+          redirect_to bridges_path, notice: 'You have no access here!'
+        end
+      else
+        true
       end
     end
   end

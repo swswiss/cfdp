@@ -41,7 +41,8 @@ class InstanceBridgesController < ApplicationController
     respond_to do |format|
       format.turbo_stream do
         flash[:success] = "Instance Bridge successfully deleted."
-        render turbo_stream: turbo_stream.remove("instance-bridge-row-#{@instance_bridge.id}")
+        render turbo_stream: [turbo_stream.remove("instance-bridge-row-#{@instance_bridge.id}"),
+        turbo_stream.update( "flash", partial: "layouts/flash")]
       end
       format.html { redirect_to bridges_path, notice: "Instance Bridge was successfully deleted." }
     end
@@ -60,7 +61,13 @@ class InstanceBridgesController < ApplicationController
   def authorize_bridge
     @bridge = Bridge.friendly.find(params[:bridge_id])
     if @bridge.user != current_user
-			redirect_to bridges_path, notice: 'You have no access here!'
+			if current_user.admin?
+				true
+			else
+				redirect_to bridges_path, notice: 'You have no access here!'
+			end
+		else
+			true
     end
   end
 
