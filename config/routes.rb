@@ -2,8 +2,16 @@ Rails.application.routes.draw do
   resources :profiles
   devise_for :users
 
+  get 'all_users', to: 'profiles#all_users', as: :all_users
+
   devise_scope :user do  
     get '/users/sign_out' => 'devise/sessions#destroy'     
+  end
+
+  resources :profiles do
+    member do
+      put :update_role
+    end
   end
 
   root "home#index"
