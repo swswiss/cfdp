@@ -4,7 +4,11 @@ class BridgesController < ApplicationController
 	before_action :authorize_bridge, only: [:update, :destroy]
 
 	def index
-		@bridges = Bridge.all.where(published: true)
+		if params[:name].present?
+			@bridges = Bridge.where('name LIKE ? AND published = ?', "%#{params[:name]}%", true).page(params[:page]).per(8)
+		else
+			@bridges = Bridge.all.where(published: true).page(params[:page]).per(8)
+		end
 	end
 
 	def new
@@ -68,6 +72,7 @@ class BridgesController < ApplicationController
 		if @bridge.save
 			redirect_to bridge_path(@bridge), notice: 'Bridge was successfully created.'
 		else
+			redirect_to new_bridge_path, notice: @bridge.errors.full_messages.join(",")
 		end
 	end
 

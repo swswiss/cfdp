@@ -32,6 +32,7 @@ class InstanceBridgesController < ApplicationController
     if @instance_bridge.update(instance_bridge_params)
       redirect_to bridge_path(@bridge), notice: 'Instance Bridge was successfully updated.'
     else
+      #redirect_to new_bridge_path, notice: @bridge.errors.full_messages.join(",")
       render :edit
     end
   end
