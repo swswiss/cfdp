@@ -1,18 +1,34 @@
 class BridgesController < ApplicationController
   before_action :authenticate_user!
 	before_action :authorize_admin!, only: [:upload_bridge, :send_upload_bridge]
-	before_action :authorize_bridge, only: [:update, :destroy]
+	before_action :authorize_bridge, only: [:update, :destroy, :print]
 
 	def index
 		if params[:name].present?
-			@bridges = Bridge.where('name LIKE ? AND published = ?', "%#{params[:name]}%", true).page(params[:page]).per(8)
+			@bridges = Bridge.where('name LIKE ? AND published = ?', "%#{params[:name]}%", true).order(created_at: :asc).page(params[:page]).per(8)
 		else
-			@bridges = Bridge.all.where(published: true).page(params[:page]).per(8)
+			@bridges = Bridge.all.where(published: true).order(created_at: :asc).page(params[:page]).per(8)
 		end
 	end
 
 	def new
 		@bridge = current_user.bridges.build
+	end
+
+	def print
+		@bridge = Bridge.friendly.find(params[:id])
+		pdf_html = render_to_string(
+			pdf: 'bridge_info',          
+			template: 'bridges/print',    
+			locals: { bridge: @bridge }  
+		)
+	
+		send_data(
+			pdf_html, 
+			filename: 'bridge_info.pdf', 
+			type: 'application/pdf', 
+			disposition: 'inline'  
+		)
 	end
 
 	def edit
@@ -60,10 +76,15 @@ class BridgesController < ApplicationController
 	def update
 		@bridge = Bridge.friendly.find(params[:id])
 		name = @bridge.name
-		if @bridge.update(bridge_params)
-			ActivityLog.log_activity(current_user, ActivityLog::ActionTypes::UPDATED_BRIDGE, @bridge, name)
-			redirect_to edit_bridge_path(@bridge), notice: 'Bridge was successfully updated.'
-		else
+		begin
+			if @bridge.update(bridge_params)
+				ActivityLog.log_activity(current_user, ActivityLog::ActionTypes::UPDATED_BRIDGE, @bridge, name)
+				redirect_to edit_bridge_path(@bridge), notice: 'Bridge was successfully updated.'
+			else
+				redirect_to new_bridge_path(@bridge), notice: @bridge.errors.full_messages.join(",")
+			end
+		rescue
+			redirect_to edit_bridge_path(@bridge), notice: "Something went wrong."
 		end
 	end
 

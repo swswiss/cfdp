@@ -14,6 +14,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :bridges do
+    member do
+      get :print
+    end
+  end
+
   root "home#index"
   resources :bridges, only: [:index, :new, :create, :show, :destroy, :edit, :update] do
     resources :instance_bridges, only: [:index, :new, :create, :show, :destroy, :edit, :update]

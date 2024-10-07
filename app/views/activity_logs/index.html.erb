@@ -15,7 +15,7 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        const openModalButton = document.getElementById("open-modal");
+        const openModalInput = document.getElementById("open-modal");
         const closeModalButton = document.getElementById("close-modal");
         const modal = document.getElementById("search-modal");
 
@@ -31,13 +31,17 @@
             document.body.style.overflow = ""; // Restore background scrolling
         }
 
-        // Open the modal when the button is clicked
-        openModalButton.addEventListener("click", openModal);
+        // Open the modal when the search input is focused or clicked
+        openModalInput.addEventListener("focus", openModal);
+        openModalInput.addEventListener("click", function(event) {
+            event.preventDefault(); // Prevent form submission
+            openModal();
+        });
 
         // Close the modal when the close button is clicked
         closeModalButton.addEventListener("click", closeModal);
 
-        // Optional: Reopen modal after a search
+        // Optional: Reopen modal after a search based on query params (if coming back to page)
         if (window.location.search.includes("search") || window.location.search.includes("year_built")) {
             openModal();
         }
