@@ -59,8 +59,9 @@ class BridgesController < ApplicationController
 
 	def update
 		@bridge = Bridge.friendly.find(params[:id])
-		
+		name = @bridge.name
 		if @bridge.update(bridge_params)
+			ActivityLog.log_activity(current_user, ActivityLog::ActionTypes::UPDATED_BRIDGE, @bridge, name)
 			redirect_to edit_bridge_path(@bridge), notice: 'Bridge was successfully updated.'
 		else
 		end
@@ -70,6 +71,8 @@ class BridgesController < ApplicationController
 		@bridge = Bridge.new(bridge_params.merge(user: current_user))
 
 		if @bridge.save
+			name = @bridge.name
+			ActivityLog.log_activity(current_user, ActivityLog::ActionTypes::CREATED_BRIDGE, @bridge, name)
 			redirect_to bridge_path(@bridge), notice: 'Bridge was successfully created.'
 		else
 			redirect_to new_bridge_path, notice: @bridge.errors.full_messages.join(",")
@@ -78,7 +81,9 @@ class BridgesController < ApplicationController
 
 	def destroy
     @bridge = Bridge.friendly.find(params[:id])
+		name = @bridge.name
     @bridge.destroy
+		ActivityLog.log_activity(current_user, ActivityLog::ActionTypes::DESTROY_BRIDGE, @bridge, name)
 
     respond_to do |format|
       format.turbo_stream do
