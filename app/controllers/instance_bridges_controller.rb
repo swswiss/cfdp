@@ -18,6 +18,8 @@ class InstanceBridgesController < ApplicationController
     @instance_bridge = @bridge.instance_bridges.build(instance_bridge_params)
 
     if @instance_bridge.save
+      name = @instance_bridge.name
+      ActivityLog.log_activity(current_user, ActivityLog::ActionTypes::CREATED_INSTANCE_BRIDGE, @instance_bridge, name)
       redirect_to bridge_path(@bridge), notice: 'Instance Bridge was successfully created.'
     else
       render :new
@@ -30,6 +32,8 @@ class InstanceBridgesController < ApplicationController
 
   def update
     if @instance_bridge.update(instance_bridge_params)
+      name = @instance_bridge.name
+      ActivityLog.log_activity(current_user, ActivityLog::ActionTypes::UPDATED_INSTANCE_BRIDGE, @instance_bridge, name)
       redirect_to bridge_path(@bridge), notice: 'Instance Bridge was successfully updated.'
     else
       #redirect_to new_bridge_path, notice: @bridge.errors.full_messages.join(",")
@@ -38,7 +42,9 @@ class InstanceBridgesController < ApplicationController
   end
 
   def destroy
+    name = @instance_bridge.name
     @instance_bridge.destroy
+    ActivityLog.log_activity(current_user, ActivityLog::ActionTypes::DESTROY_INSTANCE_BRIDGE, @instance_bridge, name)
     respond_to do |format|
       format.turbo_stream do
         flash[:success] = "Instance Bridge successfully deleted."

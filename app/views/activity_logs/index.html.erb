@@ -1,32 +1,85 @@
 <br>
+<form class="max-w-md mx-auto">
+    <label for="default-search" class="mb-1 text-xs font-medium text-gray-900 sr-only dark:text-white">Search</label>
+    <div class="relative">
+        <div class="absolute inset-y-0 start-0 flex items-center ps-2 pointer-events-none">
+            <svg class="w-3 h-3 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+            </svg>
+        </div>
+        <input type="search" id="open-modal"class="block w-full p-2 ps-8 text-xs text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Users Logs" required />
+    </div>
+</form>
+<%= render 'devise/shared/logs' %>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const openModalButton = document.getElementById("open-modal");
+        const closeModalButton = document.getElementById("close-modal");
+        const modal = document.getElementById("search-modal");
+
+        // Function to open the modal
+        function openModal() {
+            modal.classList.remove("hidden");
+            document.body.style.overflow = "hidden"; // Prevent background scrolling
+        }
+
+        // Function to close the modal
+        function closeModal() {
+            modal.classList.add("hidden");
+            document.body.style.overflow = ""; // Restore background scrolling
+        }
+
+        // Open the modal when the button is clicked
+        openModalButton.addEventListener("click", openModal);
+
+        // Close the modal when the close button is clicked
+        closeModalButton.addEventListener("click", closeModal);
+
+        // Optional: Reopen modal after a search
+        if (window.location.search.includes("search") || window.location.search.includes("year_built")) {
+            openModal();
+        }
+    });
+</script>
 <br>
-<br>
+<div class="max-w-3xl mx-auto">
+<%@activity_logs.each do |activity_log|%>
 <ol class="relative border-s border-gray-200 dark:border-gray-700">                  
     <li class="mb-10 ms-6">            
         <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
             <%= image_tag "user-2.png", class: "rounded-full shadow-lg"%>
         </span>
         <div class="items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:bg-gray-700 dark:border-gray-600">
-            <time class="mb-1 text-xs font-normal text-gray-400 sm:order-last sm:mb-0">just now</time>
-            <div class="text-sm font-normal text-gray-500 dark:text-gray-300">Bonnie moved to scdfgbfbvfgvfdv</div>
-        </div>
-    </li>
-    <li class="mb-10 ms-6">            
-        <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-            <%= image_tag "user-2.png", class: "rounded-full shadow-lg"%>
-        </span>
-        <div class="items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:bg-gray-700 dark:border-gray-600">
-            <time class="mb-1 text-xs font-normal text-gray-400 sm:order-last sm:mb-0">just now</time>
-            <div class="text-sm font-normal text-gray-500 dark:text-gray-300">Bonnie moved to scdfgbfbvfgvfdv</div>
-        </div>
-    </li>
-    <li class="mb-10 ms-6">            
-        <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
-            <%= image_tag "user-2.png", class: "rounded-full shadow-lg"%>
-        </span>
-        <div class="items-center justify-between p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:flex dark:bg-gray-700 dark:border-gray-600">
-            <time class="mb-1 text-xs font-normal text-gray-400 sm:order-last sm:mb-0">just now</time>
-            <div class="text-sm font-normal text-gray-500 dark:text-gray-300">Bonnie moved to scdfgbfbvfgvfdv</div>
+            <time class="mb-1 text-xs font-normal text-gray-400 sm:order-last sm:mb-0"><%=time_ago(activity_log.timestamp)%></time>
+            <div class="text-sm font-normal text-gray-500 dark:text-gray-300"><%=activity_log.user.username%> <%=activity_log.action%> named <%=activity_log.name%></div>
         </div>
     </li>
 </ol>
+<%end%>
+		<!-- Pagination -->
+		<nav aria-label="Page navigation example" class="mt-4">
+			<ul class="list-style-none flex justify-center space-x-1">
+				<li>
+					<%= link_to 'Previous', activity_logs_path(page: @activity_logs.prev_page), 
+							class: "relative block rounded bg-transparent px-3 py-1.5 text-sm text-surface transition duration-300 hover:bg-neutral-100 focus:bg-neutral-100 focus:text-primary-700 focus:outline-none focus:ring-0 active:bg-neutral-100 active:text-primary-700 #{'disabled:opacity-50 disabled:pointer-events-none' if @activity_logs.prev_page.nil?}", 
+							aria: { disabled: @activity_logs.prev_page.nil? } %>
+				</li>
+		
+				<% (1..@activity_logs.total_pages).each do |page| %>
+					<li>
+						<%= link_to page, activity_logs_path(page: page), 
+								class: "relative block rounded bg-transparent px-3 py-1.5 text-sm #{ 'text-primary-700 bg-neutral-100' if page == @activity_logs.current_page } transition duration-300 hover:bg-neutral-100 focus:bg-neutral-100 focus:text-primary-700 focus:outline-none active:bg-neutral-100 active:text-primary-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:focus:text-primary-500 dark:active:bg-neutral-700 dark:active:text-primary-500" %>
+					</li>
+				<% end %>
+		
+				<li>
+					<%= link_to 'Next', activity_logs_path(page: @activity_logs.next_page), 
+							class: "relative block rounded bg-transparent px-3 py-1.5 text-sm text-surface transition duration-300 hover:bg-neutral-100 focus:bg-neutral-100 focus:text-primary-700 focus:outline-none active:bg-neutral-100 active:text-primary-700 #{'disabled:opacity-50 disabled:pointer-events-none' if @activity_logs.next_page.nil?}", 
+							aria: { disabled: @activity_logs.next_page.nil? } %>
+				</li>
+			</ul>
+		</nav>
+		<!-- End Pagination -->
+</div>

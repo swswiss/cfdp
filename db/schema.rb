@@ -10,9 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_05_212302) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_07_114017) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activity_logs", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "action"
+    t.string "trackable_type"
+    t.integer "trackable_id"
+    t.datetime "timestamp"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.index ["user_id"], name: "index_activity_logs_on_user_id"
+  end
 
   create_table "bridges", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -50,6 +62,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_05_212302) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "activity_logs", "users"
   add_foreign_key "bridges", "users"
   add_foreign_key "instance_bridges", "bridges"
 end
