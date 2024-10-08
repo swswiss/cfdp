@@ -39,24 +39,49 @@ class BridgesController < ApplicationController
 	end
 
 	def send_upload_bridge
-		require 'csv'
-    if params[:csv_file].present?
-      csv_file = params[:csv_file]
-
-      begin
-        CSV.foreach(csv_file.path, headers: true) do |row|
-          #Bridge.create!(name: row['name'], author: row['author'], status: row['status'])
-        end
-        flash[:notice] = "CSV uploaded successfully!"
-      rescue StandardError => e
-        flash[:alert] = "Error processing the CSV file: #{e.message}"
-      end
-    else
-      flash[:alert] = "No file uploaded."
-    end
-
-    redirect_to bridges_path
-  end
+		require 'roo' # For handling .xlsx files
+	
+		if params[:csv_file].present?
+			uploaded_file = params[:csv_file] # You're getting the .xlsx file in csv_file param
+	
+			begin
+				# Open the .xlsx file using roo
+				spreadsheet = Roo::Spreadsheet.open(uploaded_file.tempfile.path)
+				binding.pry
+				# Loop through each sheet in the file
+				spreadsheet.sheets.each do |sheet_name|
+					sheet = spreadsheet.sheet(sheet_name) # Access the sheet by name
+					puts "Processing sheet: #{sheet_name}" # Optional debug line
+	
+					# Process each row in the sheet
+					binding.pry
+					sheet.each_with_index do |row, index|
+						next if index == 0 # Optionally skip the header row
+						binding.pry
+						# Assuming first column is 'name', second is 'author', third is 'status'
+						name = row[0]
+						author = row[1]
+						status = row[2]
+	
+						# Create the bridge record or just preview the data
+						# Bridge.create!(name: name, author: author, status: status)
+	
+						# For debugging: binding.pry to inspect row data if needed
+						# binding.pry
+					end
+				end
+	
+				flash[:notice] = "XLSX uploaded and processed successfully, all sheets included!"
+			rescue StandardError => e
+				flash[:alert] = "Error processing the XLSX file: #{e.message}"
+			end
+		else
+			flash[:alert] = "No file uploaded."
+		end
+	
+		redirect_to bridges_path
+	end
+	
 
 	def your_bridges
 		if current_user.admin?
