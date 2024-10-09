@@ -1,5 +1,8 @@
 <center><div id="tab1-content" class="tab-pane" style="height: 39rem; width: 65rem; overflow-y: auto;">
 <%= form_with model: @bridge do |f| %>
+  <button type="submit"
+	        class="sticky-button w-24 focus:outline-none border border-transparent py-1.5 px-3 rounded-md shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-sm font-medium"
+        >Complete</button>
   <table class="tg"><thead>
     <tr>
       <th class="tg-ir4y" colspan="8">I. Date de identificare a lucrării</th>
@@ -280,122 +283,123 @@
       <td class="tg-p9ik" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">8. Lungimea podului (m)</span></td>
       <td class="tg-va2b" colspan="6"><%= f.text_field :lungime, 
       class: "w-full px-4 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium",
-      style: "height: 19px; width: 150px", 
+      style: "height: 19px; width: 290px", 
       placeholder: "" %></td>
     </tr>
     <tr>
       <td class="tg-ctmf" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">- nunărul de deschideri</span></td>
       <td class="tg-va2b" colspan="6"><%= f.text_field :numar_deschideri, 
       class: "w-full px-4 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium",
-      style: "height: 19px; width: 150px", 
+      style: "height: 19px; width: 290px", 
       placeholder: "" %></td>
     </tr>
     <tr>
       <td class="tg-ctmf" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">- lungimea fiecărei deschideri (m)</span></td>
       <td class="tg-va2b" colspan="6"><%= f.text_field :lungime_deschidere, 
       class: "w-full px-4 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium",
-      style: "height: 19px; width: 150px", 
+      style: "height: 19px; width: 290px", 
       placeholder: "" %></td>
     </tr>
     <tr>
       <td class="tg-p9ik" colspan="2"> <span style="font-weight:normal;font-style:normal;color:#000">9. Lățimea podului - intre parapeți (m)</span></td>
       <td class="tg-va2b" colspan="6"><%= f.text_field :latime, 
       class: "w-full px-4 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium",
-      style: "height: 19px; width: 150px", 
+      style: "height: 19px; width: 290px", 
       placeholder: "" %></td>
     </tr>
     <tr>
       <td class="tg-ctmf" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">- lățimea părții carosabile (m)</span></td>
       <td class="tg-va2b" colspan="6"><%= f.text_field :latime_carosabila, 
       class: "w-full px-4 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium",
-      style: "height: 19px; width: 150px", 
+      style: "height: 19px; width: 290px", 
       placeholder: "" %></td>
     </tr>
     <tr>
       <td class="tg-ctmf" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">- lățimea trotuarelor (m)</span></td>
       <td class="tg-va2b" colspan="6"><%= f.text_field :latime_trotuar, 
       class: "w-full px-4 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium",
-      style: "height: 19px; width: 150px", 
+      style: "height: 19px; width: 290px", 
       placeholder: "" %></td>
     </tr>
     <tr>
       <td class="tg-ctmf" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">- numărul de grinzi în scțiune transversală</span></td>
       <td class="tg-va2b" colspan="6"><%= f.text_field :numar_grinzi, 
       class: "w-full px-4 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium",
-      style: "height: 19px; width: 150px", 
+      style: "height: 19px; width: 290px", 
       placeholder: "" %></td>
     </tr>
     <tr>
       <td class="tg-ctmf" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">- numărul de antretoaze</span></td>
       <td class="tg-va2b" colspan="6"><%= f.text_field :numar_antretoaze, 
       class: "w-full px-4 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium",
-      style: "height: 19px; width: 150px", 
+      style: "height: 19px; width: 290px", 
       placeholder: "" %></td>
     </tr>
     <tr>
       <td class="tg-p9ik" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">10. Aparate de reazem(tip, materialul din care sunt construite, schema de amplasare)</span></td>
       <td class="tg-va2b" colspan="6"><%= f.text_field :aparate_reazem, 
       class: "w-full px-4 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium",
-      style: "height: 19px; width: 150px", 
+      style: "height: 19px; width: 290px", 
       placeholder: "" %></td>
     </tr>
     <tr>
       <td class="tg-p9ik" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">11. Tip infrastructuri</span></td>
       <td class="tg-va2b" colspan="6"><%= f.text_field :tip_infrastructurii, 
       class: "w-full px-4 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium",
-      style: "height: 19px; width: 150px", 
+      style: "height: 19px; width: 290px", 
       placeholder: "" %></td>
     </tr>
     <tr>
       <td class="tg-p9ik" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">12. Tip fundații</span></td>
       <td class="tg-va2b" colspan="6"><%= f.text_field :tip_fundatii, 
       class: "w-full px-4 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium",
-      style: "height: 19px; width: 150px", 
+      style: "height: 19px; width: 290px", 
       placeholder: "" %></td>
     </tr>
     <tr>
       <td class="tg-p9ik" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">13. Tipul îmbrăcămintei pe pod</span></td>
       <td class="tg-va2b" colspan="6"><%= f.text_field :tip_imbracaminte, 
       class: "w-full px-4 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium",
-      style: "height: 19px; width: 150px", 
+      style: "height: 19px; width: 290px", 
       placeholder: "" %></td>
     </tr>
     <tr>
       <td class="tg-p9ik" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">14. Rosturi tip____poziție___</span></td>
       <td class="tg-va2b" colspan="6"><%= f.text_field :rosturi_tip_pozitie, 
       class: "w-full px-4 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium",
-      style: "height: 19px; width: 150px", 
+      style: "height: 19px; width: 290px", 
       placeholder: "" %></td>
     </tr>
     <tr>
       <td class="tg-p9ik" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">15. Parapeți pietonali</span></td>
       <td class="tg-va2b" colspan="6"><%= f.text_field :parapeti_pietonali, 
       class: "w-full px-4 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium",
-      style: "height: 19px; width: 150px", 
+      style: "height: 19px; width: 290px", 
       placeholder: "" %></td>
     </tr>
     <tr>
       <td class="tg-p9ik" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">16. Parapeți de siguranță</span></td>
       <td class="tg-va2b" colspan="6"><%= f.text_field :parapeti_siguranta, 
       class: "w-full px-4 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium",
-      style: "height: 19px; width: 150px", 
+      style: "height: 19px; width: 290px", 
       placeholder: "" %></td>
     </tr>
     <tr>
       <td class="tg-p9ik" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">17. Racordări cu terasamentele</span></td>
       <td class="tg-va2b" colspan="6"><%= f.text_field :racordari_terasamente, 
       class: "w-full px-4 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium",
-      style: "height: 19px; width: 150px", 
+      style: "height: 19px; width: 290px", 
       placeholder: "" %></td>
     </tr>
     <tr>
       <td class="tg-p9ik" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">18. Apărări de mal</span></td>
       <td class="tg-va2b" colspan="6"><%= f.text_field :aparari_mal, 
       class: "w-full px-4 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium",
-      style: "height: 19px; width: 150px", 
+      style: "height: 19px; width: 290px", 
       placeholder: "" %></td>
     </tr>
-  </tbody></table>
+  </tbody>
+  </table>
 <br>
   <table class="tg"><thead>
   <tr>
@@ -436,11 +440,11 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">1</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Absenta unor elemente structurale (antretoaze,rigidizari, contravantuiri, etc.) din fazele de executie, proiectare sau exploatare.</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7 – 8 pentru C1</span><br><span style="font-weight:normal;font-style:normal;color:#000">5 – 6 pentru C2</span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
       options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
       { prompt: ''}, 
       class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -456,7 +460,7 @@
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-qwd7"><%= f.select :ceva, 
+    <td class="tg-qwd7"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -471,7 +475,7 @@
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-qwd7"><%= f.select :ceva, 
+    <td class="tg-qwd7"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -497,7 +501,7 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4 - 5</span></td>
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -510,7 +514,7 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6</span></td>
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-qwd7"><%= f.select :ceva, 
+    <td class="tg-qwd7"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -522,15 +526,15 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Armaturi fara strat de acoperire.</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4 - 6</span></td>
-    <td class="tg-qwd7"><%= f.select :ceva, 
+    <td class="tg-qwd7"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-qwd7"><%= f.select :ceva, 
+    <td class="tg-qwd7"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-qwd7"><%= f.select :ceva, 
+    <td class="tg-qwd7"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -542,15 +546,15 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Beton cu aspect friabil si/sau zone din beton exfoliat.</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6-Beton simplu</span><br><span style="font-weight:normal;font-style:normal;color:#000">8-Beton armat+b. p.</span></td>
-    <td class="tg-qwd7"><%= f.select :ceva, 
+    <td class="tg-qwd7"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -562,15 +566,15 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Beton degradat prin carbonatare, aparitia de stalactite si/sau draperii.</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7-Beton simplu</span><br><span style="font-weight:normal;font-style:normal;color:#000">8-Beton armat+b.p.</span></td>
-    <td class="tg-qwd7"><%= f.select :ceva, 
+    <td class="tg-qwd7"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-qwd7"><%= f.select :ceva, 
+    <td class="tg-qwd7"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -582,15 +586,15 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">9</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Beton degradat prin coroziune cu reducerea sectiunii elementului.</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7 – 8</span></td>
-    <td class="tg-qwd7"><%= f.select :ceva, 
+    <td class="tg-qwd7"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-qwd7"><%= f.select :ceva, 
+    <td class="tg-qwd7"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -602,7 +606,7 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">10</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Bolti cu degradari avansate (crapaturi pe zone mari, aparitia de striviri).</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6 – 8</span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -620,7 +624,7 @@
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-qwd7"><%= f.select :ceva, 
+    <td class="tg-qwd7"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -630,15 +634,15 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">12</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Coroziunea armaturii, pete de rugina si/sau fisuri sau crapaturi orientate pe directia acesteia.</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6-Beton armat</span><br><span style="font-weight:normal;font-style:normal;color:#000">8-Beton prec.</span></td>
-    <td class="tg-qwd7"><%= f.select :ceva, 
+    <td class="tg-qwd7"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-qwd7"><%= f.select :ceva, 
+    <td class="tg-qwd7"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-qwd7"><%= f.select :ceva, 
+    <td class="tg-qwd7"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -654,7 +658,7 @@
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-qwd7"><%= f.select :ceva, 
+    <td class="tg-qwd7"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -664,15 +668,15 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">14</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Coroziunea fisuranta sub tensiune.</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6 – 7</span></td>
-    <td class="tg-qwd7"><%= f.select :ceva, 
+    <td class="tg-qwd7"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -684,11 +688,11 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">15</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Coroziunea metalului in puncte, de profunzime si/sau intre piese.</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6 – 7</span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -701,15 +705,15 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">16</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Cumularea la un element al structurii a mai multor degradari (coroziune, crapaturi, striviri etc)</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8 – 9</span></td>
-    <td class="tg-qwd7"><%= f.select :ceva, 
+    <td class="tg-qwd7"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -721,15 +725,15 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">17</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Defecte de suprafata ale fetei vazute (culoare neuniforma, pete de rugina, impuritati, pete de rugina, aspect prafuit, imperfectiuni geometrice, aspect macroporos, agregate la suprafata).</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4-Pentru C1 si C2</span><br><span style="font-weight:normal;font-style:normal;color:#000">2-Pentru C3</span></td>
-    <td class="tg-qwd7"><%= f.select :ceva, 
+    <td class="tg-qwd7"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-qwd7"><%= f.select :ceva, 
+    <td class="tg-qwd7"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-qwd7"><%= f.select :ceva, 
+    <td class="tg-qwd7"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -741,11 +745,11 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">18</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Deformatii locale ale pieselor datorita coroziunii</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5 – 6</span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -758,7 +762,7 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">19</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Deformatii mari (sageti) ale suprastructurii</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8 - 9</span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -776,7 +780,7 @@
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-qwd7"><%= f.select :ceva, 
+    <td class="tg-qwd7"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -790,7 +794,7 @@
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -803,7 +807,7 @@
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-qwd7"><%= f.select :ceva, 
+    <td class="tg-qwd7"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -816,7 +820,7 @@
     <td class="tg-ktyi" rowspan="2"></td>
     <td class="tg-ktyi" rowspan="2"></td>
     <td class="tg-ktyi" rowspan="2"></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -826,7 +830,7 @@
   <tr>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Degradari ale malurilor si modificari de albie:</span>- depuneri de material solid, prezenta unor obstacole.</td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4 - 6</span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -838,7 +842,7 @@
     <td class="tg-ktyi" rowspan="3"></td>
     <td class="tg-ktyi" rowspan="3"></td>
     <td class="tg-ktyi" rowspan="3"></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -848,7 +852,7 @@
   <tr>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Degradarea (subspalarea, deformarea) sau distrugerea partiala sau totala a lucrarilor de:</span> -       dirijare;</td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6 – 8</span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -856,7 +860,7 @@
   <tr>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Degradarea (subspalarea, deformarea) sau distrugerea partiala sau totala a lucrarilor de:</span> -       praguri</td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7 – 9</span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -869,7 +873,7 @@
     <td class="tg-ktyi" rowspan="2"></td>
     <td class="tg-ktyi" rowspan="2"></td>
     <td class="tg-ktyi" rowspan="2"></td>
-    <td class="tg-qwd7" rowspan="2"><%= f.select :ceva, 
+    <td class="tg-qwd7" rowspan="2"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -885,7 +889,7 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7-8 Suprastr. static det.</span><br><span style="font-weight:normal;font-style:normal;color:#000">9-10 Suprastr. static nedet.</span></td>
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -898,7 +902,7 @@
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Deplasari relative ale elementelor structurale (placile de beton fata de elemente metalice, la structurile mixte)</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6 – 7</span></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -911,7 +915,7 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">27</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Deplasari sau sageti permanente mari, vizibile, ale tablierului</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8 – 9</span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -925,7 +929,7 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">28</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Detasarea timpanului de bolta pe anumite zone</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7 - 8</span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -941,7 +945,7 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5 – 6</span></td>
     <td class="tg-ktyi" rowspan="2"></td>
     <td class="tg-ktyi" rowspan="2"></td>
-    <td class="tg-0gom"><span style="font-weight:normal;font-style:normal;color:#000"><%= f.select :ceva, 
+    <td class="tg-0gom"><span style="font-weight:normal;font-style:normal;color:#000"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></span></td>
@@ -952,7 +956,7 @@
   <tr>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Ruperea tachetilor, distrugerea placilor de plumb sau metalice</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7 – 8</span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -963,7 +967,7 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6 – 7</span></td>
     <td class="tg-ktyi" rowspan="2"></td>
     <td class="tg-ktyi" rowspan="2"></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -974,7 +978,7 @@
   <tr>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Masca chesonului nedemolata.</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4 - 5</span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -984,11 +988,11 @@
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Distrugerea consolei trotuarului</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8 - 9</span></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1000,11 +1004,11 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">32</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Distrugerea suprastructurii (elemente rupte)</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">9-10 Pentru C1</span><br><span style="font-weight:normal;font-style:normal;color:#000">8-9 Pentru C2</span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1019,7 +1023,7 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7 – 8</span></td>
     <td class="tg-ktyi" rowspan="2"></td>
     <td class="tg-ktyi" rowspan="2"></td>
-    <td class="tg-qwd7"><%= f.select :ceva, 
+    <td class="tg-qwd7"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1030,7 +1034,7 @@
   <tr>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Amenajarea necorespunzatoare a acesteia.</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6</span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1039,11 +1043,11 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">34</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Elemente gresit pozitionate in structura, deplasari ale imbinarilor sau strangeri insuficiente ale mijloacelor de prindere.</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6 - 8</span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1056,15 +1060,15 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">35</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Eroziunea betonului, prezenta unor zone pe suprafata elementului in care agregatele nu sunt inglobate in pasta de ciment.</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">3-4 pentru C1 si</span>  <span style="font-weight:normal;font-style:normal;color:#000">C2 cu supraf.&lt;1m</span>2 <span style="font-weight:normal;font-style:normal;color:#000">si pentru C3</span><br><span style="font-weight:normal;font-style:normal;color:#000">5-6 pentru supraf. &gt;1m2 la C1 si C2</span></td>
-    <td class="tg-0gom"><span style="font-weight:normal;font-style:normal;color:#000"><%= f.select :ceva, 
+    <td class="tg-0gom"><span style="font-weight:normal;font-style:normal;color:#000"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-qwd7"><%= f.select :ceva, 
+    <td class="tg-qwd7"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1076,15 +1080,15 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">36</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Fisuri din contractie (neorientate, scurte, superficiale), faiantarea betonului. Fisurile se refera numai la beton nu si la mortar sau tencuiala.</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">Pentru suprafete:</span><br><span style="font-weight:normal;font-style:normal;color:#000">&lt;1 m2 3-4</span><br><span style="font-weight:normal;font-style:normal;color:#000">&gt;1 m2 5-6</span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1096,11 +1100,11 @@
     <td class="tg-7yig" rowspan="9"><span style="font-weight:normal;font-style:normal;color:#000">37</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Fisuri si/sau crapaturi ale betonului: &gt;1 mm</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">10</span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1112,15 +1116,15 @@
   <tr>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Fisuri si/sau crapaturi ale betonului:- long.: &gt;0.2 mm</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8 - 9</span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1132,11 +1136,11 @@
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Fisuri si/sau crapaturi ale betonului:- long.: &lt;0.2 mm</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6 - 7</span></td>
     <td class="tg-0gom"><span style="font-weight:normal;font-style:normal;color:#000">7</span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1147,15 +1151,15 @@
   <tr>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Fisuri si/sau crapaturi ale betonului:- trans.: &gt;0.2 mm</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8 - 9</span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1167,11 +1171,11 @@
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Fisuri si/sau crapaturi ale betonului:- trans.: &lt;0.2 mm</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6 - 7</span></td>
     <td class="tg-0gom"><span style="font-weight:normal;font-style:normal;color:#000">7</span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1182,15 +1186,15 @@
   <tr>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Fisuri si/sau crapaturi ale betonului: -inclinate: &gt;0.2 mm</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8 - 9</span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1201,15 +1205,15 @@
   <tr>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Fisuri si/sau crapaturi ale betonului: -inclinate: &lt;0.2 mm</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6 - 7</span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1220,7 +1224,7 @@
   <tr>
     <td class="tg-ktyi" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">- fisuri transverale sau longitudinale precum si intre timpane si zidul intors la podurile boltite</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4-6 fara deplasari</span></td>
-    <td class="tg-oldo" rowspan="2"><%= f.select :ceva, 
+    <td class="tg-oldo" rowspan="2"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1241,7 +1245,7 @@
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-qwd7"><%= f.select :ceva, 
+    <td class="tg-qwd7"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1251,7 +1255,7 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">39</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Fisuri si/sau crapaturi la intradosul podurilor boltite din zidarie.</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4 – 6 fara deplasari</span><br><span style="font-weight:normal;font-style:normal;color:#000">7 – 8 cu deplasari</span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1265,11 +1269,11 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">40</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Fisuri, ruperi ale elementelor structurale si/sau ale elementelor de prindere (nituri, suruburi, conectori, sudura).</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">&lt;20%</span>  <span style="font-weight:normal;font-style:normal;color:#000">5 – 6</span><br><span style="font-weight:normal;font-style:normal;color:#000">20% - 50%</span>  <span style="font-weight:normal;font-style:normal;color:#000">7 – 8 &gt;50% si sudura 9-10</span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1282,11 +1286,11 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">41</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Flambajul barelor sau voalarea totala.</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8 - 9</span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1303,7 +1307,7 @@
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-qwd7"><%= f.select :ceva, 
+    <td class="tg-qwd7"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1315,7 +1319,7 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5 - 7</span></td>
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1327,15 +1331,15 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">44</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Infiltratii, eflorescente.</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">Pentru suprafete:</span><br><span style="font-weight:normal;font-style:normal;color:#000">&lt; 5 m2</span>   <span style="font-weight:normal;font-style:normal;color:#000">5 – 6</span><br><span style="font-weight:normal;font-style:normal;color:#000">&gt; 5 m2</span>     <span style="font-weight:normal;font-style:normal;color:#000">7</span></td>
-    <td class="tg-qwd7"><%= f.select :ceva, 
+    <td class="tg-qwd7"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1347,11 +1351,11 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">45</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Infiltratii vizibile la intrados, pete umede, eflorescente, stalactite</span> la podurile boltite din zidarie.</td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">Pentru suprafete:</span><br><span style="font-weight:normal;font-style:normal;color:#000">&lt; 5 m2</span>   <span style="font-weight:normal;font-style:normal;color:#000">5 – 6</span><br><span style="font-weight:normal;font-style:normal;color:#000">&gt; 5 m2</span>     <span style="font-weight:normal;font-style:normal;color:#000">7</span></td>
-    <td class="tg-qwd7"><%= f.select :ceva, 
+    <td class="tg-qwd7"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-qwd7"><%= f.select :ceva, 
+    <td class="tg-qwd7"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1368,7 +1372,7 @@
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-qwd7"><%= f.select :ceva, 
+    <td class="tg-qwd7"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1381,7 +1385,7 @@
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-qwd7"><%= f.select :ceva, 
+    <td class="tg-qwd7"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1396,7 +1400,7 @@
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-qwd7"><%= f.select :ceva, 
+    <td class="tg-qwd7"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1406,11 +1410,11 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">49</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Lipsa protectiei anticorozive sau degradarea celei existente (culoare neuniforma, matuiri, exfolieri, pete de rugina, scurgeri de oxidare de fier pe suprafata elementului).</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">3 - 4</span></td>
-    <td class="tg-0gom"><span style="font-weight:normal;font-style:normal;color:#000"><%= f.select :ceva, 
+    <td class="tg-0gom"><span style="font-weight:normal;font-style:normal;color:#000"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></span></td>
-    <td class="tg-0gom"><span style="font-weight:normal;font-style:normal;color:#000"><%= f.select :ceva, 
+    <td class="tg-0gom"><span style="font-weight:normal;font-style:normal;color:#000"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></span></td>
@@ -1427,7 +1431,7 @@
     <td class="tg-ktyi" rowspan="2"></td>
     <td class="tg-ktyi" rowspan="2"></td>
     <td class="tg-ktyi" rowspan="2"></td>
-    <td class="tg-qwd7" rowspan="2"><%= f.select :ceva, 
+    <td class="tg-qwd7" rowspan="2"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1444,7 +1448,7 @@
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-qwd7"><%= f.select :ceva, 
+    <td class="tg-qwd7"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1456,7 +1460,7 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5-6 Pentru iesire din functiune si lipsa pentru zonele D, E</span></td>
     <td class="tg-ktyi" rowspan="2"></td>
     <td class="tg-ktyi" rowspan="2"></td>
-    <td class="tg-qwd7" rowspan="2"><%= f.select :ceva, 
+    <td class="tg-qwd7" rowspan="2"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1474,7 +1478,7 @@
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-qwd7"><%= f.select :ceva, 
+    <td class="tg-qwd7"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1485,12 +1489,12 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">54</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Modificarea exagerata a formei si proprietatilor fizico-mecanice ale betonului.</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8 - 9</span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1505,7 +1509,7 @@
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-qwd7"><%= f.select :ceva, 
+    <td class="tg-qwd7"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1517,7 +1521,7 @@
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1529,7 +1533,7 @@
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1540,7 +1544,7 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">56</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Neetanseitati intre elementele structurii sau intre piese ale elementelor structurale.</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5 - 6</span></td>
-    <td class="tg-qwd7"><%= f.select :ceva, 
+    <td class="tg-qwd7"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1554,11 +1558,11 @@
     <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">57</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Neprotejarea ancorajelor fascicolelor la elementele precomprimate.</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5 – 6</span></td>
-    <td class="tg-0gom"><span style="font-weight:normal;font-style:normal;color:#000"><%= f.select :ceva, 
+    <td class="tg-0gom"><span style="font-weight:normal;font-style:normal;color:#000"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1570,11 +1574,11 @@
   <tr>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Infiltratii de-a lugul armaturii pretensionate.</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8</span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1585,7 +1589,7 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5-6 fara deplasari</span></td>
     <td class="tg-ktyi" rowspan="2"></td>
     <td class="tg-ktyi" rowspan="2"></td>
-    <td class="tg-oldo" rowspan="2"><%= f.select :ceva, 
+    <td class="tg-oldo" rowspan="2"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1602,7 +1606,7 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">2 - 3</span></td>
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1614,11 +1618,11 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">60</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Prezenta vegetatiei pe elementele suprastructurii.</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4 - 5</span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-qwd7"><%= f.select :ceva, 
+    <td class="tg-qwd7"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1634,7 +1638,7 @@
     <td class="tg-ktyi" rowspan="2"></td>
     <td class="tg-ktyi" rowspan="2"></td>
     <td class="tg-ktyi" rowspan="2"></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1644,7 +1648,7 @@
   <tr>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Rampe de acces degradate: tasari mari ale terasamentelor, alunecari laterale</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6 - 7</span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1653,11 +1657,11 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">62</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Reducerea pronuntata a sectiunii elementelor datorita coroziunii metalului (peste 10%).</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8 – 9 pentru C2</span><br><span style="font-weight:normal;font-style:normal;color:#000">10 pentru C1</span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
       options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
       { prompt: ''}, 
       class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1674,7 +1678,7 @@
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1684,12 +1688,12 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">64</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Rosturi de zidarie spalate de infiltratii.</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4-5 pentru C3</span><br><span style="font-weight:normal;font-style:normal;color:#000">6 pentru C1</span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1705,7 +1709,7 @@
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-qwd7"><%= f.select :ceva, 
+    <td class="tg-qwd7"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1719,7 +1723,7 @@
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-qwd7"><%= f.select :ceva, 
+    <td class="tg-qwd7"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1729,15 +1733,15 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">67</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Segregarea betonului, cuiburi de pietris, caverne.</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4 – 5 pentru C3</span><br><span style="font-weight:normal;font-style:normal;color:#000">5 – 6 pentru C2</span><br><span style="font-weight:normal;font-style:normal;color:#000">6 pentru C1</span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-qwd7"><%= f.select :ceva, 
+    <td class="tg-qwd7"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1749,15 +1753,15 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">68</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Solidarizari necorespunzatoare intre elementele prefabricate (infiltratii, fisuri, rosturi matate necorespunzator).</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5-6 Rosturi matate necorespunzator</span><br><span style="font-weight:normal;font-style:normal;color:#000">6 – 7 Infiltratii</span></td>
-    <%= f.select :ceva, 
+    <%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-qwd7"><%= f.select :ceva, 
+    <td class="tg-qwd7"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1772,7 +1776,7 @@
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1783,15 +1787,15 @@
     <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">70</span></td>
     <td class="tg-ktyi" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">Torsiunea elementelor structurale, neplaneitatea acestora sau elemente insuficiente de solidarizare.</span></td>
     <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">7 - 8</span></td>
-    <td class="tg-oldo" rowspan="2"><%= f.select :ceva, 
+    <td class="tg-oldo" rowspan="2"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-oldo" rowspan="2"><%= f.select :ceva, 
+    <td class="tg-oldo" rowspan="2"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-oldo" rowspan="2"><%= f.select :ceva, 
+    <td class="tg-oldo" rowspan="2"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1805,12 +1809,12 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">72</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Zidarie degradata la suprafata, cu aspect prafos, friabila sau exfoliata.</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">3-4 pentru C3</span><br><span style="font-weight:normal;font-style:normal;color:#000">5 pentru C1</span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1824,7 +1828,7 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8 – 9</span></td>
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1836,15 +1840,15 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">74</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Zone inaccesibile pentru control si intretinere „cutii de apa” si/sau praf.</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5 – 6</span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1856,7 +1860,7 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">75</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Degradarea ursilor; crapaturi, atac biologic, (putrezire, ciuperci, paraziti etc.) reducerea sectiunii acestora.</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">Reducerea sectiune</span><br><span style="font-weight:normal;font-style:normal;color:#000">≤ 20% - 4 – 6</span><br><span style="font-weight:normal;font-style:normal;color:#000">20-50% - 7 – 8</span><br><span style="font-weight:normal;font-style:normal;color:#000">&gt; 50% - 9 – 10</span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1870,7 +1874,7 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">76</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Deformatia exagerata verticala sau orizontala a ursilor si/sau pachetelor de ursi sau subursi.</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6 – 8</span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1884,7 +1888,7 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">77</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Ursi suprapusi sau cu pene fara rost de aerisire sau cu pene care se misca in locasurile lor.</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4 – 6</span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1898,7 +1902,7 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">78</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Degradarea injugurilor de ursi, solidarizarilor necorespunzatoare sau inexistente.</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4 – 6</span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1912,7 +1916,7 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">79</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Coroziunea elementelor metalice de prindere (buloane, tiranti, scoabe etc.).</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4-6 Pentru buloane si scoabe</span><br><span style="font-weight:normal;font-style:normal;color:#000">7-8 pentru tiranti</span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1926,7 +1930,7 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">80</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Degradarea dulapilor, lipsa montantilor, a diagonalelor sau cedarea imbinarilor, ruginirea cuielor de prindere in cazul grinzilor alcatuite din dulapi.</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6 – 8</span></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1941,7 +1945,7 @@
     <td class="tg-ktyi" rowspan="4"><span style="font-weight:normal;font-style:normal;color:#000">Degradarea podinei de rezistenta (mucegai, crapaturi, atac insecte etc.).</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">Pentru suprafete:</span></td>
     <td class="tg-ktyi" rowspan="4"></td>
-    <td class="tg-oldo" rowspan="4"><%= f.select :ceva, 
+    <td class="tg-oldo" rowspan="4"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1964,7 +1968,7 @@
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Podina de rezistenta cu tendinta de ridicare, denivelata datorita uscarii lemnului sau prinderii necorespunzatoare.</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">3 – 5</span></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1978,7 +1982,7 @@
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Elementele componente ale podinei de rezistenta lipsa sau fixate necorespunzarator.</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4 – 6</span></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -1993,7 +1997,7 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4</span></td>
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -2007,7 +2011,7 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4 – 6</span></td>
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -2021,7 +2025,7 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4 – 6</span></td>
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -2035,7 +2039,7 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6 – 8</span></td>
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -2049,7 +2053,7 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4 – 6</span></td>
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -2063,7 +2067,7 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5 – 7</span></td>
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -2077,7 +2081,7 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">Reducerea sectiunii</span></td>
     <td class="tg-ktyi" rowspan="4"></td>
     <td class="tg-ktyi" rowspan="4"></td>
-    <td class="tg-oldo" rowspan="4"><%= f.select :ceva, 
+    <td class="tg-oldo" rowspan="4"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -2102,7 +2106,7 @@
     <td class="tg-ktyi" rowspan="3"></td>
     <td class="tg-ktyi" rowspan="3"></td>
     <td class="tg-ktyi" rowspan="3"></td>
-    <td class="tg-oldo" rowspan="3"><%= f.select :ceva, 
+    <td class="tg-oldo" rowspan="3"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -2122,7 +2126,7 @@
     <td class="tg-ktyi" rowspan="2"></td>
     <td class="tg-ktyi" rowspan="2"></td>
     <td class="tg-ktyi" rowspan="2"></td>
-    <td class="tg-oldo" rowspan="2"><%= f.select :ceva, 
+    <td class="tg-oldo" rowspan="2"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -2140,7 +2144,7 @@
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -2154,7 +2158,7 @@
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -2168,7 +2172,7 @@
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -2182,7 +2186,7 @@
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -2196,7 +2200,7 @@
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
     <td class="tg-ktyi"></td>
-    <td class="tg-oldo"><%= f.select :ceva, 
+    <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></td>
@@ -2205,23 +2209,23 @@
   <tr>
     <td class="tg-ktyi" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">C1(*) = Suprastructura – elemente principale de rezistenta.</span></td>
     <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">Nr. de defecte N</span></td>
-    <td class="tg-9hzb" rowspan="2"><%= f.select :ceva, 
+    <td class="tg-9hzb" rowspan="2"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px", disabled: true } %></td>
-    <td class="tg-9hzb" rowspan="2"><%= f.select :ceva, 
+    <td class="tg-9hzb" rowspan="2"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px", disabled: true } %></td>
-    <td class="tg-9hzb" rowspan="2"><%= f.select :ceva, 
+    <td class="tg-9hzb" rowspan="2"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px", disabled: true } %></td>
-    <td class="tg-9hzb" rowspan="2"><%= f.select :ceva, 
+    <td class="tg-9hzb" rowspan="2"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px", disabled: true } %></td>
-    <td class="tg-9hzb" rowspan="2"><%= f.select :ceva, 
+    <td class="tg-9hzb" rowspan="2"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px", disabled: true } %></td>
@@ -2241,23 +2245,23 @@
   <tr>
     <td class="tg-ktyi" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">C3(*) = Infrastructuri, ap de reazem, disp. antiseismice, sferturi de con sau aripi.</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">Depunct. maxima Di</span></td>
-    <td class="tg-9hzb"><%= f.select :ceva, 
+    <td class="tg-9hzb"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px", disabled: true } %></td>
-    <td class="tg-9hzb"><%= f.select :ceva, 
+    <td class="tg-9hzb"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px", disabled: true } %></td>
-    <td class="tg-9hzb"><%= f.select :ceva, 
+    <td class="tg-9hzb"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px", disabled: true } %></td>
-    <td class="tg-9hzb"><%= f.select :ceva, 
+    <td class="tg-9hzb"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px", disabled: true } %></td>
-    <td class="tg-9hzb"><%= f.select :ceva, 
+    <td class="tg-9hzb"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px", disabled: true } %></td>
@@ -2265,23 +2269,23 @@
   <tr>
     <td class="tg-ktyi" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">C4(*) = Albia, apar. de mal, rampe de acces, instal pozate sau suspendate pe pod.</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">Val. indice Ci=10-Di</span></td>
-    <td class="tg-9hzb"><%= f.select :ceva, 
+    <td class="tg-9hzb"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px", disabled: true } %></td>
-    <td class="tg-9hzb"><%= f.select :ceva, 
+    <td class="tg-9hzb"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px", disabled: true } %></td>
-    <td class="tg-9hzb"><%= f.select :ceva, 
+    <td class="tg-9hzb"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px", disabled: true } %></td>
-    <td class="tg-9hzb"><%= f.select :ceva, 
+    <td class="tg-9hzb"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px", disabled: true } %></td>
-    <td class="tg-9hzb"><%= f.select :ceva, 
+    <td class="tg-9hzb"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px", disabled: true } %></td>
@@ -2289,7 +2293,7 @@
   <tr>
     <td class="tg-ktyi" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">C5(*) = Calea podului, guri de scurgere, trotuare, parapete, rosturi</span></td>
     <td class="tg-9hzb">Indice total de calitate C</td>
-    <td class="tg-9hzb" colspan="5"><%= f.select :ceva, 
+    <td class="tg-9hzb" colspan="5"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs", style: "height: 23px; width: 253px", disabled: true } %></td>
@@ -2443,7 +2447,7 @@
     <td class="tg-7yig" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">1</span></td>
     <td class="tg-7yig" colspan="5"><span style="font-weight:normal;font-style:normal;color:#000">Lăţimea părţi carosabile</span>                <span style="font-weight:normal;font-style:normal;color:#000">B</span>     <span style="font-weight:normal;font-style:normal;color:#000">=</span> </td>
     <td class="tg-9hzb">7,80</td>
-    <td class="tg-0vn8" colspan="4"><%= f.select :ceva, 
+    <td class="tg-0vn8" colspan="4"><%= f.select :altcv, 
     options_for_select([['DA', 'DA'], ['DA fara spatiu de siguranta', 'DA fara spatiu de siguranta'], ['NU', 'NU']]), 
     { prompt: ''}, 
     class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 300px" %></td>
@@ -2465,14 +2469,14 @@
   </tr>
   <tr>
     <td class="tg-ktyi" colspan="11"><span style="font-weight:normal;font-style:normal;color:#000">F1</span>   <span style="font-weight:normal;font-style:normal;color:#000">(depunctare) = f (Lăţimea părţii carosabile, Lungimea podului, Categoria drumului)</span>       <span style="font-weight:normal;font-style:normal;color:#000">=</span></td>
-    <td class="tg-px6y"><%= f.select :ceva, 
+    <td class="tg-px6y"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px"} %></td>
   </tr>
   <tr>
     <td class="tg-50xe" colspan="11">F1 =</td>
-    <td class="tg-px6y"><%= f.select :ceva, 
+    <td class="tg-px6y"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" } %></td>
@@ -2553,7 +2557,7 @@
     <td class="tg-0lax"></td>
     <td class="tg-0lax"></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Clasa de încărcare</span>                                        <span style="font-weight:normal;font-style:normal;color:#000">=</span></td>
-    <td class="tg-0vn8" colspan="3"><%= f.select :ceva, 
+    <td class="tg-0vn8" colspan="3"><%= f.select :altcv, 
     options_for_select([['E', 'E'], ['LM1', 'LM1'], ['I', 'I'], ['II', 'II']]), 
     { prompt: ''}, 
     { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" } %></td>
@@ -2562,7 +2566,7 @@
     <td class="tg-0lax"></td>
     <td class="tg-0lax"></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Clasa tehnică a drumului</span>                              <span style="font-weight:normal;font-style:normal;color:#000">=</span></td>
-    <td class="tg-9hzb" colspan="3"><%= f.select :ceva, 
+    <td class="tg-9hzb" colspan="3"><%= f.select :altcv, 
     options_for_select([['I', 'I'], ['II', 'II'], ['III', 'III'], ['IV', 'IV'], ['V', 'V']]), 
     { prompt: ''}, 
     { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px", disabled: true } %>
@@ -2580,7 +2584,7 @@
     <td class="tg-0lax"></td>
     <td class="tg-0lax"></td>
     <td class="tg-7yig" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">F2</span>   <span style="font-weight:normal;font-style:normal;color:#000">(depunctare) = f (Clasa de încărcare, Categoria drumului)</span>                      <span style="font-weight:normal;font-style:normal;color:#000">=</span></td>
-    <td class="tg-px6y" colspan="2"><%= f.select :ceva, 
+    <td class="tg-px6y" colspan="2"><%= f.select :altcv, 
     options_for_select([['0', '0'], ['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" } %></td>
@@ -2590,7 +2594,7 @@
     <td class="tg-0lax"></td>
     <td class="tg-0lax"></td>
     <td class="tg-9hzb">F2 =</td>
-    <td class="tg-px6y" colspan="2"><%= f.select :ceva, 
+    <td class="tg-px6y" colspan="2"><%= f.select :altcv, 
     options_for_select([['0', '0'], ['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" } %></td>
@@ -2754,7 +2758,7 @@
     <td class="tg-7yig" colspan="3"><span style="font-weight:normal;font-style:normal;color:#000">Tipul Suprastructurii</span></td>
     <td class="tg-0lax"></td>
     <td class="tg-gl90" colspan="6">
-    <%= f.select :ceva, 
+    <%= f.select :altcv, 
     options_for_select([['Grinzi nituite', 'Grinzi nituite'], ['Sudate', 'Sudate'], ['Grinzi Matarov', 'Grinzi Matarov'], 
     ['Grinzi Gerber', 'Grinzi Gerber'],
     ['Fasii cu goluri *', 'Fasii cu goluri *'],
@@ -2770,7 +2774,7 @@
     <td class="tg-7yig" colspan="3"><span style="font-weight:normal;font-style:normal;color:#000">Durata de exploatare a podului, care a trecut de la constructie sau de la ultima reparatie capitala</span></td>
     <td class="tg-ktyi"></td>
     <td class="tg-gl90" colspan="6">
-    <%= f.select :ceva, 
+    <%= f.select :altcv, 
     options_for_select([['0-5', '0-5'], ['6-15', '6-15'], ['16-25', '16-25'], 
     ['26-35', '26-35'],
     ['36-45', '36-45'],
@@ -2787,7 +2791,7 @@
     <td class="tg-ktyi"></td>
     <td class="tg-50xe" colspan="3">F3   (depunctare) = </td>
     <td class="tg-px6y" colspan="2">
-    <%= f.select :ceva, 
+    <%= f.select :altcv, 
     options_for_select([['0', '0'], ['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" } %>
@@ -2801,7 +2805,7 @@
     <td class="tg-0lax"></td>
     <td class="tg-50xe" colspan="3">F3 =</td>
     <td class="tg-px6y" colspan="2">
-    <%= f.select :ceva, 
+    <%= f.select :altcv, 
     options_for_select([['0', '0'], ['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" } %>
@@ -2866,14 +2870,14 @@
   </tr>
   <tr>
     <td class="tg-7yig" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">Depunctarea se face în funcție de modul de respectare la execuție a proiectului, neasigurarea condițiilor de efectuare a lucrărilor de întreținere și reparații, condiții de exploatare necorespunzătoare</span><br>F4   (depunctare) = </td>
-    <td class="tg-xe8b"><%= f.select :ceva, 
+    <td class="tg-xe8b"><%= f.select :altcv, 
     options_for_select([['0', '0'], ['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" } %></td>
   </tr>
   <tr>
     <td class="tg-50xe" colspan="2">F4 =</td>
-    <td class="tg-rka9"><%= f.select :ceva, 
+    <td class="tg-rka9"><%= f.select :altcv, 
     options_for_select([['0', '0'], ['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" } %></td>
@@ -2922,14 +2926,14 @@
   </tr>
   <tr>
     <td class="tg-7yig" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">Depunctarea se face in functie de calitatea lucrarilor de întreținere curentă</span><br>F5   (depunctare) = </td>
-    <td class="tg-xe8b"><%= f.select :ceva, 
+    <td class="tg-xe8b"><%= f.select :altcv, 
     options_for_select([['0', '0'], ['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" } %></td>
   </tr>
   <tr>
     <td class="tg-50xe" colspan="2">F5 =</td>
-    <td class="tg-rka9"><%= f.select :ceva, 
+    <td class="tg-rka9"><%= f.select :altcv, 
     options_for_select([['0', '0'], ['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
     { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" } %></td>
@@ -2985,7 +2989,7 @@
     <td class="tg-c1s0">C4 = </td>
     <td class="tg-c1s0">4</td>
     <td class="tg-oqpb"><span style="font-weight:normal;font-style:normal;color:#000">puncte</span></td>
-    <td class="tg-c1s0" colspan="2" rowspan="2"><%= f.text_field :ceva, 
+    <td class="tg-c1s0" colspan="2" rowspan="2"><%= f.text_field :altcv, 
     class: "w-full px-4 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium",
     style: "height: 19px; width: 55px", 
     placeholder: "", disabled: true %>
@@ -3034,7 +3038,7 @@
     <td class="tg-9hzb">F4 = </td>
     <td class="tg-9hzb">10</td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">puncte</span></td>
-    <td class="tg-ojlm" colspan="2" rowspan="2"><%= f.text_field :ceva, 
+    <td class="tg-ojlm" colspan="2" rowspan="2"><%= f.text_field :altcv, 
     class: "w-full px-4 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium",
     style: "height: 19px; width: 55px", 
     placeholder: "", disabled: true %>
@@ -3058,7 +3062,7 @@
   <tr>
     <td class="tg-0lax"></td>
     <td class="tg-hgcd" colspan="2">Indice de stare tehnică - IST=ΣCi+ΣFi =</td>
-    <td class="tg-hgcd" colspan="2"><%= f.text_field :ceva, 
+    <td class="tg-hgcd" colspan="2"><%= f.text_field :altcv, 
     class: "w-full px-4 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium",
     style: "height: 19px; width: 55px", 
     placeholder: "", disabled:true %>
@@ -3145,7 +3149,7 @@
 </tr>
 <tr>
   <td class="tg-9hzb" colspan="4">Clasa stării tehnice a podului este :</td>
-  <td class="tg-9hzb"><%= f.select :ceva, 
+  <td class="tg-9hzb"><%= f.select :altcv, 
   options_for_select([['I', 'I'], ['II', 'II'], ['III', 'III'], ['IV', 'IV'], ['V', 'V']]), 
   { prompt: ''}, 
   { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px", disabled: true } %>
@@ -3161,7 +3165,7 @@
 </tr>
 <tr>
   <td class="tg-9hzb" colspan="4">Aprecieri asupra stării tehnice :</td>
-  <td class="tg-9hzb"><%= f.text_field :ceva, 
+  <td class="tg-9hzb"><%= f.text_field :altcv, 
   class: "w-full px-4 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium",
   style: "height: 19px; width:300px", 
   placeholder: "", disabled:true %>
@@ -3180,7 +3184,7 @@
 </tr>
 <tr>
   <td class="tg-9hzb" colspan="4">Măsuri recomandate :</td>
-  <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000"><%= f.text_field :ceva, 
+  <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000"><%= f.text_field :altcv, 
   class: "w-full px-4 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium",
   style: "height: 50px; width: 300px", 
   placeholder: "", disabled:true %>
@@ -3196,15 +3200,19 @@
   </span></td>
 </tr>
 </tbody></table>
-<button type="submit"
-	        class="w-24 focus:outline-none border border-transparent py-1.5 px-3 rounded-md shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-sm font-medium"
-        >Complete</button>
+
 <%end%>
 <div>
 
 </center>
 
 <style type="text/css">
+.sticky-button {
+    position: sticky; /* Makes the button sticky */
+    top: 0; /* Stick to the top of the parent container */
+    z-index: 10; /* Ensure the button is above other content */
+    margin-bottom: 1rem; /* Add space below the button */
+}
 .tg  {border-collapse:collapse;border-spacing:0;}
 .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
   overflow:hidden;padding:10px 5px;word-break:normal;}
