@@ -39,35 +39,24 @@ class BridgesController < ApplicationController
 	end
 
 	def send_upload_bridge
-		require 'roo' # For handling .xlsx files
+		require 'roo'
 	
 		if params[:csv_file].present?
-			uploaded_file = params[:csv_file] # You're getting the .xlsx file in csv_file param
+			uploaded_file = params[:csv_file]
 	
 			begin
-				# Open the .xlsx file using roo
 				spreadsheet = Roo::Spreadsheet.open(uploaded_file.tempfile.path)
-				binding.pry
-				# Loop through each sheet in the file
 				spreadsheet.sheets.each do |sheet_name|
-					sheet = spreadsheet.sheet(sheet_name) # Access the sheet by name
-					puts "Processing sheet: #{sheet_name}" # Optional debug line
+					sheet = spreadsheet.sheet(sheet_name)
+					puts "Processing sheet: #{sheet_name}"
 	
-					# Process each row in the sheet
-					binding.pry
 					sheet.each_with_index do |row, index|
-						next if index == 0 # Optionally skip the header row
-						binding.pry
-						# Assuming first column is 'name', second is 'author', third is 'status'
+						next if index == 0
+
 						name = row[0]
 						author = row[1]
 						status = row[2]
-	
-						# Create the bridge record or just preview the data
 						# Bridge.create!(name: name, author: author, status: status)
-	
-						# For debugging: binding.pry to inspect row data if needed
-						# binding.pry
 					end
 				end
 	
@@ -89,7 +78,6 @@ class BridgesController < ApplicationController
 		else
 			@bridges = current_user.bridges.order(created_at: :asc)
 		end
-		# if admin display all bridges
 	end
 
 	def show
@@ -161,7 +149,70 @@ class BridgesController < ApplicationController
     redirect_to root_path, alert: 'You are not authorized to access this page.' unless current_user&.admin?
   end
 
-	def bridge_params
-		params.require(:bridge).permit(:name, :slug)
-	end
+  def bridge_params
+	params.require(:bridge).permit(
+	  :name, 
+	  :slug,
+	  :tip_lucrare_arta,
+	  :obstacol_traversat,
+	  :localitatea,
+	  :categoria,
+	  :numar_drum,
+	  :clasa,
+	  :pozitia_km,
+	  :an_constructie,
+	  :schema_statica,
+	  :structura_rezistenta,
+	  :mod_executie,
+	  :oblicitate,
+	  :culee_fundatie_simplu,
+	  :culee_fundatie_armat,
+	  :culee_fundatie_precomprimat,
+	  :culee_fundatie_metal,
+	  :culee_fundatie_lemn,
+	  :culee_fundatie_mixt,
+	  :culee_elevatie_simplu,
+	  :culee_elevatie_armat,
+	  :culee_elevatie_precomprimat,
+	  :culee_elevatie_metal,
+	  :culee_elevatie_lemn,
+	  :culee_elevatie_mixt,
+	  :pile_fundatie_simplu,
+	  :pile_fundatie_armat,
+	  :pile_fundatie_precomprimat,
+	  :pile_fundatie_metal,
+	  :pile_fundatie_lemn,
+	  :pile_fundatie_mixt,
+	  :pile_elevatie_simplu,
+	  :pile_elevatie_armat,
+	  :pile_elevatie_precomprimat,
+	  :pile_elevatie_metal,
+	  :pile_elevatie_lemn,
+	  :pile_elevatie_mixt,
+	  :structura_rezistenta_simplu,
+	  :structura_rezistenta_armat,
+	  :structura_rezistenta_precomprimat,
+	  :structura_rezistenta_metal,
+	  :structura_rezistenta_lemn,
+	  :structura_rezistenta_mixt,
+	  :lungime,
+	  :numar_deschideri,
+	  :lungime_deschidere,
+	  :latime,
+	  :latime_carosabila,
+	  :latime_trotuar,
+	  :numar_grinzi,
+	  :numar_antretoaze,
+	  :aparate_reazem,
+	  :tip_infrastructurii,
+	  :tip_fundatii,
+	  :tip_imbracaminte,
+	  :rosturi_tip_pozitie,
+	  :parapeti_pietonali,
+	  :parapeti_siguranta,
+	  :racordari_terasamente,
+	  :aparari_mal
+	)
+  end  
+  
 end
