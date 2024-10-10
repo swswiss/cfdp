@@ -13,6 +13,7 @@ class BridgesController < ApplicationController
 
 	def new
 		@bridge = current_user.bridges.build
+		@bridge.build_flaw
 	end
 
 	def print
@@ -33,6 +34,7 @@ class BridgesController < ApplicationController
 
 	def edit
 		@bridge = Bridge.friendly.find(params[:id])
+		@bridge.build_flaw unless @bridge.flaw 
 	end
 
 	def upload_bridge
@@ -91,6 +93,30 @@ class BridgesController < ApplicationController
 		name = @bridge.name
 		begin
 			if @bridge.update(bridge_params)
+        name = @bridge.name
+        suma_c1 = calculate_sum_c1 @bridge
+        suma_c2 = calculate_sum_c2 @bridge
+        suma_c3 = calculate_sum_c3 @bridge
+        suma_c4 = calculate_sum_c4 @bridge
+        suma_c5 = calculate_sum_c5 @bridge
+
+        max_c1 = max_c1_columns @bridge
+        max_c2 = max_c2_columns @bridge
+        max_c3 = max_c3_columns @bridge
+        max_c4 = max_c4_columns @bridge
+        max_c5 = max_c5_columns @bridge
+
+        val_indice_1 = 10 - max_c1
+        val_indice_2 = 10 - max_c2
+        val_indice_3 = 10 - max_c3
+        val_indice_4 = 10 - max_c4
+        val_indice_5 = 10 - max_c5
+
+        @bridge.flaw.update(nr_defecte_c1: suma_c1, nr_defecte_c2: suma_c2, nr_defecte_c3: suma_c3, nr_defecte_c4: suma_c4, nr_defecte_c5: suma_c5)
+        @bridge.flaw.update(depunct_max_di_c1: max_c1, depunct_max_di_c2: max_c2, depunct_max_di_c3: max_c3, depunct_max_di_c4: max_c4, depunct_max_di_c5: max_c5)
+        @bridge.flaw.update(val_indice_c1: val_indice_1, val_indice_c2: val_indice_2, val_indice_c3: val_indice_3, val_indice_c4: val_indice_4, val_indice_c5: val_indice_5)
+        @bridge.flaw.update(indice_total_calitate: val_indice_1 + val_indice_2 + val_indice_3 + val_indice_4 + val_indice_5)
+        
 				ActivityLog.log_activity(current_user, ActivityLog::ActionTypes::UPDATED_BRIDGE, @bridge, name)
 				redirect_to edit_bridge_path(@bridge), notice: 'Bridge was successfully updated.'
 			else
@@ -106,6 +132,28 @@ class BridgesController < ApplicationController
 
 		if @bridge.save
 			name = @bridge.name
+      suma_c1 = calculate_sum_c1 @bridge
+      suma_c2 = calculate_sum_c2 @bridge
+      suma_c3 = calculate_sum_c3 @bridge
+      suma_c4 = calculate_sum_c4 @bridge
+      suma_c5 = calculate_sum_c5 @bridge
+
+      max_c1 = max_c1_columns @bridge
+      max_c2 = max_c2_columns @bridge
+      max_c3 = max_c3_columns @bridge
+      max_c4 = max_c4_columns @bridge
+      max_c5 = max_c5_columns @bridge
+
+      val_indice_1 = 10 - max_c1
+      val_indice_2 = 10 - max_c2
+      val_indice_3 = 10 - max_c3
+      val_indice_4 = 10 - max_c4
+      val_indice_5 = 10 - max_c5
+
+      @bridge.flaw.update(nr_defecte_c1: suma_c1, nr_defecte_c2: suma_c2, nr_defecte_c3: suma_c3, nr_defecte_c4: suma_c4, nr_defecte_c5: suma_c5)
+      @bridge.flaw.update(depunct_max_di_c1: max_c1, depunct_max_di_c2: max_c2, depunct_max_di_c3: max_c3, depunct_max_di_c4: max_c4, depunct_max_di_c5: max_c5)
+      @bridge.flaw.update(val_indice_c1: val_indice_1, val_indice_c2: val_indice_2, val_indice_c3: val_indice_3, val_indice_c4: val_indice_4, val_indice_c5: val_indice_5)
+      @bridge.flaw.update(indice_total_calitate: val_indice_1 + val_indice_2 + val_indice_3 + val_indice_4 + val_indice_5)
 			ActivityLog.log_activity(current_user, ActivityLog::ActionTypes::CREATED_BRIDGE, @bridge, name)
 			redirect_to bridge_path(@bridge), notice: 'Bridge was successfully created.'
 		else
@@ -131,6 +179,76 @@ class BridgesController < ApplicationController
   end
 
 	private
+
+	def calculate_sum_c1 bridge
+		flaw = bridge.flaw
+		c1_columns = Flaw.column_names.select { |column| column.start_with?('c1_') }
+		sum = c1_columns.map { |col| flaw.send(col).to_i }.sum
+		sum
+	end
+
+  def calculate_sum_c2 bridge
+		flaw = bridge.flaw
+		c2_columns = Flaw.column_names.select { |column| column.start_with?('c2_') }
+		sum = c2_columns.map { |col| flaw.send(col).to_i }.sum
+		sum
+	end
+
+  def calculate_sum_c3 bridge
+		flaw = bridge.flaw
+		c3_columns = Flaw.column_names.select { |column| column.start_with?('c3_') }
+		sum = c3_columns.map { |col| flaw.send(col).to_i }.sum
+		sum
+	end
+
+  def calculate_sum_c4 bridge
+		flaw = bridge.flaw
+		c4_columns = Flaw.column_names.select { |column| column.start_with?('c4_') }
+		sum = c4_columns.map { |col| flaw.send(col).to_i }.sum
+		sum
+	end
+
+  def calculate_sum_c5 bridge
+		flaw = bridge.flaw
+		c5_columns = Flaw.column_names.select { |column| column.start_with?('c5_') }
+		sum = c5_columns.map { |col| flaw.send(col).to_i }.sum
+		sum
+	end
+
+  def max_c1_columns bridge
+    flaw = bridge.flaw
+    c1_columns = Flaw.column_names.select { |column| column.start_with?('c1_') }
+    max_value = c1_columns.map { |col| flaw.send(col).to_i }.max
+    max_value
+  end
+
+  def max_c2_columns bridge
+    flaw = bridge.flaw
+    c2_columns = Flaw.column_names.select { |column| column.start_with?('c2_') }
+    max_value = c2_columns.map { |col| flaw.send(col).to_i }.max
+    max_value
+  end
+
+  def max_c3_columns bridge
+    flaw = bridge.flaw
+    c3_columns = Flaw.column_names.select { |column| column.start_with?('c3_') }
+    max_value = c3_columns.map { |col| flaw.send(col).to_i }.max
+    max_value
+  end
+
+  def max_c4_columns bridge
+    flaw = bridge.flaw
+    c4_columns = Flaw.column_names.select { |column| column.start_with?('c4_') }
+    max_value = c4_columns.map { |col| flaw.send(col).to_i }.max
+    max_value
+  end
+
+  def max_c5_columns bridge
+    flaw = bridge.flaw
+    c5_columns = Flaw.column_names.select { |column| column.start_with?('c5_') }
+    max_value = c5_columns.map { |col| flaw.send(col).to_i }.max
+    max_value
+  end
 
 	def authorize_bridge
     @bridge = Bridge.friendly.find(params[:id])
@@ -211,7 +329,221 @@ class BridgesController < ApplicationController
 	  :parapeti_pietonali,
 	  :parapeti_siguranta,
 	  :racordari_terasamente,
-	  :aparari_mal
+	  :aparari_mal, flaw_attributes: [
+      :id,
+		:c1_1,
+		:c2_1,
+		:c4_2,
+		:c5_3,
+		:c3_4,
+		:c3_1_5,
+		:c3_2_5,
+		:c1_6, 
+		:c2_6, 
+		:c1_7, 
+		:c3_6, 
+		:c2_7, 
+		:c3_7, 
+		:c1_8, 
+		:c2_8, 
+		:c3_8, 
+		:c1_9, 
+		:c2_9, 
+		:c3_9, 
+		:c1_10, 
+		:c5_11, 
+		:c1_12, 
+		:c2_12, 
+		:c3_12, 
+		:c5_13, 
+		:c1_14, 
+		:c2_14, 
+		:c3_14, 
+		:c1_15, 
+		:c2_15, 
+		:c1_16, 
+		:c2_16, 
+		:c3_16, 
+		:c1_17, 
+		:c2_17, 
+		:c3_17, 
+		:c1_18, 
+		:c2_18, 
+		:c1_19, 
+		:c5_20, 
+		:c5_1_21,
+		:c5_2_21,
+		:c4_1_22,
+		:c4_2_22,
+		:c4_1_23,
+		:c4_2_23,
+		:c4_3_23,
+		:c5_24, 
+		:c3_25, 
+		:c2_26, 
+		:c1_27, 
+		:c1_28, 
+		:c3_1_29,
+		:c3_2_29,
+		:c3_1_30,
+		:c3_2_30,
+		:c2_31, 
+		:c3_31, 
+		:c1_32, 
+		:c2_32, 
+		:c3_1_33,
+		:c3_2_33,
+		:c1_34, 
+		:c2_34, 
+		:c1_35, 
+		:c2_35, 
+		:c3_35, 
+		:c1_36, 
+		:c2_36, 
+		:c3_36, 
+		:c1_1_37,
+		:c2_1_37,
+		:c1_2_37,
+		:c2_2_37,
+		:c3_2_37,
+		:c1_3_37,
+		:c2_3_37,
+		:c3_3_37,
+		:c1_4_37,
+		:c2_4_37,
+		:c3_4_37,
+		:c1_5_37,
+		:c2_5_37,
+		:c3_5_37,
+		:c1_6_37,
+		:c2_6_37,
+		:c3_6_37,
+		:c1_7_37,
+		:c2_7_37,
+		:c3_7_37,
+		:c1_8_37,
+		:c5_38, 
+		:c1_39, 
+		:c1_40, 
+		:c2_40, 
+		:c1_41, 
+		:c2_41, 
+		:c5_42, 
+		:c3_43, 
+		:c1_44, 
+		:c2_44, 
+		:c3_44, 
+		:c1_45, 
+		:c2_45, 
+		:c5_46, 
+		:c4_47, 
+		:c5_48, 
+		:c1_49, 
+		:c2_49, 
+		:c5_50,
+		:c5_51,
+		:c3_52, 
+		:c4_53, 
+		:c1_54, 
+		:c3_54, 
+		:c4_1_55,
+		:c4_2_55,
+		:c4_3_55,
+		:c1_56, 
+		:c1_1_57,
+		:c2_1_57,
+		:c1_2_57,
+		:c2_2_57,
+		:c3_58, 
+		:c3_59, 
+		:c1_60, 
+		:c2_60, 
+		:c4_1_61,
+		:c4_2_61,
+		:c1_62, 
+		:c2_62, 
+		:c5_63, 
+		:c1_64, 
+		:c3_64, 
+		:c5_65, 
+		:c5_66, 
+		:c1_67, 
+		:c2_67, 
+		:c3_67, 
+		:c1_68, 
+		:c2_68, 
+		:c3_68, 
+		:c4_69, 
+		:c1_70, 
+		:c2_70, 
+		:c3_70, 
+		:c1_71, 
+		:c3_71, 
+		:c1_72, 
+		:c3_72, 
+		:c3_73, 
+		:c1_74, 
+		:c2_74, 
+		:c3_74, 
+		:c1_75, 
+		:c1_76, 
+		:c1_77, 
+		:c1_78, 
+		:c1_79, 
+		:c1_80, 
+		:c2_81, 
+		:c2_82, 
+		:c2_83, 
+		:c3_84, 
+		:c3_85, 
+		:c3_86, 
+		:c3_87, 
+		:c3_88, 
+		:c3_89, 
+		:c3_90, 
+		:c5_91, 
+		:c5_92, 
+		:c5_93, 
+		:c5_94, 
+		:c5_95, 
+		:c5_96, 
+		:c5_97,
+		:nr_defecte_c1,
+		:nr_defecte_c2,
+		:nr_defecte_c3,
+		:nr_defecte_c4,
+		:nr_defecte_c5,
+		:depunct_max_di_c1,
+		:depunct_max_di_c2,
+		:depunct_max_di_c3,
+		:depunct_max_di_c4,
+		:depunct_max_di_c5,
+		:val_indice_c1,
+		:val_indice_c2,
+		:val_indice_c3,
+		:val_indice_c4,
+		:val_indice_c5,
+		:indice_total_calitate,
+    :aprecierea_starii_tehnice,
+    :masuri_recomandate,
+     :corespunde_ordinul, 
+:f1_depunct, 
+ :f1, 
+ :clasa_incarcare, 
+ :f2, 
+ :f2_depunct, 
+     :tipul_suprastructurii, 
+     :durata_exploatare, 
+     :f3_depunct, 
+     :f3, 
+     :f4_depunct, 
+     :f4, 
+     :f5_depunct, 
+     :f5, 
+     :ist_c, 
+     :ist_f, 
+     :ist_total,
+  ]
 	)
   end  
   
