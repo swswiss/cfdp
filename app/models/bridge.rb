@@ -5,6 +5,9 @@ class Bridge < ApplicationRecord
   belongs_to :user
   has_many :instance_bridges, dependent: :destroy
 
+  has_one :flaw, dependent: :destroy
+  accepts_nested_attributes_for :flaw
+
   validates :name, presence: true, uniqueness: { case_sensitive: false, scope: :user_id }
   validates :name, length: { maximum: 19, message: "must be 25 characters or less" }
 
