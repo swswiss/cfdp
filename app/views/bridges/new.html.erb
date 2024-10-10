@@ -1135,7 +1135,10 @@
   <tr>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Fisuri si/sau crapaturi ale betonului:- long.: &lt;0.2 mm</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6 - 7</span></td>
-    <td class="tg-0gom"><span style="font-weight:normal;font-style:normal;color:#000">7</span></td>
+    <td class="tg-0gom"><span style="font-weight:normal;font-style:normal;color:#000"><%= f.select :altcv, 
+    options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
+    { prompt: ''}, 
+    class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></span></td>
     <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
@@ -1170,7 +1173,10 @@
   <tr>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Fisuri si/sau crapaturi ale betonului:- trans.: &lt;0.2 mm</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6 - 7</span></td>
-    <td class="tg-0gom"><span style="font-weight:normal;font-style:normal;color:#000">7</span></td>
+    <td class="tg-0gom"><span style="font-weight:normal;font-style:normal;color:#000"><%= f.select :altcv, 
+    options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
+    { prompt: ''}, 
+    class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" %></span></td>
     <td class="tg-oldo"><%= f.select :altcv, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']]), 
     { prompt: ''}, 
@@ -3200,9 +3206,6 @@
   </span></td>
 </tr>
 </tbody></table>
-<button type="submit"
-	        class="w-24 focus:outline-none border border-transparent py-1.5 px-3 rounded-md shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-sm font-medium"
-        >Complete</button>
 <%end%>
 <div>
 
