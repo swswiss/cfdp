@@ -71,10 +71,52 @@
                   aria: { disabled: @activity_logs.prev_page.nil? } %>
     </li>
 
-    <% (1..@activity_logs.total_pages).each do |page| %>
+    <% total_pages = @activity_logs.total_pages %>
+    <% current_page = @activity_logs.current_page %>
+
+    <% if total_pages > 1 %>
+      <%# Always show the first page %>
       <li>
-        <%= link_to page, activity_logs_path(page: page, name: params[:name], action: params[:action]), 
-                    class: "relative block rounded bg-transparent px-3 py-1.5 text-sm #{ 'text-primary-700 bg-neutral-100' if page == @activity_logs.current_page } transition duration-300 hover:bg-neutral-100 focus:bg-neutral-100 focus:text-primary-700 focus:outline-none active:bg-neutral-100 active:text-primary-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 dark:focus:text-primary-500 dark:active:bg-neutral-700 dark:active:text-primary-500" %>
+        <%= link_to 1, activity_logs_path(page: 1, name: params[:name], action: params[:action]), 
+                    class: "relative block rounded bg-transparent px-3 py-1.5 text-sm #{ 'text-primary-700 bg-neutral-100' if 1 == current_page } transition duration-300 hover:bg-neutral-100 focus:bg-neutral-100 focus:text-primary-700 focus:outline-none active:bg-neutral-100 active:text-primary-700" %>
+      </li>
+
+      <%# Display ellipsis if the second page is not immediately after the first page %>
+      <% if current_page > 3 %>
+        <li class="px-3">...</li>
+      <% end %>
+
+      <%# Show pages around the current page %>
+      <% (current_page - 1).downto([2, current_page - 2].max) do |page| %>
+        <li>
+          <%= link_to page, activity_logs_path(page: page, name: params[:name], action: params[:action]), 
+                      class: "relative block rounded bg-transparent px-3 py-1.5 text-sm #{ 'text-primary-700 bg-neutral-100' if page == current_page } transition duration-300 hover:bg-neutral-100 focus:bg-neutral-100 focus:text-primary-700 focus:outline-none active:bg-neutral-100 active:text-primary-700" %>
+        </li>
+      <% end %>
+
+      <%# Always show the current page %>
+      <li>
+        <%= link_to current_page, activity_logs_path(page: current_page, name: params[:name], action: params[:action]), 
+                    class: "relative block rounded bg-transparent px-3 py-1.5 text-sm text-primary-700 bg-neutral-100 transition duration-300" %>
+      </li>
+
+      <%# Show next pages after the current page %>
+      <% (current_page + 1).upto([total_pages - 1, current_page + 2].min) do |page| %>
+        <li>
+          <%= link_to page, activity_logs_path(page: page, name: params[:name], action: params[:action]), 
+                      class: "relative block rounded bg-transparent px-3 py-1.5 text-sm #{ 'text-primary-700 bg-neutral-100' if page == current_page } transition duration-300 hover:bg-neutral-100 focus:bg-neutral-100 focus:text-primary-700 focus:outline-none active:bg-neutral-100 active:text-primary-700" %>
+        </li>
+      <% end %>
+
+      <%# Display ellipsis if the second to last page is not immediately before the last page %>
+      <% if current_page < total_pages - 2 %>
+        <li class="px-3">...</li>
+      <% end %>
+
+      <%# Always show the last page %>
+      <li>
+        <%= link_to total_pages, activity_logs_path(page: total_pages, name: params[:name], action: params[:action]), 
+                    class: "relative block rounded bg-transparent px-3 py-1.5 text-sm #{ 'text-primary-700 bg-neutral-100' if total_pages == current_page } transition duration-300 hover:bg-neutral-100 focus:bg-neutral-100 focus:text-primary-700 focus:outline-none active:bg-neutral-100 active:text-primary-700" %>
       </li>
     <% end %>
 
@@ -85,6 +127,7 @@
     </li>
   </ul>
 </nav>
+
 <!-- End Pagination -->
 
 </div>

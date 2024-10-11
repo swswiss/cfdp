@@ -21,7 +21,8 @@
       <td class="tg-p9ik" colspan="2"> <span style="font-weight:normal;font-style:normal;color:#000">1. Tipul lucrării de artă (pod, pasaj, viaduct)</span></td>
       <td class="tg-va2b" colspan="6">
       <%= f.select :tip_lucrare_arta, 
-                options_for_select([['Viaduct', 'Viaduct'], ['Pod', 'Pod'], ['Pasaj', 'Pasaj']]), 
+                options_for_select([['Viaduct', 'Viaduct'], ['Pod', 'Pod'], ['Pasaj', 'Pasaj']], 
+                selected: @bridge.tip_lucrare_arta),
                 { prompt: ''}, 
                 class: "w-full px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs" %>
       </td>
@@ -2698,18 +2699,18 @@
   <tr>
     <td class="tg-ktyi" colspan="11"><span style="font-weight:normal;font-style:normal;color:#000">F1</span>   <span style="font-weight:normal;font-style:normal;color:#000">(depunctare) = f (Lăţimea părţii carosabile, Lungimea podului, Categoria drumului)</span>       <span style="font-weight:normal;font-style:normal;color:#000">=</span></td>
     <td class="tg-px6y"><%= flaw_form.select :f1_depunct, 
-    options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']], 
+    options_for_select((0..50).map { |n| [n.to_s, n.to_s] }, 
     selected: @bridge.flaw.f1_depunct),
     { prompt: ''}, 
-    { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px"} %></td>
+    { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px", disabled: true } %></td>
   </tr>
   <tr>
     <td class="tg-50xe" colspan="11">F1 =</td>
     <td class="tg-px6y"><%= flaw_form.select :f1, 
-    options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']],
+    options_for_select((0..50).map { |n| [n.to_s, n.to_s] },
     selected: @bridge.flaw.f1),
     { prompt: ''}, 
-    { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" } %></td>
+    { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px", disabled: true  } %></td>
   </tr>
 </tbody></table>
 <br>
@@ -2813,10 +2814,10 @@
     <td class="tg-0lax"></td>
     <td class="tg-7yig" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">F2</span>   <span style="font-weight:normal;font-style:normal;color:#000">(depunctare) = f (Clasa de încărcare, Categoria drumului)</span>                      <span style="font-weight:normal;font-style:normal;color:#000">=</span></td>
     <td class="tg-px6y" colspan="2"><%= flaw_form.select :f2_depunct, 
-    options_for_select([['0', '0'], ['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']],
+    options_for_select((0..50).map { |n| [n.to_s, n.to_s] },
     selected: @bridge.flaw.f2_depunct), 
     { prompt: ''}, 
-    { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" } %></td>
+    { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px", disabled: true  } %></td>
   </tr>
   <tr>
     <td class="tg-0lax"></td>
@@ -2824,10 +2825,10 @@
     <td class="tg-0lax"></td>
     <td class="tg-9hzb">F2 =</td>
     <td class="tg-px6y" colspan="2"><%= flaw_form.select :f2, 
-    options_for_select([['0', '0'], ['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']],
+    options_for_select((0..50).map { |n| [n.to_s, n.to_s] },
     selected: @bridge.flaw.f2),  
     { prompt: ''}, 
-    { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" } %></td>
+    { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px", disabled: true  } %></td>
   </tr>
 </tbody></table>
 <br>
@@ -3024,10 +3025,10 @@
     <td class="tg-50xe" colspan="3">F3   (depunctare) = </td>
     <td class="tg-px6y" colspan="2">
     <%= flaw_form.select :f3_depunct, 
-    options_for_select([['0', '0'], ['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']],
+    options_for_select((0..50).map { |n| [n.to_s, n.to_s] },
     selected: @bridge.flaw.f3_depunct), 
     { prompt: ''}, 
-    { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" } %>
+    { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px", disabled: true  } %>
     </td>
   </tr>
   <tr>
@@ -3039,10 +3040,10 @@
     <td class="tg-50xe" colspan="3">F3 =</td>
     <td class="tg-px6y" colspan="2">
     <%= flaw_form.select :f3, 
-    options_for_select([['0', '0'], ['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']],
+    options_for_select((0..50).map { |n| [n.to_s, n.to_s] },
     selected: @bridge.flaw.f3),  
     { prompt: ''}, 
-    { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" } %>
+    { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px", disabled: true  } %>
     </td>
   </tr>
 </tbody></table>
@@ -3105,7 +3106,7 @@
   <tr>
     <td class="tg-7yig" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">Depunctarea se face în funcție de modul de respectare la execuție a proiectului, neasigurarea condițiilor de efectuare a lucrărilor de întreținere și reparații, condiții de exploatare necorespunzătoare</span><br>F4   (depunctare) = </td>
     <td class="tg-xe8b"><%= flaw_form.select :f4_depunct, 
-    options_for_select([['0', '0'], ['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']],
+    options_for_select((0..10).map { |n| [n.to_s, n.to_s] },
     selected: @bridge.flaw.f4_depunct),
     { prompt: ''}, 
     { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" } %></td>
@@ -3113,10 +3114,10 @@
   <tr>
     <td class="tg-50xe" colspan="2">F4 =</td>
     <td class="tg-rka9"><%= flaw_form.select :f4, 
-    options_for_select([['0', '0'], ['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']],
+    options_for_select((0..50).map { |n| [n.to_s, n.to_s] },
     selected: @bridge.flaw.f4),  
     { prompt: ''}, 
-    { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" } %></td>
+    { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px", disabled: true  } %></td>
   </tr>
   <tr>
     <td class="tg-0lax"></td>
@@ -3163,7 +3164,7 @@
   <tr>
     <td class="tg-7yig" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">Depunctarea se face in functie de calitatea lucrarilor de întreținere curentă</span><br>F5   (depunctare) = </td>
     <td class="tg-xe8b"><%= flaw_form.select :f5_depunct, 
-    options_for_select([['0', '0'], ['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']],
+    options_for_select((0..10).map { |n| [n.to_s, n.to_s] },
     selected: @bridge.flaw.f5_depunct),  
     { prompt: ''}, 
     { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" } %></td>
@@ -3171,10 +3172,10 @@
   <tr>
     <td class="tg-50xe" colspan="2">F5 =</td>
     <td class="tg-rka9"><%= flaw_form.select :f5, 
-    options_for_select([['0', '0'], ['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']],
+    options_for_select((0..50).map { |n| [n.to_s, n.to_s] },
     selected: @bridge.flaw.f5), 
     { prompt: ''}, 
-    { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px" } %></td>
+    { class: "w-full h-6 px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs",style: "height: 23px; width: 43px", disabled: true  } %></td>
   </tr>
   <tr>
     <td class="tg-0lax"></td>
@@ -3203,7 +3204,7 @@
     <td class="tg-9hzb">1</td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">Indicele de calitate al elementelor principale de rezistență ale suprastructurii</span></td>
     <td class="tg-9hzb">C1 = </td>
-    <td class="tg-9hzb">2</td>
+    <td class="tg-9hzb"><%=@bridge.flaw.val_indice_c1%></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">puncte</span></td>
     <td class="tg-9hzb" colspan="2" rowspan="3">C = ΣCi = <br>C1 + C2 + C3 + C4 + C5 = </td>
   </tr>
@@ -3211,21 +3212,21 @@
     <td class="tg-c1s0">2</td>
     <td class="tg-oqpb"><span style="font-weight:normal;font-style:normal;color:#000">Indicele de calitate al elementelor de rezistență care susțin calea podului</span></td>
     <td class="tg-c1s0">C2 = </td>
-    <td class="tg-c1s0">3</td>
+    <td class="tg-c1s0"><%=@bridge.flaw.val_indice_c2%></td>
     <td class="tg-oqpb"><span style="font-weight:normal;font-style:normal;color:#000">puncte</span></td>
   </tr>
   <tr>
     <td class="tg-9hzb">3</td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">Indicele de caliatate al elementelor infrastructurii, aparate de reazem, dispozitive de protecție la acțiuni seismice, sferturi de con sau aripi</span></td>
     <td class="tg-9hzb">C3 = </td>
-    <td class="tg-9hzb">2</td>
+    <td class="tg-9hzb"><%=@bridge.flaw.val_indice_c3%></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">puncte</span></td>
   </tr>
   <tr>
     <td class="tg-c1s0">4</td>
     <td class="tg-oqpb"><span style="font-weight:normal;font-style:normal;color:#000">Indicele de calitate al albiei, apărărilor de maluri, rampe de acces</span></td>
     <td class="tg-c1s0">C4 = </td>
-    <td class="tg-c1s0">4</td>
+    <td class="tg-c1s0"><%=@bridge.flaw.val_indice_c4%></td>
     <td class="tg-oqpb"><span style="font-weight:normal;font-style:normal;color:#000">puncte</span></td>
     <td class="tg-c1s0" colspan="2" rowspan="2"><%= flaw_form.text_field :ist_c, 
     class: "w-full px-4 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium",
@@ -3245,14 +3246,14 @@
     <td class="tg-9hzb">5</td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">Indicele de calitate al căii podului și al elementelor aferente</span></td>
     <td class="tg-9hzb">C5 = </td>
-    <td class="tg-9hzb">2</td>
+    <td class="tg-9hzb"><%=@bridge.flaw.val_indice_c5%></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">puncte</span></td>
   </tr>
   <tr>
     <td class="tg-ojlm">6</td>
     <td class="tg-buob"><span style="font-weight:normal;font-style:normal;color:#000">Indicele de funcționalitate determinat în funcție de condițiile de desfășurare a traficului pe pod</span></td>
     <td class="tg-ojlm">F1 = </td>
-    <td class="tg-ojlm">5</td>
+    <td class="tg-ojlm"><%=@bridge.flaw.f1%></td>
     <td class="tg-buob"><span style="font-weight:normal;font-style:normal;color:#000">puncte</span></td>
     <td class="tg-9hzb" colspan="2" rowspan="3">F = ΣFi = <br>F1 + F2 + F3 + F4 + F5 =</td>
   </tr>
@@ -3260,21 +3261,21 @@
     <td class="tg-9hzb">7</td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">Indicele de funcționalitate determinat de clasa de încărcare a podului</span></td>
     <td class="tg-9hzb">F2 = </td>
-    <td class="tg-9hzb">10</td>
+    <td class="tg-9hzb"><%=@bridge.flaw.f2%></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">puncte</span></td>
   </tr>
   <tr>
     <td class="tg-ojlm">8</td>
     <td class="tg-buob"><span style="font-weight:normal;font-style:normal;color:#000">Indicele de funcționalitate determinat de durata de exploatare a podului, care a trecut de la construcția sau de la ultima reparație capitală, și tipul podului</span></td>
     <td class="tg-ojlm">F3 = </td>
-    <td class="tg-ojlm">3</td>
+    <td class="tg-ojlm"><%=@bridge.flaw.f3%></td>
     <td class="tg-buob"><span style="font-weight:normal;font-style:normal;color:#000">puncte</span></td>
   </tr>
   <tr>
     <td class="tg-9hzb">9</td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">Indicele de funcționalitate determinat de modul de respectare la execuție a proiectului, neasigurarea condițiilor de efectuare a lucrărilor de întreținere și reparații, condiții de exploatare necorespunzătoare</span></td>
     <td class="tg-9hzb">F4 = </td>
-    <td class="tg-9hzb">10</td>
+    <td class="tg-9hzb"><%=@bridge.flaw.f4%></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">puncte</span></td>
     <td class="tg-ojlm" colspan="2" rowspan="2"><%= flaw_form.text_field :ist_f, 
     class: "w-full px-4 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium",
@@ -3294,7 +3295,7 @@
     <td class="tg-ojlm">10</td>
     <td class="tg-buob"><span style="font-weight:normal;font-style:normal;color:#000">Indicele de funcționalitate determinat de ccalitatea lucrărilor de întreținere</span></td>
     <td class="tg-ojlm">F5 = </td>
-    <td class="tg-ojlm">10</td>
+    <td class="tg-ojlm"><%=@bridge.flaw.f5%></td>
     <td class="tg-buob"><span style="font-weight:normal;font-style:normal;color:#000">puncte</span></td>
   </tr>
   <tr>
@@ -3400,10 +3401,10 @@
 </tr>
 <tr>
   <td class="tg-9hzb" colspan="4">Aprecieri asupra stării tehnice :</td>
-  <td class="tg-9hzb"><%= flaw_form.text_field :aprecierea_starii_tehnice, 
+  <td class="tg-9hzb"><%= flaw_form.text_area :aprecierea_starii_tehnice, 
   class: "w-full px-4 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium",
-  style: "height: 19px; width:300px", 
-  placeholder: "", disabled:true %>
+  style: "height: 60px; width:300px", 
+  placeholder: "", disabled: true %>
   <div class="inline-block relative ml-2 group">
     <span class="text-gray-500 cursor-pointer text-sm rounded-full border border-gray-400 w-4 h-4 flex items-center justify-center">i</span>
 
@@ -3421,7 +3422,7 @@
   <td class="tg-9hzb" colspan="4">Măsuri recomandate :</td>
   <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000"><%= flaw_form.text_field :masuri_recomandate, 
   class: "w-full px-4 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium",
-  style: "height: 50px; width: 300px", 
+  style: "height: 150px; width: 300px", 
   placeholder: "", disabled:true %>
    <div class="inline-block relative ml-2 group">
     <span class="text-gray-500 cursor-pointer text-sm rounded-full border border-gray-400 w-4 h-4 flex items-center justify-center">i</span>
