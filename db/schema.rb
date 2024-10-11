@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_10_212947) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_11_212551) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -313,6 +313,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_10_212947) do
     t.string "ist_total"
     t.string "aprecierea_starii_tehnice"
     t.string "masuri_recomandate"
+    t.string "suma_c1"
+    t.string "suma_f1"
+    t.string "suma_ist"
     t.index ["bridge_id"], name: "index_flaws_on_bridge_id"
   end
 

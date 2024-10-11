@@ -3,6 +3,14 @@ class BridgesController < ApplicationController
 	before_action :authorize_admin!, only: [:upload_bridge, :send_upload_bridge]
 	before_action :authorize_bridge, only: [:update, :destroy, :print]
 
+  F1 = [
+    [0, 7, 8, 0, 8, 9, 0, 9, 10],  # Row 1
+    [0, 6, 7, 0, 7, 8, 0, 8, 9],   # Row 2
+    [0, 4, 5, 0, 5, 6, 0, 6, 7],   # Row 3
+    [0, 0, 1, 0, 2, 3, 0, 4, 5],   # Row 4
+    [0, 0, 0, 0, 1, 2, 0, 3, 4]    # Row 5
+  ]
+
 	def index
 		if params[:name].present?
 			@bridges = Bridge.where('name LIKE ? AND published = ?', "%#{params[:name]}%", true).order(created_at: :asc).page(params[:page]).per(8)
@@ -112,10 +120,28 @@ class BridgesController < ApplicationController
         val_indice_4 = 10 - max_c4
         val_indice_5 = 10 - max_c5
 
+        f1_depunct, f1 = calcul_f1 @bridge
+        f2_depunct, f2 = calcul_f2 @bridge
+        f3_depunct, f3 = calcul_f3 @bridge
+        f4 = calcul_f4 @bridge
+        f5 = calcul_f5 @bridge
+        suma_c = suma_c @bridge
+        suma_f = suma_f @bridge
+        suma_ist = suma_ist @bridge
+        aprecierea_starii_tehnice, masuri_recomandate = calcul_masuri @bridge
+
         @bridge.flaw.update(nr_defecte_c1: suma_c1, nr_defecte_c2: suma_c2, nr_defecte_c3: suma_c3, nr_defecte_c4: suma_c4, nr_defecte_c5: suma_c5)
         @bridge.flaw.update(depunct_max_di_c1: max_c1, depunct_max_di_c2: max_c2, depunct_max_di_c3: max_c3, depunct_max_di_c4: max_c4, depunct_max_di_c5: max_c5)
         @bridge.flaw.update(val_indice_c1: val_indice_1, val_indice_c2: val_indice_2, val_indice_c3: val_indice_3, val_indice_c4: val_indice_4, val_indice_c5: val_indice_5)
         @bridge.flaw.update(indice_total_calitate: val_indice_1 + val_indice_2 + val_indice_3 + val_indice_4 + val_indice_5)
+        @bridge.flaw.update(f1_depunct: f1_depunct, f1: f1)
+        @bridge.flaw.update(f2_depunct: f2_depunct, f2: f2)
+        @bridge.flaw.update(f3_depunct: f3_depunct, f3: f3)
+        @bridge.flaw.update(f4: f4)
+        @bridge.flaw.update(f5: f5)
+        @bridge.flaw.update(ist_c: suma_c, ist_f: suma_f)
+        @bridge.flaw.update(ist_total: suma_ist)
+        @bridge.flaw.update(aprecierea_starii_tehnice: aprecierea_starii_tehnice, masuri_recomandate: masuri_recomandate)
         
 				ActivityLog.log_activity(current_user, ActivityLog::ActionTypes::UPDATED_BRIDGE, @bridge, name)
 				redirect_to edit_bridge_path(@bridge), notice: 'Bridge was successfully updated.'
@@ -150,10 +176,29 @@ class BridgesController < ApplicationController
       val_indice_4 = 10 - max_c4
       val_indice_5 = 10 - max_c5
 
+      f1_depunct, f1 = calcul_f1 @bridge
+      f2_depunct, f2 = calcul_f2 @bridge
+      f3_depunct, f3 = calcul_f3 @bridge
+      f4 = calcul_f4 @bridge
+      f5 = calcul_f5 @bridge
+      suma_c = suma_c @bridge
+      suma_f = suma_f @bridge
+      suma_ist = suma_ist @bridge
+      aprecierea_starii_tehnice, masuri_recomandate = calcul_masuri @bridge
+
       @bridge.flaw.update(nr_defecte_c1: suma_c1, nr_defecte_c2: suma_c2, nr_defecte_c3: suma_c3, nr_defecte_c4: suma_c4, nr_defecte_c5: suma_c5)
       @bridge.flaw.update(depunct_max_di_c1: max_c1, depunct_max_di_c2: max_c2, depunct_max_di_c3: max_c3, depunct_max_di_c4: max_c4, depunct_max_di_c5: max_c5)
       @bridge.flaw.update(val_indice_c1: val_indice_1, val_indice_c2: val_indice_2, val_indice_c3: val_indice_3, val_indice_c4: val_indice_4, val_indice_c5: val_indice_5)
       @bridge.flaw.update(indice_total_calitate: val_indice_1 + val_indice_2 + val_indice_3 + val_indice_4 + val_indice_5)
+      @bridge.flaw.update(f1_depunct: f1_depunct, f1: f1)
+      @bridge.flaw.update(f2_depunct: f2_depunct, f2: f2)
+      @bridge.flaw.update(f3_depunct: f3_depunct, f3: f3)
+      @bridge.flaw.update(f4: f4)
+      @bridge.flaw.update(f5: f5)
+      @bridge.flaw.update(ist_c: suma_c, ist_f: suma_f)
+      @bridge.flaw.update(ist_total: suma_ist)
+      @bridge.flaw.update(aprecierea_starii_tehnice: aprecierea_starii_tehnice, masuri_recomandate: masuri_recomandate)
+
 			ActivityLog.log_activity(current_user, ActivityLog::ActionTypes::CREATED_BRIDGE, @bridge, name)
 			redirect_to bridge_path(@bridge), notice: 'Bridge was successfully created.'
 		else
@@ -179,6 +224,518 @@ class BridgesController < ApplicationController
   end
 
 	private
+
+  def calcul_masuri bridge
+    flaw = bridge.flaw
+    clasa = bridge.clasa
+    if clasa == "I"
+      aprecierea_starii_tehnice = "Stare foarte buna"
+      masuri_recomandate = "- măsuri de îmbunătățire a caracterisitcilor estetice; \n - lucrări de întreținere"
+    end
+    if clasa == "II"
+      aprecierea_starii_tehnice = "Stare buna"
+      masuri_recomandate = "- lucrări de întreínere;\n- reparații"
+    end
+    if clasa == "III"
+      aprecierea_starii_tehnice = "Stare satisfăcătoare"
+      masuri_recomandate = "- reparații;\r\n- reabilitări;\r\n- consolidări"
+    end
+    if clasa == "IV"
+      aprecierea_starii_tehnice = "Stare nesatisfăcătoare"
+      masuri_recomandate = "- reabilitare;\n- înlocuirea unor elemente"
+    end
+    if clasa == "V"
+      aprecierea_starii_tehnice = "Stare tehnică nesigură"
+      masuri_recomandate = "- înlocuirea sau consolidarea structurii de rezistență afectată de degradare"
+    end
+    [aprecierea_starii_tehnice, masuri_recomandate]
+  end
+
+  def suma_ist bridge
+    flaw = bridge.flaw
+    suma = flaw.ist_c.to_i + flaw.ist_f.to_i
+    suma
+  end
+
+  def suma_c bridge
+    flaw = bridge.flaw
+    suma = flaw.val_indice_c1.to_i + flaw.val_indice_c2.to_i + flaw.val_indice_c3.to_i + flaw.val_indice_c4.to_i + flaw.val_indice_c5.to_i
+    suma
+  end
+
+  def suma_f bridge
+    flaw = bridge.flaw
+    suma = flaw.f1.to_i + flaw.f2.to_i + flaw.f3.to_i + flaw.f4.to_i + flaw.f5.to_i
+    suma
+  end
+
+  def calcul_f5 bridge
+    flaw = bridge.flaw
+    f5_depunct = flaw.f5_depunct
+    10-f5_depunct.to_i
+  end
+
+  def calcul_f4 bridge
+    flaw = bridge.flaw
+    f4_depunct = flaw.f4_depunct
+    10-f4_depunct.to_i
+  end
+
+  def calcul_f3 bridge
+    flaw = bridge.flaw
+    tipul_suprastructurii = flaw.tipul_suprastructurii
+    durata_exploatare = flaw.durata_exploatare
+    if tipul_suprastructurii == "Grinzi nituite"
+      if durata_exploatare == "0-5"
+        f3_depunct = 0
+        f3 = 10
+      end
+      if durata_exploatare == "6-15"
+        f3_depunct = 2
+        f3 = 8
+      end
+      if durata_exploatare == "16-25"
+        f3_depunct = 5
+        f3 = 5
+      end
+      if durata_exploatare == "26-35"
+        f3_depunct = 6
+        f3 = 4
+      end
+      if durata_exploatare == "36-45"
+        f3_depunct = 7
+        f3 = 3
+      end
+      if durata_exploatare == ">45"
+        f3_depunct = 8
+        f3 = 2
+      end
+    end
+    if tipul_suprastructurii == "Sudate"
+      if durata_exploatare == "0-5"
+        f3_depunct = 0
+        f3 = 10
+      end
+      if durata_exploatare == "6-15"
+        f3_depunct = 5
+        f3 = 5
+      end
+      if durata_exploatare == "16-25"
+        f3_depunct = 6
+        f3 = 4
+      end
+      if durata_exploatare == "26-35"
+        f3_depunct = 7
+        f3 = 3
+      end
+      if durata_exploatare == "36-45"
+        f3_depunct = 8
+        f3 = 2
+      end
+      if durata_exploatare == ">45"
+        f3_depunct = 9
+        f3 = 1
+      end
+    end
+    if tipul_suprastructurii == "Grinzi Matarov"
+      if durata_exploatare == "0-5"
+        f3_depunct = 0
+        f3 = 10
+      end
+      if durata_exploatare == "6-15"
+        f3_depunct = 2
+        f3 = 8
+      end
+      if durata_exploatare == "16-25"
+        f3_depunct = 4
+        f3 = 6
+      end
+      if durata_exploatare == "26-35"
+        f3_depunct = 7
+        f3 = 3
+      end
+      if durata_exploatare == "36-45"
+        f3_depunct = 8
+        f3 = 2
+      end
+      if durata_exploatare == ">45"
+        f3_depunct = 9
+        f3 = 1
+      end
+    end
+    if tipul_suprastructurii == "Grinzi Gerber"
+      if durata_exploatare == "0-5"
+        f3_depunct = 2
+        f3 = 8
+      end
+      if durata_exploatare == "6-15"
+        f3_depunct = 4
+        f3 = 6
+      end
+      if durata_exploatare == "16-25"
+        f3_depunct = 6
+        f3 = 4
+      end
+      if durata_exploatare == "26-35"
+        f3_depunct = 7
+        f3 = 3
+      end
+      if durata_exploatare == "36-45"
+        f3_depunct = 8
+        f3 = 2
+      end
+      if durata_exploatare == ">45"
+        f3_depunct = 9
+        f3 = 1
+      end
+    end
+    if tipul_suprastructurii == "Fasii cu goluri *"
+      if durata_exploatare == "0-5"
+        f3_depunct = 3
+        f3 = 7
+      end
+      if durata_exploatare == "6-15"
+        f3_depunct = 7
+        f3 = 3
+      end
+      if durata_exploatare == "16-25"
+        f3_depunct = 8
+        f3 = 2
+      end
+      if durata_exploatare == "26-35"
+        f3_depunct = 9
+        f3 = 1
+      end
+      if durata_exploatare == "36-45"
+        f3_depunct = 10
+        f3 = 0
+      end
+      if durata_exploatare == ">45"
+        f3_depunct = 10
+        f3 = 0
+      end
+    end
+    if tipul_suprastructurii == "Fasii cu goluri cu suprabetonare"
+      if durata_exploatare == "0-5"
+        f3_depunct = 1
+        f3 = 9
+      end
+      if durata_exploatare == "6-15"
+        f3_depunct = 5
+        f3 = 5
+      end
+      if durata_exploatare == "16-25"
+        f3_depunct = 6
+        f3 = 4
+      end
+      if durata_exploatare == "26-35"
+        f3_depunct = 7
+        f3 = 3
+      end
+      if durata_exploatare == "36-45"
+        f3_depunct = 8
+        f3 = 2
+      end
+      if durata_exploatare == ">45"
+        f3_depunct = 8
+        f3 = 2
+      end
+    end
+    if tipul_suprastructurii == "Grinzi tronsonate (tronsoane mici)"
+      if durata_exploatare == "0-5"
+        f3_depunct = 2
+        f3 = 8
+      end
+      if durata_exploatare == "6-15"
+        f3_depunct = 4
+        f3 = 6
+      end
+      if durata_exploatare == "16-25"
+        f3_depunct = 7
+        f3 = 3
+      end
+      if durata_exploatare == "26-35"
+        f3_depunct = 8
+        f3 = 2
+      end
+      if durata_exploatare == "36-45"
+        f3_depunct = 9
+        f3 = 1
+      end
+      if durata_exploatare == ">45"
+        f3_depunct = 10
+        f3 = 0
+      end
+    end
+    if tipul_suprastructurii == "Grinzi pref. monobloc sigrinzi monolit"
+      if durata_exploatare == "0-5"
+        f3_depunct = 0
+        f3 = 10
+      end
+      if durata_exploatare == "6-15"
+        f3_depunct = 2
+        f3 = 8
+      end
+      if durata_exploatare == "16-25"
+        f3_depunct = 5
+        f3 = 5
+      end
+      if durata_exploatare == "26-35"
+        f3_depunct = 7
+        f3 = 3
+      end
+      if durata_exploatare == "36-45"
+        f3_depunct = 8
+        f3 = 2
+      end
+      if durata_exploatare == ">45"
+        f3_depunct = 9
+        f3 = 1
+      end
+    end
+    if tipul_suprastructurii == "Lemn"
+      if durata_exploatare == "0-5"
+        f3_depunct = 5
+        f3 = 5
+      end
+      if durata_exploatare == "6-15"
+        f3_depunct = 7
+        f3 = 3
+      end
+      if durata_exploatare == "16-25"
+        f3_depunct = 9
+        f3 = 1
+      end
+      if durata_exploatare == "26-35"
+        f3_depunct = 10
+        f3 = 0
+      end
+      if durata_exploatare == "36-45"
+        f3_depunct = 10
+        f3 = 0
+      end
+      if durata_exploatare == ">45"
+        f3_depunct = 10
+        f3 = 0
+      end
+    end
+    [f3_depunct, f3]
+  end
+
+  def calcul_f2 bridge
+    flaw = bridge.flaw
+    clasa_incarcare = flaw.clasa_incarcare
+    clasa = bridge.clasa
+    if clasa_incarcare == "LM1" || clasa_incarcare == "E"
+      f2_depunct = 0
+      f2 = 10
+    end
+    if clasa_incarcare == "I"
+      if clasa == "I"
+        f2_depunct = 10
+        f2 = 0
+      end
+      if clasa == "II"
+        f2_depunct = 9
+        f2 = 1
+      end
+      if clasa == "III"
+        f2_depunct = 6
+        f2 = 4
+      end
+      if clasa == "IV"
+        f2_depunct = 3
+        f2 = 7
+      end
+      if clasa == "V"
+        f2_depunct = 0
+        f2 = 10
+      end
+    end
+    if clasa_incarcare == "II"
+      if clasa == "I"
+        f2_depunct = 10
+        f2 = 0
+      end
+      if clasa == "II"
+        f2_depunct = 10
+        f2 = 0
+      end
+      if clasa == "III"
+        f2_depunct = 10
+        f2 = 0
+      end
+      if clasa == "IV"
+        f2_depunct = 8
+        f2 = 2
+      end
+      if clasa == "V"
+        f2_depunct = 3
+        f2 = 7
+      end
+    end
+    [f2_depunct, f2]
+  end
+
+  def calcul_f1 bridge
+    flaw = bridge.flaw
+    corespunde_cu_ordinul = flaw.corespunde_ordinul
+    clasa = bridge.clasa
+    lungime = bridge.lungime
+    if lungime.to_i <= 25
+      if corespunde_cu_ordinul == "DA fara spatiu de siguranta"
+        if clasa == "I"
+          f1_depunct = 7
+          f1 = 3
+        end
+        if clasa == "II"
+          f1_depunct = 6
+          f1 = 4
+        end
+        if clasa == "III"
+          f1_depunct = 4
+          f1 = 6
+        end
+        if clasa == "IV"
+          f1_depunct = 0
+          f1 = 10
+        end
+        if clasa == "V"
+          f1_depunct = 0
+          f1 = 10
+        end
+      end
+      if corespunde_cu_ordinul == "DA"
+        f1_depunct = 0
+        f1 = 10
+      end
+      if corespunde_cu_ordinul == "NU"
+        if clasa == "I"
+          f1_depunct = 8
+          f1 = 2
+        end
+        if clasa == "II"
+          f1_depunct = 7
+          f1 = 3
+        end
+        if clasa == "III"
+          f1_depunct = 5
+          f1 = 5
+        end
+        if clasa == "IV"
+          f1_depunct = 1
+          f1 = 9
+        end
+        if clasa == "V"
+          f1_depunct = 0
+          f1 = 10
+        end
+      end
+    end
+
+    if lungime.to_i >= 26 && lungime.to_i <= 100
+      if corespunde_cu_ordinul == "DA fara spatiu de siguranta"
+        if clasa == "I"
+          f1_depunct = 8
+          f1 = 2
+        end
+        if clasa == "II"
+          f1_depunct = 7
+          f1 = 3
+        end
+        if clasa == "III"
+          f1_depunct = 5
+          f1 = 5
+        end
+        if clasa == "IV"
+          f1_depunct = 2
+          f1 = 8
+        end
+        if clasa == "V"
+          f1_depunct = 1
+          f1 = 9
+        end
+      end
+      if corespunde_cu_ordinul == "DA"
+        f1_depunct = 0
+        f1 = 10
+      end
+      if corespunde_cu_ordinul == "NU"
+        if clasa == "I"
+          f1_depunct = 9
+          f1 = 1
+        end
+        if clasa == "II"
+          f1_depunct = 8
+          f1 = 2
+        end
+        if clasa == "III"
+          f1_depunct = 6
+          f1 = 4
+        end
+        if clasa == "IV"
+          f1_depunct = 3
+          f1 = 7
+        end
+        if clasa == "V"
+          f1_depunct = 2
+          f1 = 8
+        end
+      end
+    end
+
+    if lungime.to_i >= 101
+      if corespunde_cu_ordinul == "DA fara spatiu de siguranta"
+        if clasa == "I"
+          f1_depunct = 9
+          f1 = 1
+        end
+        if clasa == "II"
+          f1_depunct = 8
+          f1 = 2
+        end
+        if clasa == "III"
+          f1_depunct = 6
+          f1 = 4
+        end
+        if clasa == "IV"
+          f1_depunct = 4
+          f1 = 6
+        end
+        if clasa == "V"
+          f1_depunct = 3
+          f1 = 7
+        end
+      end
+      if corespunde_cu_ordinul == "DA"
+        f1_depunct = 0
+        f1 = 10
+      end
+      if corespunde_cu_ordinul == "NU"
+        if clasa == "I"
+          f1_depunct = 10
+          f1 = 0
+        end
+        if clasa == "II"
+          f1_depunct = 9
+          f1 = 1
+        end
+        if clasa == "III"
+          f1_depunct = 7
+          f1 = 3
+        end
+        if clasa == "IV"
+          f1_depunct = 5
+          f1 = 5
+        end
+        if clasa == "V"
+          f1_depunct = 4
+          f1 = 6
+        end
+      end
+    end
+    [f1_depunct, f1]
+  end
 
 	def calculate_sum_c1 bridge
 		flaw = bridge.flaw
@@ -526,12 +1083,12 @@ class BridgesController < ApplicationController
 		:indice_total_calitate,
     :aprecierea_starii_tehnice,
     :masuri_recomandate,
-     :corespunde_ordinul, 
-:f1_depunct, 
- :f1, 
- :clasa_incarcare, 
- :f2, 
- :f2_depunct, 
+    :corespunde_ordinul, 
+    :f1_depunct, 
+    :f1, 
+    :clasa_incarcare, 
+    :f2, 
+    :f2_depunct, 
      :tipul_suprastructurii, 
      :durata_exploatare, 
      :f3_depunct, 
