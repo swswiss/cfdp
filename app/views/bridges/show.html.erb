@@ -59,17 +59,37 @@
 
 </div>
 
-  <div id="tab3-content" class="tab-pane"><br><br>
-  <%= line_chart @hash_data, 
-  height: "400px", 
-  width: "100%", 
-  options: {
-    title: {
-      text: "Number of Bridges per created time",
-      left: 'center'
-    },
-  }
-%>
+  <div id="tab3-content" class="tab-pane hidden" style="height: 39rem; overflow-y: auto;"><br><br>
+    <%= line_chart @flaw_instance_ist_total, 
+    height: "400px", 
+    width: "100%", 
+    options: {
+      title: {
+        text: "Bridges per IST Total",
+        left: 'center'
+      },
+    }
+  %>
+  <%= line_chart @flaw_instance_ist_c, 
+    height: "400px", 
+    width: "100%", 
+    options: {
+      title: {
+        text: "Bridges per IST C",
+        left: 'center'
+      },
+    }
+  %>
+  <%= line_chart @flaw_instance_ist_f, 
+    height: "400px", 
+    width: "100%", 
+    options: {
+      title: {
+        text: "Bridges per IST F",
+        left: 'center'
+      },
+    }
+  %>
 
   </div>
 
