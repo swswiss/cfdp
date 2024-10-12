@@ -1,5 +1,7 @@
 class InstanceBridge < ApplicationRecord
   belongs_to :bridge
+  has_one :flaw_instance, dependent: :destroy
+  accepts_nested_attributes_for :flaw_instance
 
   before_create :set_instance_bridge_name
 

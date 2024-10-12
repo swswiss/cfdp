@@ -1,4 +1,9 @@
-<center><div id="tab1-content" class="tab-pane" style="height: 39rem; width: 65rem; overflow-y: auto;">
+<center>
+<div class="text-2xl sm:text-3xl md:text-3xl tracking-wide max-w-full overflow-hidden text-ellipsis break-words">
+        <%= @bridge.name %>
+      </div>
+      <br>
+<div id="tab1-content" class="tab-pane" style="height: 39rem; width: 65rem; overflow-y: auto;">
 <%= form_with model: @bridge do |f| %>
   <button type="submit"
 	        class="sticky-button w-24 focus:outline-none border border-transparent py-1.5 px-3 rounded-md shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-sm font-medium"
