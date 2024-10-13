@@ -196,7 +196,6 @@ class BridgesController < ApplicationController
 
 	def create
 		@bridge = Bridge.new(bridge_params.merge(user: current_user))
-
 		if @bridge.save
 			name = @bridge.name
       suma_c1 = calculate_sum_c1 @bridge
@@ -1244,6 +1243,8 @@ class BridgesController < ApplicationController
   def bridge_params
 	params.require(:bridge).permit(
 	  :name, 
+    :latitude,
+    :longitude,
 	  :slug,
 	  :tip_lucrare_arta,
 	  :obstacol_traversat,

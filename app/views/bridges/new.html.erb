@@ -1,8 +1,12 @@
 <center><div id="tab1-content" class="tab-pane" style="height: 39rem; width: 65rem; overflow-y: auto;">
 <%= form_with model: @bridge do |f| %>
+
+  <%= f.hidden_field :latitude, id: 'bridge_latitude' %>
+  <%= f.hidden_field :longitude, id: 'bridge_longitude' %>
   <button type="submit"
 	        class="sticky-button w-24 focus:outline-none border border-transparent py-1.5 px-3 rounded-md shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-sm font-medium"
         >Complete</button>
+
   <table class="tg"><thead>
     <tr>
       <th class="tg-ir4y" colspan="8">I. Date de identificare a lucrării</th>
@@ -3440,9 +3444,48 @@
 <%end%>
 <div>
 
+</center><br><center>
+
+
+
+</center><center>
+<!-- Button to trigger the tooltip or modal -->
+<button id="mapButton">Select Location</button>
+
+<!-- Hidden div for the tooltip map -->
+<div id="mapTooltip" style="display: none;">
+  <button id="closeMapTooltip">Close</button>
+  <button id="resetMapTooltip">Reset</button>
+  <div id="map" style="height: 170px; width: 800px;"></div>
+  <div id="coordinates">
+    <p>Selected Latitude: <span id="lat"></span></p>
+    <p>Selected Longitude: <span id="lng"></span></p>
+  </div>
+</div>
 </center>
 
 <style type="text/css">
+#mapTooltip {
+  position: relative;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: white;
+  width: 820px;
+  margin-top: 10px;
+  z-index: 1000; /* Add z-index to the tooltip */
+}
+
+#closeMapTooltip, #resetMapTooltip {
+  background: #f44336; /* Red color */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 3px;
+  position: absolute; /* Position absolute to place them correctly */
+  z-index: 1001; /* Ensure buttons are above the map */
+}
+
 .sticky-button {
     position: sticky; /* Makes the button sticky */
     top: 0; /* Stick to the top of the parent container */
@@ -3460,3 +3503,57 @@
 .tg .tg-va2b{background-color:#FFF;font-size:12px;font-weight:bold;text-align:center;vertical-align:top}
 .tg .tg-ctmf{background-color:#FFF;font-size:12px;text-align:right;vertical-align:top}
 </style>
+
+<script>
+// Initialize the map with a default location (example coordinates)
+var defaultLat = 51.505;
+var defaultLng = -0.09;
+var map = L.map('map').setView([defaultLat, defaultLng], 13);
+
+// Add OpenStreetMap tiles to the map
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+// Function to show the map in a "tooltip"
+document.getElementById('mapButton').addEventListener('click', function() {
+    var mapTooltip = document.getElementById('mapTooltip');
+    mapTooltip.style.display = 'block';  // Show the map div
+    map.invalidateSize();  // Recalculate map size after it's shown
+});
+
+// Function to close the tooltip when clicking the "close" button
+document.getElementById('closeMapTooltip').addEventListener('click', function() {
+    var mapTooltip = document.getElementById('mapTooltip');
+    mapTooltip.style.display = 'none';  // Hide the map div
+});
+
+// Handle map click event to get coordinates
+map.on('click', function(e) {
+    var lat = e.latlng.lat.toFixed(6);
+    var lng = e.latlng.lng.toFixed(6);
+
+    // Display the selected coordinates
+    document.getElementById('lat').innerText = lat;
+    document.getElementById('lng').innerText = lng;
+
+    // Optionally, update hidden input fields to store the selected coordinates
+    document.getElementById('bridge_latitude').value = lat;
+    document.getElementById('bridge_longitude').value = lng;
+});
+
+// Reset button to clear coordinates and reset the map
+document.getElementById('resetMapTooltip').addEventListener('click', function() {
+    // Reset the map view to the default location
+    map.setView([defaultLat, defaultLng], 13);
+
+    // Clear the displayed coordinates
+    document.getElementById('lat').innerText = '';
+    document.getElementById('lng').innerText = '';
+
+    // Optionally, clear hidden input fields if you are storing coordinates in them
+    document.getElementById('bridge_latitude').value = '';
+    document.getElementById('bridge_longitude').value = '';
+});
+
+</script>
