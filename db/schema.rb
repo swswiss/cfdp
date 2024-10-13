@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_12_115426) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_13_171913) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -92,6 +92,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_12_115426) do
     t.string "latime_trotuar"
     t.string "numar_grinzi"
     t.string "numar_antretoaze"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["slug"], name: "index_bridges_on_slug", unique: true
     t.index ["user_id"], name: "index_bridges_on_user_id"
   end
