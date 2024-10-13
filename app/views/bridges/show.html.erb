@@ -59,7 +59,11 @@
     <br>
     <br>
     <center>
+    <%if @bridge.latitude.blank? || @bridge.longitude.blank?%>
+    <p class="mt-1 max-w-3xl text-sm leading-6 text-gray-500">No location set</p>
+    <%else%>
     <div id="map" style="height: 400px; width: 900px"></div>
+    <%end%>
     </center>
 
   </div>
@@ -108,8 +112,9 @@
 
   <div id="tab2-content" class="tab-pane hidden">
 
-
+<%if @bridge.instance_bridges.any?%>
 <div class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 shadow-md m-5">
+  
   <table class="w-full border-collapse bg-white text-left text-sm text-gray-500">
     <thead class="bg-gray-50">
       <tr>
@@ -180,7 +185,12 @@
       <%end%>
     </tbody>
   </table>
+
 </div>
+<%else%>
+<center><br><br>
+  <p class="mt-1 max-w-3xl text-sm leading-6 text-gray-500">No instance bridges here</p></center>
+  <%end%>
 
 
   </div>

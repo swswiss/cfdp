@@ -12,11 +12,17 @@ class BridgesController < ApplicationController
   ]
 
 	def index
-		if params[:name].present?
-			@bridges = Bridge.where('name LIKE ? AND published = ?', "%#{params[:name]}%", true).order(created_at: :asc).page(params[:page]).per(8)
-		else
-			@bridges = Bridge.all.where(published: true).order(created_at: :asc).page(params[:page]).per(8)
-		end
+		if params[:name].present? && (params[:minimum_length].blank? || params[:maximum_length].blank?)
+			@bridges = Bridge.where('name ILIKE ? AND published = ?', "%#{params[:name]}%", true).order(created_at: :asc).page(params[:page]).per(8)
+    end
+
+    if params[:name].blank? && (params[:minimum_length].present? && params[:maximum_length].present?)
+      @bridges = Bridge.where('lungime >= ? AND lungime <= ? AND published = ?', params[:minimum_length], params[:maximum_length], true).order(created_at: :asc).page(params[:page]).per(8)
+    end
+
+    if params[:name].blank? && (params[:minimum_length].blank? && params[:maximum_length].blank?)
+      @bridges = Bridge.all.where(published: true).order(created_at: :asc).page(params[:page]).per(8)
+    end
 	end
 
 	def new

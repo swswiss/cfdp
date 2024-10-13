@@ -3515,6 +3515,9 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
+// Variable to store the marker
+var marker;
+
 // Function to show the map in a "tooltip"
 document.getElementById('mapButton').addEventListener('click', function() {
     var mapTooltip = document.getElementById('mapTooltip');
@@ -3528,10 +3531,18 @@ document.getElementById('closeMapTooltip').addEventListener('click', function() 
     mapTooltip.style.display = 'none';  // Hide the map div
 });
 
-// Handle map click event to get coordinates
+// Handle map click event to get coordinates and add a marker
 map.on('click', function(e) {
     var lat = e.latlng.lat.toFixed(6);
     var lng = e.latlng.lng.toFixed(6);
+
+    // If a marker exists, remove it
+    if (marker) {
+        map.removeLayer(marker);
+    }
+
+    // Add a new marker at the clicked location
+    marker = L.marker([lat, lng]).addTo(map);
 
     // Display the selected coordinates
     document.getElementById('lat').innerText = lat;
@@ -3542,7 +3553,7 @@ map.on('click', function(e) {
     document.getElementById('bridge_longitude').value = lng;
 });
 
-// Reset button to clear coordinates and reset the map
+// Reset button to clear coordinates, reset the map, and remove marker
 document.getElementById('resetMapTooltip').addEventListener('click', function() {
     // Reset the map view to the default location
     map.setView([defaultLat, defaultLng], 13);
@@ -3554,6 +3565,12 @@ document.getElementById('resetMapTooltip').addEventListener('click', function() 
     // Optionally, clear hidden input fields if you are storing coordinates in them
     document.getElementById('bridge_latitude').value = '';
     document.getElementById('bridge_longitude').value = '';
+
+    // If a marker exists, remove it
+    if (marker) {
+        map.removeLayer(marker);
+        marker = null;
+    }
 });
 
 </script>

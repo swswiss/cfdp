@@ -4,36 +4,23 @@
       <!-- Responsive Grid: 1 column on mobile, 2 columns on medium+ screens -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4"> 
         <!-- Left Side Field (on large screens) -->
+        
+        <div>
+          <%= label_tag :name, "Length" %>
+          <%= select_tag :minimum_length, options_for_select([['', '']] + (10..200).to_a, selected: params[:minimum_length]), class: "block w-full p-2 text-xs text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" %>
+        </div>
+        <div>
+        <%= label_tag :name, "Length" %>
+        <%= select_tag :maximum_length, options_for_select([['', '']] + (10..200).to_a, selected: params[:minimum_length]), class: "block w-full p-2 text-xs text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" %>
+
+        </div>
         <div>
           <%= label_tag :name, "Name" %>
           <%= text_field_tag :name, params[:name], class: "block w-full p-2 text-xs text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500", placeholder: "Search Bridges"%>
         </div>
-        <div>
-          <%= label_tag :email, "Name" %>
-          <%= text_field_tag :email, params[:email], class: "block w-full p-2 text-xs text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500", placeholder: "Search Bridges" %>
-        </div>
-        <div>
-          <%= label_tag :email, "Name" %>
-          <%= text_field_tag :email, params[:email], class: "block w-full p-2 text-xs text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500", placeholder: "Search Bridges" %>
-        </div>
-        <div>
-          <%= label_tag :email, "Name" %>
-          <%= text_field_tag :email, params[:email], class: "block w-full p-2 text-xs text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500", placeholder: "Search Bridges" %>
-        </div>
 
         <!-- Right Side Field (on large screens) -->
-        <div>
-          <%= label_tag :year_built, "Year Built" %>
-          <%= number_field_tag :year_built, params[:year_built], class: "block w-full p-2 text-xs text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" %>
-        </div>
-        <div>
-          <%= label_tag :year_built, "Year Built" %>
-          <%= number_field_tag :year_built, params[:year_built], class: "block w-full p-2 text-xs text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" %>
-        </div>
-        <div>
-          <%= label_tag :year_built, "Year Built" %>
-          <%= number_field_tag :year_built, params[:year_built], class: "block w-full p-2 text-xs text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"%>
-        </div>
+        
       </div>
 
       <div class="mt-4 flex justify-end">
