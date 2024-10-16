@@ -1,0 +1,36 @@
+<br><%if instance_bridges.any?%>
+    <%= line_chart @flaw_instance_ist_total, 
+    height: "400px", 
+    width: "1000px", 
+    options: {
+      title: {
+        text: "Bridges per IST Total",
+        left: 'center'
+      },
+    }
+  %>
+  <%= line_chart flaw_instance_ist_c, 
+    height: "400px", 
+    width: "1000px", 
+    options: {
+      title: {
+        text: "Bridges per IST C",
+        left: 'center'
+      },
+    }
+  %>
+  <%= line_chart flaw_instance_ist_f, 
+    height: "400px", 
+    width: "1000px", 
+    options: {
+      title: {
+        text: "Bridges per IST F",
+        left: 'center'
+      },
+    }
+  %>
+  <%else%>
+  <center>
+  <p class="mt-1 max-w-3xl text-sm leading-6 text-gray-500">No statistics yet</p>
+  </center>
+  <%end%>

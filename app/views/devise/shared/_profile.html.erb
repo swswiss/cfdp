@@ -1,6 +1,7 @@
-<br><center>
+<br>
+<center>
 
-  <table class="tg"><thead>
+  <table id="table1" class="tg"><thead>
     <tr>
       <th class="tg-ir4y" colspan="8">I. Date de identificare a lucrării</th>
     </tr></thead>
@@ -220,7 +221,7 @@
   </table>
 <br>
 
-  <table class="tg"><thead>
+  <table id="table2" class="tg"><thead>
   <tr>
     <th class="tg-9hzb" colspan="8">II. Notarea defectelor constatate în teren</th>
     <th class="tg-ktyi"></th>
@@ -1752,7 +1753,7 @@
 
 <br>
 
-<table class="tg"><thead>
+<table id="table3" class="tg"><thead>
   <tr>
     <th class="tg-9hzb" colspan="12">III. Notarea caracteristicilor de funcționalitate<br>Indicile de funcționalitate F1<br>Depunctarea se face în funcție de condițiile de desfășurare a traficului pe pod</th>
   </tr></thead>
@@ -1920,7 +1921,7 @@
   </tr>
 </tbody></table>
 <br>
-<table class="tg"><thead>
+<table id="table4" class="tg"><thead>
   <tr>
     <th class="tg-9hzb" colspan="6">III. Notarea caracteristicilor de funcționalitate<br>Indicile de funcționalitate F2<br>Depunctarea se face în funcție de clasa de încărcare a podului și clasa tehnică</th>
   </tr></thead>
@@ -2026,7 +2027,7 @@
   </tr>
 </tbody></table>
 <br>
-<table class="tg"><thead>
+<table id="table5" class="tg"><thead>
   <tr>
     <th class="tg-9hzb" colspan="10">III. Notarea caracteristicilor de funcționalitate<br>Indicile de funcționalitate F3<br>Depunctarea se face în funcție de durata de exploatare a podului, care a trecut de la construcția, sau de la ultimareparație capitală</th>
   </tr></thead>
@@ -2218,7 +2219,7 @@
 </tbody></table>
 
 <br>
-<table class="tg"><thead>
+<table id="table6" class="tg"><thead>
   <tr>
     <th class="tg-9hzb" colspan="3">III. Notarea caracteristicilor de funcționalitate<br>Indicile de funcționalitate F4<br>Depunctarea se face în funcție de modul de respectare la execuție a proiectului, neasigurarea condițiilor de efectuare a lucrărilor de întreținere și reparații, condiții de exploatare necorespunzătoare</th>
   </tr></thead>
@@ -2292,7 +2293,7 @@
   </tr>
 </tbody></table>
 <br>
-<table class="tg"><thead>
+<table id="table7" class="tg"><thead>
   <tr>
     <th class="tg-9hzb" colspan="3">III. Notarea caracteristicilor de funcționalitate<br>Indicile de funcționalitate F5<br>Depunctarea se face în funcție de calitatea lucrărilor de întreținere curentă</th>
   </tr></thead>
@@ -2342,7 +2343,7 @@
   </tr>
 </tbody></table>
 <br>
-<table class="tg"><thead>
+<table id="table8" class="tg"><thead>
   <tr>
     <th class="tg-9hzb" colspan="7">Calculul Indicelui de stare tehnică</th>
   </tr></thead>
@@ -2461,7 +2462,7 @@
     <td class="tg-hgcd" colspan="2">Puncte</td>
   </tr>
 </tbody></table>
-<br><table class="tg"><thead>
+<br><table id="table9" class="tg"><thead>
 <tr>
   <th class="tg-9hzb" colspan="5">Stabilirea clasei de stare tehnică a podului și a măsurilor recomandate</th>
 </tr></thead>
@@ -2578,6 +2579,15 @@
 
 </center>
 
+<script>
+function scrollToTable(tableId) {
+  const table = document.getElementById(tableId);
+  if (table) {
+    table.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+</script>
+
 <style type="text/css">
 .sticky-button {
     position: sticky; /* Makes the button sticky */
@@ -2595,4 +2605,5 @@
 .tg .tg-ir4y{font-size:12px;font-weight:bold;text-align:center;vertical-align:top}
 .tg .tg-va2b{background-color:#FFF;font-size:12px;font-weight:bold;text-align:center;vertical-align:top}
 .tg .tg-ctmf{background-color:#FFF;font-size:12px;text-align:right;vertical-align:top}
+
 </style>
