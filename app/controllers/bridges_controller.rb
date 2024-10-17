@@ -23,6 +23,14 @@ class BridgesController < ApplicationController
     if params[:name].blank? && (params[:minimum_length].blank? && params[:maximum_length].blank?)
       @bridges = Bridge.all.where(published: true).order(created_at: :asc).page(params[:page]).per(8)
     end
+
+    if params[:name].present? && (params[:minimum_length].present? && params[:maximum_length].present?)
+      @bridges = Bridge.where('name ILIKE ? AND lungime >= ? AND lungime <= ? AND published = ?', 
+                         "%#{params[:name]}%", params[:minimum_length], params[:maximum_length], true)
+                 .order(created_at: :asc)
+                 .page(params[:page])
+                 .per(8)
+    end
 	end
 
 	def new
@@ -1160,39 +1168,40 @@ class BridgesController < ApplicationController
     [f1_depunct, f1]
   end
 
-	def calculate_sum_c1 bridge
-		flaw = bridge.flaw
-		c1_columns = Flaw.column_names.select { |column| column&.start_with?('c1_') }
-		sum = c1_columns.map { |col| flaw.send(col).to_i }.sum
-		sum
-	end
+	def calculate_sum_c1(bridge)
+    flaw = bridge.flaw
+    c1_columns = Flaw.column_names.select { |column| column&.start_with?('c1_') }
+    count = c1_columns.count { |col| flaw.send(col).present? }
+    count
+  end
+  
 
   def calculate_sum_c2 bridge
 		flaw = bridge.flaw
 		c2_columns = Flaw.column_names.select { |column| column&.start_with?('c2_') }
-		sum = c2_columns.map { |col| flaw.send(col).to_i }.sum
-		sum
+		count = c2_columns.count { |col| flaw.send(col).present? }
+    count
 	end
 
   def calculate_sum_c3 bridge
 		flaw = bridge.flaw
 		c3_columns = Flaw.column_names.select { |column| column&.start_with?('c3_') }
-		sum = c3_columns.map { |col| flaw.send(col).to_i }.sum
-		sum
+		count = c3_columns.count { |col| flaw.send(col).present? }
+    count
 	end
 
   def calculate_sum_c4 bridge
 		flaw = bridge.flaw
 		c4_columns = Flaw.column_names.select { |column| column&.start_with?('c4_') }
-		sum = c4_columns.map { |col| flaw.send(col).to_i }.sum
-		sum
+		count = c4_columns.count { |col| flaw.send(col).present? }
+    count
 	end
 
   def calculate_sum_c5 bridge
 		flaw = bridge.flaw
 		c5_columns = Flaw.column_names.select { |column| column&.start_with?('c5_') }
-		sum = c5_columns.map { |col| flaw.send(col).to_i }.sum
-		sum
+		count = c5_columns.count { |col| flaw.send(col).present? }
+    count
 	end
 
   def max_c1_columns bridge
