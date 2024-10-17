@@ -1,52 +1,45 @@
 <br>
-<form class="max-w-md mx-auto">
-    <label for="default-search" class="mb-1 text-xs font-medium text-gray-900 sr-only dark:text-white">Search</label>
-    <div class="relative">
-        <div class="absolute inset-y-0 start-0 flex items-center ps-2 pointer-events-none">
-            <svg class="w-3 h-3 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-            </svg>
+<div data-controller="modal">
+  <form class="max-w-md mx-auto">
+      <label for="default-search" class="mb-1 text-xs font-medium text-gray-900 sr-only dark:text-white">Search</label>
+      <div class="relative">
+          <div class="absolute inset-y-0 start-0 flex items-center ps-2 pointer-events-none">
+              <svg class="w-3 h-3 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+              </svg>
+          </div>
+          <input type="search" data-action="click->modal#open" class="block w-full p-2 ps-8 text-xs text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Users Logs" required />
+      </div>
+  </form>
+
+
+  <div id="search-modal" class="fixed inset-0 flex items-center justify-center hidden bg-gray-800 bg-opacity-50 z-50" data-modal-target="modal">
+    <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-2xl"> <!-- Modal width adjusted for responsiveness -->
+      <%= form_with(url: activity_logs_path, method: :get, local: true) do %>
+        <!-- Responsive Grid: 1 column on mobile, 2 columns on medium+ screens -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4"> 
+          <!-- Left Side Field (on large screens) -->
+          <div>
+            <%= label_tag :name, "Name" %>
+            <%= text_field_tag :name, params[:name], class: "block w-full p-2 text-xs text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500", placeholder: "Search Bridges"%>
+          </div>
+          <div>
+            <%= label_tag :name_action, "Action" %>
+            <%= text_field_tag :name_action, params[:name_action], class: "block w-full p-2 text-xs text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" %>
+          </div>
         </div>
-        <input type="search" id="open-modal"class="block w-full p-2 ps-8 text-xs text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Users Logs" required />
+
+        <div class="mt-4 flex justify-end">
+          <button type="button" data-action="click->modal#close" class="mr-2 text-gray-500">Cancel</button>
+          <%= submit_tag "Search", class: "bg-blue-500 text-white rounded px-4 py-1" %>
+        </div>
+      <% end %>
     </div>
-</form>
-<%= render 'devise/shared/logs' %>
+  </div>
+</div>
 
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const openModalInput = document.getElementById("open-modal");
-        const closeModalButton = document.getElementById("close-modal");
-        const modal = document.getElementById("search-modal");
 
-        // Function to open the modal
-        function openModal() {
-            modal.classList.remove("hidden");
-            document.body.style.overflow = "hidden"; // Prevent background scrolling
-        }
-
-        // Function to close the modal
-        function closeModal() {
-            modal.classList.add("hidden");
-            document.body.style.overflow = ""; // Restore background scrolling
-        }
-
-        // Open the modal when the search input is focused or clicked
-        openModalInput.addEventListener("focus", openModal);
-        openModalInput.addEventListener("click", function(event) {
-            event.preventDefault(); // Prevent form submission
-            openModal();
-        });
-
-        // Close the modal when the close button is clicked
-        closeModalButton.addEventListener("click", closeModal);
-
-        // Optional: Reopen modal after a search based on query params (if coming back to page)
-        if (window.location.search.includes("search") || window.location.search.includes("year_built")) {
-            openModal();
-        }
-    });
-</script>
 <br>
 <div class="max-w-3xl mx-auto">
 <%@activity_logs.each do |activity_log|%>

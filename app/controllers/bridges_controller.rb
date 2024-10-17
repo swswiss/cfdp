@@ -35,7 +35,8 @@ class BridgesController < ApplicationController
 		pdf_html = render_to_string(
 			pdf: 'bridge_info',          
 			template: 'bridges/print',    
-			locals: { bridge: @bridge }  
+			locals: { bridge: @bridge },
+      encoding: 'UTF-8'  
 		)
 	
 		send_data(

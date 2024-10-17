@@ -10,7 +10,7 @@
 	        class="sticky-button w-24 focus:outline-none border border-transparent py-1.5 px-3 rounded-md shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-sm font-medium"
         >Complete</button>
         <%end%>
-  <table class="tg"><thead>
+  <table id="table1" class="tg"><thead>
     <tr>
       <th class="tg-ir4y" colspan="8">I. Date de identificare a lucrării</th>
     </tr></thead>
@@ -412,7 +412,7 @@
   </table>
 <br>
 <%= f.fields_for :flaw do |flaw_form| %>
-  <table class="tg"><thead>
+  <table id="table2" class="tg"><thead>
   <tr>
     <th class="tg-9hzb" colspan="8">II. Notarea defectelor constatate în teren</th>
     <th class="tg-ktyi"></th>
@@ -2541,7 +2541,7 @@
 
 <br>
 
-<table class="tg"><thead>
+<table id="table3" class="tg"><thead>
   <tr>
     <th class="tg-9hzb" colspan="12">III. Notarea caracteristicilor de funcționalitate<br>Indicile de funcționalitate F1<br>Depunctarea se face în funcție de condițiile de desfășurare a traficului pe pod</th>
   </tr></thead>
@@ -2721,7 +2721,7 @@
   </tr>
 </tbody></table>
 <br>
-<table class="tg"><thead>
+<table id="table4" class="tg"><thead>
   <tr>
     <th class="tg-9hzb" colspan="6">III. Notarea caracteristicilor de funcționalitate<br>Indicile de funcționalitate F2<br>Depunctarea se face în funcție de clasa de încărcare a podului și clasa tehnică</th>
   </tr></thead>
@@ -2839,7 +2839,7 @@
   </tr>
 </tbody></table>
 <br>
-<table class="tg"><thead>
+<table id="table5" class="tg"><thead>
   <tr>
     <th class="tg-9hzb" colspan="10">III. Notarea caracteristicilor de funcționalitate<br>Indicile de funcționalitate F3<br>Depunctarea se face în funcție de durata de exploatare a podului, care a trecut de la construcția, sau de la ultimareparație capitală</th>
   </tr></thead>
@@ -3056,7 +3056,7 @@
 </tbody></table>
 
 <br>
-<table class="tg"><thead>
+<table id="table6" class="tg"><thead>
   <tr>
     <th class="tg-9hzb" colspan="3">III. Notarea caracteristicilor de funcționalitate<br>Indicile de funcționalitate F4<br>Depunctarea se face în funcție de modul de respectare la execuție a proiectului, neasigurarea condițiilor de efectuare a lucrărilor de întreținere și reparații, condiții de exploatare necorespunzătoare</th>
   </tr></thead>
@@ -3138,7 +3138,7 @@
   </tr>
 </tbody></table>
 <br>
-<table class="tg"><thead>
+<table id="table7" class="tg"><thead>
   <tr>
     <th class="tg-9hzb" colspan="3">III. Notarea caracteristicilor de funcționalitate<br>Indicile de funcționalitate F5<br>Depunctarea se face în funcție de calitatea lucrărilor de întreținere curentă</th>
   </tr></thead>
@@ -3196,7 +3196,7 @@
   </tr>
 </tbody></table>
 <br>
-<table class="tg"><thead>
+<table id="table8" class="tg"><thead>
   <tr>
     <th class="tg-9hzb" colspan="7">Calculul Indicelui de stare tehnică</th>
   </tr></thead>
@@ -3324,7 +3324,7 @@
     <td class="tg-hgcd" colspan="2">Puncte</td>
   </tr>
 </tbody></table>
-<br><table class="tg"><thead>
+<br><table id="table9" class="tg"><thead>
 <tr>
   <th class="tg-9hzb" colspan="5">Stabilirea clasei de stare tehnică a podului și a măsurilor recomandate</th>
 </tr></thead>
@@ -3447,6 +3447,57 @@
 <%end%>
 <div>
 
+</center>
+
+<center>
+<br>
+  <div id="buttons-container" class="buttons-container" style="flex: 0 0 200px; margin-right: 20px;">
+  <button 
+    onclick="scrollToTable('table1')" 
+    class="rounded-md bg-indigo-600 px-3 py-2 text-xs md:text-xs font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mb-2">
+    Date de identificare
+  </button>
+  <button 
+    onclick="scrollToTable('table2')" 
+    class="rounded-md bg-indigo-600 px-3 py-2 text-xs md:text-xs font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ml-5">
+    C1-5
+  </button>
+  <button 
+    onclick="scrollToTable('table3')" 
+    class="rounded-md bg-indigo-600 px-3 py-2 text-xs md:text-xs font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ml-5">
+    F1
+  </button>
+  <button 
+    onclick="scrollToTable('table4')" 
+    class="rounded-md bg-indigo-600 px-3 py-2 text-xs md:text-xs font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ml-5">
+    F2
+  </button>
+  <button 
+    onclick="scrollToTable('table5')" 
+    class="rounded-md bg-indigo-600 px-3 py-2 text-xs md:text-xs font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ml-5">
+    F3
+  </button>
+  <button 
+    onclick="scrollToTable('table6')" 
+    class="rounded-md bg-indigo-600 px-3 py-2 text-xs md:text-xs font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ml-5">
+    F4
+  </button>
+  <button 
+    onclick="scrollToTable('table7')" 
+    class="rounded-md bg-indigo-600 px-3 py-2 text-xs md:text-xs font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ml-5">
+    F5
+  </button>
+  <button 
+    onclick="scrollToTable('table8')" 
+    class="rounded-md bg-indigo-600 px-3 py-2 text-xs md:text-xs font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ml-5">
+    IST
+  </button>
+  <button 
+    onclick="scrollToTable('table9')" 
+    class="rounded-md bg-indigo-600 px-3 py-2 text-xs md:text-xs font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600  ml-5">
+    Clasa
+  </button>
+</div>
 </center>
 
 <style type="text/css">

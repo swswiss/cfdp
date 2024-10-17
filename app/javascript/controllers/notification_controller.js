@@ -20,7 +20,7 @@ export default class extends Controller {
   }
 
   close() {
-    this.element. classList.remove('transform', 'ease-out', 'duration-300', 'translate-y-2', 'opacity-0', 'sm:translate-y-0', 'sm:translate-x-2', 'translate-y-0', 'sm:translate-x-2');
+    this.element.classList.remove('transform', 'ease-out', 'duration-300', 'translate-y-2', 'opacity-0', 'sm:translate-y-0', 'sm:translate-x-2', 'translate-y-0', 'sm:translate-x-2');
     this.element.classList.add('transition', 'ease-in', 'duration-100');
 
     setTimeout(() => {
