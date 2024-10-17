@@ -1,7 +1,7 @@
 class BridgesController < ApplicationController
   before_action :authenticate_user!
 	before_action :authorize_admin!, only: [:upload_bridge, :send_upload_bridge]
-	before_action :authorize_bridge, only: [:update, :destroy, :print]
+	before_action :authorize_bridge, only: [:update, :destroy, :print, :edit]
 
   F1 = [
     [0, 7, 8, 0, 8, 9, 0, 9, 10],  # Row 1

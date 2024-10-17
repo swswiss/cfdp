@@ -1,7 +1,7 @@
 class InstanceBridgesController < ApplicationController
   before_action :set_bridge
   before_action :set_instance_bridge, only: [:show, :edit, :update, :destroy]
-  before_action :authorize_bridge, only: [:new, :update, :destroy]
+  before_action :authorize_bridge, only: [:new, :update, :destroy, :edit]
 
   def index
     @instance_bridges = @bridge.instance_bridges
