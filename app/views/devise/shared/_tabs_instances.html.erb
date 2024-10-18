@@ -10,7 +10,7 @@
         <th scope="col" class="px-6 py-4 font-medium text-gray-900"></th>
       </tr>
     </thead>
-    <tbody class="divide-y divide-gray-100 border-t border-gray-100">
+    <tbody id="instance-bridges-tbody" class="divide-y divide-gray-100 border-t border-gray-100">
       <% instance_bridges.each do |instance_bridge| %>
         <tr id="instance-bridge-row-<%= instance_bridge.id %>" class="hover:bg-gray-50">
           <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
@@ -47,7 +47,7 @@
                   />
                 </svg>
               <%end%>
-              
+
               <%= link_to edit_bridge_instance_bridge_path(@bridge, instance_bridge), method: :get do %>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
