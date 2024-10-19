@@ -140,6 +140,10 @@ class BridgesController < ApplicationController
 
   def clone
     @instance_bridge = @bridge.instance_bridges.build
+
+    @instance_bridge.assign_attributes(
+      @bridge.attributes.except('id', 'created_at', 'updated_at', 'some_other_column', 'name', 'user_id', 'slug', 'published', 'latitude', 'longitude')
+    )
   
     if @instance_bridge.save
       respond_to do |format|
@@ -209,7 +213,7 @@ class BridgesController < ApplicationController
 
 	def show
 		@bridge = Bridge.friendly.find(params[:id])
-    @instance_bridges = @bridge.instance_bridges
+    @instance_bridges = @bridge.instance_bridges.order(created_at: :asc)
     @bridge_ist_c = [@bridge.created_at, @bridge.flaw.ist_c]
     @bridge_ist_f = [@bridge.created_at, @bridge.flaw.ist_f]
     @bridge_ist_total = [@bridge.created_at, @bridge.flaw.ist_total]
