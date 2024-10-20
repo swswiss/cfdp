@@ -214,15 +214,44 @@ class BridgesController < ApplicationController
 	def show
 		@bridge = Bridge.friendly.find(params[:id])
     @instance_bridges = @bridge.instance_bridges.order(created_at: :asc)
+    instance_bridges_names = [@bridge.name] + @instance_bridges.pluck(:name)
     @bridge_ist_c = [@bridge.created_at, @bridge.flaw.ist_c]
     @bridge_ist_f = [@bridge.created_at, @bridge.flaw.ist_f]
     @bridge_ist_total = [@bridge.created_at, @bridge.flaw.ist_total]
     @flaw_instance_ist_c = FlawInstance.where(instance_bridge: @instance_bridges.pluck(:id)).order(:created_at).pluck(:created_at, :ist_c).to_h
     @flaw_instance_ist_c[@bridge_ist_c[0]] = @bridge_ist_c[1] 
+    @flaw_instance_ist_c = @flaw_instance_ist_c.sort_by { |date, value| date }
     @flaw_instance_ist_f = FlawInstance.where(instance_bridge: @instance_bridges.pluck(:id)).order(:created_at).pluck(:created_at, :ist_f).to_h
     @flaw_instance_ist_f[@bridge_ist_f[0]] = @bridge_ist_f[1] 
+    @flaw_instance_ist_f = @flaw_instance_ist_f.sort_by { |date, value| date }
     @flaw_instance_ist_total = FlawInstance.where(instance_bridge: @instance_bridges.pluck(:id)).order(:created_at).pluck(:created_at, :ist_total).to_h
     @flaw_instance_ist_total[@bridge_ist_total[0]] = @bridge_ist_total[1] 
+    @flaw_instance_ist_total = @flaw_instance_ist_total.sort_by { |date, value| date }
+
+    @flaw_instance_ist_c_hash = {}
+    @flaw_instance_ist_f_hash = {}
+    @flaw_instance_ist_total_hash = {}
+
+    @flaw_instance_ist_c.each_with_index do |(key, value), index|
+      key = key.strftime("%Y-%m-%d")
+      key = key + " " + instance_bridges_names[index]
+      @flaw_instance_ist_c_hash[key] = value
+    end
+
+    @flaw_instance_ist_f_hash = {}
+    @flaw_instance_ist_f.each_with_index do |(key, value), index|
+      key = key.strftime("%Y-%m-%d")
+      key = key + " " + instance_bridges_names[index]
+      @flaw_instance_ist_f_hash[key] = value
+    end
+
+    @flaw_instance_ist_total_hash = {}
+    @flaw_instance_ist_total.each_with_index do |(key, value), index|
+      key = key.strftime("%Y-%m-%d")
+      key = key + " " + instance_bridges_names[index]
+      @flaw_instance_ist_total_hash[key] = value
+    end
+
 	end
 
 	def update

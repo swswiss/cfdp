@@ -1,5 +1,5 @@
 <br><%if instance_bridges.any?%>
-    <%= line_chart @flaw_instance_ist_total, 
+    <%= line_chart flaw_instance_ist_total_hash, 
     height: "400px", 
     width: "1000px", 
     options: {
@@ -9,7 +9,7 @@
       },
     }
   %>
-  <%= line_chart flaw_instance_ist_c, 
+  <%= line_chart flaw_instance_ist_c_hash, 
     height: "400px", 
     width: "1000px", 
     options: {
@@ -19,7 +19,7 @@
       },
     }
   %>
-  <%= line_chart flaw_instance_ist_f, 
+  <%= line_chart flaw_instance_ist_f_hash, 
     height: "400px", 
     width: "1000px", 
     options: {

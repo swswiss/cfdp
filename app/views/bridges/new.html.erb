@@ -125,7 +125,7 @@
       placeholder: "" %>
       </td>
     </tr>
-    <tr>
+    <tr id="simple_td">
       <td class="tg-p9ik" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">- oblicitate</span></td>
       <td class="tg-va2b" colspan="6">
       <%= f.text_field :oblicitate, 
@@ -173,12 +173,13 @@
       <td class="tg-va2b"><%= f.text_field :culee_fundatie_lemn, 
       class: "w-full px-4 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium",
       style: "height: 19px; width: 43px", 
-      placeholder: "" %></td>
+      placeholder: "",
+      id: "culee_fundatie_lemn_field" %></td>
     </tr>
-    <tr>
+    <tr id="simple_td">
       <td class="tg-z9od"></td>
       <td class="tg-p9ik"><span style="font-weight:normal;font-style:normal;color:#000">Elevații</span></td>
-      <td class="tg-va2b"><%= f.text_field :culee_elevatie_simplu, 
+      <td class="tg-va2b" ><%= f.text_field :culee_elevatie_simplu, 
       class: "w-full px-4 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium",
       style: "height: 19px; width: 43px", 
       placeholder: "" %></td>
@@ -3588,4 +3589,19 @@ document.getElementById('resetMapTooltip').addEventListener('click', function() 
     }
 });
 
+
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const culeeField = document.getElementById('culee_fundatie_lemn_field');
+    const simpleTd = document.getElementById('simple_td');
+
+    culeeField.addEventListener('input', function() {
+      if (this.value.trim() !== '') {
+        simpleTd.style.display = 'none';  // Hide the <td> when input is not empty
+      } else {
+        simpleTd.style.display = '';      // Show the <td> when input is cleared
+      }
+    });
+  });
 </script>

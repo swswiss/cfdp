@@ -114,7 +114,7 @@
        <%= render partial: 'devise/shared/tabs_instances', locals: { bridge: @bridge , instance_bridges: @instance_bridges} %>
   </div>
   <div data-tabs-target="content" class="tab-pane hidden">
-    <%= render partial: 'devise/shared/tabs_stats', locals: { instance_bridges: @instance_bridges, flaw_instance_ist_total: @flaw_instance_ist_total, flaw_instance_ist_c: @flaw_instance_ist_c, flaw_instance_ist_f: @flaw_instance_ist_f} %>
+    <%= render partial: 'devise/shared/tabs_stats', locals: { instance_bridges: @instance_bridges, flaw_instance_ist_total_hash: @flaw_instance_ist_total_hash, flaw_instance_ist_c_hash: @flaw_instance_ist_c_hash, flaw_instance_ist_f_hash: @flaw_instance_ist_f_hash} %>
   </div>
   <div data-tabs-target="content" class="tab-pane hidden" >
     <%= render partial: 'devise/shared/tabs_location', locals: { bridge: @bridge } %>
