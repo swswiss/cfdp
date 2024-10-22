@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_13_171913) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_22_220016) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -608,6 +608,21 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_13_171913) do
     t.index ["bridge_id"], name: "index_instance_bridges_on_bridge_id"
   end
 
+  create_table "integrations", force: :cascade do |t|
+    t.string "integration_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_integrations", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "integration_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["integration_id"], name: "index_user_integrations_on_integration_id"
+    t.index ["user_id"], name: "index_user_integrations_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -630,4 +645,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_13_171913) do
   add_foreign_key "flaw_instances", "instance_bridges"
   add_foreign_key "flaws", "bridges"
   add_foreign_key "instance_bridges", "bridges"
+  add_foreign_key "user_integrations", "integrations"
+  add_foreign_key "user_integrations", "users"
 end

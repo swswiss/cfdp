@@ -20,6 +20,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :user_integrations, only: [:index] do
+    collection do
+      put :update_integrations # Add this line for the new action
+    end
+  end
+
   root "home#index"
   resources :bridges, only: [:index, :new, :create, :show, :destroy, :edit, :update] do
     member do

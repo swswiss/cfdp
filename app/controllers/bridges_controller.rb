@@ -357,6 +357,8 @@ class BridgesController < ApplicationController
       @bridge.flaw.update(aprecierea_starii_tehnice: aprecierea_starii_tehnice, masuri_recomandate: masuri_recomandate)
 
 			ActivityLog.log_activity(current_user, ActivityLog::ActionTypes::CREATED_BRIDGE, @bridge, name)
+      binding.pry
+      UserMailer.with(user: current_user).create_bridge(@bridge).deliver_later if current_user.user_has_email_integration?
 			redirect_to bridge_path(@bridge), notice: 'Bridge was successfully created.'
 		else
 			redirect_to new_bridge_path, notice: @bridge.errors.full_messages.join(",")
