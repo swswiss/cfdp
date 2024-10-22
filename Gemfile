@@ -28,6 +28,7 @@ gem 'kaminari'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 gem 'roo'
+gem "rails-mermaid_erd"
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 

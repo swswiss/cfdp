@@ -1,0 +1,2554 @@
+<br>
+<center>
+
+  <table id="table1" class="tg"><thead>
+    <tr>
+      <th class="tg-ir4y" colspan="8">I. Date de identificare a lucrării</th>
+    </tr></thead>
+  <tbody>
+  <tr>
+      <td class="tg-p9ik" colspan="2"> <span style="font-weight:normal;font-style:normal;color:#000">Numele Podului</span></td>
+      <td class="tg-va2b" colspan="6">
+      <%= @bridge.name%>
+      </td>
+    </tr>
+    <tr>
+      <td class="tg-p9ik" colspan="2"> <span style="font-weight:normal;font-style:normal;color:#000">1. Tipul lucrării de artă (pod, pasaj, viaduct)</span></td>
+      <td class="tg-va2b" colspan="6">
+      <%= @bridge.tip_lucrare_arta %>
+
+      </td>
+    </tr>
+    <tr>
+      <td class="tg-p9ik" colspan="2"> <span style="font-weight:normal;font-style:normal;color:#000">2. Obstacolul traversat</span></td>
+      <td class="tg-va2b" colspan="6">
+      <%= @bridge.obstacol_traversat %>
+            </td>
+    </tr>
+    <tr>
+      <td class="tg-p9ik" colspan="2"> <span style="font-weight:normal;font-style:normal;color:#000">3. Localitatea cea mai apropiată</span></td>
+      <td class="tg-va2b" colspan="6">
+      <%= @bridge.localitatea %>
+      </td>
+    </tr>
+    <tr>
+      <td class="tg-p9ik" colspan="2" rowspan="2"> <span style="font-weight:normal;font-style:normal;color:#000">4. Categoria drumului pe care este amplasat (A, DN, DJ, DC)</span></td>
+      <td class="tg-va2b" colspan="2">Categoria</td>
+      <td class="tg-va2b" colspan="2">Nr dr. / Clasa Teh.</td>
+      <td class="tg-va2b" colspan="2">Poziția km</td>
+    </tr>
+    <tr>
+      <td class="tg-va2b" colspan="2">
+      <%= @bridge.categoria %>
+      </td>
+      <td class="tg-va2b">
+      <%= @bridge.numar_drum %>
+      </td>
+      <td class="tg-va2b"><%= @bridge.clasa %></td>
+      <td class="tg-p9ik" colspan="2">
+      <%= @bridge.pozitia_km %>
+      </td>
+    </tr>
+    <tr>
+      <td class="tg-p9ik" colspan="2"> <span style="font-weight:normal;font-style:normal;color:#000">5. Anul construcției, anii consolidării sau reabilitării</span></td>
+      <td class="tg-va2b" colspan="6">
+      <%= @bridge.an_constructie %>
+      </td>
+    </tr>
+    <tr>
+      <td class="tg-p9ik" colspan="2"> <span style="font-weight:normal;font-style:normal;color:#000">6. Tipul podului</span></td>
+      <td class="tg-p9ik" colspan="6"></td>
+    </tr>
+    <tr>
+      <td class="tg-p9ik" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">- după schema statică</span></td>
+      <td class="tg-va2b" colspan="6">
+      <%= @bridge.schema_statica%>
+      </td>
+    </tr>
+    <tr>
+      <td class="tg-p9ik" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">- după structura de rezistență</span></td>
+      <td class="tg-va2b" colspan="6">
+      <%= @bridge.structura_rezistenta%>
+      </td>
+    </tr>
+    <tr>
+      <td class="tg-p9ik" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">- după modul de execuție</span></td>
+      <td class="tg-va2b" colspan="6">
+      <%= @bridge.mod_executie%>
+      </td>
+    </tr>
+    <tr>
+      <td class="tg-p9ik" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">- oblicitate</span></td>
+      <td class="tg-va2b" colspan="6">
+      <%= @bridge.oblicitate%>
+      </td>
+    </tr>
+    <tr>
+      <td class="tg-p9ik" colspan="2"> <span style="font-weight:normal;font-style:normal;color:#000">7. Materialul din care este alcătuită</span></td>
+      <td class="tg-va2b">Beton simplu</td>
+      <td class="tg-va2b">Beton armat</td>
+      <td class="tg-va2b">Beton precomprimat</td>
+      <td class="tg-va2b">Metal</td>
+      <td class="tg-va2b">Mixt</td>
+      <td class="tg-va2b">Lemn</td>
+    </tr>
+    <tr>
+      <td class="tg-p9ik" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">INFRASTRUCTURA</span></td>
+      <td class="tg-p9ik" colspan="6"></td>
+    </tr>
+    <tr>
+      <td class="tg-p9ik"><span style="font-weight:normal;font-style:normal;color:#000">Culee</span>                                           </td>
+      <td class="tg-p9ik"><span style="font-weight:normal;font-style:normal;color:#000">Fundații</span></td>
+      <td class="tg-va2b"><%= @bridge.culee_fundatie_simplu%></td>
+      <td class="tg-va2b"><%= @bridge.culee_fundatie_armat%></td>
+      <td class="tg-va2b"><%= @bridge.culee_fundatie_precomprimat%></td>
+      <td class="tg-va2b"><%= @bridge.culee_fundatie_metal%></td>
+      <td class="tg-va2b"><%= @bridge.culee_fundatie_mixt%></td>
+      <td class="tg-va2b"><%= @bridge.culee_fundatie_lemn%></td>
+    </tr>
+    <tr>
+      <td class="tg-z9od"></td>
+      <td class="tg-p9ik"><span style="font-weight:normal;font-style:normal;color:#000">Elevații</span></td>
+      <td class="tg-va2b"><%= @bridge.culee_elevatie_simplu%></td>
+      <td class="tg-va2b"><%= @bridge.culee_elevatie_armat%></td>
+      <td class="tg-va2b"><%= @bridge.culee_elevatie_precomprimat%></td>
+      <td class="tg-va2b"><%= @bridge.culee_elevatie_metal%></td>
+      <td class="tg-va2b"><%= @bridge.culee_elevatie_mixt%></td>
+      <td class="tg-va2b"><%= @bridge.culee_elevatie_lemn%></td>
+    </tr>
+    <tr>
+      <td class="tg-p9ik"><span style="font-weight:normal;font-style:normal;color:#000">Pile</span>                                           </td>
+      <td class="tg-p9ik"><span style="font-weight:normal;font-style:normal;color:#000">Fundații</span></td>
+      <td class="tg-va2b"><%= @bridge.pile_fundatie_simplu%></td>
+      <td class="tg-va2b"><%= @bridge.pile_fundatie_armat%></td>
+      <td class="tg-va2b"><%= @bridge.pile_fundatie_precomprimat%></td>
+      <td class="tg-va2b"><%= @bridge.pile_fundatie_metal%></td>
+      <td class="tg-va2b"><%= @bridge.pile_fundatie_mixt%></td>
+      <td class="tg-va2b"><%= @bridge.pile_fundatie_lemn%></td>
+    </tr>
+    <tr>
+      <td class="tg-z9od"></td>
+      <td class="tg-p9ik"><span style="font-weight:normal;font-style:normal;color:#000">Elevații</span></td>
+      <td class="tg-va2b"><%= @bridge.pile_elevatie_simplu%></td>
+      <td class="tg-va2b"><%= @bridge.pile_elevatie_armat%></td>
+      <td class="tg-va2b"><%= @bridge.pile_elevatie_precomprimat%></td>
+      <td class="tg-va2b"><%= @bridge.pile_elevatie_metal%></td>
+      <td class="tg-va2b"><%= @bridge.pile_elevatie_mixt%></td>
+      <td class="tg-va2b"><%= @bridge.pile_elevatie_lemn%></td>
+    </tr>
+    <tr>
+      <td class="tg-p9ik" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">SUPRASTRUCTURA</span></td>
+      <td class="tg-p9ik" colspan="6"></td>
+    </tr>
+    <tr>
+      <td class="tg-ctmf" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">Structura de rezistență</span></td>
+      <td class="tg-va2b"><%= @bridge.structura_rezistenta_simplu%></td>
+      <td class="tg-va2b"><%= @bridge.structura_rezistenta_armat%></td>
+      <td class="tg-va2b"><%= @bridge.structura_rezistenta_precomprimat%></td>
+      <td class="tg-va2b"><%= @bridge.structura_rezistenta_metal%></td>
+      <td class="tg-va2b"><%= @bridge.structura_rezistenta_mixt%></td>
+      <td class="tg-va2b"><%= @bridge.structura_rezistenta_lemn%></td>
+    </tr>
+    <tr>
+      <td class="tg-p9ik" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">8. Lungimea podului (m)</span></td>
+      <td class="tg-va2b" colspan="6"><%= @bridge.lungime%></td>
+    </tr>
+    <tr>
+      <td class="tg-ctmf" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">- nunărul de deschideri</span></td>
+      <td class="tg-va2b" colspan="6"><%= @bridge.numar_deschideri%></td>
+    </tr>
+    <tr>
+      <td class="tg-ctmf" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">- lungimea fiecărei deschideri (m)</span></td>
+      <td class="tg-va2b" colspan="6"><%= @bridge.lungime_deschidere%></td>
+    </tr>
+    <tr>
+      <td class="tg-p9ik" colspan="2"> <span style="font-weight:normal;font-style:normal;color:#000">9. Lățimea podului - intre parapeți (m)</span></td>
+      <td class="tg-va2b" colspan="6"><%= @bridge.latime%></td>
+    </tr>
+    <tr>
+      <td class="tg-ctmf" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">- lățimea părții carosabile (m)</span></td>
+      <td class="tg-va2b" colspan="6"><%= @bridge.latime_carosabila%></td>
+    </tr>
+    <tr>
+      <td class="tg-ctmf" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">- lățimea trotuarelor (m)</span></td>
+      <td class="tg-va2b" colspan="6"><%= @bridge.latime_trotuar%></td>
+    </tr>
+    <tr>
+      <td class="tg-ctmf" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">- numărul de grinzi în scțiune transversală</span></td>
+      <td class="tg-va2b" colspan="6"><%= @bridge.numar_grinzi%></td>
+    </tr>
+    <tr>
+      <td class="tg-ctmf" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">- numărul de antretoaze</span></td>
+      <td class="tg-va2b" colspan="6"><%= @bridge.numar_antretoaze%></td>
+    </tr>
+    <tr>
+      <td class="tg-p9ik" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">10. Aparate de reazem(tip, materialul din care sunt construite, schema de amplasare)</span></td>
+      <td class="tg-va2b" colspan="6"><%= @bridge.aparate_reazem%></td>
+    </tr>
+    <tr>
+      <td class="tg-p9ik" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">11. Tip infrastructuri</span></td>
+      <td class="tg-va2b" colspan="6"><%= @bridge.tip_infrastructurii%></td>
+    </tr>
+    <tr>
+      <td class="tg-p9ik" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">12. Tip fundații</span></td>
+      <td class="tg-va2b" colspan="6"><%= @bridge.tip_fundatii%></td>
+    </tr>
+    <tr>
+      <td class="tg-p9ik" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">13. Tipul îmbrăcămintei pe pod</span></td>
+      <td class="tg-va2b" colspan="6"><%= @bridge.tip_imbracaminte%></td>
+    </tr>
+    <tr>
+      <td class="tg-p9ik" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">14. Rosturi tip____poziție___</span></td>
+      <td class="tg-va2b" colspan="6"><%= @bridge.rosturi_tip_pozitie%></td>
+    </tr>
+    <tr>
+      <td class="tg-p9ik" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">15. Parapeți pietonali</span></td>
+      <td class="tg-va2b" colspan="6"><%= @bridge.parapeti_pietonali%></td>
+    </tr>
+    <tr>
+      <td class="tg-p9ik" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">16. Parapeți de siguranță</span></td>
+      <td class="tg-va2b" colspan="6"><%= @bridge.parapeti_siguranta%></td>
+    </tr>
+    <tr>
+      <td class="tg-p9ik" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">17. Racordări cu terasamentele</span></td>
+      <td class="tg-va2b" colspan="6"><%= @bridge.racordari_terasamente%></td>
+    </tr>
+    <tr>
+      <td class="tg-p9ik" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">18. Apărări de mal</span></td>
+      <td class="tg-va2b" colspan="6"><%= @bridge.aparari_mal%></td>
+    </tr>
+  </tbody>
+  </table>
+<br>
+
+  <table id="table2" class="tg"><thead>
+  <tr>
+    <th class="tg-9hzb" colspan="8">II. Notarea defectelor constatate în teren</th>
+    <th class="tg-ktyi"></th>
+  </tr></thead>
+<tbody>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">Nr.crt.</span></td>
+    <td class="tg-7yig" rowspan="3"><span style="font-weight:normal;font-style:normal;color:#000">Denumirea defectului</span></td>
+    <td class="tg-7yig" rowspan="3"><span style="font-weight:normal;font-style:normal;color:#000">Limite de depunere</span></td>
+    <td class="tg-7yig" colspan="5"><span style="font-weight:normal;font-style:normal;color:#000">Notare defecte</span></td>
+    <td class="tg-7yig" rowspan="3"><span style="font-weight:normal;font-style:normal;color:#000">Obs.</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">Poz.</span></td>
+    <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">C1(*)</span></td>
+    <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">C2(*)</span></td>
+    <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">C3(*)</span></td>
+    <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">C4(*)</span></td>
+    <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">C5(*)</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">catalog.</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">1</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">2</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">3</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">1</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Absenta unor elemente structurale (antretoaze,rigidizari, contravantuiri, etc.) din fazele de executie, proiectare sau exploatare.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7 – 8 pentru C1</span><br><span style="font-weight:normal;font-style:normal;color:#000">5 – 6 pentru C2</span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c1_1%></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c2_1%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">2</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Alinierea in plan rampa-pod necorespunzatoare, latime insuficienta a rambleului, acces dificil pe trotuarul podului.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4 - 5</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c4_2%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">3</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Amplasarea incorecta a gratarelor gurilor de scurgere, lipsa acestora si/sau a tuburilor de prelungire, guri de scurgere infundate.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">3–5</span>  <span style="font-weight:normal;font-style:normal;color:#000">Poduri din b.a 6-7 Poduri din b.p sau metalice</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c5_3
+%></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Aparate de reazem inglobate in praf si murdarie, functionarea necorespunzatoare a acestora.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">3 - 5</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c3_4
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">5</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Aripi sau sferturi de con afuiate, fisurate sau crapate (cazul aripilor din beton)</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4 - 5</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c3_1_5
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Aripi deplasate fata de pozitia initiala, pierderea formei sferturilor de con.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c3_2_5
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Armaturi fara strat de acoperire.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4 - 6</span></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c1_6
+%></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c2_6
+%></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c1_7
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Beton cu aspect friabil si/sau zone din beton exfoliat.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6-Beton simplu</span><br><span style="font-weight:normal;font-style:normal;color:#000">8-Beton armat+b. p.</span></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c3_6
+%></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c2_7
+%></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c3_7
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Beton degradat prin carbonatare, aparitia de stalactite si/sau draperii.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7-Beton simplu</span><br><span style="font-weight:normal;font-style:normal;color:#000">8-Beton armat+b.p.</span></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c1_8
+%></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c2_8
+%></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c3_8
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">9</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Beton degradat prin coroziune cu reducerea sectiunii elementului.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7 – 8</span></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c1_9
+%></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c2_9
+%></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c3_9
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">10</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Bolti cu degradari avansate (crapaturi pe zone mari, aparitia de striviri).</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6 – 8</span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c1_10
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">11</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Calea pe pod sau pe trotuare este degradata (suprafata cuciupituri, poroasa, incretita).</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">2-Supraf. Locala</span><br><span style="font-weight:normal;font-style:normal;color:#000">3-Supraf.&gt;3mp</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c5_11
+%></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">12</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Coroziunea armaturii, pete de rugina si/sau fisuri sau crapaturi orientate pe directia acesteia.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6-Beton armat</span><br><span style="font-weight:normal;font-style:normal;color:#000">8-Beton prec.</span></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c1_12
+%></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c2_12
+%></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c3_12
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">13</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Coroziunea avansata a stalpului metalic al parapetului in zona de contact cu betonul, fixarea necorespunzatoare a parapetului de siguranta si/sau numarul insuficient de suruburi de inadire.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c5_13
+%></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">14</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Coroziunea fisuranta sub tensiune.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6 – 7</span></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c1_14
+%></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c2_14
+%></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c3_14
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">15</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Coroziunea metalului in puncte, de profunzime si/sau intre piese.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6 – 7</span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c1_15
+%></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c2_15
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">16</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Cumularea la un element al structurii a mai multor degradari (coroziune, crapaturi, striviri etc)</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8 – 9</span></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c1_16
+%></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c2_16
+%></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c3_16
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">17</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Defecte de suprafata ale fetei vazute (culoare neuniforma, pete de rugina, impuritati, pete de rugina, aspect prafuit, imperfectiuni geometrice, aspect macroporos, agregate la suprafata).</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4-Pentru C1 si C2</span><br><span style="font-weight:normal;font-style:normal;color:#000">2-Pentru C3</span></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c1_17
+%></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c2_17
+%></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c3_17
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">18</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Deformatii locale ale pieselor datorita coroziunii</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5 – 6</span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c1_18
+%></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c2_18
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">19</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Deformatii mari (sageti) ale suprastructurii</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8 - 9</span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c1_19
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">20</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Degradarea (betonului si/sau coroziunea armaturii) parapetului, dislocarea stalpului de prindere a parapetului, lipsa rostului in parapet.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">3 - 4</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c5_20
+%></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">21</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Degradarea sau dislocarea bordurilor.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">2 – 3</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c5_1_21
+%></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Lipsa sau distrugerea placilor de acoperire a golurilor din trotuare.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4 - 5</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c5_2_21
+%></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">22</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Degradari ale malurilor si modificari de albie:</span>- ruperea malurilor, modificarea in plan a traseului cursului apei;</td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7 – 8</span></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c4_1_22
+%></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+  </tr>
+  <tr>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Degradari ale malurilor si modificari de albie:</span>- depuneri de material solid, prezenta unor obstacole.</td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4 - 6</span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c4_2_22
+%></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig" rowspan="3"><span style="font-weight:normal;font-style:normal;color:#000">23</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Degradarea (subspalarea, deformarea) sau distrugerea partiala sau totala a lucrarilor de:</span> -       aparare;</td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4 – 6</span></td>
+    <td class="tg-ktyi" rowspan="3"></td>
+    <td class="tg-ktyi" rowspan="3"></td>
+    <td class="tg-ktyi" rowspan="3"></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c4_1_23
+%></td>
+    <td class="tg-ktyi" rowspan="3"></td>
+    <td class="tg-ktyi" rowspan="3"></td>
+  </tr>
+  <tr>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Degradarea (subspalarea, deformarea) sau distrugerea partiala sau totala a lucrarilor de:</span> -       dirijare;</td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6 – 8</span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c4_2_23
+%></td>
+  </tr>
+  <tr>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Degradarea (subspalarea, deformarea) sau distrugerea partiala sau totala a lucrarilor de:</span> -       praguri</td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7 – 9</span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c4_3_23
+%></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">24</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Denivelari ale cai pe pod: -       valuriri, refulari, fagase;</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4 - 6</span></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-qwd7" rowspan="2"><%= @bridge.flaw.c5_24
+%></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+  </tr>
+  <tr>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Denivelari ale cai pe pod: -       praguri, gropi.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7 - 8</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">25</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Deplasari ale infrastructurii fata de pozitia initiala (tasari, rotiri, deplasari, lunecari etc.) produse in majoritatea cazurilor de afuieri.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7-8 Suprastr. static det.</span><br><span style="font-weight:normal;font-style:normal;color:#000">9-10 Suprastr. static nedet.</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c3_25
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">26</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Deplasari relative ale elementelor structurale (placile de beton fata de elemente metalice, la structurile mixte)</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6 – 7</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c2_26
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">27</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Deplasari sau sageti permanente mari, vizibile, ale tablierului</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8 – 9</span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c1_27
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">28</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Detasarea timpanului de bolta pe anumite zone</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7 - 8</span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c1_28
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">29</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Deteriorarea aparatelor de reazem din neopren sau metalice</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5 – 6</span></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-0gom"><span style="font-weight:normal;font-style:normal;color:#000"><%= @bridge.flaw.c3_1_29
+%></span></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+  </tr>
+  <tr>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Ruperea tachetilor, distrugerea placilor de plumb sau metalice</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7 – 8</span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c3_2_29
+%></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">30</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Dezaxari ale coloanelor de elevatiile realizate din stalpi in continuarea coloanelor.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6 – 7</span></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c3_1_30
+%></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+  </tr>
+  <tr>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Masca chesonului nedemolata.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4 - 5</span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c3_2_30
+%></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">31</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Distrugerea consolei trotuarului</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8 - 9</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c2_31
+%></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c3_31
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">32</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Distrugerea suprastructurii (elemente rupte)</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">9-10 Pentru C1</span><br><span style="font-weight:normal;font-style:normal;color:#000">8-9 Pentru C2</span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c1_32
+%></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c2_32
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">33</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Dislocarea unei margini din bancheta cuzinetilor</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7 – 8</span></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c3_1_33
+%></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+  </tr>
+  <tr>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Amenajarea necorespunzatoare a acesteia.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6</span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c3_2_33
+%></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">34</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Elemente gresit pozitionate in structura, deplasari ale imbinarilor sau strangeri insuficiente ale mijloacelor de prindere.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6 - 8</span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c1_34
+%></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c2_34
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">35</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Eroziunea betonului, prezenta unor zone pe suprafata elementului in care agregatele nu sunt inglobate in pasta de ciment.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">3-4 pentru C1 si</span>  <span style="font-weight:normal;font-style:normal;color:#000">C2 cu supraf.&lt;1m</span>2 <span style="font-weight:normal;font-style:normal;color:#000">si pentru C3</span><br><span style="font-weight:normal;font-style:normal;color:#000">5-6 pentru supraf. &gt;1m2 la C1 si C2</span></td>
+    <td class="tg-0gom"><span style="font-weight:normal;font-style:normal;color:#000"><%= @bridge.flaw.c1_35
+%></span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c2_35
+%></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c3_35
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">36</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Fisuri din contractie (neorientate, scurte, superficiale), faiantarea betonului. Fisurile se refera numai la beton nu si la mortar sau tencuiala.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">Pentru suprafete:</span><br><span style="font-weight:normal;font-style:normal;color:#000">&lt;1 m2 3-4</span><br><span style="font-weight:normal;font-style:normal;color:#000">&gt;1 m2 5-6</span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c1_36
+%></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c2_36
+%></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c3_36
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig" rowspan="9"><span style="font-weight:normal;font-style:normal;color:#000">37</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Fisuri si/sau crapaturi ale betonului: &gt;1 mm</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">10</span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c1_1_37
+%></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c2_1_37
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Fisuri si/sau crapaturi ale betonului:- long.: &gt;0.2 mm</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8 - 9</span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c1_2_37
+%></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c2_2_37
+%></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c3_2_37
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Fisuri si/sau crapaturi ale betonului:- long.: &lt;0.2 mm</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6 - 7</span></td>
+    <td class="tg-0gom"><span style="font-weight:normal;font-style:normal;color:#000"><%= @bridge.flaw.c1_3_37
+%></span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c2_3_37
+%></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c3_3_37
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Fisuri si/sau crapaturi ale betonului:- trans.: &gt;0.2 mm</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8 - 9</span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c1_4_37
+%></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c2_4_37
+%></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c3_4_37
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Fisuri si/sau crapaturi ale betonului:- trans.: &lt;0.2 mm</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6 - 7</span></td>
+    <td class="tg-0gom"><span style="font-weight:normal;font-style:normal;color:#000"><%= @bridge.flaw.c1_5_37
+%></span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c2_5_37
+%></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c3_5_37
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Fisuri si/sau crapaturi ale betonului: -inclinate: &gt;0.2 mm</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8 - 9</span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c1_6_37
+%></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c2_6_37
+%></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c3_6_37
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Fisuri si/sau crapaturi ale betonului: -inclinate: &lt;0.2 mm</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6 - 7</span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c1_7_37
+%></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c2_7_37
+%></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c3_7_37
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-ktyi" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">- fisuri transverale sau longitudinale precum si intre timpane si zidul intors la podurile boltite</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4-6 fara deplasari</span></td>
+    <td class="tg-oldo" rowspan="2"><%= @bridge.flaw.c1_8_37
+%></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7-8 cu deplasari</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">38</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Fisuri sau crapaturi in imbracaminte (asfaltica sau din beton de ciment), faiantarea sau exfolierea acesteia.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">Pentru suprafete:</span><br><span style="font-weight:normal;font-style:normal;color:#000">&lt;1 m2</span>  <span style="font-weight:normal;font-style:normal;color:#000">3</span><br><span style="font-weight:normal;font-style:normal;color:#000">&gt;1 m2</span>  <span style="font-weight:normal;font-style:normal;color:#000">4 – 5</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c5_38
+%></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">39</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Fisuri si/sau crapaturi la intradosul podurilor boltite din zidarie.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4 – 6 fara deplasari</span><br><span style="font-weight:normal;font-style:normal;color:#000">7 – 8 cu deplasari</span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c1_39
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">40</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Fisuri, ruperi ale elementelor structurale si/sau ale elementelor de prindere (nituri, suruburi, conectori, sudura).</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">&lt;20%</span>  <span style="font-weight:normal;font-style:normal;color:#000">5 – 6</span><br><span style="font-weight:normal;font-style:normal;color:#000">20% - 50%</span>  <span style="font-weight:normal;font-style:normal;color:#000">7 – 8 &gt;50% si sudura 9-10</span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c1_40
+%></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c2_40
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">41</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Flambajul barelor sau voalarea totala.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8 - 9</span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c1_41
+%></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c2_41
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">42</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Parapet cu geometrie generala necorespunzatoare in plan vertical si/sau orizontal, sistem de protectie degradat (matuit, puncte de rugina, exfolieri etc.).</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">2 – 3</span><br><span style="font-weight:normal;font-style:normal;color:#000">numai daca nu exista deformatii ale structurii de rezistenta</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c5_42
+%></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">43</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Inclinarea pendulilor, neconcordanta cu temperatura ambianta.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5 - 7</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c3_43
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">44</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Infiltratii, eflorescente.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">Pentru suprafete:</span><br><span style="font-weight:normal;font-style:normal;color:#000">&lt; 5 m2</span>   <span style="font-weight:normal;font-style:normal;color:#000">5 – 6</span><br><span style="font-weight:normal;font-style:normal;color:#000">&gt; 5 m2</span>     <span style="font-weight:normal;font-style:normal;color:#000">7</span></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c1_44
+%></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c2_44
+%></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c3_44
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">45</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Infiltratii vizibile la intrados, pete umede, eflorescente, stalactite</span> la podurile boltite din zidarie.</td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">Pentru suprafete:</span><br><span style="font-weight:normal;font-style:normal;color:#000">&lt; 5 m2</span>   <span style="font-weight:normal;font-style:normal;color:#000">5 – 6</span><br><span style="font-weight:normal;font-style:normal;color:#000">&gt; 5 m2</span>     <span style="font-weight:normal;font-style:normal;color:#000">7</span></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c1_45
+%></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c2_45
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">46</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Neasigurarea pantei de scurgere a apelor pe pod.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">3 - 5</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c5_46
+%></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">47</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Lipsa lucrarilor de aparare maluri si/sau pentru dirijarea a apelor sau necorelarea acestora cu ele unor constructii din aproprierea podului (poduri CF, canale etc.)</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4 – 6 (Pentru lipsa)</span><br><span style="font-weight:normal;font-style:normal;color:#000">8 Daca exista tendinta de rupere a malurilor</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c4_47
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">48</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Lipsa sau degradarea parapetului de siguranta si/sau a unor elemente din parapetul podului.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4–6 (Ptr degradari)</span><br><span style="font-weight:normal;font-style:normal;color:#000">7 (Pentru lipsa)</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c5_48
+%></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">49</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Lipsa protectiei anticorozive sau degradarea celei existente (culoare neuniforma, matuiri, exfolieri, pete de rugina, scurgeri de oxidare de fier pe suprafata elementului).</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">3 - 4</span></td>
+    <td class="tg-0gom"><span style="font-weight:normal;font-style:normal;color:#000"><%= @bridge.flaw.c1_49
+%></span></td>
+    <td class="tg-0gom"><span style="font-weight:normal;font-style:normal;color:#000"><%= @bridge.flaw.c2_49
+%></span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">50</span></td>
+    <td class="tg-ktyi" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">Lipsa sau degradarea dispozitivului de acoperire a rostului, a dispozitivelor de colectare si evacuare a apei, a elementelor de etansare, infiltratii in zona rostului.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4–6 (Pentru degradari)</span></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-qwd7" rowspan="2"><%= @bridge.flaw.c5_50
+%></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7-8 (Pentru lipsa)</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">51</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Lipsa sau degradarea etansarii dintre imbracaminte si celelalte elemente ale caii (borduri, guri de scurgere, parapete, rosturi etc.) prezenta apei sau a altor materiale in goluri de sub trotuar.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4–5 (Pentru degradari)</span><br><span style="font-weight:normal;font-style:normal;color:#000">6 (Pentru lipsa)</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c5_51
+%></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">52</span></td>
+    <td class="tg-ktyi" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">Lipsa sau iesirea din functiune a dispozitivelor de protectie la actiuni seismice.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5-6 Pentru iesire din functiune si lipsa pentru zonele D, E</span></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-qwd7" rowspan="2"><%= @bridge.flaw.c3_52
+%></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">Zonare conf P100/92</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7 Pentru lipsa zonelor A, B, C</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">53</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Lipsa sau degradarea lucrarilor de protectie a taluzurilor, scarilor de acces, casiurilor santurilor pereate de la piciorul taluzurilor, racordare defectuoasa, casiu cu bordura de pe culee.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">3-4 Pentru degradari</span><br><span style="font-weight:normal;font-style:normal;color:#000">5 Pentru lipsa sau racordare defectuoasa</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c4_53
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">54</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Modificarea exagerata a formei si proprietatilor fizico-mecanice ale betonului.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8 - 9</span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c1_54
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c3_54
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig" rowspan="3"><span style="font-weight:normal;font-style:normal;color:#000">55</span></td>
+    <td class="tg-ktyi" rowspan="3"><span style="font-weight:normal;font-style:normal;color:#000">Modificari ale regimului hidraulic, coborarea etiajului in zona podului, adancirea talvegului.</span> <br><span style="font-weight:normal;font-style:normal;color:#000">Δh = adancire talveg</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4-5 pentru Δh&lt;1 m la fundatii directe si Δh≤2 la fundatii indirecte</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c4_1_55
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6-7 pentru Δh=1÷2 m la fundatii directe si Δh=2÷4 la fundatii indirecte</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c4_2_55
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8-9 pentru Δh&gt;2 m la fundatii directe si Δh&gt;4 la fundatii indirecte</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c4_3_55
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">56</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Neetanseitati intre elementele structurii sau intre piese ale elementelor structurale.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5 - 6</span></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c1_56
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">57</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Neprotejarea ancorajelor fascicolelor la elementele precomprimate.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5 – 6</span></td>
+    <td class="tg-0gom"><span style="font-weight:normal;font-style:normal;color:#000"><%= @bridge.flaw.c1_1_57
+%></span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c2_1_57
+%></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+  </tr>
+  <tr>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Infiltratii de-a lugul armaturii pretensionate.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8</span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c1_2_57
+%></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c2_2_57
+%></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">58</span></td>
+    <td class="tg-ktyi" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">Pozitia incorecta a elementelor componente ale aparatelor de reazem.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5-6 fara deplasari</span></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-oldo" rowspan="2"><%= @bridge.flaw.c3_58
+%></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7-8 cu deplasari ale suprastructurii</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">59</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Prezenta vegetatiei pe elementele infrastructurii.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">2 - 3</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c3_59
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">60</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Prezenta vegetatiei pe elementele suprastructurii.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4 - 5</span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c1_60
+%></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c2_60
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">61</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Rampe de acces degradate: denivelari si degradari ale caii;</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4 – 5</span></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c4_1_61
+%></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+  </tr>
+  <tr>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Rampe de acces degradate: tasari mari ale terasamentelor, alunecari laterale</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6 - 7</span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c4_2_61
+%></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">62</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Reducerea pronuntata a sectiunii elementelor datorita coroziunii metalului (peste 10%).</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8 – 9 pentru C2</span><br><span style="font-weight:normal;font-style:normal;color:#000">10 pentru C1</span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c1_62 %>
+      </td>
+    <td class="tg-oldo"><%= @bridge.flaw.c2_62
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">63</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Rosturi decolmatate (in cazul imbracamintilor din pavele sau din beton de ciment) uzura pavelelor (rotunjire, slefuire) sau a imbracamintii din beton de ciment.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">3 – 4</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c5_63
+%></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">64</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Rosturi de zidarie spalate de infiltratii.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4-5 pentru C3</span><br><span style="font-weight:normal;font-style:normal;color:#000">6 pentru C1</span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c1_64
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c3_64
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">65</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Dispozitive de acoperire a rosturilor de dilatatie grav deteriorate, blocarea deplasarii din zona rostului.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7 - 8</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c5_65
+%></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">66</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Dispozitive de acoperire a rosturilor necorespunzatoare, cu elemente de fixare, denivelate in plan orizontal si/sau vertical.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5 – 6</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c5_66
+%></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">67</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Segregarea betonului, cuiburi de pietris, caverne.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4 – 5 pentru C3</span><br><span style="font-weight:normal;font-style:normal;color:#000">5 – 6 pentru C2</span><br><span style="font-weight:normal;font-style:normal;color:#000">6 pentru C1</span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c1_67
+%></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c2_67
+%></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c3_67
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">68</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Solidarizari necorespunzatoare intre elementele prefabricate (infiltratii, fisuri, rosturi matate necorespunzator).</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5-6 Rosturi matate necorespunzator</span><br><span style="font-weight:normal;font-style:normal;color:#000">6 – 7 Infiltratii</span></td>
+    <%= @bridge.flaw.c1_68
+%></td>
+    <td class="tg-qwd7"><%= @bridge.flaw.c2_68
+%></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c3_68
+%></td>
+    <td class="tg-ktyi">
+    </td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">69</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Spatiul liber sub pod si/sau debuseu insuficient, amplasarea necorespunzatoare a instalatiilor suspendate pe pod, lipsa contrasinelor la pasajele superioare.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4-5 Spatiu liber (inclusiv gabaritelor) insuficient</span><br><span style="font-weight:normal;font-style:normal;color:#000">6 Debuseu</span>    <span style="font-weight:normal;font-style:normal;color:#000">insuficient, lipsa contrasine la pasaje superioare</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c4_69
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">70</span></td>
+    <td class="tg-ktyi" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">Torsiunea elementelor structurale, neplaneitatea acestora sau elemente insuficiente de solidarizare.</span></td>
+    <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">7 - 8</span></td>
+    <td class="tg-oldo" rowspan="2"><%= @bridge.flaw.c1_70
+%></td>
+    <td class="tg-oldo" rowspan="2"><%= @bridge.flaw.c2_70
+%></td>
+    <td class="tg-oldo" rowspan="2"><%= @bridge.flaw.c3_70
+%></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+  </tr>
+  <tr>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">71</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Uzura zidariei sau betonului</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4 - 6</span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c1_71
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c3_71
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">72</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Zidarie degradata la suprafata, cu aspect prafos, friabila sau exfoliata.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">3-4 pentru C3</span><br><span style="font-weight:normal;font-style:normal;color:#000">5 pentru C1</span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c1_72
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c3_72
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">73</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Zidarie avariata (degradari importante cu dislocari de moloane), care trebuie injectata sau camasuita.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8 – 9</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c3_73
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">74</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Zone inaccesibile pentru control si intretinere „cutii de apa” si/sau praf.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5 – 6</span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c1_74
+%></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c2_74
+%></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c3_74
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">75</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Degradarea ursilor; crapaturi, atac biologic, (putrezire, ciuperci, paraziti etc.) reducerea sectiunii acestora.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">Reducerea sectiune</span><br><span style="font-weight:normal;font-style:normal;color:#000">≤ 20% - 4 – 6</span><br><span style="font-weight:normal;font-style:normal;color:#000">20-50% - 7 – 8</span><br><span style="font-weight:normal;font-style:normal;color:#000">&gt; 50% - 9 – 10</span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c1_75
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">76</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Deformatia exagerata verticala sau orizontala a ursilor si/sau pachetelor de ursi sau subursi.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6 – 8</span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c1_76
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">77</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Ursi suprapusi sau cu pene fara rost de aerisire sau cu pene care se misca in locasurile lor.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4 – 6</span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c1_77
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">78</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Degradarea injugurilor de ursi, solidarizarilor necorespunzatoare sau inexistente.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4 – 6</span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c1_78
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">79</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Coroziunea elementelor metalice de prindere (buloane, tiranti, scoabe etc.).</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4-6 Pentru buloane si scoabe</span><br><span style="font-weight:normal;font-style:normal;color:#000">7-8 pentru tiranti</span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c1_79
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">80</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Degradarea dulapilor, lipsa montantilor, a diagonalelor sau cedarea imbinarilor, ruginirea cuielor de prindere in cazul grinzilor alcatuite din dulapi.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6 – 8</span></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c1_80
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig" rowspan="4"><span style="font-weight:normal;font-style:normal;color:#000">81</span></td>
+    <td class="tg-ktyi" rowspan="4"><span style="font-weight:normal;font-style:normal;color:#000">Degradarea podinei de rezistenta (mucegai, crapaturi, atac insecte etc.).</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">Pentru suprafete:</span></td>
+    <td class="tg-ktyi" rowspan="4"></td>
+    <td class="tg-oldo" rowspan="4"><%= @bridge.flaw.c2_81
+%></td>
+    <td class="tg-ktyi" rowspan="4"></td>
+    <td class="tg-ktyi" rowspan="4"></td>
+    <td class="tg-ktyi" rowspan="4"></td>
+    <td class="tg-ktyi" rowspan="4"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">≤ 30% - 4 – 6</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">30-60% - 7 – 8</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">&gt; 60% - 9 – 10</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">82</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Podina de rezistenta cu tendinta de ridicare, denivelata datorita uscarii lemnului sau prinderii necorespunzatoare.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">3 – 5</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c2_82
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">83</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Elementele componente ale podinei de rezistenta lipsa sau fixate necorespunzarator.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4 – 6</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c2_83
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">84</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Ridicarea pilotilor</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c3_84
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">85</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Degradarea biologica a elementelor din lemn (piloti, babe, dulapi de la culei si/sau aripi) cedarea ancorajelor.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4 – 6</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c3_85
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">86</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Incovoieri mari ale babelor.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4 – 6</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c3_86
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">87</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Palee instabila.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6 – 8</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c3_87
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">88</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Lipsa sau degradarea spargheturilor (unde sunt necesare).</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4 – 6</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c3_88
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">89</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Lipsa sau degradarea contravantuirilor, contrafiselor sau moazelor.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5 – 7</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c3_89
+%></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig" rowspan="4"><span style="font-weight:normal;font-style:normal;color:#000">90</span></td>
+    <td class="tg-ktyi" rowspan="4"><span style="font-weight:normal;font-style:normal;color:#000">Degradarea pilotilor in zona de contact cu terenul sau a etiajului.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">Reducerea sectiunii</span></td>
+    <td class="tg-ktyi" rowspan="4"></td>
+    <td class="tg-ktyi" rowspan="4"></td>
+    <td class="tg-oldo" rowspan="4"><%= @bridge.flaw.c3_90
+%></td>
+    <td class="tg-ktyi" rowspan="4"></td>
+    <td class="tg-ktyi" rowspan="4"></td>
+    <td class="tg-ktyi" rowspan="4"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">≤ 20% - 4 – 6</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">20-50% - 7 – 8</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">&gt; 50% - 9 – 10</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig" rowspan="3"><span style="font-weight:normal;font-style:normal;color:#000">91</span></td>
+    <td class="tg-ktyi" rowspan="3"><span style="font-weight:normal;font-style:normal;color:#000">Lipsa sau degradarea podinei de uzura</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">Suprafata afectata</span></td>
+    <td class="tg-ktyi" rowspan="3"></td>
+    <td class="tg-ktyi" rowspan="3"></td>
+    <td class="tg-ktyi" rowspan="3"></td>
+    <td class="tg-ktyi" rowspan="3"></td>
+    <td class="tg-oldo" rowspan="3"><%= @bridge.flaw.c5_91
+%></td>
+    <td class="tg-ktyi" rowspan="3"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">≤ 30% - 3 – 4</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">&gt; 30% - 5 – 6</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">92</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Imbracaminte din asfalt: -       fisurata, crapata</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">3 – 4</span></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+    <td class="tg-oldo" rowspan="2"><%= @bridge.flaw.c5_92
+%></td>
+    <td class="tg-ktyi" rowspan="2"></td>
+  </tr>
+  <tr>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Imbracaminte din asfalt: -       cu denivelari</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5 – 6</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">93</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Desprinderea elementelor ce alcatuiesc podina de uzura</span><br><span style="font-weight:normal;font-style:normal;color:#000">( lemnarie ecaristata sau semirotunda).</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">3 – 4</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c5_93
+%></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">94</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Degradarea sau lipsa longrinei apara-roata sau a longrinelor de trotuar.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">3 – 4</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c5_94
+%></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">95</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Degradarea sau lipsa podinei de trotuar.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">3 – 4</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c5_95
+%></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">96</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Lipsa sau degradarea mainii curente a parapetului sau umpluturii.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5 – 6</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c5_96
+%></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">97</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Lipsa sau degradarea stalpilor parapetului, prinderea necorespunzatoare a acestora de elementele de sustinere.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">3 – 5</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-oldo"><%= @bridge.flaw.c5_97
+%></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+  <tr>
+    <td class="tg-ktyi" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">C1(*) = Suprastructura – elemente principale de rezistenta.</span></td>
+    <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">Nr. de defecte N</span></td>
+    <td class="tg-9hzb" rowspan="2"><%= @bridge.flaw.nr_defecte_c1
+    %></td>
+    <td class="tg-9hzb" rowspan="2"><%= @bridge.flaw.nr_defecte_c2%></td>
+    <td class="tg-9hzb" rowspan="2"><%= @bridge.flaw.nr_defecte_c3%></td>
+    <td class="tg-9hzb" rowspan="2"><%= @bridge.flaw.nr_defecte_c4%></td>
+    <td class="tg-9hzb" rowspan="2"><%= @bridge.flaw.nr_defecte_c5%></td>
+    <td class="tg-ktyi" rowspan="5"><div class="inline-block relative ml-2 group">
+    
+  </div></td>
+  </tr>
+  <tr>
+    <td class="tg-ktyi" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">C2(*) = Elemente de rezistenta care sustin calea.</span></td>
+  </tr>
+  <tr>
+    <td class="tg-ktyi" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">C3(*) = Infrastructuri, ap de reazem, disp. antiseismice, sferturi de con sau aripi.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">Depunct. maxima Di</span></td>
+    <td class="tg-9hzb"><%= @bridge.flaw.depunct_max_di_c1%></td>
+    <td class="tg-9hzb"><%= @bridge.flaw.depunct_max_di_c2%></td>
+    <td class="tg-9hzb"><%= @bridge.flaw.depunct_max_di_c3%></td>
+    <td class="tg-9hzb"><%= @bridge.flaw.depunct_max_di_c4%></td>
+    <td class="tg-9hzb"><%= @bridge.flaw.depunct_max_di_c5%></td>
+  </tr>
+  <tr>
+    <td class="tg-ktyi" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">C4(*) = Albia, apar. de mal, rampe de acces, instal pozate sau suspendate pe pod.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">Val. indice Ci=10-Di</span></td>
+    <td class="tg-9hzb"><%= @bridge.flaw.val_indice_c1%></td>
+    <td class="tg-9hzb"><%= @bridge.flaw.val_indice_c2%></td>
+    <td class="tg-9hzb"><%= @bridge.flaw.val_indice_c3%></td>
+    <td class="tg-9hzb"><%= @bridge.flaw.val_indice_c4%></td>
+    <td class="tg-9hzb"><%= @bridge.flaw.val_indice_c5%></td>
+  </tr>
+  <tr>
+    <td class="tg-ktyi" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">C5(*) = Calea podului, guri de scurgere, trotuare, parapete, rosturi</span></td>
+    <td class="tg-9hzb">Indice total de calitate C</td>
+    <td class="tg-9hzb" colspan="5"><%= @bridge.flaw.indice_total_calitate%></td>
+  </tr>
+  <tr>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+  </tr>
+</tbody></table>
+
+<br>
+
+<table id="table3" class="tg"><thead>
+  <tr>
+    <th class="tg-9hzb" colspan="12">III. Notarea caracteristicilor de funcționalitate<br>Indicile de funcționalitate F1<br>Depunctarea se face în funcție de condițiile de desfășurare a traficului pe pod</th>
+  </tr></thead>
+<tbody>
+  <tr>
+    <td class="tg-ktyi" rowspan="5"><span style="font-weight:normal;font-style:normal;color:#000">Nr. crt.</span></td>
+    <td class="tg-7yig" colspan="2" rowspan="5"><span style="font-weight:normal;font-style:normal;color:#000">Clasa tehnică a drumului, conf. Ordinului 1296/2017</span><br><br><br><span style="font-weight:normal;font-style:normal;color:#000">Categoria de drum - Număr minim/maxim de benzi de circulație</span></td>
+    <td class="tg-7yig" colspan="9"><span style="font-weight:normal;font-style:normal;color:#000">Lungimea podului (L) (m)</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig" colspan="3"><span style="font-weight:normal;font-style:normal;color:#000">L &lt; 25 m</span></td>
+    <td class="tg-7yig" colspan="3"><span style="font-weight:normal;font-style:normal;color:#000">L = 26 – 100</span></td>
+    <td class="tg-7yig" colspan="3"><span style="font-weight:normal;font-style:normal;color:#000">L &gt; 101 m</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig" colspan="9"><span style="font-weight:normal;font-style:normal;color:#000">Lăţimea părţii carosabile * (m)</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">care corespunde cu lăţimea părţii carosabile a drumului</span></td>
+    <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">care nu corespunde cu lăţimea părţii carosabile a drumului</span></td>
+    <td class="tg-7yig" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">care corespunde cu lăţimea părţii carosabile a drumului</span></td>
+    <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">care nu corespunde cu lăţimea părţii carosabile a drumului</span></td>
+    <td class="tg-7yig" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">care corespunde cu lăţimea părţii carosabile a drumului</span></td>
+    <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">care nu corespunde cu lăţimea părţii carosabile a drumului</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">cu * spaţiu de siguranţă</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">fără spaţiu de siguranţă</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">cu * spaţiu de siguranţă</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">fără spaţiu de siguranţă</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">cu * spaţiu de siguranţă</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">fără spaţiu de siguranţă</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+    <td class="tg-7yig" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">1</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">2</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">3</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">9</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">10</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">1</span></td>
+    <td class="tg-9hzb">I</td>
+    <td class="tg-9hzb">Autostrăzi<br><span style="font-weight:normal;font-style:normal;color:#000">minimum 2</span><br><span style="font-weight:normal;font-style:normal;color:#000">benzi/sens</span> </td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">9</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">9</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">10</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">2</span></td>
+    <td class="tg-9hzb">II</td>
+    <td class="tg-9hzb">Dr. expres şi<br>dr. naţ.<br>europene cu 4 benzi<br><span style="font-weight:normal;font-style:normal;color:#000">minimum 2</span><br><span style="font-weight:normal;font-style:normal;color:#000">benzi/sens</span> </td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">9</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">3</span></td>
+    <td class="tg-9hzb">III</td>
+    <td class="tg-9hzb">Dr. naţ.<br>europene, dr.<br>naţ. principale şi<br>dr. jud. <br><span style="font-weight:normal;font-style:normal;color:#000">2 benzi</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4</span></td>
+    <td class="tg-9hzb">IV</td>
+    <td class="tg-9hzb">Dr. naţ.<br>principale, dr. naț. Secundare,<br>dr. jud. și dr. com<br><span style="font-weight:normal;font-style:normal;color:#000">2 benzi</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">1</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">2</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">3</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5</span></td>
+    <td class="tg-9hzb">V</td>
+    <td class="tg-9hzb">Dr. naţ.<br>secundare,<br>dr. jud., dr. com și dr. vicinale<br><span style="font-weight:normal;font-style:normal;color:#000">2 benzi</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">1</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">2</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">3</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig" colspan="12"> * <span style="font-weight:normal;font-style:normal;color:#000">lăţimea părţii carosabile şi a spaţiului de siguranţă banda de ghidare (b</span>g<span style="font-weight:normal;font-style:normal;color:#000">) plus efectul optic (E</span>0<span style="font-weight:normal;font-style:normal;color:#000">) sunt conform Ordinului 1296/2017</span></td>
+  </tr>
+  <tr>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-7yig" colspan="4"><span style="font-weight:normal;font-style:normal;color:#000">Corespunde cu Ordinul 1296/2017 ?</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">1</span></td>
+    <td class="tg-7yig" colspan="5"><span style="font-weight:normal;font-style:normal;color:#000">Lăţimea părţi carosabile</span>                <span style="font-weight:normal;font-style:normal;color:#000">B</span>     <span style="font-weight:normal;font-style:normal;color:#000">=</span> </td>
+    <td class="tg-9hzb">
+    <%=@bridge.latime_carosabila%>
+    </td>
+    <td class="tg-0vn8" colspan="4"><%= @bridge.flaw.corespunde_ordinul%></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">2</span></td>
+    <td class="tg-7yig" colspan="5"><span style="font-weight:normal;font-style:normal;color:#000">Lungimea podului</span>                         <span style="font-weight:normal;font-style:normal;color:#000">L</span>     <span style="font-weight:normal;font-style:normal;color:#000">=</span></td>
+    <td class="tg-9hzb">
+    <%=@bridge.lungime%>
+    </td>
+    <td class="tg-ktyi" colspan="4"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">3</span></td>
+    <td class="tg-7yig" colspan="5"><span style="font-weight:normal;font-style:normal;color:#000">Clasa tehnică a drumului</span>              <span style="font-weight:normal;font-style:normal;color:#000">Ct</span>   <span style="font-weight:normal;font-style:normal;color:#000">=</span></td>
+    <td class="tg-9hzb">
+    <%=@bridge.clasa%>
+    </td>
+    <td class="tg-ktyi" colspan="4"></td>
+  </tr>
+  <tr>
+    <td class="tg-ktyi" colspan="12"></td>
+  </tr>
+  <tr>
+    <td class="tg-ktyi" colspan="11"><span style="font-weight:normal;font-style:normal;color:#000">F1</span>   <span style="font-weight:normal;font-style:normal;color:#000">(depunctare) = f (Lăţimea părţii carosabile, Lungimea podului, Categoria drumului)</span>       <span style="font-weight:normal;font-style:normal;color:#000">=</span></td>
+    <td class="tg-px6y"><%= @bridge.flaw.f1_depunct%></td>
+  </tr>
+  <tr>
+    <td class="tg-50xe" colspan="11">F1 =</td>
+    <td class="tg-px6y"><%= @bridge.flaw.f1%></td>
+  </tr>
+</tbody></table>
+<br>
+<table id="table4" class="tg"><thead>
+  <tr>
+    <th class="tg-9hzb" colspan="6">III. Notarea caracteristicilor de funcționalitate<br>Indicile de funcționalitate F2<br>Depunctarea se face în funcție de clasa de încărcare a podului și clasa tehnică</th>
+  </tr></thead>
+<tbody>
+  <tr>
+    <td class="tg-ktyi" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">Nr. crt.</span></td>
+    <td class="tg-7yig" colspan="2" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">Clasa tehnică a drumului, conf. Ordinului 1296/2017</span><br><span style="font-weight:normal;font-style:normal;color:#000">Categoria de drum - Număr minim/maxim de benzi de circulație</span></td>
+    <td class="tg-7yig" colspan="3"><span style="font-weight:normal;font-style:normal;color:#000">Clasa de încărcare pod</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">LM1/E</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">I</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">II</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+    <td class="tg-7yig" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">1</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">2</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">3</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">1</span></td>
+    <td class="tg-9hzb">I</td>
+    <td class="tg-9hzb">Autostrăzi <span style="font-weight:normal;font-style:normal;color:#000">minimum 2 benzi/sens</span> </td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">10</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">10</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">2</span></td>
+    <td class="tg-9hzb">II</td>
+    <td class="tg-9hzb">Dr. expres şi dr. naţ. europene cu 4 benzi <span style="font-weight:normal;font-style:normal;color:#000">minimum 2 benzi/sens</span> </td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">9</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">10</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">3</span></td>
+    <td class="tg-9hzb">III</td>
+    <td class="tg-9hzb">Dr. naţ. europene, dr. naţ. principale şi dr. jud. <span style="font-weight:normal;font-style:normal;color:#000">2 benzi</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">10</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4</span></td>
+    <td class="tg-9hzb">IV</td>
+    <td class="tg-9hzb">Dr. naţ. principale, dr. naț. Secundare, dr. jud. și dr. com <span style="font-weight:normal;font-style:normal;color:#000">2 benzi</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">3</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5</span></td>
+    <td class="tg-9hzb">V</td>
+    <td class="tg-9hzb">Dr. naţ. secundare, dr. jud., dr. com și dr. vicinale <span style="font-weight:normal;font-style:normal;color:#000">2 benzi</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">3</span></td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Clasa de încărcare</span>                                        <span style="font-weight:normal;font-style:normal;color:#000">=</span></td>
+    <td class="tg-0vn8" colspan="3"><%= @bridge.flaw.clasa_incarcare%></td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Clasa tehnică a drumului</span>                              <span style="font-weight:normal;font-style:normal;color:#000">=</span></td>
+    <td class="tg-9hzb" colspan="3"><%=@bridge.clasa%>
+    <div class="inline-block relative ml-2 group">
+    
+  </div></td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-7yig" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">F2</span>   <span style="font-weight:normal;font-style:normal;color:#000">(depunctare) = f (Clasa de încărcare, Categoria drumului)</span>                      <span style="font-weight:normal;font-style:normal;color:#000">=</span></td>
+    <td class="tg-px6y" colspan="2"><%= @bridge.flaw.f2_depunct%></td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-9hzb">F2 =</td>
+    <td class="tg-px6y" colspan="2"><%= @bridge.flaw.f2%></td>
+  </tr>
+</tbody></table>
+<br>
+<table id="table5" class="tg"><thead>
+  <tr>
+    <th class="tg-9hzb" colspan="10">III. Notarea caracteristicilor de funcționalitate<br>Indicile de funcționalitate F3<br>Depunctarea se face în funcție de durata de exploatare a podului, care a trecut de la construcția, sau de la ultimareparație capitală</th>
+  </tr></thead>
+<tbody>
+  <tr>
+    <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">Nr. crt.</span></td>
+    <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">Materialul din care este realizat podul</span></td>
+    <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">Tipul suprastructurii</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-7yig" colspan="6"><span style="font-weight:normal;font-style:normal;color:#000">Durata de exploatare a podului, care a trecut de la constructie sau de la ultima reparatie capitala</span></td>
+  </tr>
+  <tr>
+    <td class="tg-ktyi"></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">0–5</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6-15</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">16-25</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">26-35</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">36-45</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">&gt;45</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">1</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">2</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">3</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">1</span></td>
+    <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">Metal</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Grinzi nituite</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">1</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">2</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8</span></td>
+  </tr>
+  <tr>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Sudate</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">2</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">9</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig" rowspan="3"><span style="font-weight:normal;font-style:normal;color:#000">2</span></td>
+    <td class="tg-7yig" rowspan="3"><span style="font-weight:normal;font-style:normal;color:#000">Beton armat</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Grinzi Matarov</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">3</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">2</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">9</span></td>
+  </tr>
+  <tr>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Grinzi Gerber</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">2</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">9</span></td>
+  </tr>
+  <tr>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Alte categorii</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">3</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig" rowspan="4"><span style="font-weight:normal;font-style:normal;color:#000">3</span></td>
+    <td class="tg-7yig" rowspan="4"><span style="font-weight:normal;font-style:normal;color:#000">Beton</span>  <span style="font-weight:normal;font-style:normal;color:#000">precomprimat</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Fasii cu goluri *</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">3</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">9</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">10</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">10</span></td>
+  </tr>
+  <tr>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Fasii cu goluri cu suprabetonare</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">1</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8</span></td>
+  </tr>
+  <tr>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Grinzi tronsonate (tronsoane mici)</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">2</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">9</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">10</span></td>
+  </tr>
+  <tr>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Grinzi pref. monobloc sigrinzi monolit</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">9</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">0</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">2</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">9</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">Lemn</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Lemn</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">10</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">9</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">10</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">10</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">10</span></td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig" colspan="3"><span style="font-weight:normal;font-style:normal;color:#000">Tipul Suprastructurii</span></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-gl90" colspan="6">
+    <%= @bridge.flaw.tipul_suprastructurii%>
+    </td>
+  </tr>
+  <tr>
+    <td class="tg-7yig" colspan="3"><span style="font-weight:normal;font-style:normal;color:#000">Durata de exploatare a podului, care a trecut de la constructie sau de la ultima reparatie capitala</span></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-gl90" colspan="6">
+    <%= @bridge.flaw.durata_exploatare%>
+    </td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-ktyi"></td>
+    <td class="tg-50xe" colspan="3">F3   (depunctare) = </td>
+    <td class="tg-px6y" colspan="2">
+    <%= @bridge.flaw.f3_depunct%>
+    </td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-50xe" colspan="3">F3 =</td>
+    <td class="tg-px6y" colspan="2">
+    <%= @bridge.flaw.f3%>
+    </td>
+  </tr>
+</tbody></table>
+
+<br>
+<table id="table6" class="tg"><thead>
+  <tr>
+    <th class="tg-9hzb" colspan="3">III. Notarea caracteristicilor de funcționalitate<br>Indicile de funcționalitate F4<br>Depunctarea se face în funcție de modul de respectare la execuție a proiectului, neasigurarea condițiilor de efectuare a lucrărilor de întreținere și reparații, condiții de exploatare necorespunzătoare</th>
+  </tr></thead>
+<tbody>
+  <tr>
+    <td class="tg-9hzb">Nr.crt.</td>
+    <td class="tg-9hzb">Denumire defect</td>
+    <td class="tg-9hzb">Depunctare</td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">1</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Lipsa de estetica a incadrarii podului in mediul inconjurator</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">3 – 4</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">2</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Lipsa marcajelor si/sau a indicatoarelor de semnalizare, lipsa panourilor de protectie la pasaje superioare peste cai ferate electrificate.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">2 – 3</span> </td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">3</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Lipsa indicatoarelor de restrictie viteza, tonaj si gabarit.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7 – 8</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">4</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Lipsa sau neufunctionarea dispozitivelor de intretinere (carucioare, platforme acces etc.), imposibilitatea accesului la elementele podurilor pentru inspectii, intretinere si reparatii.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5 – 6</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Neasigurarea scurgerii apei, stagnarea apei pe pod, existenta unor straturi suplimentare a imbracamintii pe pod.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">2 – 5</span> </td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">6</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Necorelarea amplasamentului podului cu drumul si traseul albiei, amplasarea in gabarit a unor elemente de constructie si/sau instalatii, restrictii de viteza.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7 – 8</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">7</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Nerespectarea dimensiunilor la elementele de rezistenta ale suprastructurii.</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5 – 6</span></td>
+  </tr>
+  <tr>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Rezemare incorecta a grinzilor pe infrastructura.</span>                                          </td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">8 – 9</span></td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">Depunctarea se face în funcție de modul de respectare la execuție a proiectului, neasigurarea condițiilor de efectuare a lucrărilor de întreținere și reparații, condiții de exploatare necorespunzătoare</span><br>F4   (depunctare) = </td>
+    <td class="tg-xe8b"><%= @bridge.flaw.f4_depunct%></td>
+  </tr>
+  <tr>
+    <td class="tg-50xe" colspan="2">F4 =</td>
+    <td class="tg-rka9"><%= @bridge.flaw.f4%></td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+  </tr>
+</tbody></table>
+<br>
+<table id="table7" class="tg"><thead>
+  <tr>
+    <th class="tg-9hzb" colspan="3">III. Notarea caracteristicilor de funcționalitate<br>Indicile de funcționalitate F5<br>Depunctarea se face în funcție de calitatea lucrărilor de întreținere curentă</th>
+  </tr></thead>
+<tbody>
+  <tr>
+    <td class="tg-9hzb">Nr.crt</td>
+    <td class="tg-9hzb">Calitatea lucrărilor de întreținere</td>
+    <td class="tg-9hzb">Depunctare</td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">1</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Buna (maxim 20% din lucrarile de intretinere nerealizate)</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">1 – 2</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">2</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Satisfacatoare (maxim 50% din lucrarile de intretinere nerealizate)</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">3 – 6</span></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">3</span></td>
+    <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Lipsa totala a lucrarilor de intretinere (peste 50% din lucrarile de intretinere nerealizate)</span></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">7 – 9</span></td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+  </tr>
+  <tr>
+    <td class="tg-7yig" colspan="2"><span style="font-weight:normal;font-style:normal;color:#000">Depunctarea se face in functie de calitatea lucrarilor de întreținere curentă</span><br>F5   (depunctare) = </td>
+    <td class="tg-xe8b"><%= @bridge.flaw.f5_depunct%></td>
+  </tr>
+  <tr>
+    <td class="tg-50xe" colspan="2">F5 =</td>
+    <td class="tg-rka9"><%= @bridge.flaw.f5%></td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+    <td class="tg-0lax"></td>
+  </tr>
+</tbody></table>
+<br>
+<table id="table8" class="tg"><thead>
+  <tr>
+    <th class="tg-9hzb" colspan="7">Calculul Indicelui de stare tehnică</th>
+  </tr></thead>
+<tbody>
+  <tr>
+    <td class="tg-c1s0">Nr. crt.</td>
+    <td class="tg-c1s0" colspan="2">Demunire Indice</td>
+    <td class="tg-c1s0" colspan="2">Puncte</td>
+    <td class="tg-c1s0" colspan="2">Total</td>
+  </tr>
+  <tr>
+    <td class="tg-9hzb">1</td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">Indicele de calitate al elementelor principale de rezistență ale suprastructurii</span></td>
+    <td class="tg-9hzb">C1 = </td>
+    <td class="tg-9hzb"><%=@bridge.flaw.val_indice_c1%></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">puncte</span></td>
+    <td class="tg-9hzb" colspan="2" rowspan="3">C = ΣCi = <br>C1 + C2 + C3 + C4 + C5 = </td>
+  </tr>
+  <tr>
+    <td class="tg-c1s0">2</td>
+    <td class="tg-oqpb"><span style="font-weight:normal;font-style:normal;color:#000">Indicele de calitate al elementelor de rezistență care susțin calea podului</span></td>
+    <td class="tg-c1s0">C2 = </td>
+    <td class="tg-c1s0"><%=@bridge.flaw.val_indice_c2%></td>
+    <td class="tg-oqpb"><span style="font-weight:normal;font-style:normal;color:#000">puncte</span></td>
+  </tr>
+  <tr>
+    <td class="tg-9hzb">3</td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">Indicele de caliatate al elementelor infrastructurii, aparate de reazem, dispozitive de protecție la acțiuni seismice, sferturi de con sau aripi</span></td>
+    <td class="tg-9hzb">C3 = </td>
+    <td class="tg-9hzb"><%=@bridge.flaw.val_indice_c3%></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">puncte</span></td>
+  </tr>
+  <tr>
+    <td class="tg-c1s0">4</td>
+    <td class="tg-oqpb"><span style="font-weight:normal;font-style:normal;color:#000">Indicele de calitate al albiei, apărărilor de maluri, rampe de acces</span></td>
+    <td class="tg-c1s0">C4 = </td>
+    <td class="tg-c1s0"><%=@bridge.flaw.val_indice_c4%></td>
+    <td class="tg-oqpb"><span style="font-weight:normal;font-style:normal;color:#000">puncte</span></td>
+    <td class="tg-c1s0" colspan="2" rowspan="2"><%= @bridge.flaw.ist_c%>
+    <div class="inline-block relative ml-2 group">
+    
+  </div></td>
+  </tr>
+  <tr>
+    <td class="tg-9hzb">5</td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">Indicele de calitate al căii podului și al elementelor aferente</span></td>
+    <td class="tg-9hzb">C5 = </td>
+    <td class="tg-9hzb"><%=@bridge.flaw.val_indice_c5%></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">puncte</span></td>
+  </tr>
+  <tr>
+    <td class="tg-ojlm">6</td>
+    <td class="tg-buob"><span style="font-weight:normal;font-style:normal;color:#000">Indicele de funcționalitate determinat în funcție de condițiile de desfășurare a traficului pe pod</span></td>
+    <td class="tg-ojlm">F1 = </td>
+    <td class="tg-ojlm"><%=@bridge.flaw.f1%></td>
+    <td class="tg-buob"><span style="font-weight:normal;font-style:normal;color:#000">puncte</span></td>
+    <td class="tg-9hzb" colspan="2" rowspan="3">F = ΣFi = <br>F1 + F2 + F3 + F4 + F5 =</td>
+  </tr>
+  <tr>
+    <td class="tg-9hzb">7</td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">Indicele de funcționalitate determinat de clasa de încărcare a podului</span></td>
+    <td class="tg-9hzb">F2 = </td>
+    <td class="tg-9hzb"><%=@bridge.flaw.f2%></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">puncte</span></td>
+  </tr>
+  <tr>
+    <td class="tg-ojlm">8</td>
+    <td class="tg-buob"><span style="font-weight:normal;font-style:normal;color:#000">Indicele de funcționalitate determinat de durata de exploatare a podului, care a trecut de la construcția sau de la ultima reparație capitală, și tipul podului</span></td>
+    <td class="tg-ojlm">F3 = </td>
+    <td class="tg-ojlm"><%=@bridge.flaw.f3%></td>
+    <td class="tg-buob"><span style="font-weight:normal;font-style:normal;color:#000">puncte</span></td>
+  </tr>
+  <tr>
+    <td class="tg-9hzb">9</td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">Indicele de funcționalitate determinat de modul de respectare la execuție a proiectului, neasigurarea condițiilor de efectuare a lucrărilor de întreținere și reparații, condiții de exploatare necorespunzătoare</span></td>
+    <td class="tg-9hzb">F4 = </td>
+    <td class="tg-9hzb"><%=@bridge.flaw.f4%></td>
+    <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">puncte</span></td>
+    <td class="tg-ojlm" colspan="2" rowspan="2"><%= @bridge.flaw.ist_f%>
+    <div class="inline-block relative ml-2 group">
+    
+  </div></td>
+  </tr>
+  <tr>
+    <td class="tg-ojlm">10</td>
+    <td class="tg-buob"><span style="font-weight:normal;font-style:normal;color:#000">Indicele de funcționalitate determinat de ccalitatea lucrărilor de întreținere</span></td>
+    <td class="tg-ojlm">F5 = </td>
+    <td class="tg-ojlm"><%=@bridge.flaw.f5%></td>
+    <td class="tg-buob"><span style="font-weight:normal;font-style:normal;color:#000">puncte</span></td>
+  </tr>
+  <tr>
+    <td class="tg-0lax"></td>
+    <td class="tg-hgcd" colspan="2">Indice de stare tehnică - IST=ΣCi+ΣFi =</td>
+    <td class="tg-hgcd" colspan="2"><%= @bridge.flaw.ist_total%>
+    <div class="inline-block relative ml-2 group">
+    
+  </div></td>
+    <td class="tg-hgcd" colspan="2">Puncte</td>
+  </tr>
+</tbody></table>
+<br><table id="table9" class="tg"><thead>
+<tr>
+  <th class="tg-9hzb" colspan="5">Stabilirea clasei de stare tehnică a podului și a măsurilor recomandate</th>
+</tr></thead>
+<tbody>
+<tr>
+  <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">Nr. crt.</span></td>
+  <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">Clasa stării tehnice</span></td>
+  <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">Valoarea indecelui de stare tehnică IST</span></td>
+  <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">Aprecieri generale asupra stării tehnice</span></td>
+  <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">Măsuri recomandate conform normativelor</span> </td>
+</tr>
+<tr>
+  <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">1</span></td>
+  <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">I</span></td>
+  <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">81..100</span></td>
+  <td class="tg-dgl5">Stare foarte bună.</td>
+  <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">- măsuri de îmbunătățire a caracterisitcilor estetice;</span><br><span style="font-weight:normal;font-style:normal;color:#000">- lucrări de întreținere</span></td>
+</tr>
+<tr>
+  <td class="tg-ktyi"></td>
+</tr>
+<tr>
+  <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">2</span></td>
+  <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">II</span></td>
+  <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">61..80</span></td>
+  <td class="tg-dgl5">Stare bună. </td>
+  <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">- lucrări de întreínere;</span><br><span style="font-weight:normal;font-style:normal;color:#000">- reparații</span></td>
+</tr>
+<tr>
+  <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Materialul din care sunt alcătuite suprastructura și infrastructura prezintă un început de degradare cu defecte și degradăti vizibile</span></td>
+</tr>
+<tr>
+  <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">3</span></td>
+  <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">III</span></td>
+  <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">41..60</span></td>
+  <td class="tg-dgl5">Stare satisfăcătoare</td>
+  <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">- reparații;</span><br><span style="font-weight:normal;font-style:normal;color:#000">- reabilitări;</span><br><span style="font-weight:normal;font-style:normal;color:#000">- consolidări</span></td>
+</tr>
+<tr>
+  <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Elementele constructive prezintă degradări vizibile pe zone întinse cu afectarea secțiunii transversale</span></td>
+</tr>
+<tr>
+  <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">4</span></td>
+  <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">IV</span></td>
+  <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">21..40</span></td>
+  <td class="tg-dgl5">Stare nesatisfăcătoare</td>
+  <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">- reabilitare;</span><br><span style="font-weight:normal;font-style:normal;color:#000">- înlocuirea unor elemente</span></td>
+</tr>
+<tr>
+  <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Elementele constructive sunt într-o stare avansată de degradare</span></td>
+</tr>
+<tr>
+  <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">5</span></td>
+  <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">V</span></td>
+  <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">sub 20</span></td>
+  <td class="tg-dgl5">Stare tehnică nesigură</td>
+  <td class="tg-7yig" rowspan="2"><span style="font-weight:normal;font-style:normal;color:#000">- înlocuirea sau consolidarea structurii de rezistență afectată de degradare</span></td>
+</tr>
+<tr>
+  <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Nu asigură condițiile minime de siguranță a circulației</span></td>
+</tr>
+<tr>
+  <td class="tg-ktyi"></td>
+  <td class="tg-ktyi"></td>
+  <td class="tg-ktyi"></td>
+  <td class="tg-ktyi"></td>
+  <td class="tg-ktyi"></td>
+</tr>
+<tr>
+  <td class="tg-9hzb" colspan="4">Clasa stării tehnice a podului este :</td>
+  <td class="tg-9hzb"><%=@bridge.clasa%>
+  <div class="inline-block relative ml-2 group">
+    
+  </div></td>
+</tr>
+<tr>
+  <td class="tg-9hzb" colspan="4">Aprecieri asupra stării tehnice :</td>
+  <td class="tg-9hzb"><%= @bridge.flaw.aprecierea_starii_tehnice%>
+  <div class="inline-block relative ml-2 group">
+    
+  </div></td>
+</tr>
+<tr>
+  <td class="tg-7yig" colspan="5"><span style="font-weight:normal;font-style:normal;color:#000">Elementele constructive prezintă degradări vizibile pe zone întinse cu afectarea secțiunii transversale</span></td>
+</tr>
+<tr>
+  <td class="tg-9hzb" colspan="4">Măsuri recomandate :</td>
+  <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000"><%= @bridge.flaw.masuri_recomandate%>
+   <div class="inline-block relative ml-2 group">
+    
+  </div>
+  </span></td>
+</tr>
+</tbody></table>
+
+
+</center>
+
+
+
+<style type="text/css">
+.sticky-button {
+    position: sticky; /* Makes the button sticky */
+    top: 0; /* Stick to the top of the parent container */
+    z-index: 10; /* Ensure the button is above other content */
+    margin-bottom: 1rem; /* Add space below the button */
+}
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-p9ik{background-color:#FFF;font-size:12px;text-align:left;vertical-align:top}
+.tg .tg-z9od{font-size:12px;text-align:left;vertical-align:top}
+.tg .tg-ir4y{font-size:12px;font-weight:bold;text-align:center;vertical-align:top}
+.tg .tg-va2b{background-color:#FFF;font-size:12px;font-weight:bold;text-align:center;vertical-align:top}
+.tg .tg-ctmf{background-color:#FFF;font-size:12px;text-align:right;vertical-align:top}
+
+</style>
