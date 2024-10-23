@@ -145,6 +145,23 @@ class InstanceBridgesController < ApplicationController
     end
   end
 
+  def print
+		@instance_bridge = InstanceBridge.find(params[:id])
+		pdf_html = render_to_string(
+			pdf: 'bridge_info',          
+			template: 'instance_bridges/print',    
+			locals: { bridge: @instance_bridge },
+      encoding: 'UTF-8'  
+		)
+	
+		send_data(
+			pdf_html, 
+			filename: 'bridge_info.pdf', 
+			type: 'application/pdf', 
+			disposition: 'inline'  
+		)
+	end
+
   private
 
   def calcul_masuri instance_bridge

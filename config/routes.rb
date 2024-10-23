@@ -31,7 +31,11 @@ Rails.application.routes.draw do
     member do
       post 'clone'  # Add a member route for the clone action
     end
-    resources :instance_bridges, only: [:index, :new, :create, :show, :destroy, :edit, :update]
+    resources :instance_bridges, only: [:index, :new, :create, :show, :destroy, :edit, :update] do
+      member do
+        get :print
+      end
+    end
   end
   get 'your_bridges', to: 'bridges#your_bridges', as: :your_bridges
   get 'upload_bridge', to: 'bridges#upload_bridge', as: :upload_bridge
