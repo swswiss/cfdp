@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_22_220016) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_24_190526) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -610,6 +610,12 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_22_220016) do
 
   create_table "integrations", force: :cascade do |t|
     t.string "integration_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "site_settings", force: :cascade do |t|
+    t.boolean "is_blocked", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
