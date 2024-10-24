@@ -108,6 +108,7 @@ class BridgesController < ApplicationController
         bridge = Bridge.new(@date_de_identificare)
         bridge.user_id = current_user.id
         if bridge.save
+          UserMailer.with(user: current_user).create_bridge(bridge).deliver_later if current_user.user_has_email_integration?
           flaw = Flaw.new(@date_c15.merge(@date_f1).merge(@date_f2).merge(@date_f3).merge(@date_f4).merge(@date_f5).merge(@date_ist).merge(@date_clasa))
 
           flaw.bridge_id = bridge.id
