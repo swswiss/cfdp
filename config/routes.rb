@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/contact', to: 'pages#contact'
+
   resources :user_integrations, only: [:index] do
     collection do
       put :update_integrations # Add this line for the new action
