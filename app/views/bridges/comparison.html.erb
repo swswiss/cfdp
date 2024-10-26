@@ -1,0 +1,37 @@
+<br>
+<br>
+<div data-controller="comparison" class="flex flex-col items-center">
+<div class="mt-4 text-center text-gray-600 text-sm leading-5 max-w-2xl">
+    This section lets you compare two bridges side-by-side, displaying details for each in parallel frames. Select any published bridge to view information instantly.
+  </div>
+  <br>
+  <div class="flex space-x-4 mb-6">
+    <!-- Dropdown for Bridge 1 -->
+    <select data-comparison-target="dropdown1" data-action="change->comparison#fetchBridgeData" class="block w-full max-w-xs rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+      <option value="">Select a Bridge</option>
+      <% @bridges.each do |bridge| %>
+        <option value="<%= bridge.id %>"><%= bridge.name %></option>
+      <% end %>
+    </select>
+
+    <!-- Dropdown for Bridge 2 -->
+    <select data-comparison-target="dropdown2" data-action="change->comparison#fetchBridgeData" class="block w-full max-w-xs rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+      <option value="">Select a Bridge</option>
+      <% @bridges.each do |bridge| %>
+        <option value="<%= bridge.id %>"><%= bridge.name %></option>
+      <% end %>
+    </select>
+  </div>
+
+  <div class="grid grid-cols-2 gap-4 w-full max-w-4xl">
+    <!-- Turbo Frame to display Bridge 1 data -->
+    <turbo-frame id="bridge1-data" data-comparison-target="frame1" class="flex justify-center items-center">
+    
+    </turbo-frame>
+
+    <!-- Turbo Frame to display Bridge 2 data -->
+    <turbo-frame id="bridge2-data" data-comparison-target="frame2" class="flex justify-center items-center">
+      
+    </turbo-frame>
+  </div>
+</div>

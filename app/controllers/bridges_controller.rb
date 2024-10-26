@@ -10,6 +10,27 @@ class BridgesController < ApplicationController
     [0, 0, 1, 0, 2, 3, 0, 4, 5],   # Row 4
     [0, 0, 0, 0, 1, 2, 0, 3, 4]    # Row 5
   ]
+  def compare_data
+    @bridge = Bridge.friendly.find(params[:id])
+
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace(
+          params[:frame_id],
+          partial: 'bridges/compare_data',
+          locals: { bridge: @bridge }
+        )
+      end
+      format.html { render partial: 'bridges/compare_data', locals: { bridge: @bridge } }
+    end
+  end
+  
+  
+  
+
+  def comparison
+    @bridges = Bridge.all
+  end
 
 	def index
 		if params[:name].present? && (params[:minimum_length].blank? || params[:maximum_length].blank?)

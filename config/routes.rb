@@ -30,8 +30,9 @@ Rails.application.routes.draw do
 
   root "home#index"
   resources :bridges, only: [:index, :new, :create, :show, :destroy, :edit, :update] do
+    post 'compare_data', on: :member
     member do
-      post 'clone'  # Add a member route for the clone action
+      post 'clone'
     end
     resources :instance_bridges, only: [:index, :new, :create, :show, :destroy, :edit, :update] do
       member do
@@ -40,6 +41,7 @@ Rails.application.routes.draw do
     end
   end
   get 'your_bridges', to: 'bridges#your_bridges', as: :your_bridges
+  get 'comparison', to: 'bridges#comparison', as: :comparison
   get 'upload_bridge', to: 'bridges#upload_bridge', as: :upload_bridge
   post 'send_upload_bridge', to: 'bridges#send_upload_bridge', as: :send_upload_bridge
 

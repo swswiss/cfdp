@@ -1,0 +1,71 @@
+<!-- app/views/bridges/_compare_data.html.erb -->
+
+<turbo-frame id=<%=params['frame_id']%> >
+<br>
+<div class="flex justify-center">
+  <article class="flex max-w-xl flex-col items-start justify-between mx-auto ml-8"> <!-- Adjust margin here -->
+    <div class="flex items-center gap-x-4 text-xs">
+      <time datetime="2020-03-16" class="text-gray-500"><%= bridge.created_at.strftime("%Y %B %d") %></time>
+      <%= link_to bridge_path(bridge), class: "relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100", method: :get, data: { turbo: false } do %>
+        Go to the bridge
+      <% end %>
+      
+    </div>
+    <div class="group relative">
+      <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+        
+          <span class="absolute inset-0"></span>
+          <%= bridge.name %>
+        
+      </h3>
+      <p class="line-clamp-3 text-sm leading-6 text-gray-600">
+        Indicele total de calitate: <%=bridge.flaw.indice_total_calitate%>
+      </p>
+      <p class="line-clamp-3 text-sm leading-6 text-gray-600">
+        Depunctare F1: <%=bridge.flaw.f1%>
+      </p>
+      <p class="line-clamp-3 text-sm leading-6 text-gray-600">
+        Depunctare F2: <%=bridge.flaw.f2%>
+      </p>
+      <p class="line-clamp-3 text-sm leading-6 text-gray-600">
+        Depunctare F3: <%=bridge.flaw.f3%>
+      </p>
+      <p class="line-clamp-3 text-sm leading-6 text-gray-600">
+        Depunctare F4: <%=bridge.flaw.f4%>
+      </p>
+      <p class="line-clamp-3 text-sm leading-6 text-gray-600">
+        Depunctare F5: <%=bridge.flaw.f5%>
+      </p>
+      <p class="line-clamp-3 text-sm leading-6 text-gray-600">
+        Indice stare tehnica C: <%=bridge.flaw.ist_c%>
+      </p>
+      <p class="line-clamp-3 text-sm leading-6 text-gray-600">
+        Indice stare tehnica F: <%=bridge.flaw.ist_f%>
+      </p>
+      <p class="line-clamp-3 text-sm leading-6 text-gray-600">
+        Indice stare tehnica Total: <%=bridge.flaw.ist_total%>
+      </p>
+      <p class="line-clamp-3 text-sm leading-6 text-gray-600">
+        Aprecierea starii tehnice: <%=bridge.flaw.aprecierea_starii_tehnice%>
+      </p>
+      <p class="line-clamp-3 text-sm leading-6 text-gray-600">
+        Masuri recomandate: <%=bridge.flaw.masuri_recomandate%>
+      </p>
+    </div>
+    <div class="relative mt-8 flex items-center gap-x-4">
+      <%= image_tag "user.png", class: "h-8 w-8 rounded-full mr-2" %>
+      <div class="text-sm leading-6">
+        <p class="font-semibold text-gray-900">
+          
+            <span class="absolute inset-0"></span>
+            <%= bridge.user.firstname %> <%= bridge.user.lastname %>
+          
+        </p>
+        <p class="text-gray-600"><%= bridge.user.role.capitalize %></p>
+      </div>
+    </div>
+  </article>
+</div>
+
+</turbo-frame>
+
