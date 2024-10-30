@@ -34,3 +34,24 @@
   <p class="mt-1 max-w-3xl text-sm leading-6 text-gray-500">No statistics yet</p>
   </center>
   <%end%>
+
+<%# 
+<%= line_chart [
+    { name: "IST F", data: flaw_instance_ist_f_hash },
+    { name: "Second Data Set", data: flaw_instance_ist_c_hash } # Replace with your actual data hash
+  ], 
+  height: "400px", 
+  width: "1000px", 
+  options: {
+    title: {
+      text: "Bridges Comparison per IST F",
+      left: 'center'
+    },
+    legend: {
+      position: 'top'
+    },
+    xAxis: {
+      type: 'category' # Adjust based on x-axis data format
+    }
+  } 
+%>

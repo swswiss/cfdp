@@ -5,6 +5,8 @@
       <br>
 <div id="tab1-content" class="tab-pane" style="height: 39rem; width: 65rem; overflow-y: auto;">
 <%= form_with model: @bridge do |f| %>
+   <%= f.hidden_field :latitude, id: 'bridge_latitude' %>
+  <%= f.hidden_field :longitude, id: 'bridge_longitude' %>
   <% if @bridge.user == current_user || current_user.admin? %>
   <button type="submit"
 	        class="sticky-button w-24 focus:outline-none border border-transparent py-1.5 px-3 rounded-md shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-sm font-medium"
@@ -3435,6 +3437,21 @@
   </button>
 </div>
 </center>
+<center>
+<!-- Button to trigger the tooltip or modal -->
+<button id="mapButton" class=" w-29 focus:outline-none border border-transparent py-1.5 px-3 rounded-md shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-sm font-medium"">Select Location</button>
+
+<!-- Hidden div for the tooltip map -->
+<div id="mapTooltip" style="display: none;">
+  <button id="closeMapTooltip">Close</button>
+  <button id="resetMapTooltip">Reset</button>
+  <div id="map" style="height: 170px; width: 800px;"></div>
+  <div id="coordinates">
+    <p>Selected Latitude: <span id="lat"></span></p>
+    <p>Selected Longitude: <span id="lng"></span></p>
+  </div>
+</div>
+</center>
 
 <style type="text/css">
 .sticky-button {
@@ -3462,4 +3479,76 @@ function scrollToTable(tableId) {
     table.scrollIntoView({ behavior: 'smooth' });
   }
 }
+</script>
+
+<script>
+// Initialize the map with a default location (example coordinates)
+var defaultLat = 47.152293;
+var defaultLng = 27.589003;
+var map = L.map('map').setView([defaultLat, defaultLng], 13);
+
+// Add OpenStreetMap tiles to the map
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+// Variable to store the marker
+var marker;
+
+// Function to show the map in a "tooltip"
+document.getElementById('mapButton').addEventListener('click', function() {
+    var mapTooltip = document.getElementById('mapTooltip');
+    mapTooltip.style.display = 'block';  // Show the map div
+    map.invalidateSize();  // Recalculate map size after it's shown
+});
+
+// Function to close the tooltip when clicking the "close" button
+document.getElementById('closeMapTooltip').addEventListener('click', function() {
+    var mapTooltip = document.getElementById('mapTooltip');
+    mapTooltip.style.display = 'none';  // Hide the map div
+});
+
+// Handle map click event to get coordinates and add a marker
+map.on('click', function(e) {
+    var lat = e.latlng.lat.toFixed(6);
+    var lng = e.latlng.lng.toFixed(6);
+
+    // If a marker exists, remove it
+    if (marker) {
+        map.removeLayer(marker);
+    }
+
+    // Add a new marker at the clicked location
+    marker = L.marker([lat, lng]).addTo(map);
+
+    // Display the selected coordinates
+    document.getElementById('lat').innerText = lat;
+    document.getElementById('lng').innerText = lng;
+
+    // Optionally, update hidden input fields to store the selected coordinates
+    document.getElementById('bridge_latitude').value = lat;
+    document.getElementById('bridge_longitude').value = lng;
+});
+
+// Reset button to clear coordinates, reset the map, and remove marker
+document.getElementById('resetMapTooltip').addEventListener('click', function() {
+    // Reset the map view to the default location
+    map.setView([defaultLat, defaultLng], 13);
+
+    // Clear the displayed coordinates
+    document.getElementById('lat').innerText = '';
+    document.getElementById('lng').innerText = '';
+
+    // Optionally, clear hidden input fields if you are storing coordinates in them
+    document.getElementById('bridge_latitude').value = '';
+    document.getElementById('bridge_longitude').value = '';
+
+    // If a marker exists, remove it
+    if (marker) {
+        map.removeLayer(marker);
+        marker = null;
+    }
+});
+
+
 </script>
