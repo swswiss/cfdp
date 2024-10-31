@@ -1,6 +1,6 @@
 class BridgesController < ApplicationController
   before_action :authenticate_user!
-	before_action :authorize_admin!, only: [:upload_bridge, :send_upload_bridge, :clone]
+	before_action :authorize_admin!, only: [:upload_bridge, :send_upload_bridge]
 	before_action :authorize_bridge, only: [:update, :destroy, :print, :edit, :clone]
 
   F1 = [
@@ -55,8 +55,12 @@ class BridgesController < ApplicationController
 	end
 
 	def new
-		@bridge = current_user.bridges.build
-		@bridge.build_flaw
+    if current_user.bridges.count >= 3 && current_user.role == 'student'
+      redirect_to bridges_path, alert: "You can only create up to 3 bridges."
+    else
+      @bridge = current_user.bridges.build
+		  @bridge.build_flaw
+    end
 	end
 
 	def print
