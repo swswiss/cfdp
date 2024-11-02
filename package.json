@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "chart.js": "^4.4.6",
+    "chartkick": "^5.0.1",
+    "select2": "^4.1.0-rc.0"
+  }
+}

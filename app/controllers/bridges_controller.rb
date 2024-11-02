@@ -1,6 +1,6 @@
 class BridgesController < ApplicationController
   before_action :authenticate_user!
-	before_action :authorize_admin!, only: [:upload_bridge, :send_upload_bridge]
+	before_action :authorize_admin!, only: [:upload_bridge, :send_upload_bridge, :compare_data, :comparison]
 	before_action :authorize_bridge, only: [:update, :destroy, :print, :edit, :clone]
 
   F1 = [
@@ -25,8 +25,35 @@ class BridgesController < ApplicationController
     end
   end
   
-  
-  
+  def custom
+    @bridges = Bridge.all # Adjust scope as needed, e.g., only published bridges
+    selected_bridge_ids = params[:bridge_ids]&.map(&:to_i)
+    selected_options = params[:options]
+    selected_bridges = Bridge.where(id: selected_bridge_ids)
+    @show_separate = selected_options&.include?('separate')
+
+    selected_options&.each do |option|
+      if option == "ist_t"
+        @ist_total_hash = {}
+        selected_bridges.each do |bridge|
+          @instance_bridges = bridge.instance_bridges.order(created_at: :asc)
+          instance_bridges_names = [bridge.name] + @instance_bridges.pluck(:name)
+          @bridge_ist_total = [bridge.created_at, bridge.flaw.ist_total]
+          @flaw_instance_ist_total = FlawInstance.where(instance_bridge: @instance_bridges.pluck(:id)).order(:created_at).pluck(:created_at, :ist_total).to_h
+          @flaw_instance_ist_total[@bridge_ist_total[0]] = @bridge_ist_total[1] 
+          @flaw_instance_ist_total = @flaw_instance_ist_total.sort_by { |date, value| date }
+          @flaw_instance_ist_total_hash = {}
+          @flaw_instance_ist_total.each_with_index do |(key, value), index|
+            key = key.strftime("%Y-%m-%d")
+            key = key + " " + instance_bridges_names[index]
+            @flaw_instance_ist_total_hash[key] = value
+          end
+          @ist_total_hash[bridge.name] = @flaw_instance_ist_total_hash
+        end
+      end
+    end
+  end
+
 
   def comparison
     @bridges = Bridge.all

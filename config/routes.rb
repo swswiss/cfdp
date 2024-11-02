@@ -28,6 +28,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'custom', to: 'bridges#custom', as: :custom
+
   root "home#index"
   resources :bridges, only: [:index, :new, :create, :show, :destroy, :edit, :update] do
     post 'compare_data', on: :member
