@@ -633,25 +633,27 @@
 
 
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const selectAllToggle = document.getElementById("select-all");
-    const individualToggles = document.querySelectorAll(".toggle-option");
+document.addEventListener("turbo:load", function() {
+  const selectAllToggle = document.getElementById("select-all");
+  const individualToggles = document.querySelectorAll(".toggle-option");
 
+  if (selectAllToggle) {
     selectAllToggle.addEventListener("change", function() {
       individualToggles.forEach(toggle => {
         toggle.checked = selectAllToggle.checked;
       });
     });
+  }
 
-    // Optional: If an individual toggle is unchecked, uncheck the "Select All" toggle
-    individualToggles.forEach(toggle => {
-      toggle.addEventListener("change", function() {
-        if (!toggle.checked) {
-          selectAllToggle.checked = false;
-        } else if (Array.from(individualToggles).every(t => t.checked)) {
-          selectAllToggle.checked = true;
-        }
-      });
+  individualToggles.forEach(toggle => {
+    toggle.addEventListener("change", function() {
+      if (!toggle.checked) {
+        selectAllToggle.checked = false;
+      } else if (Array.from(individualToggles).every(t => t.checked)) {
+        selectAllToggle.checked = true;
+      }
     });
   });
+});
+
 </script>
