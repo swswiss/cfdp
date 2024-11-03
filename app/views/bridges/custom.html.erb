@@ -16,7 +16,7 @@
         <!-- Responsive grid for toggle options -->
         <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
           <!-- Toggle Buttons -->
-          <% [["F1", "Option 1"], ["F2", "Option 2"], ["F3", "Option 3"], ["F4", "Option 4"], ["F5", "Option 5"], ["IST C", "ist_c"], ["IST F", "ist_f"], ["IST T.", "ist_t"], ["Modular", "separate"]].each_with_index do |(label, value), index| %>
+          <% [["F1", "f1"], ["F2", "f2"], ["F3", "f3"], ["F4", "f4"], ["F5", "f5"], ["IST C", "ist_c"], ["IST F", "ist_f"], ["IST T.", "ist_t"], ["Modular", "separate"]].each_with_index do |(label, value), index| %>
             <div class="flex items-center">
               <label class="relative inline-flex cursor-pointer items-center">
                 <input id="switch<%= index + 1 %>" type="checkbox" name="options[]" value="<%= value %>" class="peer sr-only" />
@@ -35,77 +35,590 @@
   <% end %>
   
 
-<%if @show_separate%>
-  <div style="display: grid; grid-template-columns: 1fr; gap: 10px; justify-items: center;">
-  <% if @ist_total_hash&.any? %>
-  <br>
-    Bridges Comparison per IST F
-    <% chart_data = [] %>
 
-    <% @ist_total_hash.each do |bridge_name, data_hash| %>
-      <% chart_data << { 
-        name: bridge_name, 
-        data: data_hash.transform_keys(&:to_s) 
-      } %>
-    <% end %>
+<%if @push == true%>
+  <%if @show_separate%>
+    <div style="display: grid; grid-template-columns: 1fr; gap: 10px; justify-items: center;">
+      <% if @push_ist_t == true %>
+        <% if @ist_total_hash&.any? %>
+          <br>
+          Bridges Comparison per IST Total
+          <% chart_data = [] %>
 
-    <% chart_data.each do |data| %>
-      <div style="width: 1000px;">
-        <%= line_chart [data],
-          height: "400px",
-          options: {
-            legend: {
-              position: 'top'
-            },
-            xAxis: {
-              type: 'category' 
-            }
-          } 
-        %>
-      </div>
-    <% end %>
-  <% else %>
-  <center>
-  <br><br><br><br><br><br>
-  <div class="mt-4  text-gray-600 text-sm leading-5 max-w-2xl">
-  This section allows you to generate custom statistics tailored to your needs. Choose any bridge and apply various filters to analyze the data in a way that provides the insights you seek.  </div>
-  </center>
+          <% @ist_total_hash.each do |bridge_name, data_hash| %>
+            <% chart_data << { 
+              name: bridge_name, 
+              data: data_hash.transform_keys(&:to_s) 
+            } %>
+          <% end %>
+
+          <% chart_data.each do |data| %>
+            <div style="width: 1000px;">
+              <%= line_chart [data],
+                height: "400px",
+                options: {
+                  legend: {
+                    position: 'top'
+                  },
+                  xAxis: {
+                    type: 'category',
+                    data: ["1", "2", "3", "4", "5", "6", "7"]
+                  }
+                } 
+              %>
+            </div>
+          <% end %>
+        <% else %>
+          <center>
+          <br><br><br><br><br><br>
+          <div class="mt-4  text-gray-600 text-sm leading-5 max-w-2xl">
+          No any statistics for IST Total. Please check data before.</div>
+          </center>
+        <%end%>
+      <%end%>
+      <% if @push_ist_c == true %>
+        <% if @ist_c_hash&.any? %>
+          <br>
+          Bridges Comparison per IST C
+          <% chart_data = [] %>
+
+          <% @ist_c_hash.each do |bridge_name, data_hash| %>
+            <% chart_data << { 
+              name: bridge_name, 
+              data: data_hash.transform_keys(&:to_s) 
+            } %>
+          <% end %>
+
+          <% chart_data.each do |data| %>
+            <div style="width: 1000px;">
+              <%= line_chart [data],
+                height: "400px",
+                options: {
+                  legend: {
+                    position: 'top'
+                  },
+                  xAxis: {
+                    type: 'category',
+                    data: ["1", "2", "3", "4", "5", "6", "7"]
+                  }
+                } 
+              %>
+            </div>
+          <% end %>
+        <% else %>
+          <center>
+          <br><br><br><br><br><br>
+          <div class="mt-4  text-gray-600 text-sm leading-5 max-w-2xl">
+          No any statistics for IST C. Please check data before.      </div>
+          </center>
+        <%end%>
+      <%end%>
+      <% if @push_ist_f == true %>
+        <% if @ist_f_hash&.any? %>
+          <br>
+          Bridges Comparison per IST F
+          <% chart_data = [] %>
+
+          <% @ist_f_hash.each do |bridge_name, data_hash| %>
+            <% chart_data << { 
+              name: bridge_name, 
+              data: data_hash.transform_keys(&:to_s) 
+            } %>
+          <% end %>
+
+          <% chart_data.each do |data| %>
+            <div style="width: 1000px;">
+              <%= line_chart [data],
+                height: "400px",
+                options: {
+                  legend: {
+                    position: 'top'
+                  },
+                  xAxis: {
+                    type: 'category',
+                    data: ["1", "2", "3", "4", "5", "6", "7"]
+                  }
+                } 
+              %>
+            </div>
+          <% end %>
+        <% else %>
+          <center>
+          <br><br><br><br><br><br>
+          <div class="mt-4  text-gray-600 text-sm leading-5 max-w-2xl">
+          No any statistics for IST F. Please check data before.      </div>
+          </center>
+        <%end%>
+      <%end%>
+      <% if @push_ist_f1 == true %>
+        <% if @ist_f1_hash&.any? %>
+          <br>
+          Bridges Comparison per IST F1
+          <% chart_data = [] %>
+
+          <% @ist_f1_hash.each do |bridge_name, data_hash| %>
+            <% chart_data << { 
+              name: bridge_name, 
+              data: data_hash.transform_keys(&:to_s) 
+            } %>
+          <% end %>
+
+          <% chart_data.each do |data| %>
+            <div style="width: 1000px;">
+              <%= line_chart [data],
+                height: "400px",
+                options: {
+                  legend: {
+                    position: 'top'
+                  },
+                  xAxis: {
+                    type: 'category',
+                    data: ["1", "2", "3", "4", "5", "6", "7"] 
+                  }
+                } 
+              %>
+            </div>
+          <% end %>
+        <% else %>
+          <center>
+          <br><br><br><br><br><br>
+          <div class="mt-4  text-gray-600 text-sm leading-5 max-w-2xl">
+          No any statistics for IST F1. Please check data before.      </div>
+          </center>
+        <%end%>
+      <%end%>
+      <% if @push_ist_f2 == true %>
+        <% if @ist_f2_hash&.any? %>
+          <br>
+          Bridges Comparison per IST F2
+          <% chart_data = [] %>
+
+          <% @ist_f2_hash.each do |bridge_name, data_hash| %>
+            <% chart_data << { 
+              name: bridge_name, 
+              data: data_hash.transform_keys(&:to_s) 
+            } %>
+          <% end %>
+
+          <% chart_data.each do |data| %>
+            <div style="width: 1000px;">
+              <%= line_chart [data],
+                height: "400px",
+                options: {
+                  legend: {
+                    position: 'top'
+                  },
+                  xAxis: {
+                    type: 'category',
+                    data: ["1", "2", "3", "4", "5", "6", "7"] 
+                  }
+                } 
+              %>
+            </div>
+          <% end %>
+        <% else %>
+          <center>
+          <br><br><br><br><br><br>
+          <div class="mt-4  text-gray-600 text-sm leading-5 max-w-2xl">
+          No any statistics for IST F2. Please check data before.      </div>
+          </center>
+        <%end%>
+      <%end%>
+      <% if @push_ist_f3 == true %>
+        <% if @ist_f3_hash&.any? %>
+          <br>
+          Bridges Comparison per IST F3
+          <% chart_data = [] %>
+
+          <% @ist_f3_hash.each do |bridge_name, data_hash| %>
+            <% chart_data << { 
+              name: bridge_name, 
+              data: data_hash.transform_keys(&:to_s) 
+            } %>
+          <% end %>
+
+          <% chart_data.each do |data| %>
+            <div style="width: 1000px;">
+              <%= line_chart [data],
+                height: "400px",
+                options: {
+                  legend: {
+                    position: 'top'
+                  },
+                  xAxis: {
+                    type: 'category',
+                    data: ["1", "2", "3", "4", "5", "6", "7"] 
+                  }
+                } 
+              %>
+            </div>
+          <% end %>
+        <% else %>
+          <center>
+          <br><br><br><br><br><br>
+          <div class="mt-4  text-gray-600 text-sm leading-5 max-w-2xl">
+          No any statistics for IST F3. Please check data before.      </div>
+          </center>
+        <%end%>
+      <%end%>
+      <% if @push_ist_f4 == true %>
+        <% if @ist_f4_hash&.any? %>
+          <br>
+          Bridges Comparison per IST F4
+          <% chart_data = [] %>
+
+          <% @ist_f4_hash.each do |bridge_name, data_hash| %>
+            <% chart_data << { 
+              name: bridge_name, 
+              data: data_hash.transform_keys(&:to_s) 
+            } %>
+          <% end %>
+
+          <% chart_data.each do |data| %>
+            <div style="width: 1000px;">
+              <%= line_chart [data],
+                height: "400px",
+                options: {
+                  legend: {
+                    position: 'top'
+                  },
+                  xAxis: {
+                    type: 'category',
+                    data: ["1", "2", "3", "4", "5", "6", "7"] 
+                  }
+                } 
+              %>
+            </div>
+          <% end %>
+        <% else %>
+          <center>
+          <br><br><br><br><br><br>
+          <div class="mt-4  text-gray-600 text-sm leading-5 max-w-2xl">
+          No any statistics for IST F4. Please check data before.      </div>
+          </center>
+        <%end%>
+      <%end%>
+      <% if @push_ist_f5 == true %>
+        <% if @ist_f5_hash&.any? %>
+          <br>
+          Bridges Comparison per IST F5
+          <% chart_data = [] %>
+
+          <% @ist_f5_hash.each do |bridge_name, data_hash| %>
+            <% chart_data << { 
+              name: bridge_name, 
+              data: data_hash.transform_keys(&:to_s) 
+            } %>
+          <% end %>
+
+          <% chart_data.each do |data| %>
+            <div style="width: 1000px;">
+              <%= line_chart [data],
+                height: "400px",
+                options: {
+                  legend: {
+                    position: 'top'
+                  },
+                  xAxis: {
+                    type: 'category',
+                    data: ["1", "2", "3", "4", "5", "6", "7"] 
+                  }
+                } 
+              %>
+            </div>
+          <% end %>
+        <% else %>
+          <center>
+          <br><br><br><br><br><br>
+          <div class="mt-4  text-gray-600 text-sm leading-5 max-w-2xl">
+          No any statistics for IST F5. Please check data before.      </div>
+          </center>
+        <%end%>
+      <%end%>
+    </div>
+  <%else%>
+    <center>
+      <% if @push_ist_t == true %>
+        <% if @ist_total_hash&.any? %>
+          <br>
+          Bridges Comparison per IST Total
+          <% chart_data = [] %>
+
+          <% @ist_total_hash.each do |bridge_name, data_hash| %>
+            <% chart_data << { 
+              name: bridge_name, 
+              data: data_hash.transform_keys(&:to_s) # Convert keys to string if they are DateTime
+            } %>
+          <% end %>
+
+          <%= line_chart chart_data,
+            height: "400px", 
+            width: "1000px", 
+            options: {
+
+              legend: {
+                position: 'top'
+              },
+              xAxis: {
+                type: 'category',
+                data: ["1", "2", "3", "4", "5", "6", "7"]
+              }
+            } 
+          %>
+        <% else %>
+          <center>
+            <br><br><br><br><br><br>
+            <div class="mt-4  text-gray-600 text-sm leading-5 max-w-2xl">
+            No any statistics for IST Total. Please check data before.</div>      </center>
+        <%end%>
+      <%end%>
+      <% if @push_ist_c == true %>
+        <% if @ist_c_hash&.any? %>
+          <br>
+          Bridges Comparison per IST C
+          <% chart_data = [] %>
+
+          <% @ist_c_hash.each do |bridge_name, data_hash| %>
+            <% chart_data << { 
+              name: bridge_name, 
+              data: data_hash.transform_keys(&:to_s) # Convert keys to string if they are DateTime
+            } %>
+          <% end %>
+
+          <%= line_chart chart_data,
+            height: "400px", 
+            width: "1000px", 
+            options: {
+
+              legend: {
+                position: 'top'
+              },
+              xAxis: {
+                type: 'category',
+                data: ["1", "2", "3", "4", "5", "6", "7"]
+                
+              }
+            } 
+          %>
+        <% else %>
+          <center>
+            <br><br><br><br><br><br>
+            <div class="mt-4  text-gray-600 text-sm leading-5 max-w-2xl">
+            No any statistics for IST C. Please check data before.</div>      </center>
+        <%end%>
+      <%end%>
+      <% if @push_ist_f == true %>
+        <% if @ist_f_hash&.any? %>
+          <br>
+          Bridges Comparison per IST F
+          <% chart_data = [] %>
+
+          <% @ist_f_hash.each do |bridge_name, data_hash| %>
+            <% chart_data << { 
+              name: bridge_name, 
+              data: data_hash.transform_keys(&:to_s) # Convert keys to string if they are DateTime
+            } %>
+          <% end %>
+
+          <%= line_chart chart_data,
+            height: "400px", 
+            width: "1000px", 
+            options: {
+
+              legend: {
+                position: 'top'
+              },
+              xAxis: {
+                type: 'category',
+                data: ["1", "2", "3", "4", "5", "6", "7"]
+              }
+            } 
+          %>
+        <% else %>
+          <center>
+            <br><br><br><br><br><br>
+            <div class="mt-4  text-gray-600 text-sm leading-5 max-w-2xl">
+            No any statistics for IST F. Please check data before.</div>      </center>
+        <%end%>
+      <%end%>
+      <% if @push_ist_f1 == true %>
+        <% if @ist_f1_hash&.any? %>
+          <br>
+          Bridges Comparison per IST F1
+          <% chart_data = [] %>
+
+          <% @ist_f1_hash.each do |bridge_name, data_hash| %>
+            <% chart_data << { 
+              name: bridge_name, 
+              data: data_hash.transform_keys(&:to_s) # Convert keys to string if they are DateTime
+            } %>
+          <% end %>
+
+          <%= line_chart chart_data,
+            height: "400px", 
+            width: "1000px", 
+            options: {
+
+              legend: {
+                position: 'top'
+              },
+              xAxis: {
+                type: 'category',
+                data: ["1", "2", "3", "4", "5", "6", "7"] # Adjust based on x-axis data format
+              }
+            } 
+          %>
+        <% else %>
+          <center>
+            <br><br><br><br><br><br>
+            <div class="mt-4  text-gray-600 text-sm leading-5 max-w-2xl">
+            No any statistics for IST F1. Please check data before.</div>      </center>
+        <%end%>
+      <%end%>
+      <% if @push_ist_f2 == true %>
+        <% if @ist_f2_hash&.any? %>
+          <br>
+          Bridges Comparison per IST F2
+          <% chart_data = [] %>
+
+          <% @ist_f2_hash.each do |bridge_name, data_hash| %>
+            <% chart_data << { 
+              name: bridge_name, 
+              data: data_hash.transform_keys(&:to_s) # Convert keys to string if they are DateTime
+            } %>
+          <% end %>
+
+          <%= line_chart chart_data,
+            height: "400px", 
+            width: "1000px", 
+            options: {
+
+              legend: {
+                position: 'top'
+              },
+              xAxis: {
+                type: 'category',
+                data: ["1", "2", "3", "4", "5", "6", "7"] # Adjust based on x-axis data format
+              }
+            } 
+          %>
+        <% else %>
+          <center>
+            <br><br><br><br><br><br>
+            <div class="mt-4  text-gray-600 text-sm leading-5 max-w-2xl">
+            No any statistics for IST F2. Please check data before.</div>      </center>
+        <%end%>
+      <%end%>
+      <% if @push_ist_f3 == true %>
+        <% if @ist_f3_hash&.any? %>
+          <br>
+          Bridges Comparison per IST F3
+          <% chart_data = [] %>
+
+          <% @ist_f3_hash.each do |bridge_name, data_hash| %>
+            <% chart_data << { 
+              name: bridge_name, 
+              data: data_hash.transform_keys(&:to_s) # Convert keys to string if they are DateTime
+            } %>
+          <% end %>
+
+          <%= line_chart chart_data,
+            height: "400px", 
+            width: "1000px", 
+            options: {
+
+              legend: {
+                position: 'top'
+              },
+              xAxis: {
+                type: 'category',
+                data: ["1", "2", "3", "4", "5", "6", "7"] # Adjust based on x-axis data format
+              }
+            } 
+          %>
+        <% else %>
+          <center>
+            <br><br><br><br><br><br>
+            <div class="mt-4  text-gray-600 text-sm leading-5 max-w-2xl">
+            No any statistics for IST F3. Please check data before.</div>      </center>
+        <%end%>
+      <%end%>
+      <% if @push_ist_f4 == true %>
+        <% if @ist_f4_hash&.any? %>
+          <br>
+          Bridges Comparison per IST F4
+          <% chart_data = [] %>
+
+          <% @ist_f4_hash.each do |bridge_name, data_hash| %>
+            <% chart_data << { 
+              name: bridge_name, 
+              data: data_hash.transform_keys(&:to_s) # Convert keys to string if they are DateTime
+            } %>
+          <% end %>
+
+          <%= line_chart chart_data,
+            height: "400px", 
+            width: "1000px", 
+            options: {
+
+              legend: {
+                position: 'top'
+              },
+              xAxis: {
+                type: 'category',
+                data: ["1", "2", "3", "4", "5", "6", "7"] # Adjust based on x-axis data format
+              }
+            } 
+          %>
+        <% else %>
+          <center>
+            <br><br><br><br><br><br>
+            <div class="mt-4  text-gray-600 text-sm leading-5 max-w-2xl">
+            No any statistics for IST F4. Please check data before.</div>      </center>
+        <%end%>
+      <%end%>
+      <% if @push_ist_f5 == true %>
+        <% if @ist_f5_hash&.any? %>
+          <br>
+          Bridges Comparison per IST F5
+          <% chart_data = [] %>
+
+          <% @ist_f5_hash.each do |bridge_name, data_hash| %>
+            <% chart_data << { 
+              name: bridge_name, 
+              data: data_hash.transform_keys(&:to_s) # Convert keys to string if they are DateTime
+            } %>
+          <% end %>
+
+          <%= line_chart chart_data,
+            height: "400px", 
+            width: "1000px", 
+            options: {
+
+              legend: {
+                position: 'top'
+              },
+              xAxis: {
+                type: 'category',
+                data: ["1", "2", "3", "4", "5", "6", "7"] # Adjust based on x-axis data format
+              }
+            } 
+          %>
+        <% else %>
+          <center>
+            <br><br><br><br><br><br>
+            <div class="mt-4  text-gray-600 text-sm leading-5 max-w-2xl">
+            No any statistics for IST F5. Please check data before.</div>      </center>
+        <%end%>
+      <%end%>
+    </center>
   <%end%>
-</div>
 <%else%>
-<center>
-<% if @ist_total_hash&.any? %>
-<br>
-Bridges Comparison per IST F
-  <% chart_data = [] %>
-
-  <% @ist_total_hash.each do |bridge_name, data_hash| %>
-    <% chart_data << { 
-      name: bridge_name, 
-      data: data_hash.transform_keys(&:to_s) # Convert keys to string if they are DateTime
-    } %>
-  <% end %>
-
-  <%= line_chart chart_data,
-    height: "400px", 
-    width: "1000px", 
-    options: {
-
-      legend: {
-        position: 'top'
-      },
-      xAxis: {
-        type: 'category' # Adjust based on x-axis data format
-      }
-    } 
-  %>
-  <% else %>
   <center>
   <br><br><br><br><br><br>
   <div class="mt-4  text-gray-600 text-sm leading-5 max-w-2xl">
-  This section allows you to generate custom statistics tailored to your needs. Choose any bridge and apply various filters to analyze the data in a way that provides the insights you seek.  </center>
-  <%end%>
-</center>
+  This section allows you to generate custom statistics tailored to your needs. Choose any bridge and apply various filters to analyze the data in a way that provides the insights you seek.
+  </center>
 <%end%>
 
 

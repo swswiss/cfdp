@@ -33,7 +33,10 @@ class BridgesController < ApplicationController
     @show_separate = selected_options&.include?('separate')
 
     selected_options&.each do |option|
+      @push = true
+
       if option == "ist_t"
+        @push_ist_t = true
         @ist_total_hash = {}
         selected_bridges.each do |bridge|
           @instance_bridges = bridge.instance_bridges.order(created_at: :asc)
@@ -49,6 +52,139 @@ class BridgesController < ApplicationController
             @flaw_instance_ist_total_hash[key] = value
           end
           @ist_total_hash[bridge.name] = @flaw_instance_ist_total_hash
+        end
+      end
+      if option == "ist_c"
+        @push_ist_c = true
+        @ist_c_hash = {}
+        selected_bridges.each do |bridge|
+          @instance_bridges = bridge.instance_bridges.order(created_at: :asc)
+          instance_bridges_names = [bridge.name] + @instance_bridges.pluck(:name)
+          @bridge_ist_c = [bridge.created_at, bridge.flaw.ist_c]
+          @flaw_instance_ist_c = FlawInstance.where(instance_bridge: @instance_bridges.pluck(:id)).order(:created_at).pluck(:created_at, :ist_c).to_h
+          @flaw_instance_ist_c[@bridge_ist_c[0]] = @bridge_ist_c[1] 
+          @flaw_instance_ist_c = @flaw_instance_ist_c.sort_by { |date, value| date }
+          @flaw_instance_ist_c_hash = {}
+          @flaw_instance_ist_c.each_with_index do |(key, value), index|
+            key = key.strftime("%Y-%m-%d")
+            key = key + " " + instance_bridges_names[index]
+            @flaw_instance_ist_c_hash[key] = value
+          end
+          @ist_c_hash[bridge.name] = @flaw_instance_ist_c_hash
+        end
+      end
+      if option == "ist_f"
+        @push_ist_f = true
+        @ist_f_hash = {}
+        selected_bridges.each do |bridge|
+          @instance_bridges = bridge.instance_bridges.order(created_at: :asc)
+          instance_bridges_names = [bridge.name] + @instance_bridges.pluck(:name)
+          @bridge_ist_f = [bridge.created_at, bridge.flaw.ist_f]
+          @flaw_instance_ist_f = FlawInstance.where(instance_bridge: @instance_bridges.pluck(:id)).order(:created_at).pluck(:created_at, :ist_f).to_h
+          @flaw_instance_ist_f[@bridge_ist_f[0]] = @bridge_ist_f[1] 
+          @flaw_instance_ist_f = @flaw_instance_ist_f.sort_by { |date, value| date }
+          @flaw_instance_ist_f_hash = {}
+          @flaw_instance_ist_f.each_with_index do |(key, value), index|
+            key = key.strftime("%Y-%m-%d")
+            key = key + " " + instance_bridges_names[index]
+            @flaw_instance_ist_f_hash[key] = value
+          end
+          @ist_f_hash[bridge.name] = @flaw_instance_ist_f_hash
+        end
+      end
+      if option == "f1"
+        @push_ist_f1 = true
+        @ist_f1_hash = {}
+        selected_bridges.each do |bridge|
+          @instance_bridges = bridge.instance_bridges.order(created_at: :asc)
+          instance_bridges_names = [bridge.name] + @instance_bridges.pluck(:name)
+          @bridge_ist_f1 = [bridge.created_at, bridge.flaw.f1]
+          @flaw_instance_ist_f1 = FlawInstance.where(instance_bridge: @instance_bridges.pluck(:id)).order(:created_at).pluck(:created_at, :f1).to_h
+          @flaw_instance_ist_f1[@bridge_ist_f1[0]] = @bridge_ist_f1[1] 
+          @flaw_instance_ist_f1 = @flaw_instance_ist_f1.sort_by { |date, value| date }
+          @flaw_instance_ist_f1_hash = {}
+          @flaw_instance_ist_f1.each_with_index do |(key, value), index|
+            key = key.strftime("%Y-%m-%d")
+            key = key + " " + instance_bridges_names[index]
+            @flaw_instance_ist_f1_hash[key] = value
+          end
+          @ist_f1_hash[bridge.name] = @flaw_instance_ist_f1_hash
+        end
+      end
+      if option == "f2"
+        @push_ist_f2 = true
+        @ist_f2_hash = {}
+        selected_bridges.each do |bridge|
+          @instance_bridges = bridge.instance_bridges.order(created_at: :asc)
+          instance_bridges_names = [bridge.name] + @instance_bridges.pluck(:name)
+          @bridge_ist_f2 = [bridge.created_at, bridge.flaw.f2]
+          @flaw_instance_ist_f2 = FlawInstance.where(instance_bridge: @instance_bridges.pluck(:id)).order(:created_at).pluck(:created_at, :f2).to_h
+          @flaw_instance_ist_f2[@bridge_ist_f2[0]] = @bridge_ist_f2[1] 
+          @flaw_instance_ist_f2 = @flaw_instance_ist_f2.sort_by { |date, value| date }
+          @flaw_instance_ist_f2_hash = {}
+          @flaw_instance_ist_f2.each_with_index do |(key, value), index|
+            key = key.strftime("%Y-%m-%d")
+            key = key + " " + instance_bridges_names[index]
+            @flaw_instance_ist_f2_hash[key] = value
+          end
+          @ist_f2_hash[bridge.name] = @flaw_instance_ist_f2_hash
+        end
+      end
+      if option == "f3"
+        @push_ist_f3 = true
+        @ist_f3_hash = {}
+        selected_bridges.each do |bridge|
+          @instance_bridges = bridge.instance_bridges.order(created_at: :asc)
+          instance_bridges_names = [bridge.name] + @instance_bridges.pluck(:name)
+          @bridge_ist_f3 = [bridge.created_at, bridge.flaw.f3]
+          @flaw_instance_ist_f3 = FlawInstance.where(instance_bridge: @instance_bridges.pluck(:id)).order(:created_at).pluck(:created_at, :f3).to_h
+          @flaw_instance_ist_f3[@bridge_ist_f3[0]] = @bridge_ist_f3[1] 
+          @flaw_instance_ist_f3 = @flaw_instance_ist_f3.sort_by { |date, value| date }
+          @flaw_instance_ist_f3_hash = {}
+          @flaw_instance_ist_f3.each_with_index do |(key, value), index|
+            key = key.strftime("%Y-%m-%d")
+            key = key + " " + instance_bridges_names[index]
+            @flaw_instance_ist_f3_hash[key] = value
+          end
+          @ist_f3_hash[bridge.name] = @flaw_instance_ist_f3_hash
+        end
+      end
+      if option == "f4"
+        @push_ist_f4 = true
+        @ist_f4_hash = {}
+        selected_bridges.each do |bridge|
+          @instance_bridges = bridge.instance_bridges.order(created_at: :asc)
+          instance_bridges_names = [bridge.name] + @instance_bridges.pluck(:name)
+          @bridge_ist_f4 = [bridge.created_at, bridge.flaw.f4]
+          @flaw_instance_ist_f4 = FlawInstance.where(instance_bridge: @instance_bridges.pluck(:id)).order(:created_at).pluck(:created_at, :f4).to_h
+          @flaw_instance_ist_f4[@bridge_ist_f4[0]] = @bridge_ist_f4[1] 
+          @flaw_instance_ist_f4 = @flaw_instance_ist_f4.sort_by { |date, value| date }
+          @flaw_instance_ist_f4_hash = {}
+          @flaw_instance_ist_f4.each_with_index do |(key, value), index|
+            key = key.strftime("%Y-%m-%d")
+            key = key + " " + instance_bridges_names[index]
+            @flaw_instance_ist_f4_hash[key] = value
+          end
+          @ist_f4_hash[bridge.name] = @flaw_instance_ist_f4_hash
+        end
+      end
+      if option == "f5"
+        @push_ist_f5 = true
+        @ist_f5_hash = {}
+        selected_bridges.each do |bridge|
+          @instance_bridges = bridge.instance_bridges.order(created_at: :asc)
+          instance_bridges_names = [bridge.name] + @instance_bridges.pluck(:name)
+          @bridge_ist_f5 = [bridge.created_at, bridge.flaw.f5]
+          @flaw_instance_ist_f5 = FlawInstance.where(instance_bridge: @instance_bridges.pluck(:id)).order(:created_at).pluck(:created_at, :f5).to_h
+          @flaw_instance_ist_f5[@bridge_ist_f5[0]] = @bridge_ist_f5[1] 
+          @flaw_instance_ist_f5 = @flaw_instance_ist_f5.sort_by { |date, value| date }
+          @flaw_instance_ist_f5_hash = {}
+          @flaw_instance_ist_f5.each_with_index do |(key, value), index|
+            key = key.strftime("%Y-%m-%d")
+            key = key + " " + instance_bridges_names[index]
+            @flaw_instance_ist_f5_hash[key] = value
+          end
+          @ist_f5_hash[bridge.name] = @flaw_instance_ist_f5_hash
         end
       end
     end
