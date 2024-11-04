@@ -178,6 +178,7 @@ GEM
     nokogiri (1.16.7-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    ostruct (0.6.0)
     parallel (1.26.3)
     parser (3.3.5.0)
       ast (~> 2.4.1)
@@ -333,8 +334,9 @@ GEM
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    wicked_pdf (2.8.1)
+    wicked_pdf (2.8.2)
       activesupport
+      ostruct
     wkhtmltopdf-binary (0.12.6.8)
     zeitwerk (2.6.18)
 
