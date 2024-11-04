@@ -59,7 +59,7 @@
 <nav aria-label="Page navigation example" class="mt-4">
   <ul class="list-style-none flex justify-center space-x-1">
     <li>
-      <%= link_to 'Previous', activity_logs_path(page: @activity_logs.prev_page, name: params[:name], action: params[:action]), 
+      <%= link_to 'Previous', activity_logs_path(page: @activity_logs.prev_page, name: params[:name], name_action: params[:name_action]), 
                   class: "relative block rounded bg-transparent px-3 py-1.5 text-sm text-surface transition duration-300 hover:bg-neutral-100 focus:bg-neutral-100 focus:text-primary-700 focus:outline-none focus:ring-0 active:bg-neutral-100 active:text-primary-700 #{'disabled:opacity-50 disabled:pointer-events-none' if @activity_logs.prev_page.nil?}", 
                   aria: { disabled: @activity_logs.prev_page.nil? } %>
     </li>
@@ -70,7 +70,7 @@
     <% if total_pages > 1 %>
       <%# Always show the first page %>
       <li>
-        <%= link_to 1, activity_logs_path(page: 1, name: params[:name], action: params[:action]), 
+        <%= link_to 1, activity_logs_path(page: 1, name: params[:name], name_action: params[:name_action]), 
                     class: "relative block rounded bg-transparent px-3 py-1.5 text-sm #{ 'text-primary-700 bg-neutral-100' if 1 == current_page } transition duration-300 hover:bg-neutral-100 focus:bg-neutral-100 focus:text-primary-700 focus:outline-none active:bg-neutral-100 active:text-primary-700" %>
       </li>
 
@@ -82,21 +82,21 @@
       <%# Show pages around the current page %>
       <% (current_page - 1).downto([2, current_page - 2].max) do |page| %>
         <li>
-          <%= link_to page, activity_logs_path(page: page, name: params[:name], action: params[:action]), 
+          <%= link_to page, activity_logs_path(page: page, name: params[:name], name_action: params[:name_action]), 
                       class: "relative block rounded bg-transparent px-3 py-1.5 text-sm #{ 'text-primary-700 bg-neutral-100' if page == current_page } transition duration-300 hover:bg-neutral-100 focus:bg-neutral-100 focus:text-primary-700 focus:outline-none active:bg-neutral-100 active:text-primary-700" %>
         </li>
       <% end %>
 
       <%# Always show the current page %>
       <li>
-        <%= link_to current_page, activity_logs_path(page: current_page, name: params[:name], action: params[:action]), 
+        <%= link_to current_page, activity_logs_path(page: current_page, name: params[:name], name_action: params[:name_action]), 
                     class: "relative block rounded bg-transparent px-3 py-1.5 text-sm text-primary-700 bg-neutral-100 transition duration-300" %>
       </li>
 
       <%# Show next pages after the current page %>
       <% (current_page + 1).upto([total_pages - 1, current_page + 2].min) do |page| %>
         <li>
-          <%= link_to page, activity_logs_path(page: page, name: params[:name], action: params[:action]), 
+          <%= link_to page, activity_logs_path(page: page, name: params[:name], name_action: params[:name_action]), 
                       class: "relative block rounded bg-transparent px-3 py-1.5 text-sm #{ 'text-primary-700 bg-neutral-100' if page == current_page } transition duration-300 hover:bg-neutral-100 focus:bg-neutral-100 focus:text-primary-700 focus:outline-none active:bg-neutral-100 active:text-primary-700" %>
         </li>
       <% end %>
@@ -108,13 +108,13 @@
 
       <%# Always show the last page %>
       <li>
-        <%= link_to total_pages, activity_logs_path(page: total_pages, name: params[:name], action: params[:action]), 
+        <%= link_to total_pages, activity_logs_path(page: total_pages, name: params[:name], name_action: params[:name_action]), 
                     class: "relative block rounded bg-transparent px-3 py-1.5 text-sm #{ 'text-primary-700 bg-neutral-100' if total_pages == current_page } transition duration-300 hover:bg-neutral-100 focus:bg-neutral-100 focus:text-primary-700 focus:outline-none active:bg-neutral-100 active:text-primary-700" %>
       </li>
     <% end %>
 
     <li>
-      <%= link_to 'Next', activity_logs_path(page: @activity_logs.next_page, name: params[:name], action: params[:action]), 
+      <%= link_to 'Next', activity_logs_path(page: @activity_logs.next_page, name: params[:name], name_action: params[:name_action]), 
                   class: "relative block rounded bg-transparent px-3 py-1.5 text-sm text-surface transition duration-300 hover:bg-neutral-100 focus:bg-neutral-100 focus:text-primary-700 focus:outline-none active:bg-neutral-100 active:text-primary-700 #{'disabled:opacity-50 disabled:pointer-events-none' if @activity_logs.next_page.nil?}", 
                   aria: { disabled: @activity_logs.next_page.nil? } %>
     </li>

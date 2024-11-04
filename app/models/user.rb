@@ -18,6 +18,14 @@ class User < ApplicationRecord
     role == 'admin'
   end
 
+  def super_admin?
+    role == 'super admin'
+  end
+
+  def student?
+    role == 'student'
+  end
+
   def password_required?
     # Password is required if it's a new record or if the user is changing their password (password or password_confirmation is filled in)
     !persisted? || (!password.blank? || !password_confirmation.blank?)
