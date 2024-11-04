@@ -16,6 +16,15 @@
     
     // Add a marker at the saved coordinates
     L.marker([<%= bridge.latitude %>, <%= bridge.longitude %>]).addTo(map);
+
+    // Define the polygon coordinates
+    var polygonCoordinates = <%= raw @bridge_polygon.to_json %>; // Assuming you are setting @bridge_polygon in your controller
+
+    // Create the polygon and add it to the map
+    var bridgePolygon = L.polygon(polygonCoordinates, { color: 'blue', weight: 3, opacity: 0.7 }).addTo(map);
+
+    // Optionally, you can bind a popup to the polygon
+    bridgePolygon.bindPopup("Bridge Location").openPopup();
     
     
     </script>

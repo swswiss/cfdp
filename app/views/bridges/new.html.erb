@@ -7,6 +7,7 @@
 
   <%= f.hidden_field :latitude, id: 'bridge_latitude' %>
   <%= f.hidden_field :longitude, id: 'bridge_longitude' %>
+  <%= f.hidden_field :line_coordinates, id: 'line_coordinates' %>
   <button type="submit"
 	        class="sticky-button w-24 focus:outline-none border border-transparent py-1.5 px-3 rounded-md shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-sm font-medium"
         >Complete</button>
@@ -3533,6 +3534,53 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 // Variable to store the marker
 var marker;
+
+// Create a feature group to hold the drawn items
+    var drawnItems = L.featureGroup().addTo(map);
+
+    // Initialize the Leaflet Draw control
+    var drawControl = new L.Control.Draw({
+      edit: {
+        featureGroup: drawnItems // Enable editing of drawn items
+      },
+      draw: {
+        polygon: false, // Disable polygon drawing
+        rectangle: false, // Disable rectangle drawing
+        circle: false, // Disable circle drawing
+        marker: false, // Disable marker drawing
+        polyline: { // Enable polyline drawing
+          shapeOptions: {
+            color: 'blue',
+            weight: 4
+          }
+        }
+      }
+    });
+
+    map.addControl(drawControl);
+
+    // Event handler for when a polyline is created
+    map.on(L.Draw.Event.CREATED, function(event) {
+      var layer = event.layer;
+      drawnItems.addLayer(layer); // Add the drawn line to the feature group
+    });
+
+    document.querySelector("form").addEventListener("submit", function(event) {
+        var coordinates = [];
+        drawnItems.eachLayer(function(layer) {
+            if (layer instanceof L.Polyline) {
+                coordinates = layer.getLatLngs(); // Get the coordinates of the drawn line
+            }
+        });
+
+        // Convert coordinates to a suitable format (e.g., an array of arrays)
+        var lineCoordinates = coordinates.map(function(latlng) {
+            return [latlng.lat, latlng.lng];
+        });
+
+        // Set the hidden input field value to the JSON string of coordinates
+        document.getElementById('line_coordinates').value = JSON.stringify(lineCoordinates);
+    });
 
 // Function to show the map in a "tooltip"
 document.getElementById('mapButton').addEventListener('click', function() {

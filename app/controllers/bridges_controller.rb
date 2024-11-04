@@ -408,6 +408,11 @@ class BridgesController < ApplicationController
   
 
 	def show
+    @bridge_polygon = [[47.152354682149934, 27.588778138160706],
+    [47.1521175564859, 27.588880062103275],
+    [47.15221970305552, 27.58926630020142],
+    [47.152434939827344, 27.589164376258854],
+    [47.15238751485081, 27.588933706283573]]
 		@bridge = Bridge.friendly.find(params[:id])
     @instance_bridges = @bridge.instance_bridges.order(created_at: :asc)
     instance_bridges_names = [@bridge.name] + @instance_bridges.pluck(:name)
@@ -508,6 +513,7 @@ class BridgesController < ApplicationController
 	end
 
 	def create
+    binding.pry
 		@bridge = Bridge.new(bridge_params.merge(user: current_user))
 		if @bridge.save
 			name = @bridge.name
@@ -551,7 +557,11 @@ class BridgesController < ApplicationController
       @bridge.flaw.update(ist_c: suma_c, ist_f: suma_f)
       @bridge.flaw.update(ist_total: suma_ist)
       @bridge.flaw.update(aprecierea_starii_tehnice: aprecierea_starii_tehnice, masuri_recomandate: masuri_recomandate)
-
+      binding.pry
+      line_coordinates = JSON.parse(params[:bridge][:line_coordinates])
+      bridge_width = 10 # width in meters
+      bridge_polygon = create_bridge_polygon(line_coordinates, bridge_width)
+      binding.pry
 			ActivityLog.log_activity(current_user, ActivityLog::ActionTypes::CREATED_BRIDGE, @bridge, name)
       UserMailer.with(user: current_user).create_bridge(@bridge).deliver_later if current_user.user_has_email_integration?
 			redirect_to bridge_path(@bridge), notice: 'Bridge was successfully created.'
@@ -1536,6 +1546,47 @@ class BridgesController < ApplicationController
     c5_columns = Flaw.column_names.select { |column| column&.start_with?('c5_') }
     max_value = c5_columns.map { |col| flaw.send(col).to_i }.max
     max_value
+  end
+
+  def create_bridge_polygon(line_coordinates, bridge_width)
+    points = []
+  
+    line_coordinates.each_cons(2) do |start_point, end_point|
+      # Convert latitude and longitude to radians
+      lat1 = start_point[0] * Math::PI / 180
+      lon1 = start_point[1] * Math::PI / 180
+      lat2 = end_point[0] * Math::PI / 180
+      lon2 = end_point[1] * Math::PI / 180
+  
+      # Calculate the angle of the line
+      delta_lon = lon2 - lon1
+      @angle = Math.atan2(Math.sin(delta_lon) * Math.cos(lat2), 
+                          Math.cos(lat1) * Math.sin(lat2) - 
+                          Math.sin(lat1) * Math.cos(lat2) * Math.cos(delta_lon))
+  
+      # Calculate perpendicular points for the bridge width
+      @offset_lat = bridge_width / 111320.0 * Math.cos(lat1) # 1 degree latitude ~ 111,320 meters
+      @offset_lon = bridge_width / 111320.0 # 1 degree longitude ~ 111,320 meters
+  
+      points << [start_point[0] + @offset_lat * Math.sin(@angle + Math::PI / 2),
+                  start_point[1] + @offset_lon * Math.cos(@angle + Math::PI / 2)]
+  
+      points << [start_point[0] - @offset_lat * Math.sin(@angle + Math::PI / 2),
+                  start_point[1] - @offset_lon * Math.cos(@angle + Math::PI / 2)]
+    end
+  
+    # Add the last point similarly
+    last_start_point = line_coordinates.last
+    points << [last_start_point[0] + @offset_lat * Math.sin(@angle + Math::PI / 2),
+                last_start_point[1] + @offset_lon * Math.cos(@angle + Math::PI / 2)]
+    
+    points << [last_start_point[0] - @offset_lat * Math.sin(@angle + Math::PI / 2),
+                last_start_point[1] - @offset_lon * Math.cos(@angle + Math::PI / 2)]
+  
+    # Close the polygon by returning to the first point
+    points << points.first
+  
+    points
   end
 
 	def authorize_bridge
