@@ -6,8 +6,8 @@ class User < ApplicationRecord
     
   validates :password, presence: true, confirmation: true, length: { within: 6..128 }, if: :password_required?
 
-  has_many :bridges
-  has_many :instance_bridges, through: :bridges
+  has_many :bridges, dependent: :destroy
+  has_many :instance_bridges, through: :bridges, dependent: :destroy
 
   has_many :activity_logs, dependent: :destroy
 
