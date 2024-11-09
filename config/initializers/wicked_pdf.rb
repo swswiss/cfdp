@@ -11,9 +11,9 @@
 WickedPdf.configure do |config|
   if Rails.env.production?
     # Path to where the actual gem binary is extracted:
-    config.exe_path = "#{ENV['GEM_HOME']}/gems/wkhtmltopdf-binary-#{Gem.loaded_specs['wkhtmltopdf-binary'].version}/bin/wkhtmltopdf_macos_cocoa"
+    #config.exe_path = "#{ENV['GEM_HOME']}/gems/wkhtmltopdf-binary-#{Gem.loaded_specs['wkhtmltopdf-binary'].version}/bin/wkhtmltopdf_macos_cocoa"
 
     # Or a copied binary in the /bin/ path:
-    #config.exe_path = Rails.root.join('bin/wkhtmltopdf_debian_10_amd64').to_s
+    config.exe_path = Rails.root.join('bin/wkhtmltox-0.12.6-2.macos-cocoa.pkg').to_s
   end
 end
