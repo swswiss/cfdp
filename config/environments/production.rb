@@ -1,6 +1,18 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
+  config.action_mailer.default_url_options = { host: "cfdp.onrender.com", protocol: 'https' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:         'smtp.gmail.com',
+    port:            587,
+    domain:          '1feb-2a02-2f0e-5306-7000-8cfd-bd5b-1ab2-21ff.ngrok-free.app',
+    user_name:       'a.petruta97@gmail.com',
+    password:        'rlxr debg cgzv flnl',
+    authentication:  'plain',
+    enable_starttls: true,
+    open_timeout:    5,
+    read_timeout:    5 }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.

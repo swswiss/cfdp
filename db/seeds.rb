@@ -10,6 +10,5 @@
 
 Integration.create([
   { integration_type: 'Email' },
-  { integration_type: 'SMS' },
-  { integration_type: 'Slack' }
+  { integration_type: 'SMS' }
 ])
