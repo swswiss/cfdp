@@ -26,7 +26,7 @@ gem 'friendly_id', '~> 5.5.0'
 gem "rails_charts"
 gem 'kaminari'
 gem 'wicked_pdf'
-gem 'wkhtmltopdf-binary'
+gem 'wkhtmltopdf-binary', '0.12.3.1'
 gem 'roo'
 gem "rails-mermaid_erd"
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]

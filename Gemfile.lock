@@ -338,7 +338,7 @@ GEM
     wicked_pdf (2.8.2)
       activesupport
       ostruct
-    wkhtmltopdf-binary (0.12.6.8)
+    wkhtmltopdf-binary (0.12.3.1)
     zeitwerk (2.7.1)
 
 PLATFORMS
@@ -385,7 +385,7 @@ DEPENDENCIES
   view_component
   web-console
   wicked_pdf
-  wkhtmltopdf-binary
+  wkhtmltopdf-binary (= 0.12.3.1)
 
 BUNDLED WITH
    2.5.3
