@@ -8,4 +8,12 @@
 #
 # https://github.com/mileszs/wicked_pdf/blob/master/README.md
 
-WickedPdf.config = { :exe_path => "#{Rails.root}/bin/wkhtmltopdf" }
+WickedPdf.configure do |config|
+  if Rails.env.production?
+    # Path to where the actual gem binary is extracted:
+    config.exe_path = "#{ENV['GEM_HOME']}/gems/wkhtmltopdf-binary-#{Gem.loaded_specs['wkhtmltopdf-binary'].version}/bin/wkhtmltopdf_debian_10_amd64"
+
+    # Or a copied binary in the /bin/ path:
+    config.exe_path = Rails.root.join('bin/wkhtmltopdf_debian_10_amd64').to_s
+  end
+end
