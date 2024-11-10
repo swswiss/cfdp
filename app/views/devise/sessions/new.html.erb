@@ -31,7 +31,8 @@
               <%= f.label :remember_me, class: "ml-3 block text-sm leading-6 text-gray-900" %>
             </div>
               <div class="text-sm leading-6"> 
-                <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">Forgot password?</a>
+              <%= link_to "Forgot password?", new_password_path(:user), class: "font-semibold text-indigo-600 hover:text-indigo-500" %>
+
               </div>
             
           </div>
@@ -53,7 +54,7 @@
   </div>
   <p class="mt-10 text-center text-sm text-gray-500">
       Not a member?
-      <%= link_to "Start a 14 day free trial", new_user_registration_path, class: "link leading-6" %>
+      <%= link_to "Request an account", new_user_registration_path, class: "link leading-6" %>
   </p>
 
 </div>
