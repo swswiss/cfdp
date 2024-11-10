@@ -1,0 +1,122 @@
+<header class="absolute inset-x-0 top-0 z-50" data-controller="menu">
+  <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+    <div class="flex lg:flex-1">
+      <a href="#" class="-m-1.5 p-1.5">
+        <span class="sr-only">Your Company</span>
+        <%= link_to root_path do %>
+          <%= image_tag "fci-nav.png", class: "h-9 w-auto" %>
+        <% end %>
+      </a>
+    </div>
+
+    <!-- Open Menu Button -->
+    <div class="flex lg:hidden">
+      <button type="button" 
+              id="menuToggleButton" 
+              aria-expanded="false" 
+              class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+              data-menu-target="toggleButton" 
+              data-action="click->menu#toggleMenu">
+        <span class="sr-only">Open main menu</span>
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Desktop Menu Links -->
+    <div class="hidden lg:flex lg:gap-x-12">
+      <%= link_to 'Contact Us', contact_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
+      <%= link_to 'Donate', donations_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
+      <%= link_to 'Wall of legends', legends_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
+
+      <a href="#" class="text-sm font-semibold leading-6 text-gray-900">About</a>
+    </div>
+    <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+      <%= link_to new_user_session_path, class: "text-sm font-semibold leading-6 text-gray-900" do %>
+          Log in <span aria-hidden="true">&rarr;</span>
+      <% end %>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div data-menu-target="mobileMenu" 
+       id="mobileMenu" 
+       class="lg:hidden hidden fixed inset-0 z-40" 
+       aria-modal="true" 
+       role="dialog">
+    <div class="fixed inset-0 bg-gray-800 opacity-50"></div> <!-- Backdrop -->
+    <div class="fixed inset-y-0 right-0 w-full max-w-sm bg-white p-6 z-50">
+      <div class="flex items-center justify-between">
+        <%= link_to root_path do %>
+          <span class="sr-only">Your Company</span>
+          <%= image_tag "logo_sign_in.png", class: "h-9 w-auto" %>
+        <%end%>
+        <!-- Close button -->
+        <button type="button" 
+                id="closeMenuButton" 
+                aria-label="Close menu" 
+                class="-m-2.5 rounded-md p-2.5 text-gray-700"
+                data-action="click->menu#toggleMenu">
+          <span class="sr-only">Close menu</span>
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Menu Links -->
+      <div class="mt-6 flow-root">
+        <div class="-my-6 divide-y divide-gray-500/10">
+          <div class="space-y-2 py-6">
+            <%= link_to 'Contact Us', contact_path, class: "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" %>
+            <%= link_to 'Donate', donations_path, class: "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" %>
+            <%= link_to 'Wall of legends', legends_path, class: "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" %>
+
+            <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">About</a>
+          </div>
+          <div class="py-6">
+            <%= link_to new_user_session_path, class: "-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" do %>
+              Log in
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="isolate bg-white px-6 py-24 sm:py-15 lg:px-8 flex justify-center items-center">
+  <div class="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]" aria-hidden="true">
+    <div class="relative left-1/2 -z-10 aspect-[1155/678] w-[36.125rem] max-w-none -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-40rem)] sm:w-[72.1875rem]" 
+         style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+    </div>
+  </div>
+  
+
+  <div class="mx-auto max-w-7xl px-6 lg:px-8 mt-11">
+    <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+      <div class="lg:pr-8 lg:pt-4 mt-4">
+        <div class="lg:max-w-lg">
+          <p class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-3xl">Keep the Creativity Brewing!</p>
+          <p class="mt-6 text-sm text-gray-600">Are you loving what we’re up to? Want to power up our creativity with a coffee or even a pint? Every bit of fuel keeps the ideas (and caffeine) flowing! <br><br>
+          Click below to help keep the good vibes rolling and secure a spot on our "Wall of Legends." All our amazing supporters get an honorary place to show off just how awesome you are. So come on, be the hero of the day! Your support means the world to us (at least until we run out of coffee again!).</p>
+          <p class="mt-6 text-sm text-gray-600">
+        We appreciate you more than you know!
+      </p>
+        
+        </div>
+        <div class="mt-8 flex justify-center">
+      <a href="https://ko-fi.com/yourusername" target="_blank" rel="noopener noreferrer"
+        class="inline-flex justify-center rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500">
+        Buy us a Drink!
+      </a>
+    </div>
+      </div>
+      
+      <%= image_tag "gift.svg", class: "object-cover object-center"%>
+    </div>
+  </div>
+</div>
+</div>
+

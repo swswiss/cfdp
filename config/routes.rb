@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   end
 
   get '/contact', to: 'pages#contact'
+  get '/donations', to: 'pages#donations'
+  get '/legends', to: 'pages#legends'
 
   resources :user_integrations, only: [:index] do
     collection do
