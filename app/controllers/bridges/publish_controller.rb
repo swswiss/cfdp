@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Bridges
   class PublishController < ApplicationController
     before_action :authenticate_user!

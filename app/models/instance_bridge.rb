@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class InstanceBridge < ApplicationRecord
   belongs_to :bridge
   has_one :flaw_instance, dependent: :destroy

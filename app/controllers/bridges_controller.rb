@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BridgesController < ApplicationController
   before_action :authenticate_user!
 	before_action :authorize_admin!, only: [:upload_bridge, :send_upload_bridge, :compare_data, :comparison, :custom]

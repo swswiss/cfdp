@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ActivityLogsController < ApplicationController
   before_action :authenticate_user!
 

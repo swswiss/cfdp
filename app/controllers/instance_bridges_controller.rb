@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class InstanceBridgesController < ApplicationController
   before_action :set_bridge
   before_action :set_instance_bridge, only: [:show, :edit, :update, :destroy]
