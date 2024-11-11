@@ -15,7 +15,7 @@
               <%= link_to bridges_path, class: "#{desktop_link_active?("bridges")} rounded-md px-3 py-2 text-sm font-medium" do %>
                 Bridges
               <%end%>
-              <%if current_user.admin?%>
+              <%if current_user.admin? || current_user.super_admin?%>
                 <%= link_to comparison_path, class: "#{desktop_link_active?("bridges")} rounded-md px-3 py-2 text-sm font-medium" do %>
                   Head to Head
                 <%end%>
@@ -109,6 +109,7 @@
     <div class="self-start rounded bg-indigo-500 py-0.5 px-1 text-[7px] font-semibold uppercase text-white mt-0.5 whitespace-nowrap">
   <%= 'administrator' if current_user.role == 'admin' %>
   <%= 'student' if current_user.role == 'student' %>
+  <%= 'Super Administrator' if current_user.role == 'super admin' %>
 </div>
 
 
@@ -127,7 +128,7 @@
               <%= link_to user_integrations_path, class: "block px-4 py-2 text-sm text-gray-700" do %>
                 Integrations
               <%end%>
-                <% if current_user.admin?%>
+                <% if current_user.admin? || current_user.super_admin?%>
                   <%= link_to 'All bridges', your_bridges_path, method: :get, class:"block px-4 py-2 text-sm text-gray-700"%>
                   <%= link_to 'All Users', all_users_path, method: :get, class:"block px-4 py-2 text-sm text-gray-700"%>
                 <%else%>
@@ -137,7 +138,7 @@
                 <%= link_to new_bridge_path, class: "block px-4 py-2 text-sm text-gray-700" do %>
                 Add a Bridge
                 <%end%>
-              <%if current_user.role == 'admin'%>
+              <%if current_user.role == 'admin' || current_user.super_admin?%>
               <%= link_to upload_bridge_path, class: "block px-4 py-2 text-sm text-gray-700" do %>
                 Upload from CSV
               <%end%>
@@ -183,7 +184,7 @@
         <%= link_to bridges_path, class: "#{mobile_link_active?("bridges")} block rounded-md px-3 py-2 text-base font-medium" do %>
           Bridges
         <% end %>
-        <% if current_user.admin? %>
+        <% if current_user.admin? || current_user.super_admin?%>
           <%= link_to comparison_path, class: "#{desktop_link_active?("bridges")} block rounded-md px-3 py-2 text-base font-medium" do %>
             Head to Head
           <% end %>
@@ -207,6 +208,7 @@
         <div class="self-start rounded bg-indigo-500 py-0.5 px-1 text-[7px] font-semibold uppercase text-white mt-0.5 whitespace-nowrap">
   <%= 'administrator' if current_user.role == 'admin' %>
   <%= 'student' if current_user.role == 'student' %>
+  <%= 'Super Administrator' if current_user.role == 'super admin' %>
 </div>
       </button>
     </div>
@@ -232,7 +234,7 @@
     <%= link_to user_integrations_path, class: "block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900" do %>
       Integrations
     <% end %>
-    <% if current_user.admin? %>
+    <% if current_user.admin? || current_user.role == 'super admin'%>
       <%= link_to 'All bridges', your_bridges_path, method: :get, class: "block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900" %>
     <% else %>
       <%= link_to 'Your own bridges', your_bridges_path, method: :get, class: "block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900" %>
@@ -240,7 +242,7 @@
     <%= link_to new_bridge_path, class: "block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900" do %>
       Add a Bridge
     <% end %>
-    <% if current_user.role == 'admin' %>
+    <% if current_user.role == 'admin' || current_user.role == 'super admin' %>
       <%= link_to upload_bridge_path, class: "block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-900" do %>
         Upload from CSV
       <% end %>

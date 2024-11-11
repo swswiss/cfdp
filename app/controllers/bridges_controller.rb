@@ -322,7 +322,7 @@ class BridgesController < ApplicationController
 	
 
 	def your_bridges
-		if current_user.admin?
+		if current_user.admin? || current_user.super_admin?
 			@bridges = Bridge.all.order(created_at: :asc)
 		else
 			@bridges = current_user.bridges.order(created_at: :asc)
@@ -1543,7 +1543,7 @@ class BridgesController < ApplicationController
 	def authorize_bridge
     @bridge = Bridge.friendly.find(params[:id])
     if @bridge.user != current_user
-			if current_user.admin?
+			if current_user.admin? || current_user.super_admin?
 				true
 			else
 				redirect_to bridges_path, notice: 'You have no access here!'
@@ -1554,7 +1554,7 @@ class BridgesController < ApplicationController
   end
 
 	def authorize_admin!
-    redirect_to root_path, alert: 'You are not authorized to access this page.' unless current_user&.admin?
+    redirect_to root_path, alert: 'You are not authorized to access this page.' unless (current_user&.admin? || current_user&.super_admin?)
   end
 
   def bridge_params
