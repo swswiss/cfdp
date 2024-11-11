@@ -18,7 +18,7 @@ class ProfilesController < ApplicationController
 
   def update_role
     @user = User.find(params[:id])
-    flash[:success] = 'You are not authorized to access this page.' and return if @user.super_admin?
+    flash[:success] = 'You are not authorized to access this page.' and return if (@user.super_admin? || @user.admin?)
     if @user.admin?
       @user.update(role: 'student')
     else
