@@ -34,7 +34,7 @@
           </td>
           <td class="px-6 py-4">
             <%= turbo_frame_tag "status-#{user.id}" do %>
-              <%= user.admin? ? "Admin" : "Student" %>
+              <%= user.super_admin? ? "Super Admin" : user.admin? ? "Admin" : "Student" %>
             <% end %>
           </td>
           

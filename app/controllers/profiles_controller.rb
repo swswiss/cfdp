@@ -18,6 +18,7 @@ class ProfilesController < ApplicationController
 
   def update_role
     @user = User.find(params[:id])
+    flash[:success] = 'You are not authorized to access this page.' and return if @user.super_admin?
     if @user.admin?
       @user.update(role: 'student')
     else
@@ -47,7 +48,7 @@ class ProfilesController < ApplicationController
   private
 
   def authorize_admin!
-    redirect_to root_path, alert: 'You are not authorized to access this page.' unless current_user&.admin?
+    redirect_to root_path, alert: 'You are not authorized to access this page.' unless (current_user&.admin? || current_user.super_admin?)
   end
 
   def user_params

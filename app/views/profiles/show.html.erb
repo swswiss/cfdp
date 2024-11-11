@@ -36,7 +36,7 @@
       <div class="flex items-center justify-between px-4 py-6">
         <dt class="text-sm font-medium leading-6 text-gray-900">Number of bridges</dt>
         <dd class="mt-0 text-sm leading-6 text-gray-700 text-right">
-          <% if @user.role == 'admin' %>
+          <% if @user.role == 'admin' || @user.role == 'super admin'%>
             <%= @user.bridges.count %> / Unlimited
           <% else %>
             <%= @user.bridges.count %> / 3

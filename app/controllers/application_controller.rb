@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   private
 
   def check_if_blocked
-    if SiteSetting.first.is_blocked
+    if SiteSetting.first.is_blocked && current_user&.role != 'super admin'
       render file: "#{Rails.root}/public/503.html", status: :service_unavailable
     end
   end

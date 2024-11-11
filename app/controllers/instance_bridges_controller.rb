@@ -751,7 +751,7 @@ class InstanceBridgesController < ApplicationController
 	def authorize_bridge
     @bridge = Bridge.friendly.find(params[:id])
     if @bridge.user != current_user
-			if current_user.admin?
+			if current_user.admin? || current_user.super_admin?
 				true
 			else
 				redirect_to bridges_path, notice: 'You have no access here!'
@@ -772,7 +772,7 @@ class InstanceBridgesController < ApplicationController
   def authorize_bridge
     @bridge = Bridge.friendly.find(params[:bridge_id])
     if @bridge.user != current_user
-			if current_user.admin?
+			if current_user.admin? || current_user.super_admin?
 				true
 			else
 				redirect_to bridges_path, notice: 'You have no access here!'

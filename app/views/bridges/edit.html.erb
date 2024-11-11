@@ -7,7 +7,7 @@
 <%= form_with model: @bridge do |f| %>
    <%= f.hidden_field :latitude, id: 'bridge_latitude' %>
   <%= f.hidden_field :longitude, id: 'bridge_longitude' %>
-  <% if @bridge.user == current_user || current_user.admin? %>
+  <% if @bridge.user == current_user || current_user.admin? || current_user.super_admin? %>
   <button type="submit"
 	        class="sticky-button w-24 focus:outline-none border border-transparent py-1.5 px-3 rounded-md shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-sm font-medium"
         >Complete</button>
