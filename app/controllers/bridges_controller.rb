@@ -13,22 +13,22 @@ class BridgesController < ApplicationController
     [0, 0, 0, 0, 1, 2, 0, 3, 4]    # Row 5
   ]
   def compare_data
-    @bridge = Bridge.friendly.find(params[:id])
+    bridge = Bridge.friendly.find(params[:id])
 
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: turbo_stream.replace(
           params[:frame_id],
           partial: 'bridges/compare_data',
-          locals: { bridge: @bridge }
+          locals: { bridge: bridge }
         )
       end
-      format.html { render partial: 'bridges/compare_data', locals: { bridge: @bridge } }
+      format.html { render partial: 'bridges/compare_data', locals: { bridge: bridge } }
     end
   end
   
   def custom
-    @bridges = Bridge.all # Adjust scope as needed, e.g., only published bridges
+    @bridges = Bridge.all.select(:id, :name) # Adjust scope as needed, e.g., only published bridges
     selected_bridge_ids = params[:bridge_ids]&.map(&:to_i)
     selected_options = params[:options]
     selected_bridges = Bridge.where(id: selected_bridge_ids)
@@ -41,152 +41,152 @@ class BridgesController < ApplicationController
         @push_ist_t = true
         @ist_total_hash = {}
         selected_bridges.each do |bridge|
-          @instance_bridges = bridge.instance_bridges.order(created_at: :asc)
-          instance_bridges_names = [bridge.name] + @instance_bridges.pluck(:name)
-          @bridge_ist_total = [bridge.created_at, bridge.flaw.ist_total]
-          @flaw_instance_ist_total = FlawInstance.where(instance_bridge: @instance_bridges.pluck(:id)).order(:created_at).pluck(:created_at, :ist_total).to_h
-          @flaw_instance_ist_total[@bridge_ist_total[0]] = @bridge_ist_total[1] 
-          @flaw_instance_ist_total = @flaw_instance_ist_total.sort_by { |date, value| date }
-          @flaw_instance_ist_total_hash = {}
-          @flaw_instance_ist_total.each_with_index do |(key, value), index|
+          instance_bridges = bridge.instance_bridges.order(created_at: :asc)
+          instance_bridges_names = [bridge.name] + instance_bridges.pluck(:name)
+          bridge_ist_total = [bridge.created_at, bridge.flaw.ist_total]
+          flaw_instance_ist_total = FlawInstance.where(instance_bridge: instance_bridges.pluck(:id)).order(:created_at).pluck(:created_at, :ist_total).to_h
+          flaw_instance_ist_total[bridge_ist_total[0]] = bridge_ist_total[1] 
+          flaw_instance_ist_total = flaw_instance_ist_total.sort_by { |date, value| date }
+          flaw_instance_ist_total_hash = {}
+          flaw_instance_ist_total.each_with_index do |(key, value), index|
             key = key.strftime("%Y-%m-%d")
             key = key + " " + instance_bridges_names[index]
-            @flaw_instance_ist_total_hash[key] = value
+            flaw_instance_ist_total_hash[key] = value
           end
-          @ist_total_hash[bridge.name] = @flaw_instance_ist_total_hash
+          @ist_total_hash[bridge.name] = flaw_instance_ist_total_hash
         end
       end
       if option == "ist_c"
         @push_ist_c = true
         @ist_c_hash = {}
         selected_bridges.each do |bridge|
-          @instance_bridges = bridge.instance_bridges.order(created_at: :asc)
-          instance_bridges_names = [bridge.name] + @instance_bridges.pluck(:name)
-          @bridge_ist_c = [bridge.created_at, bridge.flaw.ist_c]
-          @flaw_instance_ist_c = FlawInstance.where(instance_bridge: @instance_bridges.pluck(:id)).order(:created_at).pluck(:created_at, :ist_c).to_h
-          @flaw_instance_ist_c[@bridge_ist_c[0]] = @bridge_ist_c[1] 
-          @flaw_instance_ist_c = @flaw_instance_ist_c.sort_by { |date, value| date }
-          @flaw_instance_ist_c_hash = {}
-          @flaw_instance_ist_c.each_with_index do |(key, value), index|
+          instance_bridges = bridge.instance_bridges.order(created_at: :asc)
+          instance_bridges_names = [bridge.name] + instance_bridges.pluck(:name)
+          bridge_ist_c = [bridge.created_at, bridge.flaw.ist_c]
+          flaw_instance_ist_c = FlawInstance.where(instance_bridge: instance_bridges.pluck(:id)).order(:created_at).pluck(:created_at, :ist_c).to_h
+          flaw_instance_ist_c[bridge_ist_c[0]] = bridge_ist_c[1] 
+          flaw_instance_ist_c = flaw_instance_ist_c.sort_by { |date, value| date }
+          flaw_instance_ist_c_hash = {}
+          flaw_instance_ist_c.each_with_index do |(key, value), index|
             key = key.strftime("%Y-%m-%d")
             key = key + " " + instance_bridges_names[index]
-            @flaw_instance_ist_c_hash[key] = value
+            flaw_instance_ist_c_hash[key] = value
           end
-          @ist_c_hash[bridge.name] = @flaw_instance_ist_c_hash
+          @ist_c_hash[bridge.name] = flaw_instance_ist_c_hash
         end
       end
       if option == "ist_f"
         @push_ist_f = true
         @ist_f_hash = {}
         selected_bridges.each do |bridge|
-          @instance_bridges = bridge.instance_bridges.order(created_at: :asc)
-          instance_bridges_names = [bridge.name] + @instance_bridges.pluck(:name)
-          @bridge_ist_f = [bridge.created_at, bridge.flaw.ist_f]
-          @flaw_instance_ist_f = FlawInstance.where(instance_bridge: @instance_bridges.pluck(:id)).order(:created_at).pluck(:created_at, :ist_f).to_h
-          @flaw_instance_ist_f[@bridge_ist_f[0]] = @bridge_ist_f[1] 
-          @flaw_instance_ist_f = @flaw_instance_ist_f.sort_by { |date, value| date }
-          @flaw_instance_ist_f_hash = {}
-          @flaw_instance_ist_f.each_with_index do |(key, value), index|
+          instance_bridges = bridge.instance_bridges.order(created_at: :asc)
+          instance_bridges_names = [bridge.name] + instance_bridges.pluck(:name)
+          bridge_ist_f = [bridge.created_at, bridge.flaw.ist_f]
+          flaw_instance_ist_f = FlawInstance.where(instance_bridge: instance_bridges.pluck(:id)).order(:created_at).pluck(:created_at, :ist_f).to_h
+          flaw_instance_ist_f[bridge_ist_f[0]] = bridge_ist_f[1] 
+          flaw_instance_ist_f = flaw_instance_ist_f.sort_by { |date, value| date }
+          flaw_instance_ist_f_hash = {}
+          flaw_instance_ist_f.each_with_index do |(key, value), index|
             key = key.strftime("%Y-%m-%d")
             key = key + " " + instance_bridges_names[index]
-            @flaw_instance_ist_f_hash[key] = value
+            flaw_instance_ist_f_hash[key] = value
           end
-          @ist_f_hash[bridge.name] = @flaw_instance_ist_f_hash
+          @ist_f_hash[bridge.name] = flaw_instance_ist_f_hash
         end
       end
       if option == "f1"
         @push_ist_f1 = true
         @ist_f1_hash = {}
         selected_bridges.each do |bridge|
-          @instance_bridges = bridge.instance_bridges.order(created_at: :asc)
-          instance_bridges_names = [bridge.name] + @instance_bridges.pluck(:name)
-          @bridge_ist_f1 = [bridge.created_at, bridge.flaw.f1]
-          @flaw_instance_ist_f1 = FlawInstance.where(instance_bridge: @instance_bridges.pluck(:id)).order(:created_at).pluck(:created_at, :f1).to_h
-          @flaw_instance_ist_f1[@bridge_ist_f1[0]] = @bridge_ist_f1[1] 
-          @flaw_instance_ist_f1 = @flaw_instance_ist_f1.sort_by { |date, value| date }
-          @flaw_instance_ist_f1_hash = {}
-          @flaw_instance_ist_f1.each_with_index do |(key, value), index|
+          instance_bridges = bridge.instance_bridges.order(created_at: :asc)
+          instance_bridges_names = [bridge.name] + instance_bridges.pluck(:name)
+          bridge_ist_f1 = [bridge.created_at, bridge.flaw.f1]
+          flaw_instance_ist_f1 = FlawInstance.where(instance_bridge: instance_bridges.pluck(:id)).order(:created_at).pluck(:created_at, :f1).to_h
+          flaw_instance_ist_f1[bridge_ist_f1[0]] = bridge_ist_f1[1] 
+          flaw_instance_ist_f1 = flaw_instance_ist_f1.sort_by { |date, value| date }
+          flaw_instance_ist_f1_hash = {}
+          flaw_instance_ist_f1.each_with_index do |(key, value), index|
             key = key.strftime("%Y-%m-%d")
             key = key + " " + instance_bridges_names[index]
-            @flaw_instance_ist_f1_hash[key] = value
+            flaw_instance_ist_f1_hash[key] = value
           end
-          @ist_f1_hash[bridge.name] = @flaw_instance_ist_f1_hash
+          @ist_f1_hash[bridge.name] = flaw_instance_ist_f1_hash
         end
       end
       if option == "f2"
         @push_ist_f2 = true
         @ist_f2_hash = {}
         selected_bridges.each do |bridge|
-          @instance_bridges = bridge.instance_bridges.order(created_at: :asc)
-          instance_bridges_names = [bridge.name] + @instance_bridges.pluck(:name)
-          @bridge_ist_f2 = [bridge.created_at, bridge.flaw.f2]
-          @flaw_instance_ist_f2 = FlawInstance.where(instance_bridge: @instance_bridges.pluck(:id)).order(:created_at).pluck(:created_at, :f2).to_h
-          @flaw_instance_ist_f2[@bridge_ist_f2[0]] = @bridge_ist_f2[1] 
-          @flaw_instance_ist_f2 = @flaw_instance_ist_f2.sort_by { |date, value| date }
-          @flaw_instance_ist_f2_hash = {}
-          @flaw_instance_ist_f2.each_with_index do |(key, value), index|
+          instance_bridges = bridge.instance_bridges.order(created_at: :asc)
+          instance_bridges_names = [bridge.name] + instance_bridges.pluck(:name)
+          bridge_ist_f2 = [bridge.created_at, bridge.flaw.f2]
+          flaw_instance_ist_f2 = FlawInstance.where(instance_bridge: instance_bridges.pluck(:id)).order(:created_at).pluck(:created_at, :f2).to_h
+          flaw_instance_ist_f2[bridge_ist_f2[0]] = bridge_ist_f2[1] 
+          flaw_instance_ist_f2 = flaw_instance_ist_f2.sort_by { |date, value| date }
+          flaw_instance_ist_f2_hash = {}
+          flaw_instance_ist_f2.each_with_index do |(key, value), index|
             key = key.strftime("%Y-%m-%d")
             key = key + " " + instance_bridges_names[index]
-            @flaw_instance_ist_f2_hash[key] = value
+            flaw_instance_ist_f2_hash[key] = value
           end
-          @ist_f2_hash[bridge.name] = @flaw_instance_ist_f2_hash
+          @ist_f2_hash[bridge.name] = flaw_instance_ist_f2_hash
         end
       end
       if option == "f3"
         @push_ist_f3 = true
         @ist_f3_hash = {}
         selected_bridges.each do |bridge|
-          @instance_bridges = bridge.instance_bridges.order(created_at: :asc)
-          instance_bridges_names = [bridge.name] + @instance_bridges.pluck(:name)
-          @bridge_ist_f3 = [bridge.created_at, bridge.flaw.f3]
-          @flaw_instance_ist_f3 = FlawInstance.where(instance_bridge: @instance_bridges.pluck(:id)).order(:created_at).pluck(:created_at, :f3).to_h
-          @flaw_instance_ist_f3[@bridge_ist_f3[0]] = @bridge_ist_f3[1] 
-          @flaw_instance_ist_f3 = @flaw_instance_ist_f3.sort_by { |date, value| date }
-          @flaw_instance_ist_f3_hash = {}
-          @flaw_instance_ist_f3.each_with_index do |(key, value), index|
+          instance_bridges = bridge.instance_bridges.order(created_at: :asc)
+          instance_bridges_names = [bridge.name] + instance_bridges.pluck(:name)
+          bridge_ist_f3 = [bridge.created_at, bridge.flaw.f3]
+          flaw_instance_ist_f3 = FlawInstance.where(instance_bridge: instance_bridges.pluck(:id)).order(:created_at).pluck(:created_at, :f3).to_h
+          flaw_instance_ist_f3[bridge_ist_f3[0]] = bridge_ist_f3[1] 
+          flaw_instance_ist_f3 = flaw_instance_ist_f3.sort_by { |date, value| date }
+          flaw_instance_ist_f3_hash = {}
+          flaw_instance_ist_f3.each_with_index do |(key, value), index|
             key = key.strftime("%Y-%m-%d")
             key = key + " " + instance_bridges_names[index]
-            @flaw_instance_ist_f3_hash[key] = value
+            flaw_instance_ist_f3_hash[key] = value
           end
-          @ist_f3_hash[bridge.name] = @flaw_instance_ist_f3_hash
+          @ist_f3_hash[bridge.name] = flaw_instance_ist_f3_hash
         end
       end
       if option == "f4"
         @push_ist_f4 = true
         @ist_f4_hash = {}
         selected_bridges.each do |bridge|
-          @instance_bridges = bridge.instance_bridges.order(created_at: :asc)
-          instance_bridges_names = [bridge.name] + @instance_bridges.pluck(:name)
-          @bridge_ist_f4 = [bridge.created_at, bridge.flaw.f4]
-          @flaw_instance_ist_f4 = FlawInstance.where(instance_bridge: @instance_bridges.pluck(:id)).order(:created_at).pluck(:created_at, :f4).to_h
-          @flaw_instance_ist_f4[@bridge_ist_f4[0]] = @bridge_ist_f4[1] 
-          @flaw_instance_ist_f4 = @flaw_instance_ist_f4.sort_by { |date, value| date }
-          @flaw_instance_ist_f4_hash = {}
-          @flaw_instance_ist_f4.each_with_index do |(key, value), index|
+          instance_bridges = bridge.instance_bridges.order(created_at: :asc)
+          instance_bridges_names = [bridge.name] + instance_bridges.pluck(:name)
+          bridge_ist_f4 = [bridge.created_at, bridge.flaw.f4]
+          flaw_instance_ist_f4 = FlawInstance.where(instance_bridge: instance_bridges.pluck(:id)).order(:created_at).pluck(:created_at, :f4).to_h
+          flaw_instance_ist_f4[bridge_ist_f4[0]] = bridge_ist_f4[1] 
+          flaw_instance_ist_f4 = flaw_instance_ist_f4.sort_by { |date, value| date }
+          flaw_instance_ist_f4_hash = {}
+          flaw_instance_ist_f4.each_with_index do |(key, value), index|
             key = key.strftime("%Y-%m-%d")
             key = key + " " + instance_bridges_names[index]
-            @flaw_instance_ist_f4_hash[key] = value
+            flaw_instance_ist_f4_hash[key] = value
           end
-          @ist_f4_hash[bridge.name] = @flaw_instance_ist_f4_hash
+          @ist_f4_hash[bridge.name] = flaw_instance_ist_f4_hash
         end
       end
       if option == "f5"
         @push_ist_f5 = true
         @ist_f5_hash = {}
         selected_bridges.each do |bridge|
-          @instance_bridges = bridge.instance_bridges.order(created_at: :asc)
-          instance_bridges_names = [bridge.name] + @instance_bridges.pluck(:name)
-          @bridge_ist_f5 = [bridge.created_at, bridge.flaw.f5]
-          @flaw_instance_ist_f5 = FlawInstance.where(instance_bridge: @instance_bridges.pluck(:id)).order(:created_at).pluck(:created_at, :f5).to_h
-          @flaw_instance_ist_f5[@bridge_ist_f5[0]] = @bridge_ist_f5[1] 
-          @flaw_instance_ist_f5 = @flaw_instance_ist_f5.sort_by { |date, value| date }
-          @flaw_instance_ist_f5_hash = {}
-          @flaw_instance_ist_f5.each_with_index do |(key, value), index|
+          instance_bridges = bridge.instance_bridges.order(created_at: :asc)
+          instance_bridges_names = [bridge.name] + instance_bridges.pluck(:name)
+          bridge_ist_f5 = [bridge.created_at, bridge.flaw.f5]
+          flaw_instance_ist_f5 = FlawInstance.where(instance_bridge: instance_bridges.pluck(:id)).order(:created_at).pluck(:created_at, :f5).to_h
+          flaw_instance_ist_f5[bridge_ist_f5[0]] = bridge_ist_f5[1] 
+          flaw_instance_ist_f5 = flaw_instance_ist_f5.sort_by { |date, value| date }
+          flaw_instance_ist_f5_hash = {}
+          flaw_instance_ist_f5.each_with_index do |(key, value), index|
             key = key.strftime("%Y-%m-%d")
             key = key + " " + instance_bridges_names[index]
-            @flaw_instance_ist_f5_hash[key] = value
+            flaw_instance_ist_f5_hash[key] = value
           end
-          @ist_f5_hash[bridge.name] = @flaw_instance_ist_f5_hash
+          @ist_f5_hash[bridge.name] = flaw_instance_ist_f5_hash
         end
       end
     end
@@ -199,19 +199,19 @@ class BridgesController < ApplicationController
 
 	def index
 		if params[:name].present? && (params[:minimum_length].blank? || params[:maximum_length].blank?)
-			@bridges = Bridge.where('name ILIKE ? AND published = ?', "%#{params[:name]}%", true).order(created_at: :asc).page(params[:page]).per(8)
+			@bridges ||= Bridge.where('name ILIKE ? AND published = ?', "%#{params[:name]}%", true).order(created_at: :asc).page(params[:page]).per(8)
     end
 
     if params[:name].blank? && (params[:minimum_length].present? && params[:maximum_length].present?)
-      @bridges = Bridge.where('lungime >= ? AND lungime <= ? AND published = ?', params[:minimum_length], params[:maximum_length], true).order(created_at: :asc).page(params[:page]).per(8)
+      @bridges ||= Bridge.where('lungime >= ? AND lungime <= ? AND published = ?', params[:minimum_length], params[:maximum_length], true).order(created_at: :asc).page(params[:page]).per(8)
     end
 
     if params[:name].blank? && (params[:minimum_length].blank? && params[:maximum_length].blank?)
-      @bridges = Bridge.all.where(published: true).order(created_at: :asc).page(params[:page]).per(8)
+      @bridges ||= Bridge.all.where(published: true).order(created_at: :asc).page(params[:page]).per(8)
     end
 
     if params[:name].present? && (params[:minimum_length].present? && params[:maximum_length].present?)
-      @bridges = Bridge.where('name ILIKE ? AND lungime >= ? AND lungime <= ? AND published = ?', 
+      @bridges ||= Bridge.where('name ILIKE ? AND lungime >= ? AND lungime <= ? AND published = ?', 
                          "%#{params[:name]}%", params[:minimum_length], params[:maximum_length], true)
                  .order(created_at: :asc)
                  .page(params[:page])
@@ -229,11 +229,11 @@ class BridgesController < ApplicationController
 	end
 
 	def print
-		@bridge = Bridge.friendly.find(params[:id])
+		bridge = Bridge.friendly.find(params[:id])
 		pdf_html = render_to_string(
 			pdf: 'bridge_info',          
 			template: 'bridges/print',    
-			locals: { bridge: @bridge },
+			locals: { bridge: bridge },
       encoding: 'UTF-8'  
 		)
 	
@@ -330,45 +330,45 @@ class BridgesController < ApplicationController
 	end
 
   def clone
-    @instance_bridge = @bridge.instance_bridges.build
+    instance_bridge = @bridge.instance_bridges.build
 
-    @instance_bridge.assign_attributes(
+    instance_bridge.assign_attributes(
       @bridge.attributes.except('id', 'created_at', 'updated_at', 'some_other_column', 'name', 'user_id', 'slug', 'published', 'latitude', 'longitude')
     )
   
-    if @instance_bridge.save
+    if instance_bridge.save
       respond_to do |format|
         format.turbo_stream do
           flash[:success] = "Instance Bridge successfully cloned."
   
           # Build the HTML for the new row
           new_row_html = <<-HTML
-            <tr id="instance-bridge-row-#{@instance_bridge.id}" class="hover:bg-gray-50">
+            <tr id="instance-bridge-row-#{instance_bridge.id}" class="hover:bg-gray-50">
           <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
             
             <div class="text-sm">
-              #{@instance_bridge.name}
+              #{instance_bridge.name}
             </div>
           </th>
           <td class="px-6 py-4">
-            #{@instance_bridge.bridge.user.username}
+            #{instance_bridge.bridge.user.username}
           </td>
           <!-- aici trebe sa schimb in date-->
           <td class="px-6 py-4">
-            #{ActionController::Base.helpers.time_ago_in_words(@instance_bridge.created_at)}
+            #{ActionController::Base.helpers.time_ago_in_words(instance_bridge.created_at)}
           </td>
           
           <td class="px-6 py-4">
               <div class="flex justify-end gap-4">
                 
-              <a href="/bridges/#{@bridge.id}/instance_bridges/#{@instance_bridge.id}/print" 
+              <a href="/bridges/#{@bridge.id}/instance_bridges/#{instance_bridge.id}/print" 
                      class="inline-flex items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6" x-tooltip="tooltip">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M6.72 13.829c-.24.03-.48.062-.72.096m.72-.096a42.415 42.415 0 0 1 10.56 0m-10.56 0L6.34 18m10.94-4.171c.24.03.48.062.72.096m-.72-.096L17.66 18m0 0 .229 2.523a1.125 1.125 0 0 1-1.12 1.227H7.231c-.662 0-1.18-.568-1.12-1.227L6.34 18m11.318 0h1.091A2.25 2.25 0 0 0 21 15.75V9.456c0-1.081-.768-2.015-1.837-2.175a48.055 48.055 0 0 0-1.913-.247M6.34 18H5.25A2.25 2.25 0 0 1 3 15.75V9.456c0-1.081.768-2.015 1.837-2.175a48.041 48.041 0 0 1 1.913-.247m10.5 0a48.536 48.536 0 0 0-10.5 0m10.5 0V3.375c0-.621-.504-1.125-1.125-1.125h-8.25c-.621 0-1.125.504-1.125 1.125v3.659M18 10.5h.008v.008H18V10.5Zm-3 0h.008v.008H15V10.5Z" />
                     </svg>
                   </a>
                
-                  <a href="/bridges/#{@bridge.id}/instance_bridges/#{@instance_bridge.id}"
+                  <a href="/bridges/#{@bridge.id}/instance_bridges/#{instance_bridge.id}"
                      data-turbo-method="delete" 
                      data-turbo-confirm="Are you sure?" 
                      class="inline-flex items-center">
@@ -376,7 +376,7 @@ class BridgesController < ApplicationController
                       <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
                     </svg>
                   </a>
-                  <a href="/bridges/#{@bridge.id}/instance_bridges/#{@instance_bridge.id}/edit" 
+                  <a href="/bridges/#{@bridge.id}/instance_bridges/#{instance_bridge.id}/edit" 
                      class="inline-flex items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6" x-tooltip="tooltip">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
@@ -413,38 +413,38 @@ class BridgesController < ApplicationController
 		@bridge = Bridge.friendly.find(params[:id])
     @instance_bridges = @bridge.instance_bridges.order(created_at: :asc)
     instance_bridges_names = [@bridge.name] + @instance_bridges.pluck(:name)
-    @bridge_ist_c = [@bridge.created_at, @bridge.flaw.ist_c]
-    @bridge_ist_f = [@bridge.created_at, @bridge.flaw.ist_f]
-    @bridge_ist_total = [@bridge.created_at, @bridge.flaw.ist_total]
-    @flaw_instance_ist_c = FlawInstance.where(instance_bridge: @instance_bridges.pluck(:id)).order(:created_at).pluck(:created_at, :ist_c).to_h
-    @flaw_instance_ist_c[@bridge_ist_c[0]] = @bridge_ist_c[1] 
-    @flaw_instance_ist_c = @flaw_instance_ist_c.sort_by { |date, value| date }
-    @flaw_instance_ist_f = FlawInstance.where(instance_bridge: @instance_bridges.pluck(:id)).order(:created_at).pluck(:created_at, :ist_f).to_h
-    @flaw_instance_ist_f[@bridge_ist_f[0]] = @bridge_ist_f[1] 
-    @flaw_instance_ist_f = @flaw_instance_ist_f.sort_by { |date, value| date }
-    @flaw_instance_ist_total = FlawInstance.where(instance_bridge: @instance_bridges.pluck(:id)).order(:created_at).pluck(:created_at, :ist_total).to_h
-    @flaw_instance_ist_total[@bridge_ist_total[0]] = @bridge_ist_total[1] 
-    @flaw_instance_ist_total = @flaw_instance_ist_total.sort_by { |date, value| date }
+    bridge_ist_c = [@bridge.created_at, @bridge.flaw.ist_c]
+    bridge_ist_f = [@bridge.created_at, @bridge.flaw.ist_f]
+    bridge_ist_total = [@bridge.created_at, @bridge.flaw.ist_total]
+    flaw_instance_ist_c = FlawInstance.where(instance_bridge: @instance_bridges.pluck(:id)).order(:created_at).pluck(:created_at, :ist_c).to_h
+    flaw_instance_ist_c[bridge_ist_c[0]] = bridge_ist_c[1] 
+    flaw_instance_ist_c = flaw_instance_ist_c.sort_by { |date, value| date }
+    flaw_instance_ist_f = FlawInstance.where(instance_bridge: @instance_bridges.pluck(:id)).order(:created_at).pluck(:created_at, :ist_f).to_h
+    flaw_instance_ist_f[bridge_ist_f[0]] = bridge_ist_f[1] 
+    flaw_instance_ist_f = flaw_instance_ist_f.sort_by { |date, value| date }
+    flaw_instance_ist_total = FlawInstance.where(instance_bridge: @instance_bridges.pluck(:id)).order(:created_at).pluck(:created_at, :ist_total).to_h
+    flaw_instance_ist_total[bridge_ist_total[0]] = bridge_ist_total[1] 
+    flaw_instance_ist_total = flaw_instance_ist_total.sort_by { |date, value| date }
 
     @flaw_instance_ist_c_hash = {}
     @flaw_instance_ist_f_hash = {}
     @flaw_instance_ist_total_hash = {}
 
-    @flaw_instance_ist_c.each_with_index do |(key, value), index|
+    flaw_instance_ist_c.each_with_index do |(key, value), index|
       key = key.strftime("%Y-%m-%d")
       key = key + " " + instance_bridges_names[index]
       @flaw_instance_ist_c_hash[key] = value
     end
 
     @flaw_instance_ist_f_hash = {}
-    @flaw_instance_ist_f.each_with_index do |(key, value), index|
+    flaw_instance_ist_f.each_with_index do |(key, value), index|
       key = key.strftime("%Y-%m-%d")
       key = key + " " + instance_bridges_names[index]
       @flaw_instance_ist_f_hash[key] = value
     end
 
     @flaw_instance_ist_total_hash = {}
-    @flaw_instance_ist_total.each_with_index do |(key, value), index|
+    flaw_instance_ist_total.each_with_index do |(key, value), index|
       key = key.strftime("%Y-%m-%d")
       key = key + " " + instance_bridges_names[index]
       @flaw_instance_ist_total_hash[key] = value
@@ -453,22 +453,22 @@ class BridgesController < ApplicationController
 	end
 
 	def update
-		@bridge = Bridge.friendly.find(params[:id])
-		name = @bridge.name
+		bridge = Bridge.friendly.find(params[:id])
+		name = bridge.name
 		begin
-			if @bridge.update(bridge_params)
-        name = @bridge.name
-        suma_c1 = calculate_sum_c1 @bridge
-        suma_c2 = calculate_sum_c2 @bridge
-        suma_c3 = calculate_sum_c3 @bridge
-        suma_c4 = calculate_sum_c4 @bridge
-        suma_c5 = calculate_sum_c5 @bridge
+			if bridge.update(bridge_params)
+        name = bridge.name
+        suma_c1 = calculate_sum_c1 bridge
+        suma_c2 = calculate_sum_c2 bridge
+        suma_c3 = calculate_sum_c3 bridge
+        suma_c4 = calculate_sum_c4 bridge
+        suma_c5 = calculate_sum_c5 bridge
 
-        max_c1 = max_c1_columns @bridge
-        max_c2 = max_c2_columns @bridge
-        max_c3 = max_c3_columns @bridge
-        max_c4 = max_c4_columns @bridge
-        max_c5 = max_c5_columns @bridge
+        max_c1 = max_c1_columns bridge
+        max_c2 = max_c2_columns bridge
+        max_c3 = max_c3_columns bridge
+        max_c4 = max_c4_columns bridge
+        max_c5 = max_c5_columns bridge
 
         val_indice_1 = 10 - max_c1
         val_indice_2 = 10 - max_c2
@@ -476,54 +476,54 @@ class BridgesController < ApplicationController
         val_indice_4 = 10 - max_c4
         val_indice_5 = 10 - max_c5
 
-        f1_depunct, f1 = calcul_f1 @bridge
-        f2_depunct, f2 = calcul_f2 @bridge
-        f3_depunct, f3 = calcul_f3 @bridge
-        f4 = calcul_f4 @bridge
-        f5 = calcul_f5 @bridge
-        suma_c = suma_c @bridge
-        suma_f = suma_f @bridge
-        suma_ist = suma_ist @bridge
-        aprecierea_starii_tehnice, masuri_recomandate = calcul_masuri @bridge
+        f1_depunct, f1 = calcul_f1 bridge
+        f2_depunct, f2 = calcul_f2 bridge
+        f3_depunct, f3 = calcul_f3 bridge
+        f4 = calcul_f4 bridge
+        f5 = calcul_f5 bridge
+        suma_c = suma_c bridge
+        suma_f = suma_f bridge
+        suma_ist = suma_ist bridge
+        aprecierea_starii_tehnice, masuri_recomandate = calcul_masuri bridge
 
-        @bridge.flaw.update(nr_defecte_c1: suma_c1, nr_defecte_c2: suma_c2, nr_defecte_c3: suma_c3, nr_defecte_c4: suma_c4, nr_defecte_c5: suma_c5)
-        @bridge.flaw.update(depunct_max_di_c1: max_c1, depunct_max_di_c2: max_c2, depunct_max_di_c3: max_c3, depunct_max_di_c4: max_c4, depunct_max_di_c5: max_c5)
-        @bridge.flaw.update(val_indice_c1: val_indice_1, val_indice_c2: val_indice_2, val_indice_c3: val_indice_3, val_indice_c4: val_indice_4, val_indice_c5: val_indice_5)
-        @bridge.flaw.update(indice_total_calitate: val_indice_1 + val_indice_2 + val_indice_3 + val_indice_4 + val_indice_5)
-        @bridge.flaw.update(f1_depunct: f1_depunct, f1: f1)
-        @bridge.flaw.update(f2_depunct: f2_depunct, f2: f2)
-        @bridge.flaw.update(f3_depunct: f3_depunct, f3: f3)
-        @bridge.flaw.update(f4: f4)
-        @bridge.flaw.update(f5: f5)
-        @bridge.flaw.update(ist_c: suma_c, ist_f: suma_f)
-        @bridge.flaw.update(ist_total: suma_ist)
-        @bridge.flaw.update(aprecierea_starii_tehnice: aprecierea_starii_tehnice, masuri_recomandate: masuri_recomandate)
+        bridge.flaw.update(nr_defecte_c1: suma_c1, nr_defecte_c2: suma_c2, nr_defecte_c3: suma_c3, nr_defecte_c4: suma_c4, nr_defecte_c5: suma_c5)
+        bridge.flaw.update(depunct_max_di_c1: max_c1, depunct_max_di_c2: max_c2, depunct_max_di_c3: max_c3, depunct_max_di_c4: max_c4, depunct_max_di_c5: max_c5)
+        bridge.flaw.update(val_indice_c1: val_indice_1, val_indice_c2: val_indice_2, val_indice_c3: val_indice_3, val_indice_c4: val_indice_4, val_indice_c5: val_indice_5)
+        bridge.flaw.update(indice_total_calitate: val_indice_1 + val_indice_2 + val_indice_3 + val_indice_4 + val_indice_5)
+        bridge.flaw.update(f1_depunct: f1_depunct, f1: f1)
+        bridge.flaw.update(f2_depunct: f2_depunct, f2: f2)
+        bridge.flaw.update(f3_depunct: f3_depunct, f3: f3)
+        bridge.flaw.update(f4: f4)
+        bridge.flaw.update(f5: f5)
+        bridge.flaw.update(ist_c: suma_c, ist_f: suma_f)
+        bridge.flaw.update(ist_total: suma_ist)
+        bridge.flaw.update(aprecierea_starii_tehnice: aprecierea_starii_tehnice, masuri_recomandate: masuri_recomandate)
         
-				ActivityLog.log_activity(current_user, ActivityLog::ActionTypes::UPDATED_BRIDGE, @bridge, name)
-				redirect_to edit_bridge_path(@bridge), notice: 'Bridge was successfully updated.'
+				ActivityLog.log_activity(current_user, ActivityLog::ActionTypes::UPDATED_BRIDGE, bridge, name)
+				redirect_to edit_bridge_path(bridge), notice: 'Bridge was successfully updated.'
 			else
-				redirect_to new_bridge_path(@bridge), notice: @bridge.errors.full_messages.join(",")
+				redirect_to new_bridge_path(bridge), notice: bridge.errors.full_messages.join(",")
 			end
 		rescue
-			redirect_to edit_bridge_path(@bridge), notice: "Something went wrong."
+			redirect_to edit_bridge_path(bridge), notice: "Something went wrong."
 		end
 	end
 
 	def create
-		@bridge = Bridge.new(bridge_params.merge(user: current_user))
-		if @bridge.save
-			name = @bridge.name
-      suma_c1 = calculate_sum_c1 @bridge
-      suma_c2 = calculate_sum_c2 @bridge
-      suma_c3 = calculate_sum_c3 @bridge
-      suma_c4 = calculate_sum_c4 @bridge
-      suma_c5 = calculate_sum_c5 @bridge
+		bridge = Bridge.new(bridge_params.merge(user: current_user))
+		if bridge.save
+			name = bridge.name
+      suma_c1 = calculate_sum_c1 bridge
+      suma_c2 = calculate_sum_c2 bridge
+      suma_c3 = calculate_sum_c3 bridge
+      suma_c4 = calculate_sum_c4 bridge
+      suma_c5 = calculate_sum_c5 bridge
 
-      max_c1 = max_c1_columns @bridge
-      max_c2 = max_c2_columns @bridge
-      max_c3 = max_c3_columns @bridge
-      max_c4 = max_c4_columns @bridge
-      max_c5 = max_c5_columns @bridge
+      max_c1 = max_c1_columns bridge
+      max_c2 = max_c2_columns bridge
+      max_c3 = max_c3_columns bridge
+      max_c4 = max_c4_columns bridge
+      max_c5 = max_c5_columns bridge
 
       val_indice_1 = 10 - max_c1
       val_indice_2 = 10 - max_c2
@@ -531,47 +531,47 @@ class BridgesController < ApplicationController
       val_indice_4 = 10 - max_c4
       val_indice_5 = 10 - max_c5
 
-      f1_depunct, f1 = calcul_f1 @bridge
-      f2_depunct, f2 = calcul_f2 @bridge
-      f3_depunct, f3 = calcul_f3 @bridge
-      f4 = calcul_f4 @bridge
-      f5 = calcul_f5 @bridge
-      suma_c = suma_c @bridge
-      suma_f = suma_f @bridge
-      suma_ist = suma_ist @bridge
-      aprecierea_starii_tehnice, masuri_recomandate = calcul_masuri @bridge
+      f1_depunct, f1 = calcul_f1 bridge
+      f2_depunct, f2 = calcul_f2 bridge
+      f3_depunct, f3 = calcul_f3 bridge
+      f4 = calcul_f4 bridge
+      f5 = calcul_f5 bridge
+      suma_c = suma_c bridge
+      suma_f = suma_f bridge
+      suma_ist = suma_ist bridge
+      aprecierea_starii_tehnice, masuri_recomandate = calcul_masuri bridge
 
-      @bridge.flaw.update(nr_defecte_c1: suma_c1, nr_defecte_c2: suma_c2, nr_defecte_c3: suma_c3, nr_defecte_c4: suma_c4, nr_defecte_c5: suma_c5)
-      @bridge.flaw.update(depunct_max_di_c1: max_c1, depunct_max_di_c2: max_c2, depunct_max_di_c3: max_c3, depunct_max_di_c4: max_c4, depunct_max_di_c5: max_c5)
-      @bridge.flaw.update(val_indice_c1: val_indice_1, val_indice_c2: val_indice_2, val_indice_c3: val_indice_3, val_indice_c4: val_indice_4, val_indice_c5: val_indice_5)
-      @bridge.flaw.update(indice_total_calitate: val_indice_1 + val_indice_2 + val_indice_3 + val_indice_4 + val_indice_5)
-      @bridge.flaw.update(f1_depunct: f1_depunct, f1: f1)
-      @bridge.flaw.update(f2_depunct: f2_depunct, f2: f2)
-      @bridge.flaw.update(f3_depunct: f3_depunct, f3: f3)
-      @bridge.flaw.update(f4: f4)
-      @bridge.flaw.update(f5: f5)
-      @bridge.flaw.update(ist_c: suma_c, ist_f: suma_f)
-      @bridge.flaw.update(ist_total: suma_ist)
-      @bridge.flaw.update(aprecierea_starii_tehnice: aprecierea_starii_tehnice, masuri_recomandate: masuri_recomandate)
+      bridge.flaw.update(nr_defecte_c1: suma_c1, nr_defecte_c2: suma_c2, nr_defecte_c3: suma_c3, nr_defecte_c4: suma_c4, nr_defecte_c5: suma_c5)
+      bridge.flaw.update(depunct_max_di_c1: max_c1, depunct_max_di_c2: max_c2, depunct_max_di_c3: max_c3, depunct_max_di_c4: max_c4, depunct_max_di_c5: max_c5)
+      bridge.flaw.update(val_indice_c1: val_indice_1, val_indice_c2: val_indice_2, val_indice_c3: val_indice_3, val_indice_c4: val_indice_4, val_indice_c5: val_indice_5)
+      bridge.flaw.update(indice_total_calitate: val_indice_1 + val_indice_2 + val_indice_3 + val_indice_4 + val_indice_5)
+      bridge.flaw.update(f1_depunct: f1_depunct, f1: f1)
+      bridge.flaw.update(f2_depunct: f2_depunct, f2: f2)
+      bridge.flaw.update(f3_depunct: f3_depunct, f3: f3)
+      bridge.flaw.update(f4: f4)
+      bridge.flaw.update(f5: f5)
+      bridge.flaw.update(ist_c: suma_c, ist_f: suma_f)
+      bridge.flaw.update(ist_total: suma_ist)
+      bridge.flaw.update(aprecierea_starii_tehnice: aprecierea_starii_tehnice, masuri_recomandate: masuri_recomandate)
 
-			ActivityLog.log_activity(current_user, ActivityLog::ActionTypes::CREATED_BRIDGE, @bridge, name)
-      UserMailer.with(user: current_user).create_bridge(@bridge).deliver_later if current_user.user_has_email_integration?
-			redirect_to bridge_path(@bridge), notice: 'Bridge was successfully created.'
+			ActivityLog.log_activity(current_user, ActivityLog::ActionTypes::CREATED_BRIDGE, bridge, name)
+      UserMailer.with(user: current_user).create_bridge(bridge).deliver_later if current_user.user_has_email_integration?
+			redirect_to bridge_path(bridge), notice: 'Bridge was successfully created.'
 		else
-			redirect_to new_bridge_path, notice: @bridge.errors.full_messages.join(",")
+			redirect_to new_bridge_path, notice: bridge.errors.full_messages.join(",")
 		end
 	end
 
 	def destroy
-    @bridge = Bridge.friendly.find(params[:id])
-		name = @bridge.name
-    @bridge.destroy
-		ActivityLog.log_activity(current_user, ActivityLog::ActionTypes::DESTROY_BRIDGE, @bridge, name)
+    bridge = Bridge.friendly.find(params[:id])
+		name = bridge.name
+    bridge.destroy
+		ActivityLog.log_activity(current_user, ActivityLog::ActionTypes::DESTROY_BRIDGE, bridge, name)
 
     respond_to do |format|
       format.turbo_stream do
         flash[:success] = "Bridge successfully deleted."
-        render turbo_stream: [turbo_stream.remove("bridge-row-#{@bridge.id}"),
+        render turbo_stream: [turbo_stream.remove("bridge-row-#{bridge.id}"),
 				turbo_stream.update( "flash", partial: "layouts/flash")]
 			
       end

@@ -6,14 +6,14 @@ module Bridges
     before_action :authorize_bridge, only: [:update]
 
     def update
-      @bridge = Bridge.friendly.find(params[:id])
-      @bridge.update(published: true)
+      bridge = Bridge.friendly.find(params[:id])
+      bridge.update(published: true)
       respond_to do | format |
         format.turbo_stream do
           flash[:success] = "Product successfully published."
           render turbo_stream: [
-            turbo_stream.update("publish-button-#{@bridge.id}", partial: "bridges/publish_button", locals: { bridge: @bridge.reload }),
-            turbo_stream.update("status-#{@bridge.id}", @bridge.published? ? "Published" : "Unpublished"),
+            turbo_stream.update("publish-button-#{bridge.id}", partial: "bridges/publish_button", locals: { bridge: bridge.reload }),
+            turbo_stream.update("status-#{bridge.id}", bridge.published? ? "Published" : "Unpublished"),
             turbo_stream.update( "flash", partial: "layouts/flash")
           ]
         end
@@ -23,8 +23,8 @@ module Bridges
     private
 
     def authorize_bridge
-      @bridge = Bridge.friendly.find(params[:id])
-      if @bridge.user != current_user
+      bridge = Bridge.friendly.find(params[:id])
+      if bridge.user != current_user
         if current_user.admin? || current_user.super_admin?
           true
         else

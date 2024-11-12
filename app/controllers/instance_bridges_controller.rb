@@ -18,22 +18,22 @@ class InstanceBridgesController < ApplicationController
   end
 
   def create
-    @instance_bridge = @bridge.instance_bridges.build(instance_bridge_params)
+    instance_bridge = @bridge.instance_bridges.build(instance_bridge_params)
 
-    if @instance_bridge.save
-      name = @instance_bridge.name
+    if instance_bridge.save
+      name = instance_bridge.name
 
-      suma_c1 = calculate_sum_c1 @instance_bridge
-      suma_c2 = calculate_sum_c2 @instance_bridge
-      suma_c3 = calculate_sum_c3 @instance_bridge
-      suma_c4 = calculate_sum_c4 @instance_bridge
-      suma_c5 = calculate_sum_c5 @instance_bridge
+      suma_c1 = calculate_sum_c1 instance_bridge
+      suma_c2 = calculate_sum_c2 instance_bridge
+      suma_c3 = calculate_sum_c3 instance_bridge
+      suma_c4 = calculate_sum_c4 instance_bridge
+      suma_c5 = calculate_sum_c5 instance_bridge
 
-      max_c1 = max_c1_columns @instance_bridge
-      max_c2 = max_c2_columns @instance_bridge
-      max_c3 = max_c3_columns @instance_bridge
-      max_c4 = max_c4_columns @instance_bridge
-      max_c5 = max_c5_columns @instance_bridge
+      max_c1 = max_c1_columns instance_bridge
+      max_c2 = max_c2_columns instance_bridge
+      max_c3 = max_c3_columns instance_bridge
+      max_c4 = max_c4_columns instance_bridge
+      max_c5 = max_c5_columns instance_bridge
 
       val_indice_1 = 10 - max_c1
       val_indice_2 = 10 - max_c2
@@ -41,32 +41,32 @@ class InstanceBridgesController < ApplicationController
       val_indice_4 = 10 - max_c4
       val_indice_5 = 10 - max_c5
 
-      f1_depunct, f1 = calcul_f1 @instance_bridge
-      f2_depunct, f2 = calcul_f2 @instance_bridge
-      f3_depunct, f3 = calcul_f3 @instance_bridge
-      f4 = calcul_f4 @instance_bridge
-      f5 = calcul_f5 @instance_bridge
-      suma_c = suma_c @instance_bridge
-      suma_f = suma_f @instance_bridge
-      suma_ist = suma_ist @instance_bridge
-      aprecierea_starii_tehnice, masuri_recomandate = calcul_masuri @instance_bridge
+      f1_depunct, f1 = calcul_f1 instance_bridge
+      f2_depunct, f2 = calcul_f2 instance_bridge
+      f3_depunct, f3 = calcul_f3 instance_bridge
+      f4 = calcul_f4 instance_bridge
+      f5 = calcul_f5 instance_bridge
+      suma_c = suma_c instance_bridge
+      suma_f = suma_f instance_bridge
+      suma_ist = suma_ist instance_bridge
+      aprecierea_starii_tehnice, masuri_recomandate = calcul_masuri instance_bridge
 
-      @instance_bridge.flaw_instance.update(nr_defecte_c1: suma_c1, nr_defecte_c2: suma_c2, nr_defecte_c3: suma_c3, nr_defecte_c4: suma_c4, nr_defecte_c5: suma_c5)
-      @instance_bridge.flaw_instance.update(depunct_max_di_c1: max_c1, depunct_max_di_c2: max_c2, depunct_max_di_c3: max_c3, depunct_max_di_c4: max_c4, depunct_max_di_c5: max_c5)
-      @instance_bridge.flaw_instance.update(val_indice_c1: val_indice_1, val_indice_c2: val_indice_2, val_indice_c3: val_indice_3, val_indice_c4: val_indice_4, val_indice_c5: val_indice_5)
-      @instance_bridge.flaw_instance.update(indice_total_calitate: val_indice_1 + val_indice_2 + val_indice_3 + val_indice_4 + val_indice_5)
-      @instance_bridge.flaw_instance.update(f1_depunct: f1_depunct, f1: f1)
-      @instance_bridge.flaw_instance.update(f2_depunct: f2_depunct, f2: f2)
-      @instance_bridge.flaw_instance.update(f3_depunct: f3_depunct, f3: f3)
-      @instance_bridge.flaw_instance.update(f4: f4)
-      @instance_bridge.flaw_instance.update(f5: f5)
-      @instance_bridge.flaw_instance.update(ist_c: suma_c, ist_f: suma_f)
-      @instance_bridge.flaw_instance.update(ist_total: suma_ist)
-      @instance_bridge.flaw_instance.update(aprecierea_starii_tehnice: aprecierea_starii_tehnice, masuri_recomandate: masuri_recomandate)
+      instance_bridge.flaw_instance.update(nr_defecte_c1: suma_c1, nr_defecte_c2: suma_c2, nr_defecte_c3: suma_c3, nr_defecte_c4: suma_c4, nr_defecte_c5: suma_c5)
+      instance_bridge.flaw_instance.update(depunct_max_di_c1: max_c1, depunct_max_di_c2: max_c2, depunct_max_di_c3: max_c3, depunct_max_di_c4: max_c4, depunct_max_di_c5: max_c5)
+      instance_bridge.flaw_instance.update(val_indice_c1: val_indice_1, val_indice_c2: val_indice_2, val_indice_c3: val_indice_3, val_indice_c4: val_indice_4, val_indice_c5: val_indice_5)
+      instance_bridge.flaw_instance.update(indice_total_calitate: val_indice_1 + val_indice_2 + val_indice_3 + val_indice_4 + val_indice_5)
+      instance_bridge.flaw_instance.update(f1_depunct: f1_depunct, f1: f1)
+      instance_bridge.flaw_instance.update(f2_depunct: f2_depunct, f2: f2)
+      instance_bridge.flaw_instance.update(f3_depunct: f3_depunct, f3: f3)
+      instance_bridge.flaw_instance.update(f4: f4)
+      instance_bridge.flaw_instance.update(f5: f5)
+      instance_bridge.flaw_instance.update(ist_c: suma_c, ist_f: suma_f)
+      instance_bridge.flaw_instance.update(ist_total: suma_ist)
+      instance_bridge.flaw_instance.update(aprecierea_starii_tehnice: aprecierea_starii_tehnice, masuri_recomandate: masuri_recomandate)
 
 
 
-      ActivityLog.log_activity(current_user, ActivityLog::ActionTypes::CREATED_INSTANCE_BRIDGE, @instance_bridge, name)
+      ActivityLog.log_activity(current_user, ActivityLog::ActionTypes::CREATED_INSTANCE_BRIDGE, instance_bridge, name)
       redirect_to bridge_path(@bridge), notice: 'Instance Bridge was successfully created.'
     else
       render :new
@@ -148,11 +148,11 @@ class InstanceBridgesController < ApplicationController
   end
 
   def print
-		@instance_bridge = InstanceBridge.find(params[:id])
+		instance_bridge = InstanceBridge.find(params[:id])
 		pdf_html = render_to_string(
 			pdf: 'bridge_info',          
 			template: 'instance_bridges/print',    
-			locals: { bridge: @instance_bridge },
+			locals: { bridge: instance_bridge },
       encoding: 'UTF-8'  
 		)
 	

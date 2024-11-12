@@ -10,7 +10,7 @@
         <th scope="col" class="px-6 py-4 font-medium text-gray-900">Last Name</th>
         <th scope="col" class="px-6 py-4 font-medium text-gray-900">Username</th>
         <th scope="col" class="px-6 py-4 font-medium text-gray-900">Email</th>
-        <th scope="col" class="px-6 py-4 font-medium text-gray-900">Role</th>
+          <th scope="col" class="px-6 py-4 font-medium text-gray-900">Role</th>
         <th scope="col" class="px-6 py-4 font-medium text-gray-900"></th>
       </tr>
     </thead>
@@ -32,11 +32,13 @@
           <td class="px-6 py-4">
             <%=user.email%>
           </td>
+
           <td class="px-6 py-4">
             <%= turbo_frame_tag "status-#{user.id}" do %>
               <%= user.super_admin? ? "Super Admin" : user.admin? ? "Admin" : "Student" %>
             <% end %>
           </td>
+
           
           <td class="px-6 py-4">
             <div class="flex justify-end gap-4">

@@ -2,7 +2,8 @@
 
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
-  before_action :authorize_admin!, only: [:all_users, :update_role]
+  before_action :authorize_admin!, only: [:all_users]
+  before_action :authorize_super_admin!, only: [:update_role]
 
   def show
     @user = current_user
@@ -13,23 +14,24 @@ class ProfilesController < ApplicationController
   end
 
   def all_users
-    @users = User.where.not(id: current_user.id).order(created_at: :asc).page(params[:page]).per(9)
+    users_super_admin = User.where(role:'super admin').pluck(:id)
+    @users = User.where.not(id: users_super_admin).order(created_at: :asc).page(params[:page]).per(9)
   end
 
   def update_role
-    @user = User.find(params[:id])
-    flash[:success] = 'You are not authorized to access this page.' and return if (@user.super_admin? || @user.admin?)
-    if @user.admin?
-      @user.update(role: 'student')
+    user = User.find(params[:id])
+
+    if user.admin?
+      user.update(role: 'student')
     else
-      @user.update(role: 'admin')
+      user.update(role: 'admin')
     end
     respond_to do | format |
       format.turbo_stream do
         flash[:success] = "User successfully roled."
         render turbo_stream: [
-          turbo_stream.update("publish-button-#{@user.id}", partial: "profiles/publish_button", locals: { user: @user.reload }),
-          turbo_stream.update("status-#{@user.id}", @user.admin? ? "Admin" : "Student"),
+          turbo_stream.update("publish-button-#{user.id}", partial: "profiles/publish_button", locals: { user: user.reload }),
+          turbo_stream.update("status-#{user.id}", user.admin? ? "Admin" : "Student"),
           turbo_stream.update( "flash", partial: "layouts/flash")
         ]
       end
@@ -37,11 +39,11 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    @user = current_user
-    if @user.update(user_params)
-      redirect_to edit_profile_path(@user), notice: 'Profile updated successfully'
+    user = current_user
+    if user.update(user_params)
+      redirect_to edit_profile_path(user), notice: 'Profile updated successfully'
     else
-      redirect_to edit_profile_path(@user), notice: @user.errors.full_messages.join(",")
+      redirect_to edit_profile_path(user), notice: user.errors.full_messages.join(",")
     end
   end
 
@@ -49,6 +51,10 @@ class ProfilesController < ApplicationController
 
   def authorize_admin!
     redirect_to root_path, alert: 'You are not authorized to access this page.' unless (current_user&.admin? || current_user.super_admin?)
+  end
+
+  def authorize_super_admin!
+    redirect_to root_path, alert: 'You are not authorized to access this page.' unless (current_user.super_admin?)
   end
 
   def user_params
