@@ -1,0 +1,2 @@
+class Earn < ApplicationRecord
+end

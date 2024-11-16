@@ -1,0 +1,24 @@
+<div class="overflow-x-auto overflow-hidden rounded-lg border border-gray-200 shadow-md m-5">
+<table class="w-full border-collapse bg-white text-left text-sm text-gray-500">
+  <thead class="bg-gray-50">
+    <tr>
+      <th scope="col" class="px-6 py-4 font-medium text-gray-900">Email</th>
+      <th scope="col" class="px-6 py-4 font-medium text-gray-900">Username</th>
+      <th scope="col" class="px-6 py-4 font-medium text-gray-900">Name</th>
+      <th scope="col" class="px-6 py-4 font-medium text-gray-900">Actions</th>
+    </tr>
+  </thead>
+  <tbody class="divide-y divide-gray-100 border-t border-gray-100">
+    <% @account_requests.each do |request| %>
+        <tr id="account_request_<%= request.id %>" class="hover:bg-gray-50">
+          <td class="px-6 py-4"><%= request.email %></td>
+          <td class="px-6 py-4"><%= request.username %></td>
+          <td class="px-6 py-4"><%= "#{request.first_name} #{request.last_name}" %></td>
+          <td class="px-6 py-4">
+            <%= button_to 'Approve', approve_super_admin_account_request_path(request), method: :post, class: 'btn btn-primary' %>
+          </td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
