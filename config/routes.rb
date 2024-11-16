@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  namespace :super_admin do
+    get "dashboard/index"
+  end
   resources :profiles
-  devise_for :users
+  devise_for :users, skip: [:registrations]
 
   get 'all_users', to: 'profiles#all_users', as: :all_users
 
@@ -11,6 +14,17 @@ Rails.application.routes.draw do
   resources :profiles do
     member do
       put :update_role
+    end
+  end
+
+  resources :account_requests, only: [:new, :create]
+
+  namespace :super_admin do
+    get 'dashboard', to: 'dashboard#index'
+    resources :account_requests, only: [] do
+      member do
+        post :approve, to: 'dashboard#approve'  # Correct the route to go to dashboard#approve
+      end
     end
   end
 

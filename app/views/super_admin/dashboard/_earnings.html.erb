@@ -1,0 +1,27 @@
+<table class="w-full min-w-[460px]">
+    <thead>
+        <tr>
+            <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left rounded-tl-md rounded-bl-md">Date</th>
+            <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left">Earning</th>
+            <th class="text-[12px] uppercase tracking-wide font-medium text-gray-400 py-2 px-4 bg-gray-50 text-left">Log</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @earnings.each do |earning| %>
+            <tr>
+                <td class="py-2 px-4 border-b border-b-gray-50">
+                    <div class="flex items-center">
+                        <img src="https://placehold.co/32x32" alt="" class="w-8 h-8 rounded object-cover block">
+                        <span class="text-gray-600 text-sm font-medium ml-2 truncate"><%= earning.date %></span>
+                    </div>
+                </td>
+                <td class="py-2 px-4 border-b border-b-gray-50">
+                    <span class="text-[13px] font-medium text-emerald-500">+<%= earning.income %></span>
+                </td>
+                <td class="py-2 px-4 border-b border-b-gray-50">
+                    <span class="inline-block p-1 rounded bg-emerald-500/10 text-emerald-500 font-medium text-[12px] leading-none"><%= earning.log %></span>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
