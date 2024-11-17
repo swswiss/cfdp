@@ -201,19 +201,19 @@ class BridgesController < ApplicationController
 
 	def index
 		if params[:name].present? && (params[:minimum_length].blank? || params[:maximum_length].blank?)
-			@bridges ||= Bridge.where('name ILIKE ? AND published = ?', "%#{params[:name]}%", true).order(created_at: :asc).page(params[:page]).per(8)
+			@bridges ||= Bridge.select(:id, :name, :published, :user_id, :slug).where('name ILIKE ? AND published = ?', "%#{params[:name]}%", true).order(created_at: :asc).page(params[:page]).per(8)
     end
 
     if params[:name].blank? && (params[:minimum_length].present? && params[:maximum_length].present?)
-      @bridges ||= Bridge.where('lungime >= ? AND lungime <= ? AND published = ?', params[:minimum_length], params[:maximum_length], true).order(created_at: :asc).page(params[:page]).per(8)
+      @bridges ||= Bridge.select(:id, :name, :published, :user_id, :slug).where('lungime >= ? AND lungime <= ? AND published = ?', params[:minimum_length], params[:maximum_length], true).order(created_at: :asc).page(params[:page]).per(8)
     end
 
     if params[:name].blank? && (params[:minimum_length].blank? && params[:maximum_length].blank?)
-      @bridges ||= Bridge.all.where(published: true).order(created_at: :asc).page(params[:page]).per(8)
+      @bridges ||= Bridge.select(:id, :name, :published, :user_id, :slug).all.where(published: true).order(created_at: :asc).page(params[:page]).per(8)
     end
 
     if params[:name].present? && (params[:minimum_length].present? && params[:maximum_length].present?)
-      @bridges ||= Bridge.where('name ILIKE ? AND lungime >= ? AND lungime <= ? AND published = ?', 
+      @bridges ||= Bridge.select(:id, :name, :published, :lungime, :user_id, :slug).where('name ILIKE ? AND lungime >= ? AND lungime <= ? AND published = ?', 
                          "%#{params[:name]}%", params[:minimum_length], params[:maximum_length], true)
                  .order(created_at: :asc)
                  .page(params[:page])
