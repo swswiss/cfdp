@@ -5,7 +5,7 @@ class BridgesController < ApplicationController
 	before_action :authorize_admin!, only: [:upload_bridge, :send_upload_bridge, :compare_data, :comparison, :custom]
 	before_action :authorize_bridge, only: [:update, :destroy, :print, :edit, :clone]
 
-  after_action :cleanup_instance_variables, only: [:index]
+  after_action :cleanup_instance_variables, only: [:index, :edit, :new, :show, :print]
 
   F1 = [
     [0, 7, 8, 0, 8, 9, 0, 9, 10],  # Row 1
@@ -1558,6 +1558,7 @@ class BridgesController < ApplicationController
   def cleanup_instance_variables
     # Free memory after the view is rendered
     @bridges = nil
+    @bridge = nil
   end
 
 	def authorize_admin!
