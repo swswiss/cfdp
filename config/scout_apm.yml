@@ -39,7 +39,7 @@ production:
 
 development:
   <<: *defaults
-  monitor: true
+  monitor: false
 
 test:
   <<: *defaults
