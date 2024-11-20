@@ -43,9 +43,10 @@
     <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
       <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
         <div class="sm:flex sm:items-start">
-          <div class="mx-auto flex h-20 w-20 flex-shrink-0 items-center justify-center sm:mx-0 sm:h-10 sm:w-10">
-            <%= image_tag "donation.png" %>
-          </div>
+        <div class="mx-auto flex items-center justify-center sm:mx-0" style="width: auto; height: auto;">
+        <%= image_tag "gift.svg", width: 170, height: 170, class: "object-cover object-center" %>
+      </div>
+      
           <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
             <h3 class="text-base font-semibold leading-6 text-gray-900" id="modal-title">Support Us</h3>
             <div class="mt-2">
@@ -61,7 +62,7 @@
       </div>
       <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
         <a href="https://ko-fi.com/yourusername" target="_blank" rel="noopener noreferrer"
-           class="inline-flex w-full justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 sm:ml-3 sm:w-auto">
+           class="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 sm:ml-3 sm:w-auto">
           Buy us a Drink!
         </a>
         <button type="button" 

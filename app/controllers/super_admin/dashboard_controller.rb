@@ -5,7 +5,7 @@ class SuperAdmin::DashboardController < ApplicationController
 
   def index
     @account_requests = AccountRequest.where(status: 'pending').page(params[:page]).per(5)
-    @earnings = Earn.all
+    @earnings = Earn.pluck(:date, :income, :log)
   end
 
  # app/controllers/super_admin/dashboard_controller.rb

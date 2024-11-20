@@ -11,7 +11,6 @@ class Bridge < ApplicationRecord
   accepts_nested_attributes_for :flaw
 
   validates :name, presence: true, uniqueness: { case_sensitive: false, scope: :user_id }
-  validates :name, length: { maximum: 19, message: "must be 19 characters or less" }
   validate :bridge_limit, on: :create
 
   def draft?

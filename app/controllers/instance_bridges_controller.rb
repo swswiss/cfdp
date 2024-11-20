@@ -5,8 +5,10 @@ class InstanceBridgesController < ApplicationController
   before_action :set_instance_bridge, only: [:show, :edit, :update, :destroy]
   before_action :authorize_bridge, only: [:new, :update, :destroy, :edit]
 
+  after_action :cleanup_instance_variables, only: [:index, :edit, :new, :show, :print]
+
   def index
-    @instance_bridges = @bridge.instance_bridges
+    #@instance_bridges = @bridge.instance_bridges
   end
 
   def show
@@ -460,6 +462,32 @@ class InstanceBridgesController < ApplicationController
         f3 = 0
       end
     end
+    if tipul_suprastructurii == "Alte categorii"
+      if durata_exploatare == "0-5"
+        f3_depunct = 0
+        f3 = 10
+      end
+      if durata_exploatare == "6-15"
+        f3_depunct = 3
+        f3 = 7
+      end
+      if durata_exploatare == "16-25"
+        f3_depunct = 5
+        f3 = 5
+      end
+      if durata_exploatare == "26-35"
+        f3_depunct = 6
+        f3 = 4
+      end
+      if durata_exploatare == "36-45"
+        f3_depunct = 7
+        f3 = 3
+      end
+      if durata_exploatare == ">45"
+        f3_depunct = 8
+        f3 = 2
+      end
+    end
     [f3_depunct, f3]
   end
 
@@ -780,6 +808,13 @@ class InstanceBridgesController < ApplicationController
 		else
 			true
     end
+  end
+
+  def cleanup_instance_variables
+    # Free memory after the view is rendered
+    @instance_bridges = nil
+    @instance_bridge = nil
+    @bridge = nil
   end
 
   def instance_bridge_params

@@ -5,7 +5,7 @@ class BridgesController < ApplicationController
 	before_action :authorize_admin!, only: [:upload_bridge, :send_upload_bridge, :compare_data, :comparison, :custom]
 	before_action :authorize_bridge, only: [:update, :destroy, :print, :edit, :clone]
 
-  after_action :cleanup_instance_variables, only: [:index, :edit, :new, :show, :print]
+  after_action :cleanup_instance_variables, only: [:index, :edit, :new, :show, :print, :custom]
 
   F1 = [
     [0, 7, 8, 0, 8, 9, 0, 9, 10],  # Row 1
@@ -30,7 +30,7 @@ class BridgesController < ApplicationController
   end
   
   def custom
-    @bridges = Bridge.all.select(:id, :name) # Adjust scope as needed, e.g., only published bridges
+    @bridges = Bridge.all.pluck(:id, :name) # Adjust scope as needed, e.g., only published bridges
     selected_bridge_ids = params[:bridge_ids]&.map(&:to_i)
     selected_options = params[:options]
     selected_bridges = Bridge.where(id: selected_bridge_ids)
@@ -196,7 +196,7 @@ class BridgesController < ApplicationController
 
 
   def comparison
-    @bridges = Bridge.all
+    @bridges = Bridge.where(published:true).pluck(:id, :name)
   end
 
 	def index
@@ -1253,6 +1253,32 @@ class BridgesController < ApplicationController
         f3 = 0
       end
     end
+    if tipul_suprastructurii == "Alte categorii"
+      if durata_exploatare == "0-5"
+        f3_depunct = 0
+        f3 = 10
+      end
+      if durata_exploatare == "6-15"
+        f3_depunct = 3
+        f3 = 7
+      end
+      if durata_exploatare == "16-25"
+        f3_depunct = 5
+        f3 = 5
+      end
+      if durata_exploatare == "26-35"
+        f3_depunct = 6
+        f3 = 4
+      end
+      if durata_exploatare == "36-45"
+        f3_depunct = 7
+        f3 = 3
+      end
+      if durata_exploatare == ">45"
+        f3_depunct = 8
+        f3 = 2
+      end
+    end
     [f3_depunct, f3]
   end
 
@@ -1559,6 +1585,23 @@ class BridgesController < ApplicationController
     # Free memory after the view is rendered
     @bridges = nil
     @bridge = nil
+    @show_separate = nil
+    @ist_total_hash = nil
+    @ist_c_hash = nil
+    @ist_f_hash = nil
+    @ist_f1_hash = nil
+    @ist_f2_hash = nil
+    @ist_f3_hash = nil
+    @ist_f4_hash = nil
+    @ist_f5_hash = nil
+    @push_ist_f5 = nil
+    @push_ist_f4 = nil
+    @push_ist_f3 = nil
+    @push_ist_f2 = nil
+    @push_ist_f1 = nil
+    @flaw_instance_ist_f_hash = nil
+    @flaw_instance_ist_c_hash = nil
+    @flaw_instance_ist_total_hash = nil
   end
 
 	def authorize_admin!
