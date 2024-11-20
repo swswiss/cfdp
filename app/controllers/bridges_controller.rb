@@ -230,6 +230,19 @@ class BridgesController < ApplicationController
     end
 	end
 
+  def csv
+    require 'caxlsx'
+    bridge = Bridge.friendly.find(params[:id])
+    package = Axlsx::Package.new
+    workbook = package.workbook
+
+    date_identificare_csv(bridge, workbook)
+
+    send_data package.to_stream.read,
+              filename: "merged_cells_example.xlsx",
+              type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+  end
+
 	def print
 		bridge = Bridge.friendly.find(params[:id])
 		pdf_html = render_to_string(
@@ -1580,6 +1593,14 @@ class BridgesController < ApplicationController
 			true
     end
   end
+  
+  def header_style(workbook)
+    workbook.styles.add_style(bg_color: "00FF00", fg_color: "FFFFFF", b: true, alignment: { horizontal: :center })
+  end
+
+  def custom_style(workbook)
+    workbook.styles.add_style(bg_color: "FF0000", fg_color: "FFFFFF", sz: 14, alignment: { horizontal: :left })
+  end
 
   def cleanup_instance_variables
     # Free memory after the view is rendered
@@ -1602,6 +1623,203 @@ class BridgesController < ApplicationController
     @flaw_instance_ist_f_hash = nil
     @flaw_instance_ist_c_hash = nil
     @flaw_instance_ist_total_hash = nil
+  end
+
+  def date_identificare_csv(bridge, workbook)
+    workbook.add_worksheet(name: "Date de identificare") do |sheet|
+      # Add a row with a single value (to display in the merged cell)
+      sheet.add_row ["I. Date de identificare a lucrării"]
+      sheet.merge_cells("A1:H1")
+
+      sheet.add_row [
+        "1. Tipul lucrării de artă (pod, pasaj, viaduct)",
+        nil, 
+        bridge.tip_lucrare_arta, 
+        nil, nil, nil, nil, nil 
+      ]
+      sheet.merge_cells("A2:B2")
+      sheet.merge_cells("C2:H2")
+      options = ["Pod", "Viaduct", "Pasaj"]
+      sheet.add_data_validation('C2:H2', {
+          type: :list,
+          formula1: "\"#{options.join(',')}\"", # Join the options into a string
+          showDropDown: true
+        })
+
+      sheet.add_row [
+        "2. Obstacolul traversat",
+        nil, 
+        bridge.obstacol_traversat, 
+        nil, nil, nil, nil, nil 
+      ]
+      sheet.merge_cells("A3:B3")
+      sheet.merge_cells("C3:H3")
+
+      sheet.add_row [
+        "3. Localitatea cea mai apropiată",
+        nil, 
+        bridge.localitatea, 
+        nil, nil, nil, nil, nil 
+      ]
+      sheet.merge_cells("A4:B4")
+      sheet.merge_cells("C4:H4")
+
+      sheet.add_row ["4. Categoria drumului pe care este amplasat (A, DN, DJ, DC)", nil, "Categoria", nil, "Nr dr. / Clasa Teh.", nil, "Poziția km"]
+      sheet.add_row [nil, nil, bridge.categoria, nil, bridge.numar_drum, bridge.clasa, bridge.pozitia_km]
+      sheet.merge_cells("A5:B6")
+      sheet.merge_cells("C5:D5")
+      sheet.merge_cells("E5:F5")
+      sheet.merge_cells("G5:H5")
+      sheet.merge_cells("C6:D6")
+      sheet.merge_cells("G6:H6")
+      options = ["A", "DN", "DJ", "DC"]
+      sheet.add_data_validation('C6:D6', {
+          type: :list,
+          formula1: "\"#{options.join(',')}\"", # Join the options into a string
+          showDropDown: true
+        })
+      options = ["I", "II", "III", "IV", "V"]
+      sheet.add_data_validation('F6', {
+          type: :list,
+          formula1: "\"#{options.join(',')}\"", # Join the options into a string
+          showDropDown: true
+        })
+
+      sheet.add_row [
+        "5. Anul construcției, anii consolidării sau reabilitării",
+        nil, 
+        bridge.an_constructie, 
+        nil, nil, nil, nil, nil 
+      ]
+      sheet.merge_cells("A7:B7")
+      sheet.merge_cells("C7:H7")
+
+      sheet.add_row [
+        "6. Tipul podului",
+        nil, 
+        nil, 
+        nil, nil, nil, nil, nil 
+      ]
+      sheet.merge_cells("A8:B8")
+      sheet.merge_cells("C8:H8")
+
+      sheet.add_row [
+        "- după schema statică",
+        nil, 
+        bridge.schema_statica, 
+        nil, nil, nil, nil, nil 
+      ]
+      sheet.merge_cells("A9:B9")
+      sheet.merge_cells("C9:H9")
+
+      sheet.add_row [
+        "- după structura de rezistență",
+        nil, 
+        bridge.structura_rezistenta, 
+        nil, nil, nil, nil, nil 
+      ]
+      sheet.merge_cells("A10:B10")
+      sheet.merge_cells("C10:H10")
+
+      sheet.add_row [
+        "- după modul de execuție",
+        nil, 
+        bridge.mod_executie, 
+        nil, nil, nil, nil, nil 
+      ]
+      sheet.merge_cells("A11:B11")
+      sheet.merge_cells("C11:H11")
+
+      sheet.add_row [
+        "- oblicitate",
+        nil, 
+        bridge.oblicitate, 
+        nil, nil, nil, nil, nil 
+      ]
+      sheet.merge_cells("A12:B12")
+      sheet.merge_cells("C12:H12")
+
+      sheet.add_row ["7. Materialul din care este alcătuită", nil, "Beton simplu", "Beton armat", "Beton precomprimat", "Metal", "Mixt", "Lemn"]
+      sheet.merge_cells("A13:B13")
+
+      sheet.add_row ["INFRASTRUCTURA", nil]
+      sheet.merge_cells("A14:B14")
+      sheet.merge_cells("C14:H14")
+
+      sheet.add_row ["Culee", "Fundatii", bridge.culee_fundatie_simplu, bridge.culee_fundatie_armat, bridge.culee_fundatie_precomprimat, bridge.culee_fundatie_metal, bridge.culee_fundatie_lemn, bridge.culee_fundatie_mixt]
+      sheet.add_row ["", "Elevatii", bridge.culee_elevatie_simplu, bridge.culee_elevatie_armat, bridge.culee_elevatie_precomprimat, bridge.culee_elevatie_metal, bridge.culee_elevatie_lemn, bridge.culee_elevatie_mixt]
+      sheet.add_row ["Pile", "Fundatii", bridge.pile_fundatie_simplu, bridge.pile_fundatie_armat, bridge.pile_fundatie_precomprimat, bridge.pile_fundatie_metal, bridge.pile_fundatie_lemn, bridge.pile_fundatie_mixt]
+      sheet.add_row ["", "Elevatii", bridge.pile_elevatie_simplu, bridge.pile_elevatie_armat, bridge.pile_elevatie_precomprimat, bridge.pile_elevatie_metal, bridge.pile_elevatie_lemn, bridge.pile_elevatie_mixt]
+
+
+      sheet.add_row ["SUPRASTRUCTURA", nil]
+      sheet.merge_cells("A19:B19")
+      sheet.merge_cells("C19:H19")
+
+      sheet.add_row ["Structura de rezistenta", bridge.structura_rezistenta_simplu, bridge.structura_rezistenta_armat, bridge.structura_rezistenta_precomprimat, bridge.structura_rezistenta_metal, bridge.structura_rezistenta_lemn, bridge.structura_rezistenta_mixt]
+      sheet.merge_cells("A20:B20")
+
+      sheet.add_row ["8. Lungimea podului (m)", "", bridge.lungime, "", "", "", ""]
+      sheet.merge_cells("A21:B21")
+      sheet.merge_cells("C21:H21")
+
+      sheet.add_row ["- nunărul de deschideri", "", bridge.numar_deschideri, "", "", "", ""]
+      sheet.merge_cells("A22:B22")
+      sheet.merge_cells("C22:H22")
+
+      sheet.add_row ["- lungimea fiecărei deschideri (m)", "", bridge.lungime_deschidere, "", "", "", ""]
+      sheet.merge_cells("A23:B23")
+      sheet.merge_cells("C23:H23")
+
+      sheet.add_row [" 9. Lățimea podului - intre parapeți (m)", "", bridge.latime, "", "", "", ""]
+      sheet.merge_cells("A24:B24")
+      sheet.merge_cells("C24:H24")
+
+      sheet.add_row ["- lățimea părții carosabile (m)", "", bridge.latime_carosabila, "", "", "", ""]
+      sheet.merge_cells("A25:B25")
+      sheet.merge_cells("C25:H25")
+
+      sheet.add_row ["- lățimea trotuarelor (m)", "", bridge.latime_trotuar, "", "", "", ""]
+      sheet.merge_cells("A26:B26")
+      sheet.merge_cells("C26:H26")
+
+      sheet.add_row ["- numărul de grinzi în scțiune transversală", "", bridge.numar_grinzi, "", "", "", ""]
+      sheet.merge_cells("A27:B27")
+      sheet.merge_cells("C27:H27")
+
+      sheet.add_row ["- numărul de antretoaze", "", bridge.numar_antretoaze, "", "", "", ""]
+      sheet.merge_cells("A28:B28")
+      sheet.merge_cells("C28:H28")
+
+      sheet.add_row ["10. Aparate de reazem(tip, materialul din care sunt construite, schema de amplasare)", "", bridge.aparate_reazem, "", "", "", ""]
+      sheet.merge_cells("A29:B29")
+      sheet.merge_cells("C29:H29")
+      sheet.add_row ["11. Tip infrastructuri", "", bridge.tip_infrastructurii, "", "", "", ""]
+      sheet.merge_cells("A30:B30")
+      sheet.merge_cells("C30:H30")
+      sheet.add_row ["12. Tip fundații", "", bridge.tip_fundatii, "", "", "", ""]
+      sheet.merge_cells("A31:B31")
+      sheet.merge_cells("C31:H31")
+      sheet.add_row ["13. Tipul îmbrăcămintei pe pod", "", bridge.tip_imbracaminte, "", "", "", ""]
+      sheet.merge_cells("A32:B32")
+      sheet.merge_cells("C32:H32")
+      sheet.add_row ["14. Rosturi tip____poziție___", "", bridge.rosturi_tip_pozitie, "", "", "", ""]
+      sheet.merge_cells("A33:B33")
+      sheet.merge_cells("C33:H33")
+      sheet.add_row ["15. Parapeți pietonali", "", bridge.parapeti_pietonali, "", "", "", ""]
+      sheet.merge_cells("A34:B34")
+      sheet.merge_cells("C34:H34")
+      sheet.add_row ["16. Parapeți de siguranță", "", bridge.parapeti_siguranta, "", "", "", ""]
+      sheet.merge_cells("A35:B35")
+      sheet.merge_cells("C35:H35")
+      sheet.add_row ["17. Racordări cu terasamentele", "", bridge.racordari_terasamente, "", "", "", ""]
+      sheet.merge_cells("A36:B36")
+      sheet.merge_cells("C36:H36")
+      sheet.add_row ["18. Apărări de mal", "", bridge.aparari_mal, "", "", "", ""]
+      sheet.merge_cells("A37:B37")
+      sheet.merge_cells("C37:H37")
+      
+    end
   end
 
 	def authorize_admin!

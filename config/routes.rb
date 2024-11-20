@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   resources :bridges do
     member do
       get :print
+      get :csv
     end
   end
 

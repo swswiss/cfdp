@@ -30,6 +30,8 @@ gem 'wkhtmltopdf-binary', '0.12.3.1'
 gem 'roo'
 gem "rails-mermaid_erd"
 gem 'scout_apm'
+gem 'caxlsx'
+gem 'caxlsx_rails'
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
