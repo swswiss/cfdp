@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Generating Bridge Report</title>
+  <style>
+    .spinner {
+      border: 16px solid #f3f3f3; /* Light grey */
+      border-top: 16px solid #3498db; /* Blue */
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      animation: spin 2s linear infinite;
+      margin: 50px auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .message {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      font-size: 1.2rem;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="spinner"></div>
+  <center>
+  <br>
+  <div class="mt-4  text-gray-600 text-sm leading-5 max-w-2xl">
+  The bridge is printing right now. Please wait until it is done. Thank you!
+  <div>
+  </center>
+
+  <script>
+  // Poll the server for the PDF
+  function checkPDF() {
+    // Use a consistent URL for the PDF request
+    const pdfUrl = window.location.pathname + ".pdf";
+
+    fetch(pdfUrl, { method: 'GET' })
+      .then(response => {
+        if (response.ok) {
+          // Redirect to the PDF once it's ready
+          window.location.href = pdfUrl;
+        } else {
+          // Retry after a delay if the PDF isn't ready
+          setTimeout(checkPDF, 4000);
+        }
+      });
+  }
+
+  // Start polling after a brief delay
+  setTimeout(checkPDF, 4000);
+</script>
+
+</body>
+</html>
