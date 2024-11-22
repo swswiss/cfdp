@@ -196,25 +196,18 @@ class BridgesController < ApplicationController
   end
 
 	def index
-		if params[:name].present? && (params[:minimum_length].blank? || params[:maximum_length].blank?)
-			@bridges ||= Bridge.select(:id, :name, :published, :user_id, :slug).where('name ILIKE ? AND published = ?', "%#{params[:name]}%", true).order(created_at: :asc).page(params[:page]).per(8)
-    end
+		query = Bridge.select(:id, :name, :published, :user_id, :slug)
+                  .where(published: true)
+    
+    # Apply additional filters based on the parameters
+    query = query.where('name ILIKE ?', "%#{params[:name]}%") if params[:name].present?
+    query = query.where('lungime >= ? AND lungime <= ?', params[:minimum_length], params[:maximum_length]) if params[:minimum_length].present? && params[:maximum_length].present?
 
-    if params[:name].blank? && (params[:minimum_length].present? && params[:maximum_length].present?)
-      @bridges ||= Bridge.select(:id, :name, :published, :user_id, :slug).where('lungime >= ? AND lungime <= ? AND published = ?', params[:minimum_length], params[:maximum_length], true).order(created_at: :asc).page(params[:page]).per(8)
-    end
+    # Apply `user_id` filter only if the user is a student
+    query = query.where(user_id: current_user.id) if current_user.role == "student"
 
-    if params[:name].blank? && (params[:minimum_length].blank? && params[:maximum_length].blank?)
-      @bridges ||= Bridge.select(:id, :name, :published, :user_id, :slug).all.where(published: true).order(created_at: :asc).page(params[:page]).per(8)
-    end
-
-    if params[:name].present? && (params[:minimum_length].present? && params[:maximum_length].present?)
-      @bridges ||= Bridge.select(:id, :name, :published, :lungime, :user_id, :slug).where('name ILIKE ? AND lungime >= ? AND lungime <= ? AND published = ?', 
-                         "%#{params[:name]}%", params[:minimum_length], params[:maximum_length], true)
-                 .order(created_at: :asc)
-                 .page(params[:page])
-                 .per(8)
-    end
+    # Add ordering and pagination
+    @bridges = query.order(created_at: :asc).page(params[:page]).per(8)
 	end
 
 	def new
