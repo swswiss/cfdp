@@ -239,6 +239,26 @@ class BridgesController < ApplicationController
               type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
   end
 
+  def delete_selected
+    if params[:bridge_ids].present?
+      @deleted_bridges = Bridge.where(id: params[:bridge_ids]).pluck(:id) # Store IDs to remove rows dynamically
+      Bridge.where(id: params[:bridge_ids]).destroy_all
+      flash.now[:notice] = "Selected bridges have been deleted."
+    else
+      flash.now[:alert] = "No bridges selected."
+    end
+  
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: [
+          turbo_stream.remove(@deleted_bridges&.map { |id| "bridge-row-#{id}" }),
+          turbo_stream.update("flash", partial: "layouts/flash")
+        ]
+      end
+      format.html { redirect_to bridges_path, notice: "Selected bridges have been deleted." }
+    end
+  end
+
 	def print
 		bridge = Bridge.friendly.find(params[:id])
 		respond_to do |format|

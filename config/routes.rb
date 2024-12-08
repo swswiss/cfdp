@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     end
   end
 
+  post 'delete_selected_bridges', to: 'bridges#delete_selected'
+
   resources :account_requests, only: [:new, :create]
 
   namespace :super_admin do
