@@ -199,11 +199,9 @@ class BridgesController < ApplicationController
 		query = Bridge.select(:id, :name, :published, :user_id, :slug)
                   .where(published: true)
     
-    # Apply additional filters based on the parameters
     query = query.where('name ILIKE ?', "%#{params[:name]}%") if params[:name].present?
     query = query.where('lungime >= ? AND lungime <= ?', params[:minimum_length], params[:maximum_length]) if params[:minimum_length].present? && params[:maximum_length].present?
 
-    # Apply `user_id` filter only if the user is a student
     query = query.where(user_id: current_user.id) if current_user.role == "student"
 
     # Add ordering and pagination
@@ -228,6 +226,13 @@ class BridgesController < ApplicationController
 
     date_identificare_csv(bridge, workbook)
     c1_5(flaw, workbook)
+    f1(flaw, workbook)
+    f2(flaw, workbook)
+    f3(flaw, workbook)
+    f4(flaw, workbook)
+    f5(flaw, workbook)
+    ist(flaw, workbook)
+    clasa(flaw, workbook)
 
     send_data package.to_stream.read,
               filename: "#{bridge.name}.xlsx",

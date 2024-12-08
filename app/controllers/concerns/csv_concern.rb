@@ -198,6 +198,387 @@ module CsvConcern
     end
   end
 
+  def clasa(flaw, workbook)
+    bridge = flaw.bridge
+    workbook.add_worksheet(name: "Clasa") do |sheet|
+      bold_border_style = workbook.styles.add_style(
+        border: {
+          edges: [:left, :right, :top, :bottom], # Apply borders to all edges
+          style: :thin,
+          color: "000000"
+        },
+        bg_color: "C0C0C0",                      # Light gray background color
+        alignment: { horizontal: :center }       # Center alignment
+      )
+
+      sheet.add_row ["Stabilirea clasei de stare tehnică a podului și a măsurilor recomandate"]
+      sheet.merge_cells("A1:E1")
+      sheet.merge_cells("A3:A4")
+      sheet.merge_cells("B3:B4")
+      sheet.merge_cells("C3:C4")
+
+      sheet.merge_cells("A5:A6")
+      sheet.merge_cells("B5:B6")
+      sheet.merge_cells("C5:C6")
+
+      sheet.merge_cells("A7:A8")
+      sheet.merge_cells("B7:B8")
+      sheet.merge_cells("C7:C8")
+
+      sheet.merge_cells("A9:A10")
+      sheet.merge_cells("B9:B10")
+      sheet.merge_cells("C9:C10")
+
+      sheet.merge_cells("A11:A12")
+      sheet.merge_cells("B11:B12")
+      sheet.merge_cells("C11:C12")
+
+      sheet.merge_cells("A14:D14")
+
+      sheet.merge_cells("A16:E16")
+      sheet.merge_cells("A17:D17")
+      sheet.merge_cells("E11:E12")
+
+      sheet.add_row ["Nr. crt.", "Clasa stării tehnice",	"Valoarea indecelui de stare tehnică IST",	"Aprecieri generale asupra stării tehnice",	"Măsuri recomandate conform normativelor"]
+
+      sheet.add_row ["1", "I", "81..100", "Stare foarte bună.", "- măsuri de îmbunătățire a \ncaracterisitcilor estetice;\n- lucrări de întreținere"]
+      sheet.add_row [nil,nil,nil,nil,nil]
+      sheet.add_row ["2", "II", "61..80", "Stare bună. ", "-- lucrări de întreínere;\n- reparații"]
+      sheet.add_row [nil,nil,nil,"Materialul din care sunt alcătuite suprastructura și infrastructura\n prezintă un început de degradare cu defecte și degradăti vizibile",nil]
+
+      sheet.add_row ["3", "III", "41..60", "Stare satisfăcătoare ", "- reparații;\n- reabilitări;\n- consolidări"]
+      sheet.add_row ["", "", "", "Elementele constructive sunt într-o stare avansată de degradare", ""]
+
+      sheet.add_row ["4", "IV", "21..40", "Stare nesatisfăcătoare ", "- reabilitare;\n- înlocuirea unor elemente"]
+      sheet.add_row ["", "", "", "Elementele constructive sunt într-o stare avansată de degradare", ""]
+
+      sheet.add_row ["5", "V", "sub 20", "Stare tehnică nesigură ", "- înlocuirea sau consolidarea structurii de\n rezistență afectată de degradare"]
+      sheet.add_row ["", "", "", "Nu asigură condițiile minime de siguranță a circulației", ""]
+      sheet.add_row [nil,nil,nil,nil,nil]
+
+      sheet.add_row ["Clasa stării tehnice a podului este :",nil,nil,nil,bridge.clasa]
+      sheet.add_row ["Aprecieri asupra stării tehnice :",nil,nil,nil,flaw.aprecierea_starii_tehnice]
+
+      sheet.add_row ["Elementele constructive prezintă degradări vizibile pe zone întinse cu afectarea secțiunii transversale",nil,nil,nil,nil]
+      sheet.add_row ["Măsuri recomandate :",nil,nil,nil,flaw.masuri_recomandate]
+
+
+    end
+  end
+
+  def ist(flaw, workbook)
+    bridge = flaw.bridge
+    workbook.add_worksheet(name: "IST") do |sheet|
+      bold_border_style = workbook.styles.add_style(
+        border: {
+          edges: [:left, :right, :top, :bottom], # Apply borders to all edges
+          style: :thin,
+          color: "000000"
+        },
+        bg_color: "C0C0C0",                      # Light gray background color
+        alignment: { horizontal: :center }       # Center alignment
+      )
+
+      sheet.add_row ["Calculul Indicelui de stare tehnică"]
+      sheet.merge_cells("A1:G1")
+      sheet.merge_cells("B2:C2")
+      sheet.merge_cells("B13:C13")
+      sheet.merge_cells("D13:E13")
+      sheet.merge_cells("F13:G13")
+      
+      sheet.merge_cells("D2:E2")
+      sheet.merge_cells("F2:G2")
+
+      sheet.merge_cells("F3:G5")
+      sheet.merge_cells("F6:G7")
+      sheet.merge_cells("F8:G10")
+      sheet.merge_cells("F11:G12")
+
+      sheet.add_row ["Nr. crt.", "Demunire Indice", nil,"Puncte",nil,"Total"]
+
+      sheet.add_row ["1","Indicele de calitate al elementelor principale de rezistență ale suprastructurii", "C1 =", "2","puncte","C = ΣCi = \nC1 + C2 + C3 +\n C4 + C5 = "]
+      sheet.add_row ["2","Indicele de calitate al elementelor de rezistență care susțin calea podului", "C2 =", "3","puncte",""]
+      sheet.add_row ["3","Indicele de caliatate al elementelor infrastructurii, aparate de\n reazem, dispozitive de protecție la acțiuni seismice, sferturi de con sau aripi", "C3 =", "2","puncte",""]
+      sheet.add_row ["4","Indicele de calitate al albiei, apărărilor de maluri, rampe de acces", "C4 =", "4","puncte",flaw.ist_c]
+      sheet.add_row ["5","Indicele de calitate al căii podului și al elementelor aferente", "C5 =", "2","puncte",""]
+      sheet.add_row ["6","Indicele de funcționalitate determinat în funcție\n de condițiile de desfășurare a traficului pe pod", "F1 =", "5","puncte","F = ΣFi = \nF1 + F2 + F3\n + F4 + F5 ="]
+      sheet.add_row ["7","Indicele de funcționalitate determinat de clasa\n de încărcare a podului", "F2 =", "10","puncte",""]
+      sheet.add_row ["8","Indicele de funcționalitate determinat de durata de exploatare a podului,\N care a trecut de la construcția sau de la ultima\N reparație capitală, și tipul podului", "F3 =", "3","puncte",""]
+      sheet.add_row ["9","Indicele de funcționalitate determinat de modul de respectare la\n execuție a proiectului, neasigurarea condițiilor\n de efectuare a lucrărilor de întreținere și\n reparații, condiții de exploatare necorespunzătoare", "F4 =", "10","puncte",flaw.ist_f]
+      sheet.add_row ["10","Indicele de funcționalitate determinat de ccalitatea lucrărilor de întreținere", "F5 =", "10","puncte",""]
+
+      sheet.add_row ["","Indice de stare tehnică - IST=ΣCi+ΣFi =", "", flaw.ist_total,"Puncte",""]
+    end
+  end
+
+  def f5(flaw, workbook)
+    bridge = flaw.bridge
+    workbook.add_worksheet(name: "F5") do |sheet|
+      bold_border_style = workbook.styles.add_style(
+        border: {
+          edges: [:left, :right, :top, :bottom], # Apply borders to all edges
+          style: :thin,
+          color: "000000"
+        },
+        bg_color: "C0C0C0",                      # Light gray background color
+        alignment: { horizontal: :center }       # Center alignment
+      )
+
+      sheet.add_row ["III. Notarea caracteristicilor de funcționalitate\nIndicile de funcționalitate F5\nDepunctarea se face în funcție de calitatea lucrărilor de întreținere curentă"]
+      sheet.merge_cells("A1:C1")
+      sheet.merge_cells("A7:B7")
+      sheet.merge_cells("A8:B8")
+
+      sheet.add_row ["Nr.crt", "Calitatea lucrărilor de întreținere", "Depunctare"]
+
+      sheet.add_row ["1", "Buna (maxim 20% din lucrarile de intretinere nerealizate)", "1-2"]
+      sheet.add_row ["2", "Satisfacatoare (maxim 50% din lucrarile de intretinere nerealizate)", "3-6"]
+      sheet.add_row ["3", "Lipsa totala a lucrarilor de intretinere (peste 50% din lucrarile de intretinere nerealizate)", "7-9"]
+      sheet.add_row [nil,nil,nil]
+
+      sheet.add_row ["Depunctarea se face in functie de calitatea lucrarilor de întreținere curentă\nF5   (depunctare) =",nil,flaw.f5_depunct]
+      sheet.add_row ["F5 =",nil,flaw.f5]
+    end
+  end
+
+  def f4(flaw, workbook)
+    bridge = flaw.bridge
+    workbook.add_worksheet(name: "F4") do |sheet|
+      bold_border_style = workbook.styles.add_style(
+        border: {
+          edges: [:left, :right, :top, :bottom], # Apply borders to all edges
+          style: :thin,
+          color: "000000"
+        },
+        bg_color: "C0C0C0",                      # Light gray background color
+        alignment: { horizontal: :center }       # Center alignment
+      )
+
+      sheet.add_row ["III. Notarea caracteristicilor de funcționalitate\nIndicile de funcționalitate F4\nDepunctarea se face în funcție de modul de respectare la execuție a proiectului,\n neasigurarea condițiilor de efectuare a lucrărilor de întreținere\n și reparații, condiții de exploatare necorespunzătoare"]
+      sheet.merge_cells("A1:C1")
+      sheet.merge_cells("A9:A10")
+      sheet.merge_cells("A12:B12")
+      sheet.merge_cells("A13:B13")
+
+      sheet.add_row ["Nr.crt.", "Denumire defect", "Depunctare"]
+
+      sheet.add_row ["1", "Lipsa de estetica a incadrarii podului in mediul inconjurator", "3 – 4"]
+      sheet.add_row ["2", "Lipsa marcajelor si/sau a indicatoarelor de semnalizare, lipsa panourilor de protectie\n la pasaje superioare peste cai ferate electrificate.", "2 – 3 "]
+      sheet.add_row ["3", "Lipsa indicatoarelor de restrictie viteza, tonaj si gabarit.", "7 – 8"]
+      sheet.add_row ["4", "Lipsa sau neufunctionarea dispozitivelor de intretinere (carucioare, platforme acces etc.),\n imposibilitatea accesului la elementele podurilor\n pentru inspectii, intretinere si reparatii.", "5 – 6"]
+      sheet.add_row ["5", "Neasigurarea scurgerii apei, stagnarea apei pe pod, existenta\n unor straturi suplimentare a imbracamintii pe pod.", "2 – 5 "]
+      sheet.add_row ["6", "Necorelarea amplasamentului podului cu drumul si traseul albiei, amplasarea in\n gabarit a unor elemente de constructie si/sau instalatii, restrictii de viteza.", "7 – 8"]
+
+      sheet.add_row ["7", "Nerespectarea dimensiunilor la elementele de rezistenta ale suprastructurii.", "5 – 6"]
+      sheet.add_row ["", "Rezemare incorecta a grinzilor pe infrastructura.", "8 – 9"]
+      sheet.add_row [nil,nil,nil]
+      sheet.add_row ["Depunctarea se face în funcție de modul de respectare la execuție a proiectului,\n neasigurarea condițiilor de efectuare a lucrărilor de întreținere și reparații,\n condiții de exploatare necorespunzătoare F4   (depunctare) = ",nil,flaw.f4_depunct]
+      sheet.add_row ["F4 =",nil,flaw.f4]
+
+    end
+  end
+
+  def f3(flaw, workbook)
+    bridge = flaw.bridge
+    workbook.add_worksheet(name: "F3") do |sheet|
+      bold_border_style = workbook.styles.add_style(
+        border: {
+          edges: [:left, :right, :top, :bottom], # Apply borders to all edges
+          style: :thin,
+          color: "000000"
+        },
+        bg_color: "C0C0C0",                      # Light gray background color
+        alignment: { horizontal: :center }       # Center alignment
+      )
+
+      options = ["Grinzi nituie", "Sudate", "Grinzi Matarov", "Grinzi Gerber","Alte categorii","Fasii cu goluri *","Fasii cu goluri cu suprabetonare","Grinzi tronsonate (tronsoane mici)","Grinzi pref. monobloc sigrinzi monolit","Lemn"]
+      sheet.add_data_validation('E17:J17', {
+          type: :list,
+          formula1: "\"#{options.join(',')}\"", # Join the options into a string
+          showDropDown: true
+        })
+
+        options = ["0–5",	"6-15","16-25","26-35",	"36-45",">45"]
+      sheet.add_data_validation('E18:J18', {
+          type: :list,
+          formula1: "\"#{options.join(',')}\"", # Join the options into a string
+          showDropDown: true
+        })
+
+
+      sheet.add_row ["III. Notarea caracteristicilor de funcționalitate\nIndicile de funcționalitate F3\nDepunctarea se face în funcție de durata de exploatare a podului, care a trecut de la construcția, sau de la ultimareparație capitală"]
+      sheet.merge_cells("A1:J1")
+      sheet.merge_cells("E2:J2")
+      sheet.merge_cells("A2:A3")
+      sheet.merge_cells("B2:B3")
+      sheet.merge_cells("C2:C3")
+      sheet.merge_cells("A6:A7")
+      sheet.merge_cells("B6:B7")
+
+      sheet.merge_cells("A8:A10")
+      sheet.merge_cells("B8:B10")
+
+      sheet.merge_cells("A11:A14")
+      sheet.merge_cells("B11:B14")
+      sheet.merge_cells("A17:C17")
+      sheet.merge_cells("E17:J17")
+      sheet.merge_cells("E18:J18")
+      sheet.merge_cells("F19:H19")
+      sheet.merge_cells("F20:H20")
+
+      sheet.merge_cells("I19:J19")
+      sheet.merge_cells("I20:J20")
+
+      sheet.add_row ["Nr. crt.","Materialul din\n care este realizat\n podul","Tipul suprastructurii",nil,"Durata de exploatare a podului, care a trecut de la constructie\n sau de la ultima reparatie capitala"]
+      sheet.add_row [nil,nil,nil,nil,"0–5",	"6-15","16-25","26-35",	"36-45",">45"]
+      sheet.add_row ["","","","","1","2","3","4","5","6"]
+      sheet.add_row ["0","1","2","3","4","5","6","7","8"]
+      sheet.add_row ["1","Metal","Grinzi nituite","1","0",	"2",	"5",	"6",	"7",	"8"]
+      sheet.add_row ["","","Sudate","2",	"0",	"5",	"6",	"7",	"8",	"9"]
+
+      sheet.add_row ["2","Beton armat","Grinzi Matarov","3"	,"0",	"2"	,"4",	"7",	"8",	"9"]
+      sheet.add_row [nil,nil,"Grinzi Gerber","4",	"2",	"4"	,"6",	"7",	"8",	"9"]
+      sheet.add_row [nil,nil,"Alte categorii","5",	"0"	,"3",	"5",	"6",	"7",	"8"]
+
+      sheet.add_row ["3","Beton\n  precomprimat","Fasii cu goluri *","6"	,"3",	"7",	"8",	"9",	"10",	"10"]
+      sheet.add_row ["","","Grinzi tronsonate (tronsoane mici)","7",	"1",	"5",	"6",	"7",	"8",	"8"]
+      sheet.add_row ["","","Grinzi pref. monobloc sigrinzi monolit","8",	"2",	"4",	"7",	"8",	"9",	"10"]
+      sheet.add_row ["","","Grinzi pref. monobloc sigrinzi monolit","9"	,"0"	,"2"	,"5",	"7",	"8",	"9"]
+
+      sheet.add_row ["4","Lemn","Lemn","10",	"5",	"7",	"9",	"10",	"10",	"10"]
+      sheet.add_row [nil,nil,nil,nil,nil,nil,nil,nil,nil,nil]
+
+      sheet.add_row ["Tipul Suprastructurii",nil,nil,nil,flaw.tipul_suprastructurii]
+      sheet.add_row ["Durata de exploatare a podului, care a trecut de la constructie sau\n de la ultima reparatie capitala",nil,nil,nil,flaw.durata_exploatare]
+
+      sheet.add_row [nil,nil,nil,nil,nil,"F3   (depunctare) = ",nil,nil,flaw.f3_depunct]
+      sheet.add_row [nil,nil,nil,nil,nil,"F3 = ",nil,nil,flaw.f3]
+    end
+  end
+
+  def f2(flaw, workbook)
+    bridge = flaw.bridge
+    workbook.add_worksheet(name: "F2") do |sheet|
+      bold_border_style = workbook.styles.add_style(
+        border: {
+          edges: [:left, :right, :top, :bottom], # Apply borders to all edges
+          style: :thin,
+          color: "000000"
+        },
+        bg_color: "C0C0C0",                      # Light gray background color
+        alignment: { horizontal: :center }       # Center alignment
+      )
+
+
+      sheet.add_row ["III. Notarea caracteristicilor de funcționalitate\nIndicile de funcționalitate F2\nDepunctarea se face în funcție de clasa de încărcare a podului și clasa tehnică"]
+      sheet.merge_cells("A1:F1")
+      sheet.merge_cells("A2:A3")
+      sheet.merge_cells("B2:C3")
+      sheet.merge_cells("D2:F2")
+      sheet.merge_cells("B4:C4")
+
+      sheet.merge_cells("D11:F11")
+      sheet.merge_cells("D11:F11")
+      sheet.merge_cells("D12:F12")
+      sheet.merge_cells("C13:D13")
+      sheet.merge_cells("E13:F13")
+      sheet.merge_cells("E14:F14")
+
+      sheet.add_row ["Nr. crt","Clasa tehnică a drumului, conf. Ordinului 1296/2017\NCategoria de drum - Număr minim/maxim de benzi de circulație",nil,"Clasa de încărcare pod"]
+      sheet.add_row [nil,nil,nil,"LM1/E","I","II"]
+
+      sheet.add_row ["0","1",nil,"2","3","4"]
+
+      sheet.add_row ["1","I","Autostrăzi minimum 2 benzi/sens","0","10","10"]
+      sheet.add_row ["2","II","Dr. expres şi dr. naţ. europene cu 4 benzi minimum 2 benzi/sens","0","9","10"]
+      sheet.add_row ["3","III","Dr. naţ. europene, dr. naţ. principale şi dr. jud. 2 benzi","0","6","10"]
+      sheet.add_row ["4","IV","Dr. naţ. principale, dr. naț. Secundare, dr. jud. și dr. com 2 benzi","0","3","8"]
+      sheet.add_row ["5","V","Dr. naţ. secundare, dr. jud., dr. com și dr. vicinale 2 benzi","0","0","3"]
+      sheet.add_row ["","","","","",""]
+
+      sheet.add_row ["","","Clasa de încărcare                                        =",flaw.clasa_incarcare,"",""]
+      sheet.add_row ["","","Clasa tehnică a drumului                                        =",bridge.clasa,"",""]
+      sheet.add_row ["","","F2   (depunctare) = f (Clasa de încărcare, Categoria drumului)                      =",nil,flaw.f2_depunct,""]
+      sheet.add_row ["","","","F2 =",flaw.f2,""]
+    end
+  end
+
+  def f1(flaw, workbook)
+    bridge = flaw.bridge
+    workbook.add_worksheet(name: "F1") do |sheet|
+      bold_border_style = workbook.styles.add_style(
+        border: {
+          edges: [:left, :right, :top, :bottom], # Apply borders to all edges
+          style: :thin,
+          color: "000000"
+        },
+        bg_color: "C0C0C0",                      # Light gray background color
+        alignment: { horizontal: :center }       # Center alignment
+      )
+
+
+      sheet.add_row ["III. Notarea caracteristicilor de funcționalitate\nIndicile de funcționalitate F1\nDepunctarea se face în funcție de condițiile de desfășurare a traficului pe pod"]
+      sheet.merge_cells("A1:L1")
+
+      sheet.add_row ["Nr. crt.","Clasa tehnică a drumului,\n conf. Ordinului 1296/2017\nCategoria de drum - Număr\n minim/maxim de\n benzi de circulație",nil,"Lungimea podului (L) (m)"]
+      sheet.merge_cells("A2:A6")
+      sheet.merge_cells("B2:C6")
+      sheet.merge_cells("D2:L2")
+      sheet.merge_cells("D3:F3")
+      sheet.merge_cells("G3:I3")
+      sheet.merge_cells("J3:L3")
+      sheet.merge_cells("D4:L4")
+      sheet.merge_cells("D5:E5")
+      sheet.merge_cells("F5:F6")
+      sheet.merge_cells("G5:H5")
+      sheet.merge_cells("I5:I6")
+      sheet.merge_cells("J5:K5")
+      sheet.merge_cells("L5:L6")
+      sheet.merge_cells("A13:L13")
+      sheet.merge_cells("A18:L18")
+      sheet.merge_cells("I14:L14")
+      sheet.merge_cells("A15:B15")
+      sheet.merge_cells("C15:G15")
+      sheet.merge_cells("I15:L15")
+
+      sheet.merge_cells("A16:B16")
+      sheet.merge_cells("C16:G16")
+      sheet.merge_cells("I16:L16")
+
+      sheet.merge_cells("A17:B17")
+      sheet.merge_cells("C17:G17")
+      sheet.merge_cells("I17:L17")
+      sheet.merge_cells("A19:K19")
+      sheet.merge_cells("A20:K20")
+      sheet.add_row [nil, nil, nil, "L < 25 m",nil,nil, "L = 26 – 100",nil,nil, "L > 101 m"]
+      sheet.add_row [nil, nil, nil, "Lăţimea părţii carosabile * (m)"]
+      sheet.add_row [nil,nil,nil,"care corespunde cu\n lăţimea părţii\n carosabile a drumului",nil,"care nu corespunde cu\n lăţimea părţii\n carosabile a drumului","care corespunde cu\n lăţimea părţii\n carosabile a drumului",nil,"care nu corespunde\n cu lăţimea părţii\n carosabile a drumului","care corespunde\n cu lăţimea părţii\n carosabile a drumului",nil,"care nu corespunde\n cu lăţimea părţii\n carosabile a drumului"]
+      sheet.add_row [nil,nil,nil,"cu *\n spaţiu de\n siguranţă","fără spaţiu\n de siguranţă",nil,"cu *\n spaţiu\n de siguranţă", "fără spaţiu\n de siguranţă",nil,"cu *\n spaţiu\n de siguranţă", "fără\n spaţiu\n de siguranţă"]
+
+      sheet.add_row ["0","1",nil,"2","3","4","5","6","7","8","9","10"]
+      sheet.add_row ["1","II","Autostrăzi\nminimum 2\nbenzi/sens ","0","7","8","0","8","9","0","9","10"]
+      sheet.add_row ["2","III","Dr. expres şi\ndr. naţ.\neuropene cu 4 benzi\nminimum 2\nbenzi/sens  ","0","6","7","0","7","8","0","8","9"]
+      sheet.add_row ["3","IV","Dr. naţ.\neuropene, dr.\nnaţ. principale şi\ndr. jud. \n2 benzi","0","4","5","0","5","6","0","6","7"]
+      sheet.add_row ["4","V","Dr. naţ.\nprincipale, dr. naț. Secundare,\ndr. jud. și dr. com\n2 benzi","0","0","1","0","2","3","0","4","5"]
+      sheet.add_row ["5","VI","Dr. naţ.\nsecundare,\ndr. jud., dr. com și dr. vicinale\n2 benzi","0","0","0","0","1","2","0","3","4"]
+      sheet.add_row [" * lăţimea părţii carosabile şi a spaţiului de siguranţă banda de ghidare (bg) plus efectul optic (E0) sunt conform Ordinului 1296/2017"]
+      sheet.add_row [nil,nil,nil,nil,nil,nil,nil,nil,"Corespunde cu Ordinul 1296/2017 ?"]
+      options = ["DA", "NU", "DA, fără spațiu de siguranță"]
+      sheet.add_data_validation('I15:L15', {
+          type: :list,
+          formula1: "\"#{options.join(',')}\"", # Join the options into a string
+          showDropDown: true
+        })
+      sheet.add_row ["1",nil,"Lăţimea părţi carosabile                B     =",nil,nil,nil,nil,bridge.latime_carosabila,flaw.corespunde_ordinul]
+      sheet.add_row ["2",nil,"Lungimea podului                         L     =",nil,nil,nil,nil,bridge.lungime,""]
+      sheet.add_row ["3",nil,"Clasa tehnică a drumului              Ct   =",nil,nil,nil,nil,bridge.clasa,""]
+
+      sheet.add_row [nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil]
+      sheet.add_row ["F1   (depunctare) = f (Lăţimea părţii carosabile, Lungimea podului, Categoria drumului)       =",nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,flaw.f1_depunct]
+      sheet.add_row ["F1 =",nil,nil,nil,nil,nil,nil,nil,nil,nil,nil, flaw.f1]
+    end
+  end
+
   def c1_5(flaw, workbook)
     workbook.add_worksheet(name: "C1-5") do |sheet|
       bold_border_style = workbook.styles.add_style(
