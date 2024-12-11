@@ -1,25 +1,22 @@
 <br>
-    <br>
-    <center>
+<br>
+  <center>
     <%if bridge.latitude.blank? || bridge.longitude.blank?%>
-    <p class="mt-1 max-w-3xl text-sm leading-6 text-gray-500">No location set</p>
-
+      <p class="mt-1 max-w-3xl text-sm leading-6 text-gray-500">No location set</p>
     <%else%>
-    <div id="map" style="height: 400px; width: 900px"></div>
-    <script>
+      <div id="map" style="height: 400px; width: 900px"></div>
+      <script>
 
-    var map = L.map('map').setView([<%= bridge.latitude %>, <%= bridge.longitude %>], 13);
+        var map = L.map('map').setView([<%= bridge.latitude %>, <%= bridge.longitude %>], 13);
     
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap contributors'
-    }).addTo(map);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
     
-    // Add a marker at the saved coordinates
-    L.marker([<%= bridge.latitude %>, <%= bridge.longitude %>]).addTo(map);
-    
-    
-    </script>
+        // Add a marker at the saved coordinates
+        L.marker([<%= bridge.latitude %>, <%= bridge.longitude %>]).addTo(map);
+      </script>
     <%end%>
-    </center>
+  </center>
 
 

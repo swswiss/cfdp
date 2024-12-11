@@ -39,6 +39,7 @@ Rails.application.routes.draw do
 
   get '/contact', to: 'pages#contact'
   get '/donations', to: 'pages#donations'
+  get '/learn', to: 'pages#learn'
   get '/legends', to: 'pages#legends'
 
   resources :user_integrations, only: [:index] do

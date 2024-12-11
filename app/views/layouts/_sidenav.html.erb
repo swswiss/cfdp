@@ -15,14 +15,24 @@
               <%= link_to bridges_path, class: "#{desktop_link_active?("bridges")} rounded-md px-3 py-2 text-sm font-medium" do %>
                 Bridges
               <%end%>
-              <%if current_user.admin? || current_user.super_admin?%>
-                <%= link_to comparison_path, class: "#{desktop_link_active?("bridges")} rounded-md px-3 py-2 text-sm font-medium" do %>
-                  Head to Head
-                <%end%>
-                <%= link_to custom_path, class: "#{desktop_link_active?("bridges")} rounded-md px-3 py-2 text-sm font-medium" do %>
-                  Custom Statistics
-                <%end%>
-              <%end%>
+              <% if current_user.admin? || current_user.super_admin? %>
+                <!-- Admin Side Dropdown -->
+                <div class="relative group">
+                  <button type="button" class="rounded-md px-3 py-2 text-sm font-medium">
+                    Admin Side
+                  </button>
+                  <!-- Dropdown Menu -->
+                  <div class="absolute left-0 mt-9 top-0 hidden group-hover:block w-48 origin-top-left rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" style="z-index: 999;">
+                    <%= link_to comparison_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" do %>
+                      Head to Head
+                    <% end %>
+                    <%= link_to custom_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" do %>
+                      Custom Statistics
+                    <% end %>
+                  </div>
+                </div>
+              <% end %>
+
 
               <div data-controller="donate-modal">
               <%= link_to "#", 
