@@ -26,6 +26,8 @@
 
     <!-- Desktop Menu Links -->
     <div class="hidden lg:flex lg:gap-x-12">
+    <%= link_to 'Home', root_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
+
       <%= link_to 'Contact Us', contact_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
       <%= link_to 'Donate', donations_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
       <%= link_to 'Wall of legends', legends_path, class: "text-sm font-semibold leading-6 text-gray-900" %>
@@ -69,6 +71,8 @@
       <div class="mt-6 flow-root">
         <div class="-my-6 divide-y divide-gray-500/10">
           <div class="space-y-2 py-6">
+          <%= link_to 'Home', root_path, class: "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" %>
+
             <%= link_to 'Contact Us', contact_path, class: "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" %>
             <%= link_to 'Donate', donations_path, class: "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" %>
             <%= link_to 'Wall of legends', legends_path, class: "-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" %>
@@ -98,19 +102,16 @@
         <div class="mb-16 lg:mb-0 lg:max-w-lg lg:pr-5">
           <div class="max-w-xl mb-6">
             
-          <h2 class="font-sans text-3xl sm:mt-0 mt-6 font-medium tracking-tight text-black sm:text-4xl sm:leading-none max-w-lg mb-6">
-            Smart links
-            </h2>
-            <p class="text-black text-base md:text-lg">Lorem Ipsum is so cool and awesome to act and so cool to think. And very awesome to eat and talk.
+          <p class=" text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-3xl">
+            Bridges Dashboard
+            </p>
+            <p class="mt-6 text-sm text-gray-600">Lorem Ipsum is so cLorem Ipsum is so coolLorem Ipsum is so coolLorem Ipsum is so coolLorem Ipsum is so coolLorem Ipsum is so coolLorem Ipsum is so coolLorem Ipsum is so coolLorem Ipsum is so coolLorem Ipsum is so coolLorem Ipsum is so coolLorem Ipsum is so coolLorem Ipsum is so coolLorem Ipsum is so coolLorem Ipsum is so coolool and awesome to act and so cool to think. And very awesome to eat and talk.
             </p>
           </div>
-          <div className='space-x-4'>
-          <button class="text-neutral-800  text-lg font-medium inline-flex items-center">
-          <span> get insights →</span>
-          </button>
-          </div>
+          
         </div>
-        <img alt="logo" width="420" height="120" src="https://cdn.dribbble.com/userupload/2338354/file/original-ae1855a82a249b8522e6d62be6351828.png?resize=752x" />
+        <%= image_tag "learn1.png", width: 560, height: 260, style: "border-radius: 30px;" %>
+
       </div>
     </div>
 
@@ -120,25 +121,20 @@
         <div class="px-4  mb-8 py-8 rounded-3xl mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 ">
       <div class="flex flex-col items-center justify-between w-full mb-1 lg:flex-row">
         
-        <img alt="logo" width="420" height="120" src="https://cdn.dribbble.com/userupload/2338354/file/original-ae1855a82a249b8522e6d62be6351828.png?resize=752x" />
-
+      <%= image_tag "learn2.png", width: 560, height: 260, style: "border-radius: 30px;" %>
 
         <div class="mb-16 lg:mb-0 lg:max-w-lg lg:pr-5">
           
           <div class="max-w-xl mb-6">
             
-          <h2 class="font-sans text-3xl sm:mt-0 mt-6 font-medium tracking-tight text-black sm:text-4xl sm:leading-none max-w-lg mb-6">
-            Jobs
+          <h2 class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-3xl">
+            Bridge Profile
             </h2>
-            <p class="text-black text-base md:text-lg">Lorem Ipsum is so cool and awesome to act and so cool to think. And very awesome to eat and talk.
+            <p class="mt-6 text-sm text-gray-600">Lorem Ipsum is so cool and awesome to act and so cool to think. And very awesome to eat and talk.
 
             </p>
           </div>
-          <div className='space-x-4'>
-          <button class="text-neutral-800  text-lg font-medium inline-flex items-center">
-          <span> see jobs →</span>
-          </button>
-          </div>
+          
         </div>
       </div>
     </div>
@@ -149,20 +145,243 @@
         <div class="mb-16 lg:mb-0 lg:max-w-lg lg:pr-5">
           <div class="max-w-xl mb-6">
             
-          <h2 class="font-sans text-3xl sm:mt-0 mt-6 font-medium tracking-tight text-black sm:text-4xl sm:leading-none max-w-lg mb-6">
-            Jobs
+          <h2 class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-3xl">
+            Default Charts
             </h2>
-            <p class="text-black text-base md:text-lg">Lorem Ipsum is so cool and awesome to act and so cool to think. And very awesome to eat and talk.
+            <p class="mt-6 text-sm text-gray-600">Lorem Ipsum is so cool and awesome to act and so cool to think. And very awesome to eat and talk.
             </p>
           </div>
-          <div className='space-x-4'>
-          <button class="text-neutral-800  text-lg font-medium inline-flex items-center">
-          <span> get insights →</span>
-          </button>
-          </div>
+          
         </div>
-        <img alt="logo" width="420" height="120" src="https://cdn.dribbble.com/userupload/2338354/file/original-ae1855a82a249b8522e6d62be6351828.png?resize=752x" />
+      <%= image_tag "learn3.png", width: 560, height: 260, style: "border-radius: 30px;" %>      </div>
+    </div>
+
+    <div class="px-4  mb-8 py-8 rounded-3xl mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 ">
+      <div class="flex flex-col items-center justify-between w-full mb-1 lg:flex-row">
+        
+      <%= image_tag "learn4.png", width: 560, height: 260, style: "border-radius: 30px;" %>
+
+        <div class="mb-16 lg:mb-0 lg:max-w-lg lg:pr-5">
+          
+          <div class="max-w-xl mb-6">
+            
+          <h2 class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-3xl">
+            Bridge Location
+            </h2>
+            <p class="mt-6 text-sm text-gray-600">Lorem Ipsum is so cool and awesome to act and so cool to think. And very awesome to eat and talk.
+
+            </p>
+          </div>
+          
+        </div>
       </div>
+    </div>
+
+
+    <div class="px-4  mb-8 py-8 rounded-3xl mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 ">
+      <div class="flex flex-col items-center justify-between w-full mb-1 lg:flex-row">
+        <div class="mb-16 lg:mb-0 lg:max-w-lg lg:pr-5">
+          <div class="max-w-xl mb-6">
+            
+          <h2 class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-3xl">
+            Bridge Instances
+            </h2>
+            <p class="mt-6 text-sm text-gray-600">Lorem Ipsum is so cool and awesome to act and so cool to think. And very awesome to eat and talk.
+            </p>
+          </div>
+          
+        </div>
+      <%= image_tag "learn5.png", width: 560, height: 260, style: "border-radius: 30px;" %>      </div>
+    </div>
+
+    <div class="px-4  mb-8 py-8 rounded-3xl mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 ">
+      <div class="flex flex-col items-center justify-between w-full mb-1 lg:flex-row">
+        
+      <%= image_tag "learn6.png", width: 560, height: 260, style: "border-radius: 30px;" %>
+
+        <div class="mb-16 lg:mb-0 lg:max-w-lg lg:pr-5">
+          
+          <div class="max-w-xl mb-6">
+            
+          <h2 class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-3xl">
+            Head to Head
+            </h2>
+            <p class="mt-6 text-sm text-gray-600">Lorem Ipsum is so cool and awesome to act and so cool to think. And very awesome to eat and talk.
+
+            </p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+
+    <div class="px-4  mb-8 py-8 rounded-3xl mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 ">
+      <div class="flex flex-col items-center justify-between w-full mb-1 lg:flex-row">
+        <div class="mb-16 lg:mb-0 lg:max-w-lg lg:pr-5">
+          <div class="max-w-xl mb-6">
+            
+          <h2 class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-3xl">
+            Custom Charts
+            </h2>
+            <p class="mt-6 text-sm text-gray-600">Lorem Ipsum is so cool and awesome to act and so cool to think. And very awesome to eat and talk.
+            </p>
+          </div>
+          
+        </div>
+      <%= image_tag "learn7.png", width: 560, height: 260, style: "border-radius: 30px;" %>      </div>
+    </div>
+
+    <div class="px-4  mb-8 py-8 rounded-3xl mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 ">
+      <div class="flex flex-col items-center justify-between w-full mb-1 lg:flex-row">
+        
+      <%= image_tag "learn8.png", width: 560, height: 260, style: "border-radius: 30px;" %>
+
+        <div class="mb-16 lg:mb-0 lg:max-w-lg lg:pr-5">
+          
+          <div class="max-w-xl mb-6">
+            
+          <h2 class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-3xl">
+            Activity Logs
+            </h2>
+            <p class="mt-6 text-sm text-gray-600">Lorem Ipsum is so cool and awesome to act and so cool to think. And very awesome to eat and talk.
+
+            </p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+
+    <div class="px-4  mb-8 py-8 rounded-3xl mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 ">
+      <div class="flex flex-col items-center justify-between w-full mb-1 lg:flex-row">
+        <div class="mb-16 lg:mb-0 lg:max-w-lg lg:pr-5">
+          <div class="max-w-xl mb-6">
+            
+          <h2 class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-3xl">
+            User Profile
+            </h2>
+            <p class="mt-6 text-sm text-gray-600">Lorem Ipsum is so cool and awesome to act and so cool to think. And very awesome to eat and talk.
+            </p>
+          </div>
+          
+        </div>
+      <%= image_tag "learn9.png", width: 560, height: 260, style: "border-radius: 30px;" %>      </div>
+    </div>
+
+    <div class="px-4  mb-8 py-8 rounded-3xl mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 ">
+      <div class="flex flex-col items-center justify-between w-full mb-1 lg:flex-row">
+        
+      <%= image_tag "learn10.png", width: 560, height: 260, style: "border-radius: 30px;" %>
+
+        <div class="mb-16 lg:mb-0 lg:max-w-lg lg:pr-5">
+          
+          <div class="max-w-xl mb-6">
+            
+          <h2 class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-3xl">
+            User Settings
+            </h2>
+            <p class="mt-6 text-sm text-gray-600">Lorem Ipsum is so cool and awesome to act and so cool to think. And very awesome to eat and talk.
+
+            </p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+
+    <div class="px-4  mb-8 py-8 rounded-3xl mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 ">
+      <div class="flex flex-col items-center justify-between w-full mb-1 lg:flex-row">
+        <div class="mb-16 lg:mb-0 lg:max-w-lg lg:pr-5">
+          <div class="max-w-xl mb-6">
+            
+          <h2 class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-3xl">
+            Integrations
+            </h2>
+            <p class="mt-6 text-sm text-gray-600">Lorem Ipsum is so cool and awesome to act and so cool to think. And very awesome to eat and talk.
+            </p>
+          </div>
+          
+        </div>
+      <%= image_tag "learn11.png", width: 560, height: 260, style: "border-radius: 30px;" %>      </div>
+    </div>
+
+    <div class="px-4  mb-8 py-8 rounded-3xl mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 ">
+      <div class="flex flex-col items-center justify-between w-full mb-1 lg:flex-row">
+        
+      <%= image_tag "learn12.png", width: 560, height: 260, style: "border-radius: 30px;" %>
+
+        <div class="mb-16 lg:mb-0 lg:max-w-lg lg:pr-5">
+          
+          <div class="max-w-xl mb-6">
+            
+          <h2 class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-3xl">
+            All Bridges Section
+            </h2>
+            <p class="mt-6 text-sm text-gray-600">Lorem Ipsum is so cool and awesome to act and so cool to think. And very awesome to eat and talk.
+
+            </p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+
+    <div class="px-4  mb-8 py-8 rounded-3xl mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 ">
+      <div class="flex flex-col items-center justify-between w-full mb-1 lg:flex-row">
+        <div class="mb-16 lg:mb-0 lg:max-w-lg lg:pr-5">
+          <div class="max-w-xl mb-6">
+            
+          <h2 class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-3xl">
+            Create a bridge
+            </h2>
+            <p class="mt-6 text-sm text-gray-600">Lorem Ipsum is so cool and awesome to act and so cool to think. And very awesome to eat and talk.
+            </p>
+          </div>
+          
+        </div>
+      <%= image_tag "learn13.png", width: 560, height: 260, style: "border-radius: 30px;" %>      </div>
+    </div>
+
+    <div class="px-4  mb-8 py-8 rounded-3xl mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 ">
+      <div class="flex flex-col items-center justify-between w-full mb-1 lg:flex-row">
+        
+      <%= image_tag "learn14.png", width: 560, height: 260, style: "border-radius: 30px;" %>
+
+        <div class="mb-16 lg:mb-0 lg:max-w-lg lg:pr-5">
+          
+          <div class="max-w-xl mb-6">
+            
+          <h2 class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-3xl">
+            Upload a template Bridge
+            </h2>
+            <p class="mt-6 text-sm text-gray-600">Lorem Ipsum is so cool and awesome to act and so cool to think. And very awesome to eat and talk.
+
+            </p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+
+    <div class="px-4  mb-8 py-8 rounded-3xl mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 ">
+      <div class="flex flex-col items-center justify-between w-full mb-1 lg:flex-row">
+        <div class="mb-16 lg:mb-0 lg:max-w-lg lg:pr-5">
+          <div class="max-w-xl mb-6">
+            
+          <h2 class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-3xl">
+            Print
+            </h2>
+            <p class="mt-6 text-sm text-gray-600">Lorem Ipsum is so cool and awesome to act and so cool to think. And very awesome to eat and talk.
+            </p>
+          </div>
+          
+        </div>
+      <%= image_tag "learn15.png", width: 560, height: 260, style: "border-radius: 30px;" %>      </div>
     </div>
 
   
