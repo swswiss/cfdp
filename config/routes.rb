@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     resources :account_requests, only: [] do
       member do
         post :approve, to: 'dashboard#approve'  # Correct the route to go to dashboard#approve
+        delete :delete, to: 'dashboard#delete'
       end
     end
   end

@@ -11,23 +11,26 @@
   </thead>
   <tbody class="divide-y divide-gray-100 border-t border-gray-100">
     <% @account_requests.each do |request| %>
-        <tr id="account_request_<%= request.id %>" class="hover:bg-gray-50">
-          <td class="px-6 py-4"><%= request.email %></td>
-          <td class="px-6 py-4"><%= request.username %></td>
-          <td class="px-6 py-4"><%= "#{request.first_name} #{request.last_name}" %></td>
-          <td class="px-6 py-4">
+      <tr id="account_request_<%= request.id %>" class="hover:bg-gray-50">
+        <td class="px-6 py-4"><%= request.email %></td>
+        <td class="px-6 py-4"><%= request.username %></td>
+        <td class="px-6 py-4"><%= "#{request.first_name} #{request.last_name}" %></td>
+        <td class="px-6 py-4">
           <%= form_with url: approve_super_admin_account_request_path(request), method: :post, local: true do |form| %>
             <div class="flex items-center space-x-2">
               <%= form.select :role, options_for_select([['Student', 'student'], ['Admin', 'admin']], request.id), {}, { class: 'form-select text-sm py-1 px-2 border rounded-md shadow-sm w-32' } %>
               <%= form.submit 'Approve', class: 'btn btn-primary text-sm py-1 px-3' %>
             </div>
           <% end %>
-          
-          </td>
-          <td class="px-6 py-4">
-          </td>
-        </tr>
+        </td>
+        <td class="px-6 py-4">
+          <%= form_with url: delete_super_admin_account_request_path(request), method: :delete, local: true do |form| %>
+            <%= form.submit 'Delete', class: 'btn btn-danger text-sm py-1 px-3 bg-red-500' %>
+          <% end %>
+        </td>
+      </tr>
     <% end %>
+  
   </tbody>
 </table>
 

@@ -12,6 +12,7 @@
         <th scope="col" class="px-6 py-4 font-medium text-gray-900">Email</th>
           <th scope="col" class="px-6 py-4 font-medium text-gray-900">Role</th>
         <th scope="col" class="px-6 py-4 font-medium text-gray-900"></th>
+        <th scope="col" class="px-6 py-4 font-medium text-gray-900"></th>
       </tr>
     </thead>
     <tbody class="divide-y divide-gray-100 border-t border-gray-100">
@@ -42,12 +43,21 @@
           
           <td class="px-6 py-4">
             <div class="flex justify-end gap-4">
-            <%= turbo_frame_tag "publish-button-#{user.id}" do %>
-            <%= render "profiles/publish_button", user: user%>
-            <%end%>
+              <%= turbo_frame_tag "publish-button-#{user.id}" do %>
+                <%= render "profiles/publish_button", user: user%>
+              <%end%>
              
             </div>
           </td>
+          <%if current_user.super_admin?%>
+          <td class="px-6 py-4">
+          
+          <%= form_with url: profile_path(user), method: :delete, local: true do |form| %>
+            <%= form.submit "Delete", class: "text-red-500 hover:text-red-700" %>
+          <% end %>
+          
+          </td>
+          <% end %>
         </tr>
       <%end%>
     </tbody>

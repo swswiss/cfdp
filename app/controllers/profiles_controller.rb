@@ -3,7 +3,7 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
   before_action :authorize_admin!, only: [:all_users]
-  before_action :authorize_super_admin!, only: [:update_role]
+  before_action :authorize_super_admin!, only: [:update_role, :destroy]
 
   def show
     @user = current_user
@@ -46,6 +46,14 @@ class ProfilesController < ApplicationController
       redirect_to edit_profile_path(user), notice: user.errors.full_messages.join(",")
     end
   end
+
+  def destroy
+    user = User.find(params[:id])
+    user.destroy
+    flash[:notice] = "User successfully deleted."
+    redirect_to all_users_path
+  end
+  
 
   private
 
