@@ -6,6 +6,11 @@ class ActivityLogsController < ApplicationController
 	def index
 		if params[:name].blank? && params[:name_action].blank?
 			@activity_logs = ActivityLog.includes(:user).order(created_at: :desc).page(params[:page]).per(7)
+			logs = @activity_logs.size
+			if logs > 200
+				diff = logs - 200
+				@activity_logs.last(diff).destroy_all
+			end
 		end
 
 		if params[:name].present? && params[:name_action].blank?

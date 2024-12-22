@@ -3,7 +3,7 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
   before_action :authorize_admin!, only: [:all_users]
-  before_action :authorize_super_admin!, only: [:update_role, :destroy]
+  before_action :authorize_super_admin!, only: [:update_role, :destroy, :block_unblock]
 
   def show
     @user = current_user
@@ -16,6 +16,26 @@ class ProfilesController < ApplicationController
   def all_users
     users_super_admin = User.where(role:'super admin').pluck(:id)
     @users = User.where.not(id: users_super_admin).order(created_at: :asc).page(params[:page]).per(9)
+  end
+
+  def block_unblock
+    user = User.find(params[:id])
+
+    if user.blocked?
+      user.update(blocked: false)
+    else
+      user.update(blocked: true)
+    end
+    respond_to do | format |
+      format.turbo_stream do
+        flash[:success] = "User successfully Block/Unblock."
+        render turbo_stream: [
+          turbo_stream.update("block-button-#{user.id}", partial: "profiles/block_button", locals: { user: user.reload }),
+          turbo_stream.update("blocked-#{user.id}", user.blocked? ? "true" : "false"),
+          turbo_stream.update( "flash", partial: "layouts/flash")
+        ]
+      end
+    end
   end
 
   def update_role

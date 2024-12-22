@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   allow_browser versions: :modern
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :check_if_blocked
-
+  before_action :check_if_user_blocked
 
   protected
 
@@ -17,6 +17,14 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def check_if_user_blocked
+    if user_signed_in? && current_user.blocked?
+      sign_out current_user
+      flash[:alert] = "Your account has been blocked. Please contact support."
+      redirect_to root_path
+    end
+  end
 
   def check_if_blocked
     if SiteSetting.first.is_blocked && current_user&.role != 'super admin'

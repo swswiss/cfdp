@@ -10,7 +10,8 @@
         <th scope="col" class="px-6 py-4 font-medium text-gray-900">Last Name</th>
         <th scope="col" class="px-6 py-4 font-medium text-gray-900">Username</th>
         <th scope="col" class="px-6 py-4 font-medium text-gray-900">Email</th>
-          <th scope="col" class="px-6 py-4 font-medium text-gray-900">Role</th>
+        <th scope="col" class="px-6 py-4 font-medium text-gray-900">Role</th>
+        <th scope="col" class="px-6 py-4 font-medium text-gray-900">Banned?</th>
         <th scope="col" class="px-6 py-4 font-medium text-gray-900"></th>
         <th scope="col" class="px-6 py-4 font-medium text-gray-900"></th>
       </tr>
@@ -40,6 +41,12 @@
             <% end %>
           </td>
 
+          <td class="px-6 py-4">
+            <%= turbo_frame_tag "blocked-#{user.id}" do %>
+              <%= user.blocked %>
+            <% end %>
+          </td>
+
           
           <td class="px-6 py-4">
             <div class="flex justify-end gap-4">
@@ -49,6 +56,16 @@
              
             </div>
           </td>
+
+          <td class="px-6 py-4">
+            <div class="flex justify-end gap-4">
+              <%= turbo_frame_tag "block-button-#{user.id}" do %>
+                <%= render "profiles/block_button", user: user%>
+              <%end%>
+             
+            </div>
+          </td>
+
           <%if current_user.super_admin?%>
           <td class="px-6 py-4">
           

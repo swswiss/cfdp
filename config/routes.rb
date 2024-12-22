@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :profiles do
     member do
       put :update_role
+      put :block_unblock
     end
   end
 

@@ -1,0 +1,16 @@
+<%if current_user.super_admin?%>
+<% if user.blocked? %>
+  <%= link_to block_unblock_profile_path(user),method: :patch, data: { "turbo-method": :put } do%>
+    Unblock
+  <%end%>
+
+<% else %>
+  <%= link_to block_unblock_profile_path(user),method: :patch, data: { "turbo-method": :put } do%>
+    Block
+  <%end%>
+
+<% end %>
+<% end %>
+
+
+
