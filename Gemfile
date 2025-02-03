@@ -26,7 +26,7 @@ gem 'friendly_id', '~> 5.5.0'
 gem "rails_charts"
 gem 'kaminari'
 gem 'wicked_pdf'
-gem 'wkhtmltopdf-binary', '0.12.3.1'
+gem 'wkhtmltopdf-binary', '0.12.6.8'
 gem 'roo'
 gem "rails-mermaid_erd"
 gem 'scout_apm'
