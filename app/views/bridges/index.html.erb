@@ -67,7 +67,7 @@
           <div class="bg-white py-2 px-2"> <!-- Reduced padding -->
             <h3 class="text-xs mb-2 font-medium"><%= truncate(bridge.name, length: 21) %></h3> <!-- Adjusted font size to text-xs -->
             <div class="flex justify-between items-center">
-              <p class="text-xs text-gray-400">Author: <%= bridge.last.user.lastname %> <%= current_user.lastname %></p> <!-- Adjusted font size to text-xs -->
+              <p class="text-xs text-gray-400">Author: <%= bridge.user.lastname %> <%= current_user.lastname %></p> <!-- Adjusted font size to text-xs -->
               <div class="relative z-40 flex items-center gap-2">
                 <%= link_to bridge_path(bridge), method: :get do %>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"> <!-- Reduced the icon size -->
