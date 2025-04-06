@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class InstanceBridge < ApplicationRecord
+  has_many_attached :avatars
   belongs_to :bridge
   has_one :flaw_instance, dependent: :destroy
   accepts_nested_attributes_for :flaw_instance

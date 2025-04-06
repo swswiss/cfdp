@@ -2,8 +2,8 @@
 
 class InstanceBridgesController < ApplicationController
   before_action :set_bridge
-  before_action :set_instance_bridge, only: [:show, :edit, :update, :destroy]
-  before_action :authorize_bridge, only: [:new, :update, :destroy, :edit]
+  before_action :set_instance_bridge, only: [:show, :edit, :update, :destroy, :destroy_avatar]
+  before_action :authorize_bridge, only: [:new, :update, :destroy, :edit, :destroy_avatar]
 
   after_action :cleanup_instance_variables, only: [:index, :edit, :new, :show, :print]
 
@@ -146,6 +146,45 @@ class InstanceBridgesController < ApplicationController
         turbo_stream.update( "flash", partial: "layouts/flash")]
       end
       format.html { redirect_to bridges_path, notice: "Instance Bridge was successfully deleted." }
+    end
+  end
+
+  def show_photos
+    @bridge = Bridge.friendly.find(params[:bridge_id])
+    @instance_bridge = InstanceBridge.find(params[:id])
+  end
+
+  def upload_photos
+    @bridge = Bridge.friendly.find(params[:bridge_id])
+    @instance_bridge = InstanceBridge.find(params[:id])
+    
+    if params[:instance_bridge][:avatars].present?
+      params[:instance_bridge][:avatars].each do |image|
+
+        next if image.blank?
+        @instance_bridge.avatars.attach(
+          io: image,
+          filename: image.original_filename,
+          content_type: image.content_type
+        )
+      end
+    end
+    redirect_to show_photos_bridge_instance_bridge_path(@bridge, @instance_bridge), notice: "Photos uploaded successfully."
+  end
+
+  def destroy_avatar
+    avatar = @instance_bridge.avatars.all.find(params[:avatar_url])
+    avatar.destroy
+
+    respond_to do |format|
+      format.turbo_stream do
+        flash[:success] = "Avatar deleted successfully."
+        render turbo_stream: [
+          turbo_stream.remove("avatar-#{avatar.id}"),
+          turbo_stream.update("flash", partial: "layouts/flash")
+        ]
+      end
+      format.html { redirect_to show_photos_bridge_instance_bridge_path(@bridge, @instance_bridge), notice: "Avatar deleted successfully." }
     end
   end
 
@@ -776,19 +815,6 @@ class InstanceBridgesController < ApplicationController
     max_value
   end
 
-	def authorize_bridge
-    @bridge = Bridge.friendly.find(params[:id])
-    if @bridge.user != current_user
-			if current_user.admin? || current_user.super_admin?
-				true
-			else
-				redirect_to bridges_path, notice: 'You have no access here!'
-			end
-		else
-			true
-    end
-  end
-
   def set_bridge
     @bridge = Bridge.friendly.find(params[:bridge_id])
   end
@@ -878,7 +904,9 @@ class InstanceBridgesController < ApplicationController
 	  :parapeti_pietonali,
 	  :parapeti_siguranta,
 	  :racordari_terasamente,
-	  :aparari_mal, flaw_instance_attributes: [
+	  :aparari_mal, 
+    avatars: [],
+    flaw_instance_attributes: [
       :id,
 		:c1_1,
 		:c2_1,
