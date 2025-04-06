@@ -169,7 +169,31 @@ class InstanceBridgesController < ApplicationController
         )
       end
     end
-    redirect_to show_photos_bridge_instance_bridge_path(@bridge, @instance_bridge), notice: "Photos uploaded successfully."
+    respond_to do |format|
+      format.turbo_stream do
+        # Turbo Stream will append new avatars to the avatar list
+        render turbo_stream: turbo_stream.append("avatars-list", 
+                                                 html: render_avatar(@instance_bridge.avatars.last))
+      end
+      format.html do
+        redirect_to show_photos_bridge_instance_bridge_path(@bridge, @instance_bridge), notice: "Photos uploaded successfully."
+      end
+    end
+  end
+
+  def render_avatar(avatar_url)
+    # Return the HTML to render a single avatar
+    "<div id='avatar-#{avatar_url.id}' class='relative'>
+       <img src='#{rails_blob_path(avatar_url, only_path: true)}' 
+            alt='Avatar Image' class='max-w-full rounded-lg object-cover transition-transform duration-300' style='height: 210px;'>
+       <form action='#{destroy_avatar_bridge_instance_bridge_path(@bridge, @instance_bridge, avatar_url: avatar_url)}' method='POST' data-turbo-stream='true'>
+         <button type='submit' class='absolute top-2 right-2 bg-indigo-500 text-white rounded-full p-2 hover:bg-red-700 z-50'>
+           <svg class='w-2 h-2' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20' stroke='currentColor'>
+             <path stroke-linecap='round' stroke-linejoin='round' stroke-width='4' d='M6 6L14 14M6 14L14 6'/>
+           </svg>
+         </button>
+       </form>
+     </div>".html_safe
   end
 
   def destroy_avatar

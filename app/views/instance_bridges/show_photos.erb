@@ -1,4 +1,4 @@
-<%= form_with model: @instance_bridge, url: upload_photos_bridge_instance_bridge_path(@bridge, @instance_bridge), method: :patch, local: true, html: { multipart: true } do |f| %>
+<%= form_with model: @instance_bridge, url: upload_photos_bridge_instance_bridge_path(@bridge, @instance_bridge), method: :patch, data: { turbo_frame: "avatars-list" }, html: { multipart: true } do |f| %>
     <div class="w-full mb-5">
       <!-- Custom file upload design -->
       <label for="dropzone-file" class="flex flex-col items-center justify-center py-9 w-full border border-gray-300 border-dashed rounded-2xl cursor-pointer bg-gray-50 ">
@@ -20,29 +20,35 @@
       <%= f.submit "Upload Photos", class: "rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
     </div>
   <% end %>
+  
 
 <br>
-  
-<div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-  <% @instance_bridge.avatars.each do |avatar_url| %>
-    <% avatar_dom_id = "avatar-#{avatar_url.id}" %>
-    <div id="<%= avatar_dom_id %>" class="relative">
-      <%= image_tag avatar_url, alt: "Avatar Image", class: "max-w-full rounded-lg object-cover", style: "height: 250px;" %>
 
+<div id="avatars-list" class="grid grid-cols-2 md:grid-cols-4 gap-2">
+  <% @instance_bridge.avatars.each do |avatar_url| %>
+    <div id="avatar-<%= avatar_url.id %>" class="relative" data-controller="zoom">
+      <%= image_tag avatar_url, alt: "Avatar Image",
+          class: "max-w-full rounded-lg object-cover transition-transform duration-300",
+          style: "height: 210px;", 
+          data: { zoom_target: "image", action: "click->zoom#toggle" } %>  <!-- Apply the action here -->
+      
       <%= form_with(
             url: destroy_avatar_bridge_instance_bridge_path(@bridge, @instance_bridge, avatar_url: avatar_url),
             method: :delete,
             data: { turbo_stream: true }
           ) do |form| %>
-        <button type="submit" class="absolute top-2 right-2 bg-red-500 text-white rounded-full p-2 hover:bg-red-700">
-          <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 6L14 14M6 14L14 6"/>
+        <button type="submit" class="absolute top-2 right-2 bg-indigo-500 text-white rounded-full p-2 hover:bg-red-700 z-50">
+          <svg class="w-2 h-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M6 6L14 14M6 14L14 6"/>
           </svg>
         </button>
       <% end %>
     </div>
   <% end %>
 </div>
+
+
+
 
 
 
