@@ -61,6 +61,9 @@ Rails.application.routes.draw do
     resources :instance_bridges, only: [:index, :new, :create, :show, :destroy, :edit, :update] do
       member do
         get :print
+        get :show_photos
+        patch :upload_photos
+        delete :destroy_avatar
       end
     end
   end

@@ -3,7 +3,7 @@
 class BridgesController < ApplicationController
   before_action :authenticate_user!
 	before_action :authorize_admin!, only: [:upload_bridge, :send_upload_bridge, :compare_data, :comparison, :custom]
-	before_action :authorize_bridge, only: [:update, :destroy, :print, :edit, :clone]
+	before_action :authorize_bridge, only: [:show, :update, :destroy, :print, :edit, :clone]
 
   after_action :cleanup_instance_variables, only: [:index, :edit, :new, :show, :print, :custom]
 

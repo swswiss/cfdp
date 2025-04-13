@@ -32,6 +32,9 @@ gem "rails-mermaid_erd"
 gem 'scout_apm'
 gem 'caxlsx'
 gem 'caxlsx_rails'
+gem 'cloudinary'
+gem "activestorage-cloudinary-service"
+gem "image_processing", "~> 1.2"
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
