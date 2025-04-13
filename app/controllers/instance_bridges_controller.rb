@@ -3,7 +3,7 @@
 class InstanceBridgesController < ApplicationController
   before_action :set_bridge
   before_action :set_instance_bridge, only: [:show, :edit, :update, :destroy, :destroy_avatar]
-  before_action :authorize_bridge, only: [:new, :update, :destroy, :edit, :destroy_avatar]
+  before_action :authorize_bridge, only: [:new, :update, :destroy, :edit, :destroy_avatar, :show_photos, :upload_photos]
 
   after_action :cleanup_instance_variables, only: [:index, :edit, :new, :show, :print]
 
@@ -157,7 +157,16 @@ class InstanceBridgesController < ApplicationController
   def upload_photos
     @bridge = Bridge.friendly.find(params[:bridge_id])
     @instance_bridge = InstanceBridge.find(params[:id])
-    
+
+    if @instance_bridge.avatars.all.size >= 15
+      flash.now[:alert] = "You exceeded the maximum number of photos (15)."
+
+      render turbo_stream: turbo_stream.update(
+        "flash",
+        partial: "layouts/flash"
+      )
+      return
+    end
     if params[:instance_bridge][:avatars].present?
       params[:instance_bridge][:avatars].each do |image|
 
