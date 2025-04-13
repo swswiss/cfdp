@@ -2,6 +2,7 @@
 
 class InstanceBridge < ApplicationRecord
   belongs_to :bridge
+  has_many_attached :avatars
   has_one :flaw_instance, dependent: :destroy
   accepts_nested_attributes_for :flaw_instance
 
