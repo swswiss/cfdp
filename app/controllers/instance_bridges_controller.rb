@@ -2,8 +2,9 @@
 
 class InstanceBridgesController < ApplicationController
   before_action :set_bridge
-  before_action :set_instance_bridge, only: [:show, :edit, :update, :destroy]
-  before_action :authorize_bridge, only: [:new, :update, :destroy, :edit]
+  before_action :set_instance_bridge, only: [:show, :edit, :update, :destroy, :destroy_avatar]
+  before_action :authorize_bridge, only: [:new, :update, :destroy, :edit, :destroy_avatar, :show_photos, :upload_photos]
+  before_action :authorize_superadmin!, only: [:show_photos, :upload_photos, :destroy_avatar]
 
   after_action :cleanup_instance_variables, only: [:index, :edit, :new, :show, :print]
 
@@ -165,6 +166,96 @@ class InstanceBridgesController < ApplicationController
 			disposition: 'inline'  
 		)
 	end
+
+  def show_photos
+    @bridge = Bridge.friendly.find(params[:bridge_id])
+    @instance_bridge = InstanceBridge.find(params[:id])
+  end
+
+  def upload_photos
+    @bridge = Bridge.friendly.find(params[:bridge_id])
+    @instance_bridge = InstanceBridge.find(params[:id])
+
+    if @instance_bridge.avatars.all.size + params[:instance_bridge][:avatars].size >= 15
+      flash.now[:alert] = "You exceeded the maximum number of photos (15)."
+
+      render turbo_stream: turbo_stream.update(
+        "flash",
+        partial: "layouts/flash"
+      )
+      return
+    end
+    if params[:instance_bridge][:avatars].present?
+      params[:instance_bridge][:avatars].each do |image|
+        next if image.blank?
+        
+        @instance_bridge.avatars.attach(
+          io: image,
+          filename: image.original_filename,
+          content_type: image.content_type,
+          metadata: {
+            uploader: current_user&.email,
+            instance_bridge: @instance_bridge.name,
+          }
+        )
+      end
+    end
+  
+    respond_to do |format|
+      format.turbo_stream do
+        # Turbo Stream will append new avatars to the avatar list
+        flash[:success] = "Photos uploaded successfully."
+        render turbo_stream: [turbo_stream.append("avatars-list", 
+                                                 html: render_avatar(@instance_bridge.avatars.last)),
+        turbo_stream.update( "flash", partial: "layouts/flash")]
+      end
+      format.html do
+        redirect_to show_photos_bridge_instance_bridge_path(@bridge, @instance_bridge), notice: "Photos uploaded successfully."
+      end
+    end
+  end
+
+  def render_avatar(avatar_url)
+    "<div id='avatars-list'>
+      <div class='mx-auto max-w-4xl px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
+        <div class='grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8'>
+          <div id='avatar-#{avatar_url.id}' class='group relative' data-controller='zoom'>
+            <img src='#{rails_blob_path(avatar_url, only_path: true)}'
+                 alt='Avatar Image'
+                 class='aspect-square w-full rounded-lg bg-gray-200 object-cover transition-transform duration-300 group-hover:opacity-75 xl:aspect-7/8'
+                 data-zoom-target='image' data-action='click->zoom#toggle'>
+            <div class='mt-4 flex items-center justify-between'>
+              <form action='#{destroy_avatar_bridge_instance_bridge_path(@bridge, @instance_bridge, avatar_url: avatar_url)}'
+                    method='POST' data-turbo-stream='true'>
+                <button type='submit' class='bg-indigo-500 text-white rounded-full p-1 hover:bg-red-700'>
+                  <svg class='w-2 h-2' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20' stroke='currentColor'>
+                    <path stroke-linecap='round' stroke-linejoin='round' stroke-width='4' d='M6 6L14 14M6 14L14 6'/>
+                  </svg>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>".html_safe
+  end
+  
+
+  def destroy_avatar
+    avatar = @instance_bridge.avatars.all.find(params[:avatar_url])
+    avatar.destroy
+
+    respond_to do |format|
+      format.turbo_stream do
+        flash[:success] = "Avatar deleted successfully."
+        render turbo_stream: [
+          turbo_stream.remove("avatar-#{avatar.id}"),
+          turbo_stream.update("flash", partial: "layouts/flash")
+        ]
+      end
+      format.html { redirect_to show_photos_bridge_instance_bridge_path(@bridge, @instance_bridge), notice: "Avatar deleted successfully." }
+    end
+  end
 
   private
 
@@ -776,19 +867,6 @@ class InstanceBridgesController < ApplicationController
     max_value
   end
 
-	def authorize_bridge
-    @bridge = Bridge.friendly.find(params[:id])
-    if @bridge.user != current_user
-			if current_user.admin? || current_user.super_admin?
-				true
-			else
-				redirect_to bridges_path, notice: 'You have no access here!'
-			end
-		else
-			true
-    end
-  end
-
   def set_bridge
     @bridge = Bridge.friendly.find(params[:bridge_id])
   end
@@ -815,6 +893,10 @@ class InstanceBridgesController < ApplicationController
     @instance_bridges = nil
     @instance_bridge = nil
     @bridge = nil
+  end
+
+  def authorize_superadmin!
+    redirect_to root_path, alert: 'You are not authorized to access this page.' unless (current_user&.super_admin?)
   end
 
   def instance_bridge_params
@@ -878,7 +960,9 @@ class InstanceBridgesController < ApplicationController
 	  :parapeti_pietonali,
 	  :parapeti_siguranta,
 	  :racordari_terasamente,
-	  :aparari_mal, flaw_instance_attributes: [
+	  :aparari_mal,
+    avatars: [],
+    flaw_instance_attributes: [
       :id,
 		:c1_1,
 		:c2_1,
