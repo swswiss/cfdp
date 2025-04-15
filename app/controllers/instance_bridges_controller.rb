@@ -4,6 +4,7 @@ class InstanceBridgesController < ApplicationController
   before_action :set_bridge
   before_action :set_instance_bridge, only: [:show, :edit, :update, :destroy, :destroy_avatar]
   before_action :authorize_bridge, only: [:new, :update, :destroy, :edit, :destroy_avatar, :show_photos, :upload_photos]
+  before_action :authorize_superadmin!, only: [:show_photos, :upload_photos, :destroy_avatar]
 
   after_action :cleanup_instance_variables, only: [:index, :edit, :new, :show, :print]
 
@@ -186,12 +187,16 @@ class InstanceBridgesController < ApplicationController
     end
     if params[:instance_bridge][:avatars].present?
       params[:instance_bridge][:avatars].each do |image|
-
         next if image.blank?
+        
         @instance_bridge.avatars.attach(
           io: image,
           filename: image.original_filename,
-          content_type: image.content_type
+          content_type: image.content_type,
+          metadata: {
+            uploader: current_user&.email,
+            instance_bridge: @instance_bridge.name,
+          }
         )
       end
     end
@@ -888,6 +893,10 @@ class InstanceBridgesController < ApplicationController
     @instance_bridges = nil
     @instance_bridge = nil
     @bridge = nil
+  end
+
+  def authorize_superadmin!
+    redirect_to root_path, alert: 'You are not authorized to access this page.' unless (current_user&.super_admin?)
   end
 
   def instance_bridge_params
