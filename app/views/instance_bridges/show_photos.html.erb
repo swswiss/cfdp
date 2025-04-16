@@ -24,12 +24,12 @@
 
 
 <br>
-
+<div id="avatars-list">
 <%if @instance_bridge.avatars.blank?%>
 <center><p class="mt-1 text-sm leading-6 text-gray-600">There are no photos for this instance bridge.</p></center>
 <%else%>
 <center><h1 class="text-base font-semibold leading-7 text-gray-900"><%=@instance_bridge.name%></h1></center><br>
-<div id="avatars-list">
+
   <div class="mx-auto max-w-4xl px-4  sm:px-6  lg:max-w-7xl lg:px-8">
 
     <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
