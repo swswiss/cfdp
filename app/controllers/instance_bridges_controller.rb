@@ -4,7 +4,7 @@ class InstanceBridgesController < ApplicationController
   before_action :set_bridge
   before_action :set_instance_bridge, only: [:show, :edit, :update, :destroy, :destroy_avatar]
   before_action :authorize_bridge, only: [:new, :update, :destroy, :edit, :destroy_avatar, :show_photos, :upload_photos]
-  #before_action :authorize_superadmin!, only: [:show_photos, :upload_photos, :destroy_avatar]
+  before_action :authorize_superadmin!, only: [:show_photos, :upload_photos, :destroy_avatar]
 
   after_action :cleanup_instance_variables, only: [:index, :edit, :new, :show, :print]
 
@@ -964,9 +964,9 @@ class InstanceBridgesController < ApplicationController
     @bridge = nil
   end
 
-  # def authorize_superadmin!
-  #   redirect_to root_path, alert: 'You are not authorized to access this page.' unless (current_user&.super_admin?)
-  # end
+  def authorize_superadmin!
+    redirect_to root_path, alert: 'You are not authorized to access this page.' unless (current_user&.super_admin?)
+  end
 
   def instance_bridge_params
     params.require(:instance_bridge).permit(

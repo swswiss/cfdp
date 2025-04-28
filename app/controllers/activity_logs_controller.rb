@@ -2,7 +2,7 @@
 
 class ActivityLogsController < ApplicationController
   before_action :authenticate_user!
-  before_action :authorize_admin!, only: [:destroy]
+  before_action :authorize_super_admin!, only: [:destroy]
 
 	def index
 		if params[:name].blank? && params[:name_action].blank?
@@ -46,7 +46,7 @@ class ActivityLogsController < ApplicationController
 
   private
 
-  def authorize_admin!
+  def authorize_super_admin!
     redirect_to root_path, alert: 'You are not authorized to access this page.' unless (current_user&.super_admin?)
   end
 end
