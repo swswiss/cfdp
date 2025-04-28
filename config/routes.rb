@@ -71,6 +71,7 @@ Rails.application.routes.draw do
   get 'comparison', to: 'bridges#comparison', as: :comparison
   get 'upload_bridge', to: 'bridges#upload_bridge', as: :upload_bridge
   post 'send_upload_bridge', to: 'bridges#send_upload_bridge', as: :send_upload_bridge
+  get 'big_map', to: 'bridges#big_map', as: :big_map
 
   get "dashboard", to: "dashboard#index" 
 
@@ -79,6 +80,6 @@ Rails.application.routes.draw do
     resources :unpublish, only: :update
   end
 
-  resources :activity_logs, only: [:index]
+  resources :activity_logs, only: [:index, :destroy]
 
 end

@@ -24,12 +24,12 @@ export default class extends Controller {
     this.element.classList.add('transition', 'ease-in', 'duration-100');
 
     setTimeout(() => {
-      this.element.classList.add('oapcity-0');
+      this.element.classList.add('opacity-0');
     }, 100);
 
     setTimeout(() => {
       this.element.remove();
-    }, 300);
+    }, 700);
   }
 
   get isPreview() {

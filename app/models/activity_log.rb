@@ -14,6 +14,12 @@ class ActivityLog < ApplicationRecord
     CREATED_INSTANCE_BRIDGE = 'created an instance bridge'.freeze
     UPDATED_INSTANCE_BRIDGE = 'updated an instance bridge'.freeze
     DESTROY_INSTANCE_BRIDGE = 'destroyed an instance bridge'.freeze
+    PRINT_BRIDGE = 'printed a bridge'.freeze
+    PRINT_INSTANCE_BRIDGE = 'printed an instance bridge'.freeze
+    CREATED_INTEGRATION_EMAIL = 'created an email integration'.freeze
+    CREATED_INTEGRATION_SMS = 'created an sms integration'.freeze
+    DELETED_INTEGRATION_EMAIL = 'deleted an email integration'.freeze
+    DELETED_INTEGRATION_SMS = 'deleted an sms integration'.freeze
     # Add more actions as needed...
   end
 

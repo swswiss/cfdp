@@ -29,7 +29,6 @@ gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary', '0.12.3.1'
 gem 'roo'
 gem "rails-mermaid_erd"
-gem 'scout_apm'
 gem 'caxlsx'
 gem 'caxlsx_rails'
 gem 'cloudinary'

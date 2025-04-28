@@ -152,6 +152,7 @@ class InstanceBridgesController < ApplicationController
 
   def print
 		instance_bridge = InstanceBridge.find(params[:id])
+    ActivityLog.log_activity(current_user, ActivityLog::ActionTypes::PRINT_INSTANCE_BRIDGE, instance_bridge, instance_bridge.name)
 		pdf_html = render_to_string(
 			pdf: 'bridge_info',          
 			template: 'instance_bridges/print',    
@@ -175,8 +176,7 @@ class InstanceBridgesController < ApplicationController
   def upload_photos
     @bridge = Bridge.friendly.find(params[:bridge_id])
     @instance_bridge = InstanceBridge.find(params[:id])
-
-    if @instance_bridge.avatars.all.size + params[:instance_bridge][:avatars].size >= 15
+    if @instance_bridge.avatars.all.size + params[:instance_bridge][:avatars].drop(1).size >= 15
       flash.now[:alert] = "You exceeded the maximum number of photos (15)."
 
       render turbo_stream: turbo_stream.update(
@@ -185,10 +185,23 @@ class InstanceBridgesController < ApplicationController
       )
       return
     end
+    existing_blobs = ActiveStorage::Blob.where("(metadata::jsonb ->> 'instance_bridge') = ?", @instance_bridge.name).pluck(:filename)
     if params[:instance_bridge][:avatars].present?
       params[:instance_bridge][:avatars].each do |image|
         next if image.blank?
-        
+        unless image.content_type == 'image/jpeg' || image.content_type == 'image/png' || image.content_type == 'application/pdf'
+          flash[:error] = "One of the files you attempted to upload has an incorrect file extension"
+          respond_to do |format|
+            format.turbo_stream do
+              render turbo_stream: [
+                turbo_stream.update( "flash", partial: "layouts/flash")]
+            end
+          end
+          return
+        end
+
+        @is_already_uploaded = existing_blobs.include?(image.original_filename)
+        next if @is_already_uploaded == true
         @instance_bridge.avatars.attach(
           io: image,
           filename: image.original_filename,
@@ -200,54 +213,101 @@ class InstanceBridgesController < ApplicationController
         )
       end
     end
-  
+
     respond_to do |format|
       format.turbo_stream do
         # Turbo Stream will append new avatars to the avatar list
-        flash[:success] = "Photos uploaded successfully."
+        if @is_already_uploaded == false
+          flash[:success] = "Photos uploaded successfully."
+        else
+          flash[:error] = "Photo with same name already uploaded."
+        end
         render turbo_stream: [turbo_stream.append("avatars-list", 
                                                  html: render_avatar(@instance_bridge.avatars.last(params[:instance_bridge][:avatars].size-1))),
         turbo_stream.update( "flash", partial: "layouts/flash")]
       end
       format.html do
-        redirect_to show_photos_bridge_instance_bridge_path(@bridge, @instance_bridge), notice: "Photos uploaded successfully."
+        redirect_to show_photos_bridge_instance_bridge_path(@bridge, @instance_bridge), notice: "Photos uploaded success."
       end
     end
   end
 
-  def render_avatar(avatar_url)
-    content = avatar_url.map do |avatar_url|
-    "
+  def render_avatar(avatar_urls)
+    content = avatar_urls.map do |avatar_url|
+      name_file = File.basename(avatar_url.filename.to_s, File.extname(avatar_url.filename.to_s))
+      if avatar_url.image?
+        "
           <div id='avatar-#{avatar_url.id}' class='group relative' data-controller='zoom'>
             <img src='#{rails_blob_path(avatar_url, only_path: true)}'
                  alt='Avatar Image'
                  class='aspect-square w-full rounded-lg bg-gray-200 object-cover transition-transform duration-300 group-hover:opacity-75 xl:aspect-7/8'
-                 data-zoom-target='image' data-action='click->zoom#toggle'>
+                 data-zoom-target='image' data-action='click->zoom#toggle'><br>
+                 <span style='word-break: break-word;'>#{name_file}</span>
             <div class='mt-4 flex items-center justify-between'>
               <form action='#{destroy_avatar_bridge_instance_bridge_path(@bridge, @instance_bridge, avatar_url: avatar_url)}'
                     method='POST' data-turbo-stream='true'>
                 <button type='submit' class='bg-indigo-500 text-white rounded-full p-1 hover:bg-red-700'>
                   <svg class='w-3 h-3' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
-                  <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0'/>
-                </svg>
-                  
+                    <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m14.74 9-.346 9m-4.788 0L9.26 9...' />
+                  </svg>
                 </button>
               </form>
             </div>
-      
-    </div>"
-  end.join
+          </div>
+        "
+      elsif avatar_url.content_type == "application/pdf"
+        "
+          <div id='avatar-#{avatar_url.id}' class='group relative'>
+            <div class='w-100 h-100 flex items-center justify-center bg-gray-100 border rounded-lg'>
+              <div data-controller='pdf-viewer'>
+                <a href='#' data-action='click->pdf-viewer#open' data-pdf_url='#{rails_blob_url(avatar_url, disposition: 'inline')}'>
+                  <div class='bg-gray-100 p-4 rounded cursor-pointer hover:bg-gray-200'>
+                    <svg height='80px' width='80px' version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 309.267 309.267' xml:space='preserve' fill='#000000'>
+                      <g id='SVGRepo_bgCarrier' stroke-width='0'></g>
+                      <g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'></g>
+                      <g id='SVGRepo_iconCarrier'>
+                        <g>
+                          <path style='fill:#874efe;' d='M38.658,0h164.23l87.049,86.711v203.227c0,10.679-8.659,19.329-19.329,19.329H38.658 c-10.67,0-19.329-8.65-19.329-19.329V19.329C19.329,8.65,27.989,0,38.658,0z'></path>
+                          <path style='fill:#5e30eb;' d='M289.658,86.981h-67.372c-10.67,0-19.329-8.659-19.329-19.329V0.193L289.658,86.981z'></path>
+                          <path style='fill:#FFFFFF;' d='M217.434,146.544c3.238,0,4.823-2.822,4.823-5.557c0-2.832-1.653-5.567-4.823-5.567h-18.44 c-3.605,0-5.615,2.986-5.615,6.282v45.317c0,4.04,2.3,6.282,5.412,6.282c3.093,0,5.403-2.242,5.403-6.282v-12.438h11.153 c3.46,0,5.19-2.832,5.19-5.644c0-2.754-1.73-5.49-5.19-5.49h-11.153v-16.903C204.194,146.544,217.434,146.544,217.434,146.544z M155.107,135.42h-13.492c-3.663,0-6.263,2.513-6.263,6.243v45.395c0,4.629,3.74,6.079,6.417,6.079h14.159 c16.758,0,27.824-11.027,27.824-28.047C183.743,147.095,173.325,135.42,155.107,135.42z M155.755,181.946h-8.225v-35.334h7.413 c11.221,0,16.101,7.529,16.101,17.918C171.044,174.253,166.25,181.946,155.755,181.946z M106.33,135.42H92.964 c-3.779,0-5.886,2.493-5.886,6.282v45.317c0,4.04,2.416,6.282,5.663,6.282s5.663-2.242,5.663-6.282v-13.231h8.379 c10.341,0,18.875-7.326,18.875-19.107C125.659,143.152,117.425,135.42,106.33,135.42z M106.108,163.158h-7.703v-17.097h7.703 c4.755,0,7.78,3.711,7.78,8.553C113.878,159.447,110.863,163.158,106.108,163.158z'></path>
+                        </g>
+                      </g>
+                    </svg>
+         
 
-  "
-    <div id='avatars-list'>
-      <div class='mx-auto max-w-4xl px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
-        <div class='grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8'>
-          #{content}
+                  </div><br>  <span style='word-break: break-word;'>#{name_file}</span>
+
+                </a>
+              </div>
+            </div>
+            <div class='mt-4 flex items-center justify-between'>
+              <form action='#{destroy_avatar_bridge_instance_bridge_path(@bridge, @instance_bridge, avatar_url: avatar_url)}'
+                    method='POST' data-turbo-stream='true'>
+                <button type='submit' class='bg-indigo-500 text-white rounded-full p-1 hover:bg-red-700'>
+                  <svg class='w-3 h-3' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
+                    <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m14.74 9-.346 9m-4.788 0L9.26 9...' />
+                  </svg>
+                </button>
+              </form>
+            </div>
+          </div>
+        "
+      else
+        ""
+      end
+    end.join
+  
+    "
+      <div id='avatars-list'>
+        <div class='mx-auto max-w-4xl px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
+          <div class='grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8'>
+            #{content}
+          </div>
         </div>
       </div>
-    </div>
-  ".html_safe
+    ".html_safe
   end
+  
   
 
   def destroy_avatar

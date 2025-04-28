@@ -9,7 +9,7 @@
             </g>
           </svg>
         </div>
-        <h2 class="text-center text-gray-400 text-xs font-normal leading-4 mb-1">PNG, JPG or SVG, smaller than 5MB</h2>
+        <h2 class="text-center text-gray-400 text-xs font-normal leading-4 mb-1">PNG, JPG or PDF, smaller than 5MB</h2>
         <h4 class="text-center text-gray-900 text-sm font-medium leading-snug">Drag and Drop your file here or</h4>
         <!-- Hidden file input -->
         <%= f.file_field :avatars, multiple: true, class: "hidden", direct_upload: true, id: "dropzone-file" %>
@@ -24,42 +24,68 @@
   <% end %>
 
 
-<br>
-<div id="avatars-list">
-<%if @instance_bridge.avatars.blank?%>
-<center><p class="mt-1 text-sm leading-6 text-gray-600">There are no photos for this instance bridge.</p></center>
-<%else%>
-<center><h1 class="text-base font-semibold leading-7 text-gray-900"><%=@instance_bridge.name%></h1></center><br>
+  <br>
+  <div id="avatars-list">
+    <%if @instance_bridge.avatars.blank?%>
+      <center><p class="mt-1 text-sm leading-6 text-gray-600">There are no photos for this instance bridge.</p></center>
+    <%else%>
+      <center><h1 class="text-xl font-semibold leading-7 text-gray-900"><%=@instance_bridge.name%></h1></center><br>
 
-  <div class="mx-auto max-w-4xl px-4  sm:px-6  lg:max-w-7xl lg:px-8">
+      <div class="mx-auto max-w-4xl px-4  sm:px-6  lg:max-w-7xl lg:px-8">
 
-    <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-      <% @instance_bridge.avatars.each do |avatar_url| %>
-        <div id="avatar-<%= avatar_url.id %>" class="group relative" data-controller="zoom">
-          <%= image_tag avatar_url, alt: "Uploaded Image",
-              class: "aspect-square w-full rounded-lg bg-gray-200 object-cover transition-transform duration-300 xl:aspect-7/8",
-              data: { zoom_target: "image", action: "click->zoom#toggle" } %>
-
-          <div class="mt-1 flex items-center justify-between">
-
-            <%= form_with(
-                  url: destroy_avatar_bridge_instance_bridge_path(@bridge, @instance_bridge, avatar_url: avatar_url),
-                  method: :delete,
-                  data: { turbo_stream: true }
-                ) do |form| %>
-              <button type="submit" class="bg-indigo-700 text-white rounded-full p-1 hover:bg-indigo-500" onclick="return confirm('Are you sure you want to delete this avatar?')">
-                <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"/>
-                </svg>
-              </button>
-            <% end %>
-          </div>
+        <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+          <% @instance_bridge.avatars.each do |avatar_url| %>
+            <div id="avatar-<%= avatar_url.id %>" class="group relative" data-controller="zoom">
+              <% if avatar_url.image? %>
+                <%= image_tag avatar_url, alt: "Uploaded Image",
+                    class: "aspect-square w-full rounded-lg bg-gray-200 object-cover transition-transform duration-300 xl:aspect-7/8",
+                    data: { zoom_target: "image", action: "click->zoom#toggle" } %>
+                <br>
+                <span style="word-break: break-word;" class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">
+                <%= File.basename(avatar_url.filename.to_s, File.extname(avatar_url.filename.to_s)) %>
+              </span>
+              <% elsif avatar_url.content_type == "application/pdf" %>
+                <div class="w-100 h-100 flex items-center justify-center bg-gray-100 border rounded-lg">
+                  <div data-controller="pdf-viewer">
+                    <%= link_to "#", data: { action: "click->pdf-viewer#open", pdf_url: rails_blob_url(avatar_url, disposition: 'inline') + "&transformation=pdf-100x100" } do %>
+                      <div class="bg-gray-100 p-4 rounded cursor-pointer hover:bg-gray-200">
+                        <!-- Thumbnail Image of the PDF -->
+                        <svg height="80px" width="80px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 309.267 309.267" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path style="fill:#874efe;" d="M38.658,0h164.23l87.049,86.711v203.227c0,10.679-8.659,19.329-19.329,19.329H38.658 c-10.67,0-19.329-8.65-19.329-19.329V19.329C19.329,8.65,27.989,0,38.658,0z"></path> <path style="fill:#5e30eb;" d="M289.658,86.981h-67.372c-10.67,0-19.329-8.659-19.329-19.329V0.193L289.658,86.981z"></path> <path style="fill:#FFFFFF;" d="M217.434,146.544c3.238,0,4.823-2.822,4.823-5.557c0-2.832-1.653-5.567-4.823-5.567h-18.44 c-3.605,0-5.615,2.986-5.615,6.282v45.317c0,4.04,2.3,6.282,5.412,6.282c3.093,0,5.403-2.242,5.403-6.282v-12.438h11.153 c3.46,0,5.19-2.832,5.19-5.644c0-2.754-1.73-5.49-5.19-5.49h-11.153v-16.903C204.194,146.544,217.434,146.544,217.434,146.544z M155.107,135.42h-13.492c-3.663,0-6.263,2.513-6.263,6.243v45.395c0,4.629,3.74,6.079,6.417,6.079h14.159 c16.758,0,27.824-11.027,27.824-28.047C183.743,147.095,173.325,135.42,155.107,135.42z M155.755,181.946h-8.225v-35.334h7.413 c11.221,0,16.101,7.529,16.101,17.918C171.044,174.253,166.25,181.946,155.755,181.946z M106.33,135.42H92.964 c-3.779,0-5.886,2.493-5.886,6.282v45.317c0,4.04,2.416,6.282,5.663,6.282s5.663-2.242,5.663-6.282v-13.231h8.379 c10.341,0,18.875-7.326,18.875-19.107C125.659,143.152,117.425,135.42,106.33,135.42z M106.108,163.158h-7.703v-17.097h7.703 c4.755,0,7.78,3.711,7.78,8.553C113.878,159.447,110.863,163.158,106.108,163.158z"></path> </g> </g></svg> 
+                        <br>
+                        <span style="word-break: break-word;" class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">
+                        <%= File.basename(avatar_url.filename.to_s, File.extname(avatar_url.filename.to_s)) %>
+                      </span>
+                      </div>
+                    <% end %>
+                    <!-- Modal -->
+                    <div data-pdf-viewer-target="modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+                      <div data-pdf-viewer-target="modalContent" class="bg-white p-4 rounded shadow-xl w-full max-w-3xl h-[80vh] relative">
+                        <button class="absolute top-2 right-2 text-gray-500 hover:text-gray-800" data-action="click->pdf-viewer#close">✕</button>
+                        <iframe data-pdf-viewer-target="iframe" src="" class="w-full h-full border rounded"></iframe>
+                      </div>
+                    </div>
+                  </div>              
+                </div>
+              <% end %>
+              <div class="mt-1 flex items-center justify-between">
+                <%= form_with(
+                      url: destroy_avatar_bridge_instance_bridge_path(@bridge, @instance_bridge, avatar_url: avatar_url),
+                      method: :delete,
+                      data: { turbo_stream: true }
+                    ) do |form| %>
+                  <button type="submit" class="bg-indigo-700 text-white rounded-full p-1 hover:bg-indigo-500" onclick="return confirm('Are you sure you want to delete this avatar?')">
+                    <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"/>
+                    </svg>
+                  </button>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
         </div>
-      <% end %>
-    </div>
-    </div>
-    </div>
-    </div>
-<%end%>
+      </div>
+    <%end%>
+  </div>
+</div>
 
 
