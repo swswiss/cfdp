@@ -26,9 +26,15 @@
                     <%= link_to comparison_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" do %>
                       Head to Head
                     <% end %>
+                    <%= link_to big_map_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" do %>
+                      Big Map
+                    <% end %>
                     <%= link_to custom_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" do %>
                       Custom Statistics
                     <% end %>
+                  <%= link_to upload_bridge_path, class: "block px-4 py-2 text-sm text-gray-700" do %>
+                    Upload from CSV
+                  <%end%>
                   </div>
                 </div>
               <% end %>
@@ -129,7 +135,7 @@
 
               
               <!-- Dropdown menu with transitions -->
-              <div id="user-menu" class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none transform transition duration-100 ease-out opacity-0 scale-95 hidden" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+              <div id="user-menu" class="absolute right-0 z-9999 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none transform transition duration-100 ease-out opacity-0 scale-95 hidden" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
               <%= link_to profile_path(current_user), class: "block px-4 py-2 text-sm text-gray-700" do %>
                 Your Profile
               <%end%>
@@ -149,11 +155,7 @@
                 <%= link_to new_bridge_path, class: "block px-4 py-2 text-sm text-gray-700" do %>
                 Add a Bridge
                 <%end%>
-              <%if current_user.role == 'admin' || current_user.super_admin?%>
-              <%= link_to upload_bridge_path, class: "block px-4 py-2 text-sm text-gray-700" do %>
-                Upload from CSV
-              <%end%>
-              <%end%>
+              
                 
                 <%= link_to 'Logout', destroy_user_session_path, method: :delete, class:"block px-4 py-2 text-sm text-gray-700"%>
               </div>
@@ -198,6 +200,9 @@
         <% if current_user.admin? || current_user.super_admin?%>
           <%= link_to comparison_path, class: "#{desktop_link_active?("bridges")} block rounded-md px-3 py-2 text-base font-medium" do %>
             Head to Head
+          <% end %>
+          <%= link_to big_map_path, class: "#{desktop_link_active?("bridges")} block rounded-md px-3 py-2 text-base font-medium" do %>
+            Big Map
           <% end %>
           <%= link_to custom_path, class: "#{desktop_link_active?("bridges")} block rounded-md px-3 py-2 text-base font-medium" do %>
             Custom Statistics
@@ -273,6 +278,7 @@
     if (isHidden) {
       // Show the menu
       menu.classList.remove('hidden');
+      menu.style.zIndex = "999";
       setTimeout(() => {
         menu.classList.remove('opacity-0', 'scale-95');
         menu.classList.add('opacity-100', 'scale-100');
@@ -282,6 +288,7 @@
       document.addEventListener('click', outsideClickListener);
     } else {
       closeMenu(menu);
+      menu.style.zIndex = "";
     }
   }
 

@@ -7,8 +7,13 @@ class InstanceBridge < ApplicationRecord
   accepts_nested_attributes_for :flaw_instance
 
   before_create :set_instance_bridge_name
+  before_destroy :purge_avatars 
 
   private
+
+  def purge_avatars
+    avatars.each(&:purge)
+  end
 
   def set_instance_bridge_name
     existing_names = bridge.instance_bridges.pluck(:name)

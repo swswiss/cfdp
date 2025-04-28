@@ -19,7 +19,7 @@ class NotificationComponent < ViewComponent::Base
     end 
   end
 
-  def icon_class 
+  def icon_class
     case @type
     when "success"
       "fas fa-check"
