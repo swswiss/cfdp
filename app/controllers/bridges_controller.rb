@@ -3,7 +3,7 @@
 class BridgesController < ApplicationController
   before_action :authenticate_user!
 	before_action :authorize_admin!, only: [:upload_bridge, :send_upload_bridge, :compare_data, :comparison, :custom]
-	before_action :authorize_bridge, only: [:show, :update, :destroy, :print, :edit, :clone]
+	before_action :authorize_bridge, only: [:update, :destroy, :print, :edit, :clone]
   before_action :authorize_superadmin!, only: [:big_map]
 
   after_action :cleanup_instance_variables, only: [:index, :edit, :new, :show, :print, :custom]
@@ -207,7 +207,7 @@ class BridgesController < ApplicationController
     query = query.where('name ILIKE ?', "%#{params[:name]}%") if params[:name].present?
     query = query.where('lungime >= ? AND lungime <= ?', params[:minimum_length], params[:maximum_length]) if params[:minimum_length].present? && params[:maximum_length].present?
 
-    query = query.where(user_id: current_user.id) if current_user.role == "student"
+    #query = query.where(user_id: current_user.id) if current_user.role == "student"
 
     # Add ordering and pagination
     @bridges = query.order(created_at: :asc).page(params[:page]).per(8)
