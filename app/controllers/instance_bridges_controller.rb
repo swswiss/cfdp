@@ -4,7 +4,7 @@ class InstanceBridgesController < ApplicationController
   before_action :set_bridge
   before_action :set_instance_bridge, only: [:show, :edit, :update, :destroy, :destroy_avatar]
   before_action :authorize_bridge, only: [:new, :update, :destroy, :edit, :destroy_avatar, :show_photos, :upload_photos, :print]
-  before_action :authorize_superadmin!, only: [:show_photos, :upload_photos, :destroy_avatar]
+  #before_action :authorize_superadmin!, only: []
 
   after_action :cleanup_instance_variables, only: [:index, :edit, :new, :show, :print]
 
