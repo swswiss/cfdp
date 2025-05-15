@@ -218,7 +218,7 @@ class BridgesController < ApplicationController
     #query = query.where(user_id: current_user.id) if current_user.role == "student"
 
     # Add ordering and pagination
-    @bridges = query.order(created_at: :asc).page(params[:page]).per(8)
+    @bridges = query.order(created_at: :asc).page(params[:page]).per(16)
 	end
 
 	def new
