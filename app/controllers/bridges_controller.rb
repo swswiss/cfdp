@@ -189,6 +189,14 @@ class BridgesController < ApplicationController
         end
       end
     end
+    # @ist_total_hash = @ist_total_hash.sort_by { |_, inner| -inner.values.map(&:to_i).sum }.to_h
+    # @ist_f5_hash = @ist_f5_hash.sort_by { |_, inner| -inner.values.map(&:to_i).sum }.to_h
+    # @ist_f4_hash = @ist_f4_hash.sort_by { |_, inner| -inner.values.map(&:to_i).sum }.to_h
+    # @ist_f3_hash = @ist_f3_hash.sort_by { |_, inner| -inner.values.map(&:to_i).sum }.to_h
+    # @ist_f2_hash = @ist_f2_hash.sort_by { |_, inner| -inner.values.map(&:to_i).sum }.to_h
+    # @ist_f1_hash = @ist_f1_hash.sort_by { |_, inner| -inner.values.map(&:to_i).sum }.to_h
+    # @ist_f_hash  = @ist_f_hash .sort_by { |_, inner| -inner.values.map(&:to_i).sum }.to_h
+    # @ist_c_hash  = @ist_c_hash .sort_by { |_, inner| -inner.values.map(&:to_i).sum }.to_h
   end
 
 
