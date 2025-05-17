@@ -48,7 +48,7 @@
   <div class="mx-auto max-w-screen-xl px-4 w-full">
     <div class="grid w-full sm:grid-cols-2 xl:grid-cols-4 gap-6">
       <% @bridges.includes(:user).each do |bridge| %>
-        <div id="bridge-row-<%= bridge.id %>" class="relative flex flex-col shadow-md rounded-xl overflow-hidden hover:shadow-lg hover:-translate-y-2 transition-all duration-300 max-w-xs">
+        <div id="bridge-row-<%= bridge.id %>" class="relative flex flex-col shadow-md rounded-xl overflow-hidden hover:shadow-lg   duration-300 max-w-xs">
 				<%if bridge.user == current_user || current_user.admin? || current_user.super_admin?%>
           <div data-controller="confirm">
   <!-- Trigger button (your current trash icon) -->
@@ -93,7 +93,7 @@
                     class="inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm text-gray-900 ring-gray-300 shadow-sm hover:bg-gray-50 sm:w-auto">
               Cancel
             </button>
-            <%= form_with url: bridge_path(bridge), method: :delete, method: :delete, data: { turbo_stream: true } do |form| %>
+            <%= form_with url: bridge_path(bridge), method: :delete, data: { turbo_stream: true } do |form| %>
               <button type="submit"
                       class="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm text-white shadow-sm hover:bg-indigo-500 sm:w-auto">
                 Delete
