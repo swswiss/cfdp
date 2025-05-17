@@ -3,18 +3,39 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["image"]
 
-  toggle() { // Check if the toggle method is being called
-    const image = this.imageTarget;  // Get the target image element
+  toggle() {
+    const image = this.imageTarget;
 
-    // Check if the image is zoomed in already
-    if (image.style.transform === "scale(5)") {  // Adjust scale here
-      image.style.transform = "scale(1)";
-      image.style.zIndex = "999";  // Reset z-index to 999 when zoomed out
-      image.style.position = "";  // Reset position when zoomed out
+    if (image.classList.contains("zoomed")) {
+      image.style.cssText = "";
+      image.classList.remove("zoomed");
     } else {
-      image.style.transform = "scale(5)";  // Set scale to 2 for zooming in more
-      image.style.zIndex = "9999";  // Set z-index to 9999 when zoomed in
-      image.style.position = "relative";  // Set position to relative when zoomed in
+      // Clone to get natural size
+      const clone = image.cloneNode();
+      clone.style.position = "absolute";
+      clone.style.visibility = "hidden";
+      document.body.appendChild(clone);
+
+      const naturalWidth = clone.naturalWidth || clone.offsetWidth;
+      const naturalHeight = clone.naturalHeight || clone.offsetHeight;
+      document.body.removeChild(clone);
+
+      const vw = window.innerWidth * 0.9;
+      const vh = window.innerHeight * 0.9;
+
+      const widthScale = vw / naturalWidth;
+      const heightScale = vh / naturalHeight;
+      const scale = Math.min(widthScale, heightScale, 0.4); // Optional cap at 2x zoom
+
+      image.style.position = "fixed";
+      image.style.top = "50%";
+      image.style.left = "50%";
+      image.style.transform = `translate(-50%, -50%) scale(${scale})`;
+      image.style.zIndex = "9999";
+      image.style.transition = "transform 0.3s ease";
+      image.style.pointerEvents = "auto"; // in case it’s inside a container
+
+      image.classList.add("zoomed");
     }
   }
 }

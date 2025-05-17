@@ -376,7 +376,7 @@ class BridgesController < ApplicationController
 
 	def your_bridges
 		if current_user.admin? || current_user.super_admin?
-			@bridges = Bridge.all.order(created_at: :asc)
+			@bridges = Bridge.all.includes(:user).order(created_at: :asc)
 		else
 			@bridges = current_user.bridges.order(created_at: :asc)
 		end

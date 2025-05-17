@@ -1,6 +1,6 @@
 
 <center>
-<div id="tab1-content" class="tab-pane" style="height: 39rem; width: 65rem; overflow-y: auto;">
+<div id="tab1-content" class="tab-pane" style="height: 39rem; overflow-y: auto;">
 
 
 <%= form_with model: @bridge do |f| %>
@@ -11,7 +11,9 @@
 	        class="sticky-button w-24 focus:outline-none border border-transparent py-1.5 px-3 rounded-md shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-sm font-medium"
         >Complete</button>
 
-  <table id="table1" class="tg"><thead>
+  <table id="table1" class="tg">
+
+  <thead>
     <tr>
       <th class="tg-ir4y" colspan="8">I. Date de identificare a lucrării</th>
     </tr></thead>
@@ -32,7 +34,7 @@
                 options_for_select([['Viaduct', 'Viaduct'], ['Pod', 'Pod'], ['Pasaj', 'Pasaj']], 
                 selected: @bridge.tip_lucrare_arta),
                 { prompt: ''}, 
-                class: "w-full px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs" %>
+                class: "w-full px-2 py-1 rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium text-xs max-width: 100%" %>
       </td>
     </tr>
     <tr>
@@ -1911,7 +1913,7 @@
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">68</span></td>
     <td class="tg-ktyi"><span style="font-weight:normal;font-style:normal;color:#000">Solidarizari necorespunzatoare intre elementele prefabricate (infiltratii, fisuri, rosturi matate necorespunzator).</span></td>
     <td class="tg-7yig"><span style="font-weight:normal;font-style:normal;color:#000">5-6 Rosturi matate necorespunzator</span><br><span style="font-weight:normal;font-style:normal;color:#000">6 – 7 Infiltratii</span></td>
-    <%= flaw_form.select :c1_68, 
+    <td class="tg-qwd7"><%= flaw_form.select :c1_68, 
     options_for_select([['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6'], ['7', '7'], ['8', '8'], ['9', '9'], ['10', '10']], 
     selected: @bridge.flaw.c1_68),
     { prompt: ''}, 
