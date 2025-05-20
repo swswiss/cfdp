@@ -20,7 +20,7 @@ class Bridge < ApplicationRecord
   private
 
   def bridge_limit
-    if user.bridges.count >= 3 && user.role == 'student'
+    if user.bridges.count >= 1 && user.role == 'student'
       errors.add(:base, "You can only create up to 3 bridges.")
     end
   end

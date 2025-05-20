@@ -39,7 +39,19 @@
           <% if @user.role == 'admin' || @user.role == 'super admin'%>
             <%= @user.bridges.count %> / Unlimited
           <% else %>
-            <%= @user.bridges.count %> / 3
+            <%= @user.bridges.count %> / 1
+          <% end %>
+        </dd>
+      </div>
+
+      <!-- Instance Bridges created -->
+      <div class="flex items-center justify-between px-4 py-6">
+        <dt class="text-sm font-medium leading-6 text-gray-900">Number of instance bridges</dt>
+        <dd class="mt-0 text-sm leading-6 text-gray-700 text-right">
+          <% if @user.role == 'admin' || @user.role == 'super admin'%>
+            <%= @user.instance_bridges.count %> / Unlimited
+          <% else %>
+            <%= @user.instance_bridges.count %> / 1
           <% end %>
         </dd>
       </div>

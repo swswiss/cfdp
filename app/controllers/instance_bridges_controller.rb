@@ -16,8 +16,12 @@ class InstanceBridgesController < ApplicationController
   end
 
   def new
-    @instance_bridge = @bridge.instance_bridges.build
-    @instance_bridge.build_flaw_instance
+    if current_user.instance_bridges.count >= 1 && current_user.role == 'student'
+      redirect_to bridge_path(@bridge), alert: "You can only create up to 1 instance bridge."
+    else
+      @instance_bridge = @bridge.instance_bridges.build
+      @instance_bridge.build_flaw_instance
+    end
   end
 
   def create

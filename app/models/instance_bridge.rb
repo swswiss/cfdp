@@ -9,6 +9,8 @@ class InstanceBridge < ApplicationRecord
   before_create :set_instance_bridge_name
   before_destroy :purge_avatars 
 
+  validate :instance_bridge_limit, on: [:create, :clone]
+
   private
 
   def purge_avatars
@@ -24,6 +26,12 @@ class InstanceBridge < ApplicationRecord
     end.max || 0
 
     self.name = "#{bridge.name} #{max_instance_number + 1}"
+  end
+
+  def instance_bridge_limit
+    if self.bridge.user.instance_bridges.size >= 1 && self.bridge.user.role == 'student'
+      errors.add(:base, "You can only create up to 1 instance bridge.")
+    end
   end
 
 end
