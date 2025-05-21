@@ -1,25 +1,39 @@
-<h2>Change your password</h2>
+<div class="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
+<div class="sm:mx-auto sm:w-full sm:max-w-md">
+  <%= link_to root_path do %>
+    <%= image_tag "logo_sign_in.png", class: "mx-auto h-11 w-auto"%>
+  <%end%>
+</div>
+<div class="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
+    <div class="bg-white px-6 py-7 shadow sm: rounded-lg sm:px-12">
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+  <div class: "block text-sm font-medium leading-6 text-gray-900">
   <%= render "devise/shared/error_messages", resource: resource %>
+    </div>
   <%= f.hidden_field :reset_password_token %>
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
+  <div>
+    <%= f.label :password, class: "block text-sm font-medium leading-6 text-gray-900"%>
     <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+    <em class="text-xs text-gray-500">(<%= @minimum_password_length %> characters minimum)</em>
+
     <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+    <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+<br>
+  <div>
+    <%= f.label :password_confirmation, "Confirm new password", class: "block text-sm font-medium leading-6 text-gray-900" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password",  class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Change my password" %>
+<br>
+  <div>
+    <%= f.submit "Change my password", class: "flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"  %>
   </div>
 <% end %>
-
+<div class="text-sm mt-2">
 <%= render "devise/shared/links" %>
+      </div>
+
+
+  

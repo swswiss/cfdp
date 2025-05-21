@@ -191,6 +191,7 @@ class InstanceBridgesController < ApplicationController
     end
     existing_blobs = ActiveStorage::Blob.where("(metadata::jsonb ->> 'instance_bridge') = ?", @instance_bridge.name).pluck(:filename)
     if params[:instance_bridge][:avatars].present?
+      count = 0
       params[:instance_bridge][:avatars].each do |image|
         next if image.blank?
         unless image.content_type == 'image/jpeg' || image.content_type == 'image/png' || image.content_type == 'application/pdf'
@@ -206,6 +207,8 @@ class InstanceBridgesController < ApplicationController
 
         @is_already_uploaded = existing_blobs.include?(image.original_filename)
         next if @is_already_uploaded == true
+        count += 1
+
         @instance_bridge.avatars.attach(
           io: image,
           filename: image.original_filename,
@@ -215,6 +218,10 @@ class InstanceBridgesController < ApplicationController
             instance_bridge: @instance_bridge.name,
           }
         )
+      end
+      if count > 0
+        message = format(ActivityLog::ActionTypes::UPLOADED_IMAGES, count: count)
+        ActivityLog.log_activity(current_user, message, @instance_bridge, @instance_bridge.name)
       end
     end
 
@@ -317,6 +324,7 @@ class InstanceBridgesController < ApplicationController
   def destroy_avatar
     avatar = @instance_bridge.avatars.all.find(params[:avatar_url])
     avatar.destroy
+    ActivityLog.log_activity(current_user, ActivityLog::ActionTypes::DELETED_ONE_IMAGE, @instance_bridge, @instance_bridge.name)
 
     respond_to do |format|
       format.turbo_stream do
