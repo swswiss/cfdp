@@ -22,7 +22,6 @@ class ActivityLog < ApplicationRecord
     DELETED_INTEGRATION_SMS = 'deleted an sms integration'.freeze
     UPLOADED_IMAGES = 'uploaded %{count} image(s) to instance bridge'.freeze
     DELETED_ONE_IMAGE = 'deleted 1 image from an instance bridge'.freeze
-    DELETED_ALL_IMAGES = 'deleted all images from instance bridge'.freeze
     # Add more actions as needed...
   end
 

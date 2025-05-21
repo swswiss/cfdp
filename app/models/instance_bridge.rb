@@ -16,7 +16,6 @@ class InstanceBridge < ApplicationRecord
   private
 
   def purge_avatars
-    ActivityLog.log_activity(bridge.user, ActivityLog::ActionTypes::DELETED_ALL_IMAGES, self, self.name)
     avatars.each(&:purge)
   end
 
