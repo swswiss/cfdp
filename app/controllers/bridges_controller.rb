@@ -387,11 +387,11 @@ class BridgesController < ApplicationController
       redirect_to bridge_path(@bridge), alert: "You can only create up to 1 instance bridge."
     else
       instance_bridge = @bridge.instance_bridges.build
-
+      instance_bridge.current_user = current_user
       instance_bridge.assign_attributes(
         @bridge.attributes.except('id', 'created_at', 'updated_at', 'some_other_column', 'name', 'user_id', 'slug', 'published', 'latitude', 'longitude')
       )
-    
+
       if instance_bridge.save
         respond_to do |format|
           format.turbo_stream do

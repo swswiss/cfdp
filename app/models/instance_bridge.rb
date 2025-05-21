@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class InstanceBridge < ApplicationRecord
+  attr_accessor :current_user
+
   belongs_to :bridge
   has_many_attached :avatars
   has_one :flaw_instance, dependent: :destroy
@@ -30,7 +32,7 @@ class InstanceBridge < ApplicationRecord
   end
 
   def instance_bridge_limit
-    if self.bridge.user.instance_bridges.size >= 1 && self.bridge.user.role == 'student'
+    if current_user.instance_bridges.size >= 1 && current_user.role == 'student'
       errors.add(:base, "You can only create up to 1 instance bridge.")
     end
   end

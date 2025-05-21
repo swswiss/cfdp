@@ -26,7 +26,7 @@ class InstanceBridgesController < ApplicationController
 
   def create
     instance_bridge = @bridge.instance_bridges.build(instance_bridge_params)
-
+    instance_bridge.current_user = current_user
     if instance_bridge.save
       name = instance_bridge.name
 
