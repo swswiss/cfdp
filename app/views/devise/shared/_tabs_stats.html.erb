@@ -1,5 +1,8 @@
-<br><%if instance_bridges.any?%>
+<br>
+<div id="tab1-content" class="tab-pane" style="height: 39rem; overflow-y: auto;">
+<%if instance_bridges.any?%>
     <%= line_chart flaw_instance_ist_total_hash, 
+    id: "chart-total",
     height: "400px", 
     width: "1000px", 
     options: {
@@ -7,12 +10,43 @@
         text: "Bridges per IST Total",
         left: 'center'
       },
+        dataZoom: [
+    {
+      type: 'slider',
+      show: false,
+      xAxisIndex: [0],
+      start: 1,
+      end: 35
+    },
+    {
+      type: 'inside',
+      xAxisIndex: [0],
+      start: 1,
+      end: 35
+    },
+  ],
     }
   %>
   <%= line_chart flaw_instance_ist_c_hash, 
+  id: "chart-c",
     height: "400px", 
     width: "1000px", 
     options: {
+      dataZoom: [
+    {
+      type: 'slider',
+      show: false,
+      xAxisIndex: [0],
+      start: 1,
+      end: 35
+    },
+    {
+      type: 'inside',
+      xAxisIndex: [0],
+      start: 1,
+      end: 35
+    },
+  ],
       title: {
         text: "Bridges per IST C",
         left: 'center'
@@ -20,9 +54,25 @@
     }
   %>
   <%= line_chart flaw_instance_ist_f_hash, 
+  id: "chart-f",
     height: "400px", 
     width: "1000px", 
     options: {
+    dataZoom: [
+    {
+      type: 'slider',
+      show: false,
+      xAxisIndex: [0],
+      start: 1,
+      end: 35
+    },
+    {
+      type: 'inside',
+      xAxisIndex: [0],
+      start: 1,
+      end: 35
+    },
+  ],
       title: {
         text: "Bridges per IST F",
         left: 'center'
@@ -34,24 +84,48 @@
   <p class="mt-1 max-w-3xl text-sm leading-6 text-gray-500">No statistics yet</p>
   </center>
   <%end%>
+  </div>
 
-<%# 
-<%= line_chart [
-    { name: "IST F", data: flaw_instance_ist_f_hash },
-    { name: "Second Data Set", data: flaw_instance_ist_c_hash } # Replace with your actual data hash
-  ], 
-  height: "400px", 
-  width: "1000px", 
-  options: {
-    title: {
-      text: "Bridges Comparison per IST F",
-      left: 'center'
-    },
-    legend: {
-      position: 'top'
-    },
-    xAxis: {
-      type: 'category' # Adjust based on x-axis data format
+  <script>
+  function resizeEChartsForAllSizes() {
+    const width = window.innerWidth;
+    const wrapper = document.getElementById('tab1-content');
+    const chartIds = ['chart-total', 'chart-c', 'chart-f'];
+    let wrapperStyle = '';
+
+    // Decide styles based on width
+    if (width < 400) {
+      wrapperStyle = 'width: 21rem; height: 39rem; overflow-x: auto; overflow-y: auto;';
+    } else if (width < 800) {
+      wrapperStyle = 'width: 49rem; height: 39rem; overflow-x: auto; overflow-y: auto;';
+    } else {
+      wrapperStyle = 'height: 39rem; overflow-y: auto;';
     }
-  } 
-%>
+
+    // Apply style
+    if (wrapper) {
+      wrapper.setAttribute('style', wrapperStyle);
+    }
+
+    // Resize charts
+    chartIds.forEach(id => {
+      const container = document.getElementById(id);
+      if (!container) return;
+
+      container.style.width = (width < 800) ? '700px' : '1000px';
+      container.style.width = (width < 400) ? '400px' : '1000px';
+      container.style.height = '400px';
+
+      const chart = echarts.getInstanceByDom(container);
+      if (chart) {
+        chart.resize();
+      }
+    });
+  }
+
+  document.addEventListener('turbo:load', () => {
+    setTimeout(resizeEChartsForAllSizes, 100);
+  });
+
+  window.addEventListener('resize', resizeEChartsForAllSizes);
+</script>
