@@ -3,7 +3,7 @@
         <%= @instance_bridge.name %>
       </div>
 <br>
-<div id="tab1-content" class="tab-pane" style="height: 39rem; width: 65rem; overflow-y: auto;">
+<div id="tab1-content" class="tab-pane" style="height: 39rem; overflow-y: auto;">
 <%= form_with model: [@bridge, @instance_bridge] do |f| %>
   <button type="submit"
 	        class="sticky-button w-24 focus:outline-none border border-transparent py-1.5 px-3 rounded-md shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-sm font-medium"
@@ -3461,3 +3461,43 @@
 .tg .tg-va2b{background-color:#FFF;font-size:12px;font-weight:bold;text-align:center;vertical-align:top}
 .tg .tg-ctmf{background-color:#FFF;font-size:12px;text-align:right;vertical-align:top}
 </style>
+
+<script>
+  function adjustTableWrapping() {
+    for (let i = 1; i <= 9; i++) {
+      const table = document.getElementById(`table${i}`);
+      if (!table) continue;
+
+      const parent = table.parentElement;
+
+      // On small screens: wrap in div if not already wrapped
+      if (window.innerWidth < 700) {
+        if (!parent.classList.contains('mobile-wrapper')) {
+          const wrapper = document.createElement('div');
+          wrapper.className = 'tab-pane mobile-wrapper';
+          wrapper.style.width = '21rem';
+          wrapper.style.height = '39rem';
+          wrapper.style.overflowY = 'auto';
+
+          table.parentNode.insertBefore(wrapper, table);
+          wrapper.appendChild(table);
+        }
+      }
+
+      // On large screens: unwrap if previously wrapped
+      else {
+        if (parent.classList.contains('mobile-wrapper')) {
+          const grandparent = parent.parentNode;
+          grandparent.insertBefore(table, parent);
+          parent.remove();
+        }
+      }
+    }
+  }
+
+ document.addEventListener('turbo:load', () => {
+    setTimeout(adjustTableWrapping, 100);
+  });
+
+  window.addEventListener('resize', adjustTableWrapping);
+</script>

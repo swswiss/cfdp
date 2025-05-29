@@ -3,7 +3,7 @@
         <%= @bridge.name %>
       </div>
       <br>
-<div id="tab1-content" class="tab-pane" style="height: 39rem; width: 65rem; overflow-y: auto;">
+<div id="tab1-content" class="tab-pane" style="height: 39rem; overflow-y: auto;">
 <%= form_with model: @bridge do |f| %>
    <%= f.hidden_field :latitude, id: 'bridge_latitude' %>
   <%= f.hidden_field :longitude, id: 'bridge_longitude' %>
@@ -3446,7 +3446,7 @@
 <div id="mapTooltip" style="display: none;">
   <button id="closeMapTooltip">Close</button>
   <button id="resetMapTooltip">Reset</button>
-  <div id="map" style="height: 170px; width: 800px;"></div>
+  <div id="map" style="height: 170px;"></div>
   <div id="coordinates">
     <p>Selected Latitude: <span id="lat"></span></p>
     <p>Selected Longitude: <span id="lng"></span></p>
@@ -3552,4 +3552,44 @@ document.getElementById('resetMapTooltip').addEventListener('click', function() 
 });
 
 
+</script>
+
+<script>
+  function adjustTableWrapping() {
+    for (let i = 1; i <= 9; i++) {
+      const table = document.getElementById(`table${i}`);
+      if (!table) continue;
+
+      const parent = table.parentElement;
+
+      // On small screens: wrap in div if not already wrapped
+      if (window.innerWidth < 700) {
+        if (!parent.classList.contains('mobile-wrapper')) {
+          const wrapper = document.createElement('div');
+          wrapper.className = 'tab-pane mobile-wrapper';
+          wrapper.style.width = '21rem';
+          wrapper.style.height = '39rem';
+          wrapper.style.overflowY = 'auto';
+
+          table.parentNode.insertBefore(wrapper, table);
+          wrapper.appendChild(table);
+        }
+      }
+
+      // On large screens: unwrap if previously wrapped
+      else {
+        if (parent.classList.contains('mobile-wrapper')) {
+          const grandparent = parent.parentNode;
+          grandparent.insertBefore(table, parent);
+          parent.remove();
+        }
+      }
+    }
+  }
+
+ document.addEventListener('turbo:load', () => {
+    setTimeout(adjustTableWrapping, 100);
+  });
+
+  window.addEventListener('resize', adjustTableWrapping);
 </script>
