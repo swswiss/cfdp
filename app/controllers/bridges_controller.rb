@@ -222,8 +222,8 @@ class BridgesController < ApplicationController
 	end
 
 	def new
-    if current_user.bridges.count >= 3 && current_user.role == 'student'
-      redirect_to bridges_path, alert: "You can only create up to 3 bridges."
+    if current_user.bridges.count >= 1 && current_user.role == 'student'
+      redirect_to bridges_path, alert: "You can only create up to 1 bridges."
     else
       @bridge = current_user.bridges.build
 		  @bridge.build_flaw

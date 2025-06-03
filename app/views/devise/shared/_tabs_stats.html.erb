@@ -1,5 +1,5 @@
 <br>
-<div id="tab1-content" class="tab-pane" style="height: 39rem; overflow-y: auto;">
+<div id="tab12-content" class="tab-pane" style="height: 39rem;">
 <%if instance_bridges.any?%>
     <%= line_chart flaw_instance_ist_total_hash, 
     id: "chart-total",
@@ -15,14 +15,14 @@
       type: 'slider',
       show: false,
       xAxisIndex: [0],
-      start: 1,
-      end: 35
+      start: 0,
+      end: 100
     },
     {
       type: 'inside',
       xAxisIndex: [0],
-      start: 1,
-      end: 35
+      start: 0,
+      end: 100
     },
   ],
     }
@@ -37,14 +37,14 @@
       type: 'slider',
       show: false,
       xAxisIndex: [0],
-      start: 1,
-      end: 35
+      start: 0,
+      end: 100
     },
     {
       type: 'inside',
       xAxisIndex: [0],
-      start: 1,
-      end: 35
+      start: 0,
+      end: 100
     },
   ],
       title: {
@@ -63,14 +63,14 @@
       type: 'slider',
       show: false,
       xAxisIndex: [0],
-      start: 1,
-      end: 35
+      start: 0,
+      end: 100
     },
     {
       type: 'inside',
       xAxisIndex: [0],
-      start: 1,
-      end: 35
+      start: 0,
+      end: 100
     },
   ],
       title: {
@@ -89,17 +89,17 @@
   <script>
   function resizeEChartsForAllSizes() {
     const width = window.innerWidth;
-    const wrapper = document.getElementById('tab1-content');
+    const wrapper = document.getElementById('tab12-content');
     const chartIds = ['chart-total', 'chart-c', 'chart-f'];
     let wrapperStyle = '';
 
     // Decide styles based on width
     if (width < 400) {
-      wrapperStyle = 'width: 21rem; height: 39rem; overflow-x: auto; overflow-y: auto;';
+      wrapperStyle = 'width: 21rem; height: 39rem; overflow-x: auto; ';
     } else if (width < 800) {
-      wrapperStyle = 'width: 49rem; height: 39rem; overflow-x: auto; overflow-y: auto;';
+      wrapperStyle = 'width: 39rem;  height: 39rem; overflow-x: auto; ';
     } else {
-      wrapperStyle = 'height: 39rem; overflow-y: auto;';
+      wrapperStyle = 'height: 39rem;';
     }
 
     // Apply style
