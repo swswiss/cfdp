@@ -275,27 +275,21 @@ class BridgesController < ApplicationController
 	def print
 		bridge = Bridge.friendly.find(params[:id])
     ActivityLog.log_activity(current_user, ActivityLog::ActionTypes::PRINT_BRIDGE, bridge, bridge.name)
-		respond_to do |format|
-      format.html do
-        render template: 'bridges/spinner', locals: { bridge: bridge }
-      end
-  
-      format.pdf do
-        pdf_html = render_to_string(
-          pdf: 'bridge_info',                # PDF name
-          template: 'bridges/print',         # PDF template
-          locals: { bridge: bridge },        # Bridge data
-          encoding: 'UTF-8'                  # Ensure proper encoding
-        )
-  
-        send_data(
-          pdf_html,
-          filename: 'bridge_info.pdf',
-          type: 'application/pdf',
-          disposition: 'inline'
-        )
-      end
-    end
+    pdf_html = render_to_string(
+      pdf: 'bridge_info', 
+      formats: [:pdf],                  # 👈 key line
+      handlers: [:erb],               # PDF name
+      template: 'bridges/print',         # PDF template
+      locals: { bridge: bridge },        # Bridge data
+      encoding: 'UTF-8'                  # Ensure proper encoding
+    )
+
+    send_data(
+      pdf_html,
+      filename: 'bridge_info.pdf',
+      type: 'application/pdf',
+      disposition: 'inline'
+    )
 	end
 
 	def edit
