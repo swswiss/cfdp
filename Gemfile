@@ -16,7 +16,7 @@ gem "turbo-rails"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
 # Use Tailwind CSS [https://github.com/rails/tailwindcss-rails]
-gem "tailwindcss-rails"
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
@@ -26,6 +26,7 @@ gem 'friendly_id', '~> 5.5.0'
 gem "rails_charts"
 gem 'kaminari'
 gem 'wicked_pdf'
+gem 'coffee-script'
 gem 'wkhtmltopdf-binary', '0.12.3.1'
 gem 'roo'
 gem "rails-mermaid_erd"
@@ -69,3 +70,6 @@ group :development do
 end
 
 gem "devise", "~> 4.9"
+
+
+gem "tailwindcss-rails", "~> 2.0"
