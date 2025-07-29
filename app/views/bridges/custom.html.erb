@@ -21,44 +21,7 @@
         </label>
         <label for="select-all" class="ml-2 text-gray-700 text-sm">Select All</label>
       </div>
-      <div class="w-full flex justify-center">
-      <nav aria-label="Breadcrumb" class="flex justify-center overflow-x-auto whitespace-nowrap">
-        <ol class="flex items-center space-x-1 text-sm w-full">
-          <li>
-            <a href="#" class="flex items-center text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200 transition-colors p-1.5 rounded hover:bg-neutral-100 dark:hover:bg-neutral-800">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-              </svg>
-              <span class="sr-only">Home</span>
-            </a>
-          </li>
-          <li class="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="size-4 shrink-0 text-neutral-400 dark:text-neutral-600" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-            </svg>
-            <a href="#" class="ml-1 text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200 transition-colors p-1.5 rounded hover:bg-neutral-100 dark:hover:bg-neutral-800">
-              Dashboard
-            </a>
-          </li>
-          <li class="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="size-4 shrink-0 text-neutral-400 dark:text-neutral-600" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-            </svg>
-            <a href="#" class="ml-1 text-neutral-500 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200 transition-colors p-1.5 rounded hover:bg-neutral-100 dark:hover:bg-neutral-800">
-              Projects
-            </a>
-          </li>
-          <li class="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="size-4 shrink-0 text-neutral-400 dark:text-neutral-600" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-            </svg>
-            <span class="ml-1 text-neutral-900 dark:text-neutral-100 font-medium p-1.5" aria-current="page">
-              Project Alpha
-            </span>
-          </li>
-        </ol>
-      </nav>
-    </div>
+
       <!-- Responsive grid for individual toggle options -->
       <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
         <% [["F1", "f1"], ["F2", "f2"], ["F3", "f3"], ["F4", "f4"], ["F5", "f5"], ["IST C", "ist_c"], ["IST F", "ist_f"], ["IST T.", "ist_t"], ["Modular", "separate"]].each_with_index do |(label, value), index| %>
